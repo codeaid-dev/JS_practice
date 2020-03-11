@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Display</title>
+</head>
+<body>
+  <div>
+    <label for="txt"><p>表示するテキストを入力してください</p></label>
+    <input type="text" id="txt">
+  </div>
+  <div>
+    <label for="size"><p>サイズを入力してください</p></label>
+    <input type="text" id="size" value="14">
+  </div>
+  <div>
+    <label><p>色を選択してください</p></label>
+    <p>
+      <input type="radio" name="color" id="colord" value="black" checked>黒色
+      <input type="radio" name="color" id="color1" value="red">赤色
+      <input type="radio" name="color" id="color2" value="blue">青色
+      <input type="radio" name="color" id="color3" value="yellow">黄色
+    </p>
+  </div>
+  <div>
+    <label for="bold"><p>オプション</p></label>
+    <p>
+      <input type="checkbox" id="bold" value="bold">太くする
+    </p>
+  </div>
+  <div>
+    <label for="loop"><p>表示回数を選択してください</p></label>
+    <p>
+      <select id="loop">
+        <option value="1" selected>1回</option>
+        <option value="3">3回</option>
+        <option value="5">5回</option>
+      </select>
+    </p>
+  </div>
+  <div>
+    <button>表示</button>
+    <div id="show"></div>
+  </div>
+
+  <script>
+    /* formタグを使わずに実装した場合の作例 */
+
+    let txt = document.getElementById('txt');
+    let size = document.getElementById('size');
+    let colors = document.getElementsByName('color');
+    let bold = document.getElementById('bold');
+
+    let btn = document.querySelector('button');
+    btn.addEventListener('click', ()=>{
+
+      let color = 'black';
+      for (let i in colors) {
+        if (colors[i].checked) {
+          color = colors[i].value;
+          break;
+        }
+      }
+
+      //let style = 'font-size:' + size.value + 'px;'
+      //      + 'color:' + color + ';'
+      //      + 'font-weight:' + ((bold.checked) ? 'bold' : 'normal');
+      let style = `font-size:${size.value}px; color:${color};font-weight:${(bold.checked) ? 'bold' : 'normal'}`;
+
+      let num = document.getElementById('loop');
+      let show = document.getElementById('show');
+      show.setAttribute('style', style);
+
+      show.textContent = null; // 前回に入力した子要素を削除する
+
+      for (let i=0; i<num.value; i++) {
+        if (txt.value == "") {
+          show.innerHTML = '<p>空です</p>';
+        } else {
+          show.innerHTML += '<p>' + txt.value + '</p>';
+        }
+      }
+
+    });
+
+  </script>
+</body>
+</html>

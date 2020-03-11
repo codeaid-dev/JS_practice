@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Sample</title>
+  <style>
+    #panel {
+      width: 320px;
+      height: 320px;
+    }
+
+    .tile {
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        border: 1px solid gray;
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        float: left;
+        cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <input type="text">
+  <button>実行</button>
+  <p>ここの表示が変わる</p>
+  <p id="change">上の表示に注目！</p>
+  <div id="panel">
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+  </div>
+  <script>
+    let ipt = document.querySelector('input');
+    let btn = document.querySelector('button');
+    let para = document.querySelector('p');
+    let change = document.querySelector('#change');
+    btn.addEventListener('click', () => {
+      para.innerText = ipt.value;
+      change.style = 'color:red';
+    });
+
+    let elems = document.querySelectorAll('.tile');
+    console.log(elems);
+    for (let elem of elems) {
+      elem.addEventListener('click', (e) => {
+        console.log(e);
+        elem.style = 'background:blue';
+        elem.innerText = Array.from(elems).indexOf(elem);
+      });
+    }
+  </script>
+</body>
+</html>

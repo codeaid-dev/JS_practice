@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elements Sample</title>
+</head>
+<body>
+  <p></p>
+  <p id="morning"></p>
+  <p class="evening"></p>
+  <p class="evening"></p>
+  <p class="evening"></p>
+  <p class="evening"></p>
+
+  <ul>
+    <li>朝</li>
+    <li>昼</li>
+    <li>夜</li>
+  </ul>
+  <script>
+    let line = document.querySelector('p');
+    line.innerText = 'こんにちは！';
+    let line2 = document.querySelector('#morning'); // id="mornig"
+    line2.innerText = 'おはよう！';
+    let line3 = document.querySelector('.evening'); // class="evening"
+    line3.innerText = 'こんばんは！';
+
+    //let elems = document.querySelectorAll('.evening'); // class="evening"
+    //elems[1].innerText = 'おばんです';
+
+    let elems = document.getElementsByClassName('evening'); // class="evening"
+    for (let elem of elems) {
+      elem.innerText = 'おばんです';
+    }
+    let elems2 = document.getElementsByTagName('li'); //<li>タグの要素
+    for (let i = 0; i < elems2.length; i++) {
+      console.log(elems2[i].innerText);
+    }
+
+    line2.remove();
+  </script>
+</body>
+</html>

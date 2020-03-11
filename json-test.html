@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script>
+$(function() {
+  $.getJSON("data.json" , function(data) {
+    var
+      ulObj = $("#demo"),
+      thObj = $("#userlist"),
+      len = data.length;
+
+    var table = document.getElementById("userlist");
+    for(var i = 0; i < len; i++) {
+      var tr = table.insertRow(-1);
+      var td1 = tr.insertCell(-1);
+      var td2 = tr.insertCell(-1);
+      td1.innerHTML = data[i].id;
+      td2.innerHTML = data[i].name;
+      //ulObj.append($("<li>").attr({"id":data[i].id}).text(data[i].name));
+    }
+  });
+});
+</script>
+</head>
+<body>
+  <table id="userlist">
+    <tr>
+      <th>ID</th>
+      <th>名前</th>
+    </tr>
+  </table>
+<ul id="demo"></ul>
+</body>
+</html>
