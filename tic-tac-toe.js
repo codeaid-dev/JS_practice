@@ -23,7 +23,7 @@ for (let i = 0; i < tiles.length; i++) {
   });
 }
 
-function judge() {
+let judge = ()=>{
   if (tiles[0] == tiles[1] && tiles[0] == tiles[2]
     || tiles[3] == tiles[4] && tiles[3] == tiles[5]
     || tiles[6] == tiles[7] && tiles[6] == tiles[8]
