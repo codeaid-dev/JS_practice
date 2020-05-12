@@ -10,7 +10,7 @@
 <body>
 
   <div class="container">
-    <form action="" method="post" class="row">
+    <!--<form action="" method="post" class="row"> form disable -->
       <div class="col-sm-8 offset-sm-2">
         <p>以下のフォームにご記入頂き、ユーザー登録してください。</p>
 
@@ -24,13 +24,42 @@
           <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         </div>
 
+        <label>モビルスーツ</label>
+        <div class="form-group mobilesuit">
+          <div class="form-check form-check-inline check-inline">
+              <input class="form-check-input checks" type="checkbox" name="category[]" id="cat_1" value="ガンダム" checked>
+              <label class="form-check-label" for="cat_1">ガンダム</label>
+          </div>
+          <div class="form-check form-check-inline check-inline">
+              <input class="form-check-input checks" type="checkbox" name="category[]" id="cat_2" value="ガンキャノン" checked>
+              <label class="form-check-label" for="cat_2">ガンキャノン</label>
+          </div>
+          <div class="form-check form-check-inline check-inline">
+              <input class="form-check-input checks" type="checkbox" name="category[]" id="cat_3" value="ガンタンク" checked>
+              <label class="form-check-label" for="cat_3">ガンタンク</label>
+          </div>
+          <div class="form-check form-check-inline check-inline">
+              <input class="form-check-input checks" type="checkbox" name="category[]" id="cat_4" value="ザク" checked>
+              <label class="form-check-label" for="cat_4">ザク</label>
+          </div>
+          <div class="form-check form-check-inline check-inline">
+              <input class="form-check-input checks" type="checkbox" name="category[]" id="cat_5" value="グフ" checked>
+              <label class="form-check-label" for="cat_5">グフ</label>
+          </div>
+          <div class="form-check form-check-inline check-inline">
+              <input class="form-check-input checks" type="checkbox" name="category[]" id="cat_6" value="ドム" checked>
+              <label class="form-check-label" for="cat_6">ドム</label>
+          </div>
+        </div>
+
         <button type="submit" class="btn btn-primary">登録</button>
       </div><!-- contents col-sm-8 -->
-    </form>
+    <!--</form> form disable -->
   </div>
 
   <script>
-    document.querySelector('form').addEventListener('submit', (e)=>{
+    //document.querySelector('form').addEventListener('submit', (e)=>{
+    document.querySelector('button').addEventListener('click', (e)=>{
       let pass = document.getElementById('password').value;
       if (!pass.match(/^(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}$/i)) {
         let elem = document.createElement("div");
@@ -39,6 +68,16 @@
         document.getElementById('password').insertAdjacentElement('afterend', elem);
         console.log("err:"+elem);
         e.preventDefault();
+      }
+
+      let parent = document.querySelector('.mobilesuit');
+      let checks = document.querySelectorAll('.checks');
+      for (let elem of checks) {
+        if (elem.checked === true) {
+          let div = document.createElement("div");
+          div.textContent = elem.value + "が選択されました。";
+          parent.appendChild(div);
+        }
       }
     });
   </script>
