@@ -1,4 +1,4 @@
-let station = prompt("1.A駅 2.B駅 3.C駅\n行き先の駅を1, 2, 3から選んでください");
+let station = prompt("1.A駅 2.B駅 3.C駅 4.D駅 5.E駅\n行き先の駅を1, 2, 3, 4, 5から選んでください");
 
 if (!isNaN(station)) {
   station = parseInt(station);
@@ -7,15 +7,15 @@ if (!isNaN(station)) {
 }
 
 let type;
-if (station == 1) {
+if (station == 1 || station == 3 || station == 4) {
   type = "快速";
 }else if (station == 2) {
-  type = "快速と急行";
-} else if (station == 3) {
-  type = "特急";
+  type = "快速・急行";
+} else if (station == 5) {
+  type = "快速・急行・特急";
 } else {
   alert("その駅はありません");
 }
-if (station >1 && station <= 3) {
+if (station >= 1 && station <= 5) {
   alert("その駅には" + type + "の電車が停まります");
 }
