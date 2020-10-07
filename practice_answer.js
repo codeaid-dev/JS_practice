@@ -134,3 +134,37 @@ if (station == 1 || station == 3 || station == 4) {
 if (station >= 1 && station <= 5) {
   alert("その駅には" + type + "の電車が停まります");
 }
+/*
+<body>
+<h1>JS練習問題</h1>
+  <p>1.A駅 2.B駅 3.C駅 4.D駅 5.E駅<br>行き先の駅を1, 2, 3, 4, 5から選んでください</p>
+<input type="text">
+<button>実行</button>
+<p id="answer">結果表示</p>
+<script>
+  let ipt = document.querySelector('input');
+  let btn = document.querySelector('button');
+  let elem = document.querySelector('#answer');
+  btn.addEventListener('click',()=>{
+    if (isNaN(ipt.value)) {
+      elem.innerHTML = '<span style="color:red;">数値に変換できません！</span>';
+    } else {
+      let type;
+      let station = ipt.value;
+      if (station == 1 || station == 3 || station == 4) {
+        type = "快速";
+      }else if (station == 2) {
+        type = "快速・急行";
+      } else if (station == 5) {
+        type = "快速・急行・特急";
+      } else {
+        elem.innerText = "その駅はありません";
+      }
+      if (station >= 1 && station <= 5) {
+        elem.innerText = "その駅には" + type + "の電車が停まります";
+      }
+    }
+  });
+</script>
+</body>
+*/
