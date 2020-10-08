@@ -91,27 +91,6 @@ for (let person of data) {
 </body>
 */
 
-// 反転しても読める漢字
-/*
-<body>
-  <h1>JS練習問題</h1>
-  <p>反転しても意味の通る漢字です。<br>反転ボタンを押すと漢字が反転します。</p>
-  <p style="font-size:40px;"><span id="one">社</span><span id="two">会</span></p>
-  <button>反転</button>
-  <script>
-    let one = document.querySelector('#one');
-    let two = document.querySelector('#two');
-    let btn = document.querySelector('button');
-    btn.addEventListener('click',()=>{
-      let w1 = one.innerText;
-      let w2 = two.innerText;
-      one.innerText = w2;
-      two.innerText = w1;
-    });
- </script>
-</body>
-*/
-
 // 電車問題
 let station = prompt("1.A駅 2.B駅 3.C駅 4.D駅 5.E駅\n行き先の駅を1, 2, 3, 4, 5から選んでください");
 
@@ -163,6 +142,107 @@ if (station >= 1 && station <= 5) {
       if (station >= 1 && station <= 5) {
         elem.innerText = "その駅には" + type + "の電車が停まります";
       }
+    }
+  });
+</script>
+</body>
+*/
+
+// 反転しても読める漢字
+/*
+<body>
+  <h1>JS練習問題</h1>
+  <p>反転しても意味の通る漢字です。<br>反転ボタンを押すと漢字が反転します。</p>
+  <p style="font-size:40px;"><span id="one">社</span><span id="two">会</span></p>
+  <button>反転</button>
+  <script>
+    let one = document.querySelector('#one');
+    let two = document.querySelector('#two');
+    let btn = document.querySelector('button');
+    btn.addEventListener('click',()=>{
+      let w1 = one.innerText;
+      let w2 = two.innerText;
+      one.innerText = w2;
+      two.innerText = w1;
+    });
+ </script>
+</body>
+*/
+
+// 指定した横幅と縦幅で○と✕を並べる
+/*
+<body>
+<h1>JS練習問題</h1>
+<label for="yoko">横幅</label>
+<input type="text" id="yoko">
+<label for="tate">縦幅</label>
+<input type="text" id="tate">
+<button>表示</button>
+<p id="answer">結果表示</p>
+<script>
+  let yoko = document.querySelector('#yoko');
+  let tate = document.querySelector('#tate');
+  let btn = document.querySelector('button');
+  let elem = document.querySelector('#answer');
+  btn.addEventListener('click',()=>{
+    if (isNaN(yoko.value) || isNaN(tate.value)) {
+      elem.innerHTML = '<span style="color:red;">数値に変換できません！</span>';
+    } else {
+      let tile = ['○', '✕'];
+      let index = 1;
+      let ans = "";
+      for (let i = 0; i < tate.value; i++) {
+        index = 1 - index;
+        for (let j = 0; j < yoko.value; j++) {
+          if (j % 2 == 0) {
+            ans += tile[index];
+          } else {
+            ans += tile[1 - index];
+          }
+        }
+        ans += '<br>';
+      }
+      elem.innerHTML = ans;
+    }
+  });
+</script>
+</body>
+*/
+
+/*
+<head>
+  <style>
+    #result {
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      margin: 10px;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+<h1>JS練習問題</h1>
+<button>占う</button>
+<div id="result"></div>
+<script>
+  let btn = document.querySelector('button');
+  let elem = document.querySelector('#result');
+  btn.addEventListener('click',()=>{
+    let uranai = Math.floor(Math.random() * 10);
+    if (uranai == 0) {
+      elem.setAttribute('style', 'background-color:blue');
+      elem.innerText = '大吉';
+    } else if (uranai >= 1 && uranai <= 3) {
+      elem.setAttribute('style', 'background-color:green');
+      elem.innerText = '吉';
+    } else if (uranai >= 4 && uranai <= 7) {
+      elem.setAttribute('style', 'background-color:yellow');
+      elem.innerText = '凶';
+    } else if (uranai >= 8 && uranai <= 9) {
+      elem.setAttribute('style', 'background-color:red');
+      elem.innerText = '大凶';
     }
   });
 </script>
