@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カレンダー</title>
+  <style>
+    #calendar {
+      text-align: center;
+    }
+    td {
+      padding: 0 10px;
+    }   
+  </style>
+</head>
+<body>
+  <h1>JavaScript実習</h1>
+  <p>年
+    <select id="year">
+      <option value="2020" selected>2020年</option>
+      <option value="2021">2021年</option>
+      <option value="2022">2022年</option>
+      <option value="2023">2023年</option>
+      <option value="2024">2024年</option>
+      <option value="2025">2025年</option>
+    </select>
+  </p>
+  <p>月
+    <select id="month">
+      <option value="1" selected>1月</option>
+      <option value="2">2月</option>
+      <option value="3">3月</option>
+      <option value="4">4月</option>
+      <option value="5">5月</option>
+      <option value="6">6月</option>
+      <option value="7">7月</option>
+      <option value="8">8月</option>
+      <option value="9">9月</option>
+      <option value="10">10月</option>
+      <option value="11">11月</option>
+      <option value="12">12月</option>
+    </select>
+  </p>
+  <div><button>表示</button></div>
+  <div id="calendar"></div>
+  <script>
+    let wdays = ['日','月','火','水','木','金','土'];
+    let btn = document.querySelector('button');
+    btn.addEventListener('click', ()=>{
+      let month = document.querySelector('#month');
+      let cal = document.querySelector('#calendar');
+      cal.innerHTML = '';
+      //if(cal.hasChildNodes()) {
+        //cal.removeChild(cal.firstChild);
+      //}
+      let startDate = new Date(year.value,(month.value-1), 1); // 月の最初
+      let endDate = new Date(year.value,month.value, 0); // 月の最後
+      let table = document.createElement('table');
+      let cnt = 1;
+      for (let i = 0; i < 7; i++) {
+        let tr = document.createElement('tr');
+        for (let j = 0; j < 7; j++) {
+          let td = document.createElement('td');
+          if (i == 0) {
+            td.innerText = wdays[j];
+          } else if (i == 1) {
+            if (j >= startDate.getDay()) {
+              td.innerText = cnt;
+              cnt++;
+            }
+          } else {
+            if (cnt <= endDate.getDate()) {
+              td.innerText = cnt;
+              cnt++;
+            }
+          }
+          tr.appendChild(td);
+        }
+        table.appendChild(tr);
+      }
+      cal.appendChild(table);
+    });
+  </script>  
+</body>
+</html>
