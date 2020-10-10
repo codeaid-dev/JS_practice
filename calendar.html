@@ -15,7 +15,7 @@
 </head>
 <body>
   <h1>JavaScript実習</h1>
-  <p>年
+  <p>
     <select id="year">
       <option value="2020" selected>2020年</option>
       <option value="2021">2021年</option>
@@ -25,7 +25,7 @@
       <option value="2025">2025年</option>
     </select>
   </p>
-  <p>月
+  <p>
     <select id="month">
       <option value="1" selected>1月</option>
       <option value="2">2月</option>
@@ -43,43 +43,6 @@
   </p>
   <div><button>表示</button></div>
   <div id="calendar"></div>
-  <script>
-    let wdays = ['日','月','火','水','木','金','土'];
-    let btn = document.querySelector('button');
-    btn.addEventListener('click', ()=>{
-      let month = document.querySelector('#month');
-      let cal = document.querySelector('#calendar');
-      cal.innerHTML = '';
-      //if(cal.hasChildNodes()) {
-        //cal.removeChild(cal.firstChild);
-      //}
-      let startDate = new Date(year.value,(month.value-1), 1); // 月の最初
-      let endDate = new Date(year.value,month.value, 0); // 月の最後
-      let table = document.createElement('table');
-      let cnt = 1;
-      for (let i = 0; i < 7; i++) {
-        let tr = document.createElement('tr');
-        for (let j = 0; j < 7; j++) {
-          let td = document.createElement('td');
-          if (i == 0) {
-            td.innerText = wdays[j];
-          } else if (i == 1) {
-            if (j >= startDate.getDay()) {
-              td.innerText = cnt;
-              cnt++;
-            }
-          } else {
-            if (cnt <= endDate.getDate()) {
-              td.innerText = cnt;
-              cnt++;
-            }
-          }
-          tr.appendChild(td);
-        }
-        table.appendChild(tr);
-      }
-      cal.appendChild(table);
-    });
-  </script>  
+  <script src="calendar.js"></script>  
 </body>
 </html>
