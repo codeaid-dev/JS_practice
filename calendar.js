@@ -1,6 +1,7 @@
 let wdays = ['日','月','火','水','木','金','土'];
 let btn = document.querySelector('button');
 btn.addEventListener('click', ()=>{
+  let year = document.querySelector('#year');
   let month = document.querySelector('#month');
   let cal = document.querySelector('#calendar');
   cal.innerHTML = '';
