@@ -9,14 +9,14 @@ let result = document.querySelector('.result');
 // タイルがクリックされたときのイベント処理
 for (let i = 0; i < tiles.length; i++) {
   targets[i].addEventListener('click', () => {
-    if (targets[i].textContent == '') {
+    if (targets[i].innerText == '') {
       if (status == 10) return;
       status++;
-      targets[i].textContent = (turn) ? first : second;
-      tiles[i] = targets[i].textContent;
+      targets[i].innerText = (turn) ? first : second;
+      tiles[i] = targets[i].innerText;
       let str = judge();
       if (str != "") {
-        result.textContent = str;
+        result.innerText = str;
       }
       turn = (turn) ? false : true;
     }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript実習</title>
+</head>
+<body>
+  <h1>JavaScript実習</h1>
+  <label><p>色を選択してください</p></label>
+  <p>
+    <input type="radio" name="color" class="color" id="black" value="black" checked>
+    <label for="black">黒色</label>
+    <input type="radio" name="color" class="color" id="red" value="red">
+    <label for="red">赤色</label>
+    <input type="radio" name="color" class="color" id="blue" value="blue">
+    <label for="blue">青色</label>
+    <input type="radio" name="color" class="color" id="yellow" value="yellow">
+    <label for="yellow">黄色</label>
+  </p>
+  <p>表示するテキストを入力してください</p>
+  <input type="text" id="txt">
+  <button>表示</button>
+  <p id="result">結果表示</p>
+  <script>
+    let colors = document.querySelectorAll('.color');
+    let txt = document.querySelector('#txt');
+    let result = document.querySelector('#result');
+    let btn = document.querySelector('button');
+    btn.addEventListener('click', ()=>{
+      let color = 'black';
+      for (let i in colors) {
+        if (colors[i].checked) {
+          color = colors[i].value;
+          break;
+        }
+      }
+      let span = `<span style="color:${color};">` + txt.value + '</span>';
+      result.innerHTML = span;
+    });
+  </script>
+</body>
+</html>
