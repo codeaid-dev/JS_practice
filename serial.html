@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript実習</title>
+</head>
+<body>
+  <h1>JavaScript実習</h1>
+  <div>
+    <label for="serial1">シリアル番号：</label>
+    <input type="text" class="serial" id="serial1" maxlength="5" size="5">
+    <input type="text" class="serial" id="serial2" maxlength="5" size="5">
+    <input type="text" class="serial" id="serial2" maxlength="5" size="5">
+    <input type="text" class="serial" id="serial2" maxlength="5" size="5">
+  </div>
+  <script>
+    let serials = document.querySelectorAll('.serial');
+    for (let i=0; i<serials.length; i++) {
+      serials[i].addEventListener('keyup', () => {
+        if (serials[i].value.length >= serials[i].maxLength) {
+          if (i < serials.length-1) {
+            serials[i+1].focus();
+          }
+        }
+      });
+    }
+
+  </script>
+</body>
+</html>
