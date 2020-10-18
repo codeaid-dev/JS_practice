@@ -43,7 +43,7 @@
         timer_id = setInterval(()=>{
           let now = new Date();
           let seconds = Math.floor((now.getTime() - start.getTime()) / 1000);
-          time.innerText = seconds + '秒';
+          time.innerText = '経過時間：' + seconds + '秒';
         }, 10);
         flag = true;
       }

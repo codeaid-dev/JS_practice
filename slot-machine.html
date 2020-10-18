@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript実習</title>
+  <style>
+    #panel {
+      max-width: 480px;
+    }
+    .slot img, button {
+      width: 150px;
+      height: 150px;
+      margin: 5px;
+      float: left;
+    }
+    button {
+      height: auto;
+    }
+    #start {
+      width: 480px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>JavaScript実習（スロットマシン）</h1>
+  <div id="panel">
+    <div class="slot" id="slot1"><img src="img/slot3.png"></div>
+    <div class="slot" id="slot2"><img src="img/slot4.png"></div>
+    <div class="slot" id="slot3"><img src="img/slot1.png"></div>
+    <button class="btn">STOP</button>
+    <button class="btn">STOP</button>
+    <button class="btn">STOP</button>
+    <button id="start">START</button>
+  </div>
+  
+  <script>
+    let slots = document.querySelectorAll('.slot');
+    let stops = document.querySelectorAll('.btn');
+    let start = document.querySelector('#start');
+    let s_stat = [false, false, false];
+    let timer_id;
+    start.addEventListener('click', () => {
+      timer_id = setInterval(()=>{
+        for (let i in s_stat) {
+          if (!s_stat[i]) {
+            slots[i].innerHTML = '';
+          }
+        }
+      }, 5);
+    });
+
+    for (let i=0; i<stops.length; i++) {
+      stops[i].addEventListener('click', () => {
+
+      });
+    }
+  </script>
+</body>
+</html>
