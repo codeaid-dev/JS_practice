@@ -6,7 +6,8 @@
   <title>JavaScript実習</title>
   <style>
     #panel {
-      max-width: 480px;
+      width: 480px;
+      height: 200px;
     }
     .slot img, button {
       width: 150px;
@@ -19,6 +20,9 @@
     }
     #start {
       width: 480px;
+    }
+    #result {
+      font-size: 30px;
     }
 
   </style>
@@ -34,26 +38,47 @@
     <button class="btn">STOP</button>
     <button id="start">START</button>
   </div>
+  <p id="result"></p>
   
   <script>
     let slots = document.querySelectorAll('.slot');
     let stops = document.querySelectorAll('.btn');
     let start = document.querySelector('#start');
+    let result = document.querySelector('#result');
     let s_stat = [false, false, false];
+    let cnt = [1,3,5];
     let timer_id;
     start.addEventListener('click', () => {
+      result.innerHTML = '';
+      s_stat.fill(false);
       timer_id = setInterval(()=>{
         for (let i in s_stat) {
           if (!s_stat[i]) {
-            slots[i].innerHTML = '';
+            if (++cnt[i] > 7)
+              cnt[i] = 1;
+            slots[i].innerHTML = '<img src="img/slot' + cnt[i] + '.png">';
           }
         }
-      }, 5);
+      }, 300);
+      start.disabled = true;
     });
 
     for (let i=0; i<stops.length; i++) {
       stops[i].addEventListener('click', () => {
+        if (!s_stat[i])
+          s_stat[i] = true;
 
+        if (s_stat.indexOf(false) == -1) {
+          clearInterval(timer_id);
+          start.disabled = false;
+          if (cnt[0] == cnt[1] && cnt[1] == cnt[2]) {
+            result.innerHTML = '<span style="color:red;">3つ揃いました！！おめでとう</span>';
+          } else if (cnt[0] == cnt[1] || cnt[1] == cnt[2] || cnt[0] == cnt[2]) {
+            result.innerHTML = '<span style="color:black;">おしい！もうちょっと</span>';
+          } else {
+            result.innerHTML = '<span style="color:gray;">残念でした・・・</span>';
+          }
+        }
       });
     }
   </script>
