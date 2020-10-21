@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript実習</title>
+  <style>
+    html, body {
+      height: 100%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    button {
+      height: 72px;
+      padding: 0 32px;
+      font-size: 40px;
+      color: #fff;
+      background-color: gray;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+    }
+    .modal {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal .inner {
+      font-size: 40px;
+      background-color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+      border-radius: 5px;
+      width: 600px;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      margin: 10px;
+    }
+    .inner img {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <button>モーダルウィンドウの表示</button>
+
+  <script>
+    document.querySelector('button').addEventListener('click', () => {
+      let modal = document.createElement('div'); // モーダルウィンドウを生成
+      modal.classList.add('modal');
+
+      let inner = document.createElement('div'); // ウィンドウの中身を生成
+      inner.classList.add('inner');
+      inner.innerHTML = `
+        <p>モーダルウインドウの中身です</p>
+        <div><img src="img/janken_pa.png"></div>
+      `;
+      modal.appendChild(inner);
+      document.body.appendChild(modal);
+
+      inner.addEventListener('click', () => {
+        document.body.removeChild(modal); // モーダルウィンドウを削除
+      });
+    });
+  </script>
+</body>
+</html>
