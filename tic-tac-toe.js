@@ -7,7 +7,7 @@ let targets = document.querySelectorAll('.tile');
 let result = document.querySelector('.result');
 
 // タイルがクリックされたときのイベント処理
-for (let i = 0; i < tiles.length; i++) {
+for (let i in tiles) {
   targets[i].addEventListener('click', () => {
     if (targets[i].innerText == '') {
       if (status == 10) return;

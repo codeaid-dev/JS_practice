@@ -15,8 +15,9 @@
     <input type="text" class="serial" id="serial2" maxlength="5" size="5">
   </div>
   <script>
-    let serials = document.querySelectorAll('.serial');
-    for (let i=0; i<serials.length; i++) {
+    let serials = document.getElementsByClassName('serial');
+    //let serials = document.querySelectorAll('.serial');
+    for (let i = 0; i < serials.length; i++) {
       serials[i].addEventListener('keyup', () => {
         if (serials[i].value.length >= serials[i].maxLength) {
           if (i < serials.length-1) {

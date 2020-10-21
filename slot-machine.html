@@ -63,7 +63,7 @@
       start.disabled = true;
     });
 
-    for (let i=0; i<stops.length; i++) {
+    for (let i in stops) {
       stops[i].addEventListener('click', () => {
         if (!s_stat[i])
           s_stat[i] = true;

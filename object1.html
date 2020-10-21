@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript実習</title>
+</head>
+<body>
+  <h1>JavaScript実習</h1>
+  <button class="button" id="10">10歳以上</button>
+  <button class="button" id="20">20歳以上</button>
+  <button class="button" id="30">30歳以上</button>
+  <button class="button" id="40">40歳以上</button>
+  <ul class="user_list">
+  </ul>
+
+  <script>
+  let user_list = [
+    { name: '鈴木二郎', age: 18 },
+    { name: '田中幸一', age: 27 },
+    { name: '佐藤さおり', age: 32 },
+    { name: '高橋健太', age: 41 },
+    { name: '山田太郎', age: 56 }
+  ];
+
+  let btn = document.querySelectorAll('.button');
+  for (let i=0; i<btn.length; i++) {
+    btn[i].addEventListener('click', ()=>{
+      let target = btn[i].id;
+
+      let filter_list = user_list.filter((obj) => {
+        return obj.age >= target;
+      });
+
+      let list = '';
+      for (let data of filter_list) {
+        list += `<li>${data.name} : ${data.age}歳</li>`;
+      }
+      document.querySelector('.user_list').innerHTML = list;
+    });
+  }
+  </script>
+</body>
+</html>
