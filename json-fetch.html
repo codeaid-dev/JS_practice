@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript実習</title>
+  <style>
+    /*#userlist td {
+      width: 120px;
+      text-align: center;
+    }*/
+  </style>
+</head>
+<body>
+  <h1>JavaScript実習</h1>
+  <table id="userlist">
+    <tr>
+      <th>ID</th>
+      <th>名前</th>
+    </tr>
+  </table>
+  <table id="awaitlist">
+    <tr>
+      <th>ID</th>
+      <th>名前</th>
+    </tr>
+  </table>
+
+  <script>
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        let table = document.getElementById("userlist");
+        for (let i=0; i<data.length; i++) {
+          let tr = table.insertRow(-1);
+          let td1 = tr.insertCell(-1);
+          let td2 = tr.insertCell(-1);
+          td1.innerHTML = data[i].id;
+          td2.innerHTML = data[i].name;
+        }
+      });
+
+    async function load() {
+      const res = await fetch('data.json');
+      const obj = await res.json();
+      let table = document.getElementById("awaitlist");
+      for (let i=0; i<obj.length; i++) {
+        let tr = table.insertRow(-1);
+        let td1 = tr.insertCell(-1);
+        let td2 = tr.insertCell(-1);
+        td1.innerHTML = obj[i].id;
+        td2.innerHTML = obj[i].name;
+      }
+    }
+
+    load();
+  </script>
+</body>
+</html>
