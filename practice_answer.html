@@ -52,7 +52,6 @@ for (let person of data) {
 }
 
 // フィールドに入力したテキストを表示
-/*
 <body>
 <h1>JS練習問題</h1>
 <input type="text">
@@ -67,10 +66,8 @@ for (let person of data) {
   });
 </script>
 </body>
-*/
 
 // フィールドに入力したテキストを数値だけ表示
-/*
 <body>
 <h1>JS練習問題</h1>
 <input type="text">
@@ -89,31 +86,8 @@ for (let person of data) {
   });
 </script>
 </body>
-*/
 
 // 電車問題
-let station = prompt("1.A駅 2.B駅 3.C駅 4.D駅 5.E駅\n行き先の駅を1, 2, 3, 4, 5から選んでください");
-
-if (!isNaN(station)) {
-  station = parseInt(station);
-} else {
-  alert("数値を入力してください");
-}
-
-let type;
-if (station == 1 || station == 3 || station == 4) {
-  type = "快速";
-}else if (station == 2) {
-  type = "快速・急行";
-} else if (station == 5) {
-  type = "快速・急行・特急";
-} else {
-  alert("その駅はありません");
-}
-if (station >= 1 && station <= 5) {
-  alert("その駅には" + type + "の電車が停まります");
-}
-/*
 <body>
 <h1>JS練習問題</h1>
   <p>1.A駅 2.B駅 3.C駅 4.D駅 5.E駅<br>行き先の駅を1, 2, 3, 4, 5から選んでください</p>
@@ -146,10 +120,42 @@ if (station >= 1 && station <= 5) {
   });
 </script>
 </body>
-*/
+
+// IDに該当する名前を表示
+<body>
+  <h1>JS練習問題</h1>
+  <div>
+    <label for="search">ユーザーID</label>
+    <input type="text" id="search">
+  </div>
+  <p id="result" style="font-size: 20px;">該当なし</p>
+  <script>
+  let user_list = [
+    { id: 101, name: '高橋' },
+    { id: 102, name: '鈴木' },
+    { id: 103, name: '後藤' },
+    { id: 104, name: '佐藤' },
+    { id: 105, name: '田中' }
+  ];
+
+  let search = document.querySelector('#search');
+  let result = document.querySelector('#result');
+  search.addEventListener('keyup', ()=>{
+    let search_id = search.value;
+
+    let target = user_list.find((data) => {
+      return data.id == search_id;
+    });
+    if (target == null) {
+      result.innerText = '該当者なし';
+    } else {
+      result.innerText = target.name;
+    }
+  });
+  </script>
+</body>
 
 // 反転しても読める漢字
-/*
 <body>
   <h1>JS練習問題</h1>
   <p>反転しても意味の通る漢字です。<br>反転ボタンを押すと漢字が反転します。</p>
@@ -167,10 +173,8 @@ if (station >= 1 && station <= 5) {
     });
  </script>
 </body>
-*/
 
 // 指定した横幅と縦幅で○と✕を並べる
-/*
 <body>
 <h1>JS練習問題</h1>
 <label for="yoko">横幅</label>
@@ -207,9 +211,8 @@ if (station >= 1 && station <= 5) {
   });
 </script>
 </body>
-*/
 
-/*
+// 占い
 <head>
   <style>
     #result {
@@ -247,4 +250,3 @@ if (station >= 1 && station <= 5) {
   });
 </script>
 </body>
-*/
