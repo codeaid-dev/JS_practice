@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript実習</title>
+  <style>
+    p {
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>プール利用料金</h1>
+  <p>基本使用料（2時間）500円</p>
+  <label><input type="checkbox" id="c1">ゴーグル（200円）</label><br>
+  <label><input type="checkbox" id="c2">スイムキャップ（100円）</label><br>
+  <label><input type="checkbox" id="c3">タオル（300円）</label><br>
+  <label><input type="checkbox" id="c4">水着（400円）</label>
+  <p>合計金額<span id="total">500円</span></p>
+  <script>
+    let checks = document.querySelectorAll('input');
+
+    for (let i=0; i<checks.length; i++) {
+      checks[i].addEventListener('click', ()=>{
+        let price = 500;
+        if (document.getElementById('c1').checked == true) {
+          price += 200;
+        }
+        if (document.getElementById('c2').checked == true) {
+          price += 100;
+        }
+        if (document.getElementById('c3').checked == true) {
+          price += 300;
+        }
+        if (document.getElementById('c4').checked == true) {
+          price += 400;
+        }
+        document.getElementById('total').innerText = price + '円';
+      });
+    }
+/*
+    checks.forEach((check) => {
+      check.addEventListener('click', (event)=>{
+        let price = 500;
+        if (document.getElementById('c1').checked == true) {
+          price += 200;
+        }
+        if (document.getElementById('c2').checked == true) {
+          price += 100;
+        }
+        if (document.getElementById('c3').checked == true) {
+          price += 300;
+        }
+        if (document.getElementById('c4').checked == true) {
+          price += 400;
+        }
+        document.getElementById('total').innerText = price + '円';
+      });
+    });
+*/
+  </script>
+</body>
+</html>
