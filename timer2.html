@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript実習</title>
+  <style>
+    .container {
+      width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #timer {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    #textMinSec,
+    #btns {
+      margin: 10px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>JavaScript実習</h1>
+    <h2>カウントダウンタイマー</h2>
+    <p>計測する時間を入力してスタートしてください。</p>
+    <p id="timer">00:00</p>
+    <div id="textMinSec">
+      <label><input type="text" id="minutes" maxlength="2" size="2">分</label>
+      <label><input type="text" id="seconds" maxlength="2" size="2">秒</label><br>
+    </div>
+    <div id="btns">
+      <button id="start">スタート</button>
+      <button id="stop">ストップ</button>
+    </div>
+  </div>
+  <script>
+    let min = document.querySelector('#minutes');
+    let sec = document.querySelector('#seconds');
+    let timer = document.querySelector('#timer');
+    let start = document.querySelector('#start');
+    let stop = document.querySelector('#stop');
+    let timer_id;
+    start.addEventListener('click', ()=>{
+      if ((min.value == "" && sec.value == "")
+      || (min.value != "") && isNaN(parseInt(min.value)) || parseInt(min.value) >= 60
+      || (sec.value != "") && isNaN(parseInt(sec.value)) || parseInt(sec.value) >= 60) {
+        timer.innerHTML = '<spen style="color:red">有効な値を入力してください</spen>';
+      } else {
+        timer.innerHTML = `${('0'+parseInt(min.value).toString(10)).slice(-2)}:${('0'+parseInt(sec.value).toString(10)).slice(-2)}`;
+        start.disabled = true;
+        let min_cnt = min.value == "" ? 0 : parseInt(min.value) * 60;
+        let sec_cnt = sec.value == "" ? 0 : parseInt(sec.value);
+        let count = min_cnt + sec_cnt;
+        timer_id = setInterval(()=>{
+          count--;
+          min_cnt = Math.floor(count / 60);
+          sec_cnt = count % 60;
+
+          if (count <= 0) {
+            clearInterval(timer_id);
+            timer.innerHTML = 'タイマー終了';
+            start.disabled = false;
+          } else {
+            timer.innerHTML = `${('0'+min_cnt.toString(10)).slice(-2)}:${('0'+sec_cnt.toString(10)).slice(-2)}`;
+          }
+
+        }, 1000);
+      }
+    });
+
+    stop.addEventListener('click', ()=>{
+      clearInterval(timer_id);
+      start.disabled = false;
+    });
+  </script>
+</body>
+</html>
