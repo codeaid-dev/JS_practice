@@ -48,11 +48,11 @@
       || (sec.value != "") && isNaN(parseInt(sec.value)) || parseInt(sec.value) >= 60) {
         timer.innerHTML = '<spen style="color:red">有効な値を入力してください</spen>';
       } else {
-        timer.innerHTML = `${('0'+parseInt(min.value).toString(10)).slice(-2)}:${('0'+parseInt(sec.value).toString(10)).slice(-2)}`;
         start.disabled = true;
-        let min_cnt = min.value == "" ? 0 : parseInt(min.value) * 60;
+        let min_cnt = min.value == "" ? 0 : parseInt(min.value);
         let sec_cnt = sec.value == "" ? 0 : parseInt(sec.value);
-        let count = min_cnt + sec_cnt;
+        let count = min_cnt * 60 + sec_cnt;
+        timer.innerHTML = `${('0'+min_cnt.toString(10)).slice(-2)}:${('0'+sec_cnt.toString(10)).slice(-2)}`;
         timer_id = setInterval(()=>{
           count--;
           min_cnt = Math.floor(count / 60);
