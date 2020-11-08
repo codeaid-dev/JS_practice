@@ -3,10 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test</title>
+  <title>メモ帳</title>
 </head>
 <body>
-  <h1>Test Page</h1>
-  <script src="array-count-values.js"></script>
+  <h1>JS練習問題</h1>
+  <h2>メモ帳</h2>
+  <input type="text" id="todoMemo">
+  <button id="add">追加</button><br>
+  <button id="delete">全削除</button>
+  <ul id="memo">
+  </ul>
+  <script>
+    document.querySelector('#add').addEventListener('click', ()=>{
+      let memo = document.querySelector('#todoMemo');
+      document.querySelector('#memo').innerHTML += `<li>${memo.value}</li>`;
+      memo.value = '';
+    });
+    document.querySelector('#delete').addEventListener('click', ()=>{
+      document.querySelector('#memo').innerHTML = '';
+    });
+  </script>
 </body>
 </html>
