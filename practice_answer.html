@@ -32,6 +32,10 @@ var scope2 = () => {
 // (a) 0 (b) エラー (c) 3 (d) 0 (e) エラー
 // (f) 0 (g) 1 (h) 3 (i) 3 (j) "a"
 
+/***** Q2 *****/
+(a), (f)
+
+/***** Q3 *****/
 // 税込み金額表示
 let calcTax = (name, bill) => {
   let costs = bill * 1.10;
@@ -42,6 +46,7 @@ let calcTax = (name, bill) => {
 
 console.log( calcTax('山田', 500) );
 
+/***** Q4 *****/
 // 複数人の税込み金額表示
 let data = 
           [{name:'山田', bill:500},
@@ -51,6 +56,7 @@ for (let person of data) {
   console.log( calcTax(person['name'], person['bill']) );
 }
 
+/***** Q5 *****/
 // フィールドに入力したテキストを表示
 <body>
 <h1>JS練習問題</h1>
@@ -67,6 +73,7 @@ for (let person of data) {
 </script>
 </body>
 
+/***** Q6 *****/
 // フィールドに入力したテキストを数値のみ表示
 <body>
 <h1>JS練習問題</h1>
@@ -87,6 +94,7 @@ for (let person of data) {
 </script>
 </body>
 
+/***** Q7 *****/
 // 電車問題
 <body>
 <h1>JS練習問題</h1>
@@ -121,6 +129,7 @@ for (let person of data) {
 </script>
 </body>
 
+/***** Q8 *****/
 // フィールドに入力したテキストをリストで表示
 <body>
   <h1>JS練習問題</h1>
@@ -142,6 +151,7 @@ for (let person of data) {
   </script>
 </body>
 
+/***** Q9 *****/
 // IDに該当する名前を表示
 <body>
   <h1>JS練習問題</h1>
@@ -176,6 +186,7 @@ for (let person of data) {
   </script>
 </body>
 
+/***** Q10 *****/
 // 反転しても読める漢字
 <body>
   <h1>JS練習問題</h1>
@@ -195,6 +206,7 @@ for (let person of data) {
  </script>
 </body>
 
+/***** Q11 *****/
 // 指定した横幅と縦幅で○と✕を並べる
 <body>
 <h1>JS練習問題</h1>
@@ -233,6 +245,7 @@ for (let person of data) {
 </script>
 </body>
 
+/***** Q12 *****/
 // 占い
 <head>
   <style>
