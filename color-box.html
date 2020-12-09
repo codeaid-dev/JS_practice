@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript実習</title>
+</head>
+<body>
+  <h1>JavaScript実習</h1>
+  <div><label>横幅：<input type="text" id="yoko"></label></div>
+  <div><label>縦幅：<input type="text" id="tate"></label></div>
+  <div><label>色：<input type="text" id="iro"></label></div>
+  <div><label>個数：<input type="text" id="cnt"></label></div>
+  <button>ボックス作成</button>
+  <div id="result">結果表示</div>
+  <script>
+    let yoko = document.querySelector('#yoko');
+    let tate = document.querySelector('#tate');
+    let iro = document.querySelector('#iro');
+    let cnt = document.querySelector('#cnt');
+    let result = document.querySelector('#result');
+    let btn = document.querySelector('button');
+    btn.addEventListener('click', ()=>{
+      if (yoko.value == '' || tate.value == '' || iro.value == '' || cnt.value == '') {
+        result.innerHTML = '<span style="color:red;">なにか入力してください。</span>';
+      } else if (isNaN(yoko.value) || isNaN(tate.value) || isNaN(cnt.value)) {
+        result.innerHTML = '<span style="color:red;">横幅・縦幅・個数は数値を入力してください。</span>';
+      } else {
+        result.innerHTML = null;
+        for (let i=0; i<cnt.value; i++) {
+          let divElement = document.createElement('div');
+          divElement.style.width = yoko.value + "px";
+          divElement.style.height = tate.value + "px";
+          divElement.style.background = iro.value;
+          divElement.style.margin = "10px";
+          divElement.style.float = "left";
+          //divElement.setAttribute('style', `width:${yoko.value}px;height:${tate.value}px;background:${iro.value};margin:10px;float:left;`);
+          result.append(divElement);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

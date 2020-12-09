@@ -20,9 +20,9 @@
     let result = document.querySelector('#result');
     btn.addEventListener('click', ()=>{
       if (col.value == '' || row.value == '' || contents.value == '') {
-        result.innerHTML = '<span style="color:red;">なにか入力してください。</span>'
+        result.innerHTML = '<span style="color:red;">なにか入力してください。</span>';
       } else if (isNaN(col.value) || isNaN(row.value)) {
-        result.innerHTML = '<span style="color:red;">列数と行数には入力してください。</span>'
+        result.innerHTML = '<span style="color:red;">列数と行数には入力してください。</span>';
       } else {
         let tbl = '<table border="1">';
         for (let i=0; i<row.value; i++) {
