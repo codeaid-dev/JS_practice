@@ -4,24 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>メモ帳</title>
+  <style>
+    .col {
+      float: left;
+    }
+    .row {
+      clear: left;
+    }
+  </style>
 </head>
 <body>
   <h1>JS練習問題</h1>
-  <h2>メモ帳</h2>
-  <input type="text" id="todoMemo">
-  <button id="add">追加</button><br>
-  <button id="delete">全削除</button>
-  <ul id="memo">
-  </ul>
-  <script>
-    document.querySelector('#add').addEventListener('click', ()=>{
-      let memo = document.querySelector('#todoMemo');
-      document.querySelector('#memo').innerHTML += `<li>${memo.value}</li>`;
-      memo.value = '';
-    });
-    document.querySelector('#delete').addEventListener('click', ()=>{
-      document.querySelector('#memo').innerHTML = '';
-    });
-  </script>
+  <div class="row">
+    <div class="col">test1test1test1test1test1test1test1test1test1test1test1 :</div>
+    <div class="col">test2test2test2test2test2test2test2test2test2test2test2 :</div>
+    <div class="col">test3test3test3test3test3test3test3test3test3test3test3 :</div>
+  </div>
+  <div class="row">
+    <div class="col">test4 :</div>
+    <div class="col">test5 :</div>
+    <div class="col">test6 :</div>
+  </div>
 </body>
 </html>
