@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS練習問題Q8</title>
+</head>
+<body>
+  <h1>JS練習問題</h1>
+  <div>
+    <label for="search">ユーザーID</label>
+    <input type="text" id="search">
+  </div>
+  <p id="result" style="font-size: 20px;">該当なし</p>
+  <script>
+  let user_list = [
+    { id: 101, name: '高橋' },
+    { id: 102, name: '鈴木' },
+    { id: 103, name: '後藤' },
+    { id: 104, name: '佐藤' },
+    { id: 105, name: '田中' }
+  ];
+
+  let search = document.querySelector('#search');
+  let result = document.querySelector('#result');
+  search.addEventListener('keyup', ()=>{
+    let search_id = search.value;
+
+    let target = user_list.find((data) => {
+      return data.id == search_id;
+    });
+    if (target == null) {
+      result.innerText = '該当者なし';
+    } else {
+      result.innerText = target.name;
+    }
+  });
+  </script>
+</body>
+</html>

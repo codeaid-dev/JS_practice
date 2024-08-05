@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS練習問題Q6</title>
+</head>
+<body>
+  <h1>JS練習問題</h1>
+  <input type="text">
+  <button>実行</button>
+  <p>結果表示</p>
+  <script>
+    let ipt = document.querySelector('input');
+    let btn = document.querySelector('button');
+    let elem = document.querySelector('p');
+    btn.addEventListener('click',()=>{
+      if (isNaN(ipt.value)) {
+        elem.innerHTML = '<span style="color:red;">数値に変換できません！</span>';
+      } else {
+        elem.innerText=ipt.value;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS練習問題Q11</title>
+</head>
+<body>
+  <h1>JS練習問題</h1>
+  <label for="yoko">横幅</label>
+  <input type="text" id="yoko">
+  <label for="tate">縦幅</label>
+  <input type="text" id="tate">
+  <button>表示</button>
+  <p id="answer">結果表示</p>
+  <script>
+    let yoko = document.querySelector('#yoko');
+    let tate = document.querySelector('#tate');
+    let btn = document.querySelector('button');
+    let elem = document.querySelector('#answer');
+    btn.addEventListener('click',()=>{
+      if (isNaN(yoko.value) || isNaN(tate.value)) {
+        elem.innerHTML = '<span style="color:red;">数値に変換できません！</span>';
+      } else {
+        let tile = ['○', '✕'];
+        let index = 1;
+        let ans = "";
+        for (let i = 0; i < tate.value; i++) {
+          index = 1 - index;
+          for (let j = 0; j < yoko.value; j++) {
+            if (j % 2 == 0) {
+              ans += tile[index];
+            } else {
+              ans += tile[1 - index];
+            }
+          }
+          ans += '<br>';
+        }
+        elem.innerHTML = ans;
+      }
+    });
+  </script>
+</body>
+</html>

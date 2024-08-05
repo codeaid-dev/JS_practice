@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS練習問題Q12</title>
+  <style>
+    #result {
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      margin: 10px;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>JS練習問題</h1>
+  <button>占う</button>
+  <div id="result"></div>
+  <script>
+    let btn = document.querySelector('button');
+    let elem = document.querySelector('#result');
+    btn.addEventListener('click',()=>{
+      let uranai = Math.floor(Math.random() * 10);
+      if (uranai == 0) {
+        elem.setAttribute('style', 'background-color:blue');
+        elem.innerText = '大吉';
+      } else if (uranai >= 1 && uranai <= 3) {
+        elem.setAttribute('style', 'background-color:green');
+        elem.innerText = '吉';
+      } else if (uranai >= 4 && uranai <= 7) {
+        elem.setAttribute('style', 'background-color:yellow');
+        elem.innerText = '凶';
+      } else if (uranai >= 8 && uranai <= 9) {
+        elem.setAttribute('style', 'background-color:red');
+        elem.innerText = '大凶';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS練習問題Q10</title>
+</head>
+<body>
+  <h1>JS練習問題</h1>
+  <p>反転しても意味の通る漢字です。<br>反転ボタンを押すと漢字が反転します。</p>
+  <p style="font-size:40px;"><span id="one">社</span><span id="two">会</span></p>
+  <button>反転</button>
+  <script>
+    let one = document.querySelector('#one');
+    let two = document.querySelector('#two');
+    let btn = document.querySelector('button');
+    btn.addEventListener('click',()=>{
+      let w1 = one.innerText;
+      let w2 = two.innerText;
+      one.innerText = w2;
+      two.innerText = w1;
+    });
+  </script>
+</body>
+</html>
