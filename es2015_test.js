@@ -22,7 +22,7 @@ for (let day of wdays) {
   console.log(`${day}曜日`);
 }
 
-var wdays = ['日', '月', '火', '水', '木', '金', '土'];
+//var wdays = ['日', '月', '火', '水', '木', '金', '土'];
 for (var i=0; i<7; i++) {
   console.log(wdays[i] + '曜日');
 }
@@ -36,7 +36,7 @@ Profile.prototype.desc = function() { // メソッド
 var person = new Profile();
 person.desc();
 
-class Profile {
+class Profile2 {
   constructor() {
     this.name = '太郎';
   }
@@ -52,7 +52,7 @@ class Profile {
     return '身長は160cmです。';
   }
 }
-let person = new Profile();
-Profile.showProfile();
-console.log(person.name);
-person.desc();
+let person2 = new Profile2();
+Profile2.showProfile();
+console.log(person2.name);
+person2.desc();
