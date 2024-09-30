@@ -1,0 +1,81 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!javascript
+
+// for文
+for (let step = 0; step < 5; step++) {
+  console.log(`${step+1}歩進む`);
+}
+
+#!javascript
+
+// for ... in
+const nums = [1,2,3,4,5,6,7,8,9];
+for (let i in nums) {
+  console.log(`${i}番目の値は${nums[i]}`);
+}
+
+#!javascript
+
+// for ... of
+const nums = [1,2,3,4,5,6,7,8,9];
+for (let i of nums) {
+  console.log(`配列の値は${i}`);
+}
+
+#!javascript
+
+// for ... in , for ... ofの違い
+const arr = [3, 5, 7];
+arr.foo = "hello";
+
+for (let i in arr) {
+  console.log(i); // "0", "1", "2", "foo"
+}
+
+for (let i of arr) {
+  console.log(i); // 3, 5, 7
+}
+
+#!javascript
+
+// do ... while
+let i = 0;
+do {
+  i += 1;
+  console.log(i);
+} while (i < 5);
+
+#!javascript
+
+// while文
+let n = 0;
+while (n < 3) {
+  n++;
+  console.log(`n:${n}`);
+}
+
+#!javascript
+
+// break
+let n = 0;
+while (n < 3) {
+  n++;
+  console.log(`n:${n}`);
+  if (n == 2) {
+    break;
+  }
+}
+
+#!javascript
+
+let n = 0;
+while (n < 3) {
+  n++;
+  if (n == 2) {
+    continue;
+  }
+  console.log(`n:${n}`);
+}

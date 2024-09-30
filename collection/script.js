@@ -45,16 +45,16 @@ cities.shift();
 console.log(cities); // [ "大阪" ]
 // 指定したインデックスの項目を削除
 cities = ["東京", "大阪", "仙台", "札幌"];
-const index = cities.indexOf("大阪");
+let index = cities.indexOf("大阪");
 cities.splice(index, 1);
 console.log(cities); // [ "東京", "仙台", "札幌" ]
 // delete演算子を使って項目を削除
-const fruits = ['リンゴ', 'メロン', 'イチゴ', 'スイカ'];
+let fruits = ['リンゴ', 'メロン', 'イチゴ', 'スイカ'];
 delete fruits[1];
 console.log(fruits[2]); // イチゴ
 console.log(fruits[1] === undefined); // true
 // 文字列を配列に変換する
-const data = "札幌,仙台,東京,名古屋,大阪,福岡";
+let data = "札幌,仙台,東京,名古屋,大阪,福岡";
 cities = data.split(",");
 console.log(cities); // ["札幌","仙台","東京","名古屋","大阪","福岡"]
 // 配列を文字列に変換する
@@ -93,3 +93,92 @@ const ingredientsListDeepCopy2 = structuredClone(ingredientsList);
 ingredientsListDeepCopy2[1][0] = "Peach";
 console.log(ingredientsList); // ["Apple",["Orange","Melon"]]
 console.log(ingredientsListDeepCopy2); // ["Apple",["Peach","Melon"]]
+// 配列のソートと反転
+let nums = [5,7,2,4,9,1,3];
+nums.sort();
+nums.reverse();
+console.log(nums);
+// #1
+const team_1 = ['阪神', '巨人', 'ヤクルト'];
+const team_2 = ['DeNA', '中日', '広島'];
+const team_3 = team_1.concat(team_2);
+console.log(team_3);
+// #2
+const flowers = ["さくら", "きく", "ゆり", "ばら", "うめ"];
+console.log(flowers.join(" "));
+// #3
+const country = "東京,ニューヨーク,ロンドン,パリ,ローマ";
+const countries1 = country.split(",");
+const countries2 = countries1.concat();
+countries2[1] = 'マドリード';
+countries2[3] = 'ベルリン';
+console.log(countries1);
+console.log(countries2);
+// #4
+let number = ['one', 'two', 'three'];
+number.push('four');
+console.log(number);
+// #5
+number = ['one', 'two', 'three', 'four', 'five', 'six', 'seven'];
+const res1 = number.slice(0,3);
+const res2 = number.slice(2,5);
+console.log(res1);
+console.log(res2);
+// #6
+const material = ['いち', 'にー', 'なな', 'さん', 'よん'];
+index = material.indexOf('なな');
+material.splice(index, 1);
+console.log(material);
+material.splice(-2);
+console.log(material);
+// #7
+const box1 = ['one', 'two', 'three', 'eight'];
+const box2 = ['five', 'six', 'seven', 'four'];
+const b1 = box1.pop();
+const b2 = box2.pop();
+box1.push(b2);
+box2.push(b1);
+console.log(box1);
+console.log(box2);
+// #8
+nums = [5,7,2,4,9,1,3];
+nums.sort();
+console.log(nums);
+nums.reverse();
+console.log(nums);
+// #9
+fruits = [
+  ['Banana', 'Peach'],
+  ['Orange', 'Grape'],
+  ['Apple', 'Cherry']
+];
+console.log(fruits[0][0] + ',' + fruits[2][1]);
+// #10
+nums = [10, 20, [300, 400, [5000, 6000], 500], 30, 40];
+nums[2][2].push(7000);
+console.log(nums);
+// #11
+nums = [10, 20, [300, 400, [5000, 6000], 500], 30, 40];
+nums[2][2].shift();
+console.log(nums);
+// #12
+nums = [10, 20, [10, 20, [10, 20], 30], 30, 40];
+nums[2].splice(1,1);
+console.log(nums);
+// #13
+const alph = ['a','b',['c',['d','e',['f','g'],'k'],'l'],'m','n'];
+alph[2][1][2].push('h','i','j');
+console.log(alph);
+// #14
+const str = '1,2,3,454,86,ab,cd,ef';
+data = str.split(',');
+index = data.indexOf('86');
+data[index] = 'Hello';
+console.log(data);
+// #15
+const word = 'abcdefgh';
+const words = word.split('');
+words.splice(0,4);
+words.unshift('1','2','3','4');
+const res = words.join('')
+console.log(res);
