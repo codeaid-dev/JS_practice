@@ -71,6 +71,7 @@ while (n < 3) {
 
 #!javascript
 
+// continue
 let n = 0;
 while (n < 3) {
   n++;
@@ -79,3 +80,55 @@ while (n < 3) {
   }
   console.log(`n:${n}`);
 }
+
+#!javascript
+
+// 最初の文は "loop1" というラベルが付いている
+loop1: for (let i = 0; i < 3; i++) {
+  // 2 番目の文は "loop2" というラベルが付いている
+  loop2: for (let j = 0; j < 3; j++) {
+    if (i === 1 && j === 1) {
+      continue loop1;
+    }
+    console.log(`i = ${i}, j = ${j}`);
+  }
+}
+
+#!javascript
+
+// #1
+for (let i=1; i<=20; i++) {
+  if (i%2==0 && i%4!=0) {
+    console.log(i);
+  }
+}
+
+#!javascript
+
+// #2
+let cnt = 0;
+for (let i=1; i<31; i++) {
+  cnt += i;
+  if (i==10 || i==20 || i==30) {
+    console.log(`${i-9}から${i}の合計：${cnt}`);
+    cnt = 0;
+  }
+}
+
+#!javascript
+
+// #3
+let s = '';
+for (let i=1; i<31; i++) {
+  if (i%3==0 && i%5==0) {
+    s += 'FizzBuzz';
+  } else if (i%3==0) {
+    s += 'Fizz';
+  } else if (i%5==0) {
+    s += 'Buzz';
+  } else {
+    s += i;
+  }
+  s += ' ';
+}
+console.log(s);
