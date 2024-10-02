@@ -18,6 +18,19 @@ arr.foo = "hello";
 for (let i in arr) {
   console.log(i); // "0", "1", "2", "foo"
 }
+// 文字列はfor...ofで文字を取り出し、for...inでインデックスを取り出す
+const string = 'apple';
+for (let s of string) {
+  console.log(s);
+}
+for (let s in string) {
+  console.log(s);
+}
+// 文字列はプロパティを追加できない
+const fruit = 'apple';
+fruit.type = 'juce';
+console.log(fruit[0]); // a
+console.log(fruit.type); // undefined
 
 for (let i of arr) {
   console.log(i); // 3, 5, 7
@@ -92,3 +105,24 @@ for (let i=1; i<31; i++) {
   s += ' ';
 }
 console.log(s);
+// #4
+const yen1 = 2;
+const yen5 = 1;
+const total = yen1 + yen5*5;
+for (let i=1; i<=total; i++) {
+  if (i%5 <= yen1) {
+    console.log(i);
+  }
+}
+// #5
+const num = Math.floor(Math.random()*20)+1;
+let result = '';
+for (let i=1; i<=20; i++) {
+  if (i > num/i) {
+    break;
+  }
+  if (num%i == 0) {
+    result += `${i}x${num/i}=${num} `;
+  }
+}
+console.log(result);

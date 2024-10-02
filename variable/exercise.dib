@@ -4,6 +4,11 @@
 
 #!javascript
 
+const num = 5;
+console.log(Math.floor(Math.random()*num)); // 0~5未満のランダムな整数
+
+#!javascript
+
 // #1
 console.log('It\'s JavaScript. The script executes on "Web" environment.');
 
@@ -134,3 +139,9 @@ code = kansai.slice(0,3);
 sep = kansai.indexOf(';');
 name = kansai.slice(sep+1);
 console.log(`${code}:${airport}`);
+
+#!javascript
+
+// #15
+const randomNum = Math.floor(Math.random()*4) + 1;
+console.log(`乱数：${randomNum}`);

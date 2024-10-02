@@ -1,3 +1,4 @@
+// 文字列の連結
 console.log('Hello World');
 console.log('Hello ' + 'World.');
 const greeting = 'Hello';
@@ -7,12 +8,13 @@ console.log('My height is ' + 175);
 const weight = 60;
 console.log('My weight is ' + weight);
 const height = 175;
-console.log(`Height:${height}, Weight:${weight}, BMI:${weight/(height/100)**2}`);
-//const bmi = Math.round(weight/(height/100)**2); // 20
-const bmi = Math.round((weight/(height/100)**2)*10)/10; // 19.6
-//const bmi = Math.floor(weight/(height/100)**2); // 19
-//const bmi = Math.ceil(weight/(height/100)**2); // 20
-console.log(`Height:${height}, Weight:${weight}, BMI:${bmi}`);
+
+// ランダムな数値
+let num = 5;
+console.log(Math.floor(Math.random()*num)); // 0~5未満のランダムな整数
+console.log(Math.random());
+
+// 数値の演算
 const left = '4'; // 文字列の'4'としても+演算子以外は数値と同じく計算する
 const right = 2;
 console.log(left + right);
@@ -21,9 +23,19 @@ console.log(left * right);
 console.log(left / right);
 console.log(left % right);
 console.log(left ** right);
-let num = 2
+num = 2
 console.log(++num);
 console.log(--num);
+
+// 文字列の挿入
+console.log(`Height:${height}, Weight:${weight}, BMI:${weight/(height/100)**2}`);
+//const bmi = Math.round(weight/(height/100)**2); // 20
+const bmi = Math.round((weight/(height/100)**2)*10)/10; // 19.6
+//const bmi = Math.floor(weight/(height/100)**2); // 19
+//const bmi = Math.ceil(weight/(height/100)**2); // 20
+console.log(`Height:${height}, Weight:${weight}, BMI:${bmi}`);
+
+// データ型
 const age = 28;
 console.log(typeof(age)); // number
 const hello = 'Hello';
@@ -34,12 +46,16 @@ const obj = {key: 'value'}
 console.log(typeof(obj));
 const lst = [1,2];
 console.log(typeof lst);
+
+// 文字列と数値の変換
 const myString = "123";
 const myNum = Number(myString);
 console.log(typeof myNum); // number
 const myNum2 = 123;
 const myString2 = String(myNum2);
 console.log(typeof myString2); // string
+
+// 文字列の操作
 const string = 'Hello World.';
 console.log(string.length);
 console.log(string[0]); // H
@@ -62,6 +78,7 @@ console.log(data1.replace('Java', 'ECMA')); // I Like ECMAScript
 const data2 = 'I Like JavaScript. JavaScript is great!';
 console.log(data2.replace('Java', 'ECMA')); // I Like ECMAScript. JavaScript is great!
 console.log(data2.replaceAll('Java', 'ECMA')); // I Like ECMAScript. ECMAScript is great!
+
 // #1
 console.log('It\'s JavaScript. The script executes on "Web" environment.');
 // #2
@@ -153,3 +170,6 @@ code = kansai.slice(0,3);
 sep = kansai.indexOf(';');
 name = kansai.slice(sep+1);
 console.log(`${code}:${airport}`);
+// #15
+const randomNum = Math.floor(Math.random()*4) + 1;
+console.log(`乱数：${randomNum}`);

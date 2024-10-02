@@ -34,7 +34,8 @@ arr.foo = "hello";
 for (let i in arr) {
   console.log(i); // "0", "1", "2", "foo"
 }
-
+console.log(arr.foo);
+console.log(arr['foo']);
 for (let i of arr) {
   console.log(i); // 3, 5, 7
 }
@@ -142,5 +143,87 @@ const total = yen1 + yen5*5;
 for (let i=1; i<=total; i++) {
   if (i%5 <= yen1) {
     console.log(i);
+  }
+}
+
+#!javascript
+
+// #5
+const num = Math.floor(Math.random()*20)+1;
+let result = '';
+for (let i=1; i<=20; i++) {
+  if (i > num/i) {
+    break;
+  }
+  if (num%i == 0) {
+    result += `${i}x${num/i}=${num} `;
+  }
+}
+console.log(result);
+
+#!javascript
+
+// #6
+const num = Math.floor(Math.random()*10)+1;
+if (num == 1) {
+  console.log('今日は最高！');
+} else if (num >= 2 && num <= 4) {
+  console.log('今日はそこそこ');
+} else if (num >= 5 && num <= 8) {
+  console.log('今日はまぁまぁ');
+} else {
+  console.log('今日は最悪・・・');
+}
+
+#!javascript
+
+// #7
+const num1 = 7536;
+console.log(num1);
+const str1 = String(num1);
+const reversed = [];
+for (let s of str1) {
+  reversed.unshift(s);
+}
+const num2 = Number(reversed.join(''));
+console.log(num2);
+console.log(num1 + num2);
+
+#!javascript
+
+// #8
+let r=0;
+let b=0;
+let w=0;
+for (let i=0; i<3; i++) {
+  const num = Math.floor(Math.random()*3);
+  if (num == 0) {
+    r += 1;
+  } else if (num == 1) {
+    b += 1;
+  } else {
+    w += 1;
+  }
+}
+if (r == 3 || b == 3 || w == 3 || (r == 1 && b == 1 && w == 1)) {
+  console.log(`赤が${r}、青が${b}、白が${w}で勝ち`);
+} else {
+  console.log(`赤が${r}、青が${b}、白が${w}で負け`);
+}
+
+#!javascript
+
+// #9
+for (let i=0; i<20; i++) {
+  const dice1 = Math.floor(Math.random()*6)+1;
+  const dice2 = Math.floor(Math.random()*6)+1;
+  console.log(`${i+1}回目：${dice1},${dice2}`)
+  if (dice1 == dice2) {
+    if (dice1%2 == 0) {
+      console.log('大当たり');
+    } else {
+      console.log('当たり');
+    }
+    break;
   }
 }
