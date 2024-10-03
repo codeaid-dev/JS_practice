@@ -4,6 +4,27 @@
 
 #!javascript
 
+// if文
+const randNum = Math.floor(Math.random()*5); // 0~4
+let data = '';
+if (randNum%2 == 0) {
+  data = 'even';
+} else {
+  data = 'odd';
+}
+console.log(randNum);
+console.log(data);
+
+#!javascript
+
+// 三項演算子
+const randNum = Math.floor(Math.random()*5); // 0~4
+const data = randNum%2==0 ? 'even' : 'odd';
+console.log(randNum);
+console.log(data);
+
+#!javascript
+
 // for文
 for (let step = 0; step < 5; step++) {
   console.log(`${step+1}歩進む`);

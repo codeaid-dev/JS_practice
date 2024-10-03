@@ -1,0 +1,49 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!javascript
+
+// 関数定義
+function greeting() {
+  console.log('Hello World.');
+}
+greeting(); // Hello World.
+
+#!javascript
+
+// 関数定義
+function greeting(msg) {
+  console.log(`Hello, ${msg}.`);
+}
+greeting('Michael'); // Hello, Michael.
+
+#!javascript
+
+// 関数定義
+function square(number) {
+  return number * number;
+}
+console.log(square(4)); // 16
+
+#!javascript
+
+// 関数定義
+function change(obj) {
+  obj.make = 'Toyota';
+}
+mycar = { make: "Honda", model: "Accord", year: 1998 };
+console.log(mycar.make); // Honda
+change(mycar);
+console.log(mycar.make); // Toyota
+
+#!javascript
+
+// 関数定義
+function get_data(arr) {
+  arr[0] = 'Orange';
+}
+let fruits = ['Apple','Melon','Peach'];
+console.log(fruits); // ["Apple","Melon","Peach"]
+get_data(fruits);
+console.log(fruits); // ["Orange","Melon","Peach"]
