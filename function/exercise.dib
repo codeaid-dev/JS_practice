@@ -40,12 +40,12 @@ console.log(mycar.make); // Toyota
 #!javascript
 
 // 関数定義
-function get_data(arr) {
+function myFunc(arr) {
   arr[0] = 'Orange';
 }
 let fruits = ['Apple','Melon','Peach'];
 console.log(fruits); // ["Apple","Melon","Peach"]
-get_data(fruits);
+myFunc(fruits);
 console.log(fruits); // ["Orange","Melon","Peach"]
 
 #!javascript
@@ -164,3 +164,139 @@ console.log(a2); // [8, 6, 7, 9]
 
 var a3 = a.map((s) => s.length);
 console.log(a3); // [8, 6, 7, 9]
+
+#!javascript
+
+// #1
+function multiply(num1, num2=2) {
+  return num1 * num2;
+}
+console.log(multiply(5,3)); // 15
+console.log(multiply(5)); // 10
+
+#!javascript
+
+// #2
+function multiply(numbers) {
+  let result = 1;
+  for (let n of arguments) {
+    result *= n;
+  }
+  return result
+}
+console.log(multiply(1,2,3,4,5));
+console.log(multiply(2,4,6,8));
+
+#!javascript
+
+// #3
+function multiply(...numbers) {
+  let result = 1;
+  for (let n of numbers) {
+    result *= n;
+  }
+  return result
+}
+console.log(multiply(1,2,3,4,5));
+console.log(multiply(2,4,6,8));
+
+#!javascript
+
+// #4
+function multiply(num, ...numbers) {
+  const result = numbers.map((n)=>n*num);
+  return result;
+}
+console.log(multiply(2,1,3,5,7,9));
+console.log(multiply(2,2,4,6,8));
+
+#!javascript
+
+// #4(別解)
+function multiply(num, ...numbers) {
+  const result = [];
+  for (let i=0; i<numbers.length; i++) {
+    result[i] = numbers[i]*num;
+  }
+  return result;
+}
+console.log(multiply(2,1,3,5,7,9));
+console.log(multiply(2,2,4,6,8));
+
+#!javascript
+
+// #5
+const factorial = (n) => n < 2 ? 1 : n * factorial(n-1);
+console.log(factorial(3)); // 6
+console.log(factorial(5)); // 120
+
+#!javascript
+
+// #6
+function outer(a, b) {
+  function inner(a, b) {
+      return a+b;
+  }
+  let add = inner(a, b);
+  return add+5
+}
+const result = outer(5, 10);
+console.log(result);
+
+#!javascript
+
+// #7
+function map(f, nums) {
+  const result = [];
+  for (let n of nums) {
+    result.push(f(n));
+  }
+  return result;
+}
+let base = [1,3,5,7,9];
+let res = map((n)=>n*2, base);
+console.log(base); // [1,3,5,7,9]
+console.log(res); // [2,6,10,14,18]
+
+#!javascript
+
+// #8
+function filter(f, arr) {
+  const result = [];
+  for (let item of arr) {
+    if (f(item)) {
+      result.push(item);
+    }
+  }
+  return result;
+}
+const months = ['January','Fevruary','March','April','May','June','July','August','September','October','November','December'];
+let res = filter((item)=>item.length>5, months);
+console.log(res); // ["January","February","August","September","October","November","December"]
+
+#!javascript
+
+// #9
+function modify(arr) {
+  for (let i=0; i<arr.length; i++) {
+    arr[i] = arr[i].slice(0,3) + '.';
+  }
+}
+const week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+console.log(week);
+modify(week)
+console.log(week); // ["Mon.","Tue.","Wed.","Thu.","Fri.","Sat.","Sun."]
+
+#!javascript
+
+// #10
+function append(arr, index, value) {
+  for (let val of value) {
+    arr.splice(index, 0, val);
+    index += 1;
+  }
+}
+const days = ['Mon','Fri','Sat','Sun'];
+const parts = ['Tue','Wed','Thu'];
+append(days, 1, parts);
+console.log(days); // ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
