@@ -97,6 +97,14 @@ console.log(cities); // [ "大阪" ]
 
 #!javascript
 
+// delete演算子を使って項目を削除
+const fruits = ['リンゴ', 'メロン', 'イチゴ', 'スイカ'];
+delete fruits[1];
+console.log(fruits[2]); // イチゴ
+console.log(fruits[1] === undefined); // true
+
+#!javascript
+
 // 指定したインデックスの項目を削除
 const cities = ["東京", "大阪", "仙台", "札幌"];
 const index = cities.indexOf("大阪");
@@ -105,11 +113,12 @@ console.log(cities); // [ "東京", "仙台", "札幌" ]
 
 #!javascript
 
-// delete演算子を使って項目を削除
-const fruits = ['リンゴ', 'メロン', 'イチゴ', 'スイカ'];
-delete fruits[1];
-console.log(fruits[2]); // イチゴ
-console.log(fruits[1] === undefined); // true
+// 指定位置に項目を挿入
+const cities = ["東京", "大阪", "仙台", "札幌"];
+cities.splice(2, 0, "福岡");
+console.log(cities); // ["東京","大阪","福岡","仙台","札幌"]
+cities.splice(2, 0, "京都","名古屋");
+console.log(cities); // ["東京","大阪","京都","名古屋","福岡","仙台","札幌"]
 
 #!javascript
 

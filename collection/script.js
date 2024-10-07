@@ -43,16 +43,22 @@ console.log(removedCity); // "大阪"
 cities = ["東京", "大阪"];
 cities.shift();
 console.log(cities); // [ "大阪" ]
-// 指定したインデックスの項目を削除
-cities = ["東京", "大阪", "仙台", "札幌"];
-let index = cities.indexOf("大阪");
-cities.splice(index, 1);
-console.log(cities); // [ "東京", "仙台", "札幌" ]
 // delete演算子を使って項目を削除
 let fruits = ['リンゴ', 'メロン', 'イチゴ', 'スイカ'];
 delete fruits[1];
 console.log(fruits[2]); // イチゴ
 console.log(fruits[1] === undefined); // true
+// 指定したインデックスの項目を削除
+cities = ["東京", "大阪", "仙台", "札幌"];
+let index = cities.indexOf("大阪");
+cities.splice(index, 1);
+console.log(cities); // [ "東京", "仙台", "札幌" ]
+// 指定位置に項目を挿入
+cities = ["東京", "大阪", "仙台", "札幌"];
+cities.splice(2, 0, "福岡");
+console.log(cities); // ["東京","大阪","福岡","仙台","札幌"]
+cities.splice(2, 0, "京都","名古屋");
+console.log(cities); // ["東京","大阪","京都","名古屋","福岡","仙台","札幌"]
 // 文字列を配列に変換する
 let data = "札幌,仙台,東京,名古屋,大阪,福岡";
 cities = data.split(",");
