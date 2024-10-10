@@ -1,0 +1,71 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!javascript
+
+// 配列もオブジェクト
+const nums = [1,2,3];
+console.log(nums.length); // 3
+nums.push(4);
+console.log(nums); // [1,2,3,4]
+
+#!javascript
+
+// 最小限のオブジェクト
+const person = {};
+console.log(typeof person); // object
+
+#!javascript
+
+// オブジェクトにプロパティとメソッドを追加
+const person = {};
+person.name = 'Michael';
+person.greet = ()=>{console.log('Hello!')};
+console.log(person.name); // Michael
+person.greet(); // Hello!
+
+#!javascript
+
+// プロパティとメソッドを定義
+const person = {
+  name: 'Michael',
+  greet() {
+    console.log('Hello!');
+  }
+}
+console.log(person.name); // Michael
+person.greet(); // Hello!
+
+#!javascript
+
+// プロパティの値
+const person = {
+  name: ['Michael', 'Jackson']
+}
+console.log(person.name[0]); // Michael
+console.log(person.name[1]); // Jackson
+
+#!javascript
+
+// プロパティの値
+const person = {
+  name: {
+    first: 'Michael',
+    last: 'Jackson'
+  }
+}
+console.log(person.name.first); // Michael
+console.log(person.name.last); // Jackson
+
+#!javascript
+
+const person = {name:'Tom',
+  getname: function () {
+    return this.name;
+  }
+};
+person.name = 'Michael';
+person.getname = ()=>{console.log(person.name);}
+console.log(person);
+console.log(person.getname());

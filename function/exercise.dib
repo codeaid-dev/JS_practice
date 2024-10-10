@@ -155,6 +155,21 @@ countup("one", "two", "three", "four", "five", "six");
 
 #!javascript
 
+// 残余引数に配列の項目を渡す
+function sum(...theArgs) {
+  console.log(theArgs);
+  let total = 0;
+  for (const arg of theArgs) {
+    total += arg;
+  }
+  return total;
+}
+//console.log(sum(1,2,3));
+sum([1,2,3]);
+console.log(sum(...[1,2,3]));
+
+#!javascript
+
 // アロー関数
 var a = ["Hydrogen", "Helium", "Lithium", "Beryllium"];
 var a2 = a.map(function (s) {
