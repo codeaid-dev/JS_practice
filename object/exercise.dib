@@ -60,6 +60,226 @@ console.log(person.name.last); // Jackson
 
 #!javascript
 
+// ブラケット記法
+const person = {
+  name: 'Michael'
+};
+console.log(person['name']); // Michael
+
+const person = {
+  name: {
+    first: 'Michael',
+    last: 'Jackson'
+  }
+};
+console.log(person['name']['first']); // Michael
+console.log(person['name']['last']); // Jackson
+
+#!javascript
+
+// this
+const person = {
+  name: 'Michael',
+  greet() {
+    console.log(`Hello! I'm ${this.name}.`);
+  }
+};
+person.greet(); // Hello! I'm Michael.
+
+#!javascript
+
+// class
+class Person {
+  name = 'Michael';
+  greet() {
+    console.log(`Hello! I'm ${this.name}.`);
+  }
+}
+const michael = new Person();
+console.log(typeof michael); // object
+console.log(michael.name); // Michael
+michael.greet(); // Hello! I'm Michael.
+
+#!javascript
+
+// constructor
+class Person {
+  name;
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hello! I'm ${this.name}.`);
+  }
+}
+const person1 = new Person('Michael');
+const person2 = new Person('Prince');
+person1.greet(); // Hello! I'm Michael.
+person2.greet(); // Hello! I'm Prince.
+
+#!javascript
+
+// 継承
+class Person {
+  name;
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hello! I'm ${this.name}.`);
+  }
+}
+class Artist extends Person {
+  genre;
+  constructor(name, genre) {
+    super(name);
+    this.genre = genre;
+  }
+  greet() {
+    console.log(`Hello! I'm ${this.name} and I'm ${this.genre} musician.`);
+  }
+}
+const person1 = new Artist('Michael', 'Pop');
+const person2 = new Artist('Prince', 'Soul');
+person1.greet(); // Hello! I'm Michael and I'm Pop musician.
+person2.greet(); // Hello! I'm Prince and I'm Soul musician.
+person1.genre = 'Country';
+person1.greet(); // Hello! I'm Michael and I'm Country musician.
+
+#!javascript
+
+// カプセル化
+class Person {
+  name;
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hello! I'm ${this.name}.`);
+  }
+}
+class Artist extends Person {
+  #genre;
+  constructor(name, genre) {
+    super(name);
+    this.#genre = genre;
+  }
+  greet() {
+    console.log(`Hello! I'm ${this.name} and I'm ${this.#genre} musician.`);
+  }
+}
+const person1 = new Artist('Michael', 'Pop');
+const person2 = new Artist('Prince', 'Soul');
+person1.greet(); // Hello! I'm Michael and I'm Pop musician.
+person2.greet(); // Hello! I'm Prince and I'm Soul musician.
+person1.#genre = 'Country'; // error
+
+#!javascript
+
+// カプセル化 セッター
+class Person {
+  name;
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hello! I'm ${this.name}.`);
+  }
+}
+class Artist extends Person {
+  #genre;
+  constructor(name, genre) {
+    super(name);
+    this.#genre = genre;
+  }
+  greet() {
+    console.log(`Hello! I'm ${this.name} and I'm ${this.#genre} musician.`);
+  }
+  setGenre(genre) {
+    if (this.name == 'Prince') {
+      this.#genre = genre;
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+const person1 = new Artist('Michael', 'Pop');
+const person2 = new Artist('Prince', 'Soul');
+person1.greet(); // Hello! I'm Michael and I'm Pop musician.
+person2.greet(); // Hello! I'm Prince and I'm Soul musician.
+if (person1.setGenre('Rock')) {
+  person1.greet();
+} else {
+  console.log('fail to change genre.');
+}
+if (person2.setGenre('Funk')) {
+  person2.greet();
+} else {
+  console.log('fail to change genre.');
+}
+
+#!javascript
+
+// カプセル化 ゲッター
+class Person {
+  name;
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hello! I'm ${this.name}.`);
+  }
+}
+class Artist extends Person {
+  #genre;
+  constructor(name, genre) {
+    super(name);
+    this.#genre = genre;
+  }
+  greet() {
+    console.log(`Hello! I'm ${this.name} and I'm ${this.#genre} musician.`);
+  }
+  getGenre(genre) {
+    return this.#genre;
+  }
+}
+const person2 = new Artist('Prince', 'Soul');
+person2.greet(); // Hello! I'm Prince and I'm Soul musician.
+console.log(person2.getGenre()); // Soul
+
+#!javascript
+
+// #1
+const cam1 = {};
+const cam2 = {};
+cam1.maker = 'SONY';
+cam1.model = 'α7R IV';
+cam1.price = 438900;
+cam2.maker = 'CANON';
+cam2.model = 'EOS R5';
+cam2.price = 506000;
+console.log(`メーカー：${cam1.maker}、モデル：${cam1.model}、価格：${cam1.price}円`);
+console.log(`メーカー：${cam2.maker}、モデル：${cam2.model}、価格：${cam2.price}円`);
+
+#!javascript
+
+// #2
+const score = {
+  mathematics: 65,
+  english: 70,
+  physics: 80,
+  get_average() {
+    return Math.floor((this.mathematics+this.english+this.physics)/3);
+  }
+}
+console.log(`数学=${score.mathematics}`);
+console.log(`英語=${score.english}`);
+console.log(`物理=${score.physics}`);
+console.log(`平均は${score.get_average()}`);
+
+#!javascript
+
 const person = {name:'Tom',
   getname: function () {
     return this.name;
