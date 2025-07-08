@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOMサンプル</title>
+</head>
+<body>
+  <p></p>
+  <p class="hoge"></p>
+  <p id="foobar"></p>
+  <script>
+    const el1 = document.querySelector("p");
+    const el2 = document.querySelector(".hoge");
+    const el3 = document.querySelector("#foobar");
+    el1.textContent = "Hello, el1.";
+    el2.textContent = "Hello, el2.";
+    el3.textContent = "Hello, el3.";
+  </script>
+</body>
+</html>
