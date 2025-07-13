@@ -1,10 +1,10 @@
-let tiles = [0,1,2,3,4,5,6,7,8]; // マス情報を格納するリスト
-let first = "○";
-let second = "Ｘ";
+const tiles = [0,1,2,3,4,5,6,7,8]; // マス情報を格納するリスト
+const first = "○";
+const second = "Ｘ";
 let turn = true; // true:first, false:second
 let status = 0; // ゲームの手数と終了フラグ 1 ~ 10, 9:全ターン終了、10:ゲーム終了
-let targets = document.querySelectorAll('.tile');
-let result = document.querySelector('.result');
+const targets = document.querySelectorAll('.tile');
+const result = document.querySelector('.result');
 
 // タイルがクリックされたときのイベント処理
 for (let i in tiles) {
@@ -14,7 +14,7 @@ for (let i in tiles) {
       status++;
       targets[i].innerText = (turn) ? first : second;
       tiles[i] = targets[i].innerText;
-      let str = judge();
+      const str = judge();
       if (str != "") {
         result.innerText = str;
       }
@@ -23,7 +23,7 @@ for (let i in tiles) {
   });
 }
 
-let judge = ()=>{
+const judge = ()=>{
   if (tiles[0] == tiles[1] && tiles[0] == tiles[2]
     || tiles[3] == tiles[4] && tiles[3] == tiles[5]
     || tiles[6] == tiles[7] && tiles[6] == tiles[8]

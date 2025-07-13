@@ -27,7 +27,7 @@
 
   <script>
     document.querySelector('form').addEventListener('change', ()=>{
-      let colors = document.getElementsByName('bgcolor');
+      const colors = document.getElementsByName('bgcolor');
       for (let i=0; i<colors.length; i++) {
         if (colors[i].checked) {
           document.querySelector('#panel').setAttribute('style', `background:${colors[i].value}`);

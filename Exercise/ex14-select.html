@@ -27,7 +27,7 @@
 
   <script>
     document.querySelector('#choice').addEventListener('change', ()=>{
-      let pic = document.querySelector('#choice').value;
+      const pic = document.querySelector('#choice').value;
       document.querySelector('#picture').setAttribute('src', `img/slot${pic}.png`);
     });
   </script>

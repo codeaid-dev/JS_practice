@@ -53,12 +53,12 @@
   <script>
     /* formタグを使わずに実装した場合の作例 */
 
-    let txt = document.getElementById('txt');
-    let size = document.getElementById('size');
-    let colors = document.getElementsByName('color');
-    let bold = document.getElementById('bold');
+    const txt = document.getElementById('txt');
+    const size = document.getElementById('size');
+    const colors = document.getElementsByName('color');
+    const bold = document.getElementById('bold');
 
-    let btn = document.querySelector('button');
+    const btn = document.querySelector('button');
     btn.addEventListener('click', ()=>{
 
       let color = 'black';
@@ -69,13 +69,13 @@
         }
       }
 
-      //let style = 'font-size:' + size.value + 'px;'
+      //const style = 'font-size:' + size.value + 'px;'
       //      + 'color:' + color + ';'
       //      + 'font-weight:' + ((bold.checked) ? 'bold' : 'normal');
-      let style = `font-size:${size.value}px; color:${color};font-weight:${(bold.checked) ? 'bold' : 'normal'}`;
+      const style = `font-size:${size.value}px; color:${color};font-weight:${(bold.checked) ? 'bold' : 'normal'}`;
 
-      let num = document.getElementById('loop');
-      let show = document.getElementById('show');
+      const num = document.getElementById('loop');
+      const show = document.getElementById('show');
       show.setAttribute('style', style);
 
       show.textContent = null; // 前回に入力した子要素を削除する

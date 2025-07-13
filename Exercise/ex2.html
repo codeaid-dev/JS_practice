@@ -23,10 +23,10 @@
   <button>表示</button>
   <p id="result">結果表示</p>
   <script>
-    let colors = document.querySelectorAll('.color');
-    let txt = document.querySelector('#txt');
-    let result = document.querySelector('#result');
-    let btn = document.querySelector('button');
+    const colors = document.querySelectorAll('.color');
+    const txt = document.querySelector('#txt');
+    const result = document.querySelector('#result');
+    const btn = document.querySelector('button');
     btn.addEventListener('click', ()=>{
       let color = 'black';
       for (let i in colors) {
@@ -35,7 +35,7 @@
           break;
         }
       }
-      let span = `<span style="color:${color};">` + txt.value + '</span>';
+      const span = `<span style="color:${color};">` + txt.value + '</span>';
       result.innerHTML = span;
     });
   </script>

@@ -30,11 +30,11 @@
     fetch('data.json')
       .then(response => response.json())
       .then(data => {
-        let table = document.getElementById("userlist");
+        const table = document.getElementById("userlist");
         for (let i=0; i<data.length; i++) {
-          let tr = table.insertRow(-1);
-          let td1 = tr.insertCell(-1);
-          let td2 = tr.insertCell(-1);
+          const tr = table.insertRow(-1);
+          const td1 = tr.insertCell(-1);
+          const td2 = tr.insertCell(-1);
           td1.innerHTML = data[i].id;
           td2.innerHTML = data[i].name;
         }
@@ -43,11 +43,11 @@
     async function load() {
       const res = await fetch('data.json');
       const obj = await res.json();
-      let table = document.getElementById("awaitlist");
+      const table = document.getElementById("awaitlist");
       for (let i=0; i<obj.length; i++) {
-        let tr = table.insertRow(-1);
-        let td1 = tr.insertCell(-1);
-        let td2 = tr.insertCell(-1);
+        const tr = table.insertRow(-1);
+        const td1 = tr.insertCell(-1);
+        const td2 = tr.insertCell(-1);
         td1.innerHTML = obj[i].id;
         td2.innerHTML = obj[i].name;
       }

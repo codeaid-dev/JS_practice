@@ -1,5 +1,5 @@
-let disp = document.querySelector('#display');
-let keys = document.querySelectorAll('button');
+const disp = document.querySelector('#display');
+const keys = document.querySelectorAll('button');
 let total = 0;
 let numStat = false; // 数値入力中か？true:数値入力中、false:数値入力中でない
 let calcStat = false; // 演算子が入力されたか？ true:演算子入力中、false:演算子入力中でない

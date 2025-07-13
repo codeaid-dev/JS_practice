@@ -36,12 +36,11 @@
     </div>
   </div>
   <script>
-    let min = document.querySelector('#minutes');
-    let sec = document.querySelector('#seconds');
-    let timer = document.querySelector('#timer');
-    let start = document.querySelector('#start');
-    let stop = document.querySelector('#stop');
-    let timer_id;
+    const min = document.querySelector('#minutes');
+    const sec = document.querySelector('#seconds');
+    const timer = document.querySelector('#timer');
+    const start = document.querySelector('#start');
+    const stop = document.querySelector('#stop');
     start.addEventListener('click', ()=>{
       if ((min.value == "" && sec.value == "")
       || (min.value != "") && isNaN(parseInt(min.value)) || parseInt(min.value) >= 60
@@ -53,7 +52,7 @@
         let sec_cnt = sec.value == "" ? 0 : parseInt(sec.value);
         let count = min_cnt * 60 + sec_cnt;
         timer.innerHTML = `${('0'+min_cnt.toString(10)).slice(-2)}:${('0'+sec_cnt.toString(10)).slice(-2)}`;
-        timer_id = setInterval(()=>{
+        const timer_id = setInterval(()=>{
           count--;
           min_cnt = Math.floor(count / 60);
           sec_cnt = count % 60;

@@ -1,21 +1,21 @@
-let wdays = ['日','月','火','水','木','金','土'];
-let btn = document.querySelector('button');
+const wdays = ['日','月','火','水','木','金','土'];
+const btn = document.querySelector('button');
 btn.addEventListener('click', ()=>{
-  let year = document.querySelector('#year');
-  let month = document.querySelector('#month');
-  let cal = document.querySelector('#calendar');
+  const year = document.querySelector('#year');
+  const month = document.querySelector('#month');
+  const cal = document.querySelector('#calendar');
   cal.innerHTML = '';
   //if(cal.hasChildNodes()) {
     //cal.removeChild(cal.firstChild);
   //}
-  let startDate = new Date(year.value,(month.value-1), 1); // 月の最初
-  let endDate = new Date(year.value,month.value, 0); // 月の最後
-  let table = document.createElement('table');
+  const startDate = new Date(year.value,(month.value-1), 1); // 月の最初
+  const endDate = new Date(year.value,month.value, 0); // 月の最後
+  const table = document.createElement('table');
   let cnt = 1;
   for (let i = 0; i < 7; i++) {
-    let tr = document.createElement('tr');
+    const tr = document.createElement('tr');
     for (let j = 0; j < 7; j++) {
-      let td = document.createElement('td');
+      const td = document.createElement('td');
       if (i == 0) {
         td.innerText = wdays[j];
       } else if (i == 1) {

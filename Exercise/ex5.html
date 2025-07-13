@@ -19,7 +19,7 @@
   <label><input type="checkbox" id="c4">水着（400円）</label>
   <p>合計金額<span id="total">500円</span></p>
   <script>
-    let checks = document.querySelectorAll('input');
+    const checks = document.querySelectorAll('input');
 
     for (let i=0; i<checks.length; i++) {
       checks[i].addEventListener('click', ()=>{

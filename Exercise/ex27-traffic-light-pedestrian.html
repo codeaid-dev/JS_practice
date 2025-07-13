@@ -43,21 +43,21 @@
   <script>
     let flag = true;
     let count = 0;
-    let green = document.querySelector('.green');
-    let red = document.querySelector('.red');
-    let tlight = document.getElementsByName('tlight');
-    let btn = document.querySelector('button');
+    const green = document.querySelector('.green');
+    const red = document.querySelector('.red');
+    const tlight = document.getElementsByName('tlight');
+    const btn = document.querySelector('button');
     btn.addEventListener('click', ()=>{
       for (let i=0; i<tlight.length; i++) {
         if (tlight[i].checked) {
-          let select = tlight[i].value;
+          const select = tlight[i].value;
           if (select == 'green') {
             green.setAttribute('style', 'background:green');
             red.setAttribute('style', 'background:black');
           } else if (select == 'gtor') {
             green.setAttribute('style', 'background:green');
             red.setAttribute('style', 'background:black');
-            let timer_id = setInterval(()=>{
+            const timer_id = setInterval(()=>{
               if (count <= 10) {
                 if (flag) {
                   green.setAttribute('style', 'background:green');

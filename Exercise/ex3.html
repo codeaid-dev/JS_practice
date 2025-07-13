@@ -21,8 +21,8 @@
   <p id="result">選択をここに表示</p>
 
   <script>
-    let bread_list = ['あんぱん', 'クリームパン', 'メロンパン', 'カレーパン'];
-    let bread = document.getElementsByName('bread');
+    const bread_list = ['あんぱん', 'クリームパン', 'メロンパン', 'カレーパン'];
+    const bread = document.getElementsByName('bread');
     for (let i=0; i<bread.length; i++) {
       bread[i].addEventListener('click', ()=>{
         document.querySelector('#result').innerHTML = `<span style="color:red;">

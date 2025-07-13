@@ -1,10 +1,10 @@
-let colors = ['black', 'red', 'green', 'blue', 'yellow'];
-let color = document.querySelector('.color-box');
-let prev = document.querySelector('#prev');
-let next = document.querySelector('#next');
+const colors = ['black', 'red', 'green', 'blue', 'yellow'];
+const color = document.querySelector('.color-box');
+const prev = document.querySelector('#prev');
+const next = document.querySelector('#next');
 let position = 0;
 
-let changeSlide = (num)=>{
+const changeSlide = (num)=>{
   if (position + num == 0) {
     prev.disabled = true;
     next.disabled = false;

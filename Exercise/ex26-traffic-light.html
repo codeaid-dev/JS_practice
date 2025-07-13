@@ -49,15 +49,15 @@
 
   <script>
     let stat = 'green';
-    let green = document.querySelector('.green');
-    let yellow = document.querySelector('.yellow');
-    let red = document.querySelector('.red');
-    let tlight = document.getElementsByName('tlight');
-    let btn = document.querySelector('button');
+    const green = document.querySelector('.green');
+    const yellow = document.querySelector('.yellow');
+    const red = document.querySelector('.red');
+    const tlight = document.getElementsByName('tlight');
+    const btn = document.querySelector('button');
     btn.addEventListener('click', ()=>{
       for (let i=0; i<tlight.length; i++) {
         if (tlight[i].checked) {
-          let select = tlight[i].value;
+          const select = tlight[i].value;
           if (select == 'green') {
             green.setAttribute('style', 'background:green');
             yellow.setAttribute('style', 'background:black');
@@ -73,7 +73,7 @@
               red.setAttribute('style', 'background:black');
               stat = 'yellow';
             }
-            let timer_id = setInterval(()=>{
+            const timer_id = setInterval(()=>{
               if (stat == 'yellow') {
                 green.setAttribute('style', 'background:black');
                 yellow.setAttribute('style', 'background:yellow');

@@ -19,12 +19,12 @@
   <div><input type="text"><button id="answer">答え</button></div>
   <p id="result">結果表示</p>
   <script>
-    let q_btn = document.querySelector('#q_btn');
+    const q_btn = document.querySelector('#q_btn');
     let hide;
-    let alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N',
+    const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N',
     'O','P','Q','R','S','T','U','V','W','X','Y','Z',];
     q_btn.addEventListener('click', ()=>{
-      let q_str = [];
+      const q_str = [];
       hide = Math.floor(Math.random() * alpha.length);
       for (let i in alpha) {
         if (i != hide) {
@@ -34,10 +34,10 @@
       document.querySelector('#alpha').innerHTML = q_str.join('');
     });
 
-    let answer = document.querySelector('#answer');
-    let ipt = document.querySelector('input');
+    const answer = document.querySelector('#answer');
+    const ipt = document.querySelector('input');
     answer.addEventListener('click', ()=>{
-      if (ipt.value == alpha[hide]) {
+      if (ipt.value.toUpperCase() == alpha[hide]) {
         document.querySelector('#result').innerHTML = '<span style="color:blue">正解！！</span>';
       } else {
         document.querySelector('#result').innerHTML = '<span style="color:red">不正解・・・</span>';

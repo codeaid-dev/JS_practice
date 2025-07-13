@@ -13,11 +13,11 @@
   <button>表作成</button>
   <p id="result">結果表示</p>
   <script>
-    let col = document.querySelector('#col');
-    let row = document.querySelector('#row');
-    let contents = document.querySelector('#contents');
-    let btn = document.querySelector('button');
-    let result = document.querySelector('#result');
+    const col = document.querySelector('#col');
+    const row = document.querySelector('#row');
+    const contents = document.querySelector('#contents');
+    const btn = document.querySelector('button');
+    const result = document.querySelector('#result');
     btn.addEventListener('click', ()=>{
       if (col.value == '' || row.value == '' || contents.value == '') {
         result.innerHTML = '<span style="color:red;">なにか入力してください。</span>';

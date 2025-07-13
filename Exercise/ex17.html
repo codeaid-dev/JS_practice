@@ -15,7 +15,7 @@
   </ul>
 
   <script>
-  let user_list = [
+  const user_list = [
     { name: '鈴木二郎', age: 18 },
     { name: '田中幸一', age: 25 },
     { name: '佐藤さおり', age: 32 },
@@ -23,12 +23,12 @@
     { name: '山田太郎', age: 57 }
   ];
 
-  let btn = document.querySelectorAll('.button');
+  const btn = document.querySelectorAll('.button');
   for (let i=0; i<btn.length; i++) {
     btn[i].addEventListener('click', ()=>{
-      let target = btn[i].id;
+      const target = btn[i].id;
 
-      let filter_list = user_list.filter((obj) => {
+      const filter_list = user_list.filter((obj) => {
         return obj.age >= target;
       });
 

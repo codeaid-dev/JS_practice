@@ -37,13 +37,12 @@
     </div>
   </div>
   <script>
-    let hour = document.querySelector('#hours');
-    let min = document.querySelector('#minutes');
-    let sec = document.querySelector('#seconds');
-    let timer = document.querySelector('#timer');
-    let start = document.querySelector('#start');
-    let stop = document.querySelector('#stop');
-    let timer_id;
+    const hour = document.querySelector('#hours');
+    const min = document.querySelector('#minutes');
+    const sec = document.querySelector('#seconds');
+    const timer = document.querySelector('#timer');
+    const start = document.querySelector('#start');
+    const stop = document.querySelector('#stop');
     start.addEventListener('click', ()=>{
       if ((hour.value == "" && min.value == "" && sec.value == "")
       || (hour.value != "") && isNaN(parseInt(hour.value)) || parseInt(hour.value) >= 24
@@ -51,22 +50,22 @@
       || (sec.value != "") && isNaN(parseInt(sec.value)) || parseInt(sec.value) >= 60) {
         timer.innerHTML = '<spen style="color:red">有効な値を入力してください</spen>';
       } else {
-        let goal = new Date();
+        const goal = new Date();
         goal.setHours(parseInt(hour.value));
         goal.setMinutes(parseInt(min.value));
         goal.setSeconds(parseInt(sec.value));
 
-        let showRest = ()=>{
-          let rest = goal.getTime() - Date.now();
-          let sec = Math.floor(rest / 1000) % 60;
-          let min = Math.floor(rest / 1000 / 60) % 60;
-          let hours = Math.floor(rest / 1000 / 60 / 60) % 24;
-          let days = Math.floor(rest / 1000 / 60 / 60 / 24);
-          let count = [days, hours, min, sec];
+        const showRest = ()=>{
+          const rest = goal.getTime() - Date.now();
+          const sec = Math.floor(rest / 1000) % 60;
+          const min = Math.floor(rest / 1000 / 60) % 60;
+          const hours = Math.floor(rest / 1000 / 60 / 60) % 24;
+          const days = Math.floor(rest / 1000 / 60 / 60 / 24);
+          const count = [days, hours, min, sec];
           timer.innerText = `${('0'+count[1].toString(10)).slice(-2)}:${('0'+count[2].toString(10)).slice(-2)}:${('0'+count[3].toString(10)).slice(-2)}`;
         };
 
-        timer_id = setInterval(()=>{
+        const timer_id = setInterval(()=>{
           if (Date.now() >= goal.getTime()) {
             clearInterval(timer_id);
             timer.innerHTML = 'タイマー終了';

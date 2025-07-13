@@ -82,8 +82,8 @@
     {id:8, name:'沖縄県'}
     ];
 
-    let region = document.getElementsByName('region');
-    let pref = document.querySelector('#pref');
+    const region = document.getElementsByName('region');
+    const pref = document.querySelector('#pref');
     pref.innerHTML = '<option value="">選択してください</option>';
     for (let elem of kinki) {
       pref.innerHTML += `<option value="${elem.id}">${elem.name}</option>`;

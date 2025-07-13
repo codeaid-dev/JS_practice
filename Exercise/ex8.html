@@ -16,7 +16,7 @@
 
   <script>
     document.querySelector('#add').addEventListener('click', ()=>{
-      let memo = document.querySelector('#todoMemo');
+      const memo = document.querySelector('#todoMemo');
       document.querySelector('#memo').innerHTML += `<li>${memo.value}</li>`;
       memo.value = '';
     });

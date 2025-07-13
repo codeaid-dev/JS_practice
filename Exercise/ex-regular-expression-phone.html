@@ -13,12 +13,12 @@
   <button>送信</button>
 
   <script>
-    let phone = document.querySelector('#phone');
-    let result = document.querySelector('#result');
+    const phone = document.querySelector('#phone');
+    const result = document.querySelector('#result');
 
     document.querySelector('button').addEventListener('click', () => {
-      let number = phone.value;
-      let trim_number = number.replace(/-/g, '');
+      const number = phone.value;
+      const trim_number = number.replace(/-/g, '');
 
       if (/^[0][0-9]{9,10}$/.test(trim_number) === false) {
         result.innerHTML = '<span style="color:red;">電話番号を正しく入力してください</span>';

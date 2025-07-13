@@ -1,10 +1,10 @@
-let ipt = document.querySelector('input');
-let btn = document.querySelector('button');
-let computer = document.querySelector('#computer-img');
-let player = document.querySelector('#player-img');
-let result = document.querySelector('#result');
+const ipt = document.querySelector('input');
+const btn = document.querySelector('button');
+const computer = document.querySelector('#computer-img');
+const player = document.querySelector('#player-img');
+const result = document.querySelector('#result');
 btn.addEventListener('click',()=>{
-  let cValue = Math.floor(Math.random() * 3) + 1;
+  const cValue = Math.floor(Math.random() * 3) + 1;
   if (isNaN(ipt.value)) {
     result.innerHTML = '<span style="color:red;">数値に変換できません！</span>';
   } else {
