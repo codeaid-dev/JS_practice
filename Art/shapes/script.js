@@ -18,6 +18,48 @@ function draw() {
   ctx.lineTo(100, 450);
   ctx.closePath();
   ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(70, 300);
+  ctx.lineTo(120, 450);
+  ctx.closePath();
+  ctx.lineWidth = 5;
+  ctx.strokeStyle = '#ffcc00';
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(90, 300);
+  ctx.lineTo(140, 450);
+  ctx.closePath();
+  ctx.lineWidth = 10;
+  ctx.strokeStyle = '#888';
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(160, 300);
+  ctx.lineTo(260, 450);
+  ctx.lineTo(160, 450);
+  ctx.lineTo(260, 300);
+  ctx.closePath();
+  ctx.lineWidth = 5;
+  ctx.strokeStyle = '#007700';
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(380, 300, 100, 0, Math.PI*2, false);
+  ctx.lineWidth = 5;
+  ctx.strokeStyle = '#007700';
+  ctx.fillStyle = '#66dd66';
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.arc(380, 300, 50, 0, Math.PI*2, false);
+  ctx.lineWidth = 5;
+  ctx.strokeStyle = '#ffcc00';
+  ctx.fillStyle = '#ffff66';
+  ctx.fill();
+  ctx.stroke();
 }
 
 draw();
