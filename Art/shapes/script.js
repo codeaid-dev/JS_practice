@@ -60,6 +60,15 @@ function draw() {
   ctx.fillStyle = '#ffff66';
   ctx.fill();
   ctx.stroke();
+
+  ctx.beginPath();
+  //ctx.arc(380, 500, 80, -30*Math.PI/180, -150*Math.PI/180, true);
+  ctx.arc(380, 500, 80, 330*Math.PI/180, 210*Math.PI/180, true);
+  ctx.lineWidth = 5;
+  ctx.strokeStyle = '#007700';
+  ctx.fillStyle = '#66dd66';
+  ctx.fill();
+  ctx.stroke();
 }
 
 draw();
