@@ -1,4 +1,5 @@
 // 文字列の連結
+console.log('[文字列の連結]');
 console.log('Hello World');
 console.log('Hello ' + 'World.');
 const greeting = 'Hello';
@@ -8,13 +9,17 @@ console.log('My height is ' + 175);
 const weight = 60;
 console.log('My weight is ' + weight);
 const height = 175;
+console.log('');
 
 // ランダムな数値
+console.log('[ランダムな数値]');
 let num = 5;
 console.log(Math.floor(Math.random()*num)); // 0~5未満のランダムな整数
 console.log(Math.random());
+console.log('');
 
 // 数値の演算
+console.log('[数値の演算]');
 const left = '4'; // 文字列の'4'としても+演算子以外は数値と同じく計算する
 const right = 2;
 console.log(left + right);
@@ -26,16 +31,20 @@ console.log(left ** right);
 num = 2
 console.log(++num);
 console.log(--num);
+console.log('');
 
 // 文字列の挿入
+console.log('[文字列の挿入]');
 console.log(`Height:${height}, Weight:${weight}, BMI:${weight/(height/100)**2}`);
 //const bmi = Math.round(weight/(height/100)**2); // 20
 const bmi = Math.round((weight/(height/100)**2)*10)/10; // 19.6
 //const bmi = Math.floor(weight/(height/100)**2); // 19
 //const bmi = Math.ceil(weight/(height/100)**2); // 20
 console.log(`Height:${height}, Weight:${weight}, BMI:${bmi}`);
+console.log('');
 
 // データ型
+console.log('[データ型]');
 const age = 28;
 console.log(typeof(age)); // number
 const hello = 'Hello';
@@ -46,16 +55,20 @@ const obj = {key: 'value'}
 console.log(typeof(obj));
 const lst = [1,2];
 console.log(typeof lst);
+console.log('');
 
 // 文字列と数値の変換
+console.log('[文字列と数値の変換]');
 const myString = "123";
 const myNum = Number(myString);
 console.log(typeof myNum); // number
 const myNum2 = 123;
 const myString2 = String(myNum2);
 console.log(typeof myString2); // string
+console.log('');
 
 // 文字列の操作
+console.log('[文字列の操作]');
 const string = 'Hello World.';
 console.log(string.length);
 console.log(string[0]); // H
@@ -78,18 +91,29 @@ console.log(data1.replace('Java', 'ECMA')); // I Like ECMAScript
 const data2 = 'I Like JavaScript. JavaScript is great!';
 console.log(data2.replace('Java', 'ECMA')); // I Like ECMAScript. JavaScript is great!
 console.log(data2.replaceAll('Java', 'ECMA')); // I Like ECMAScript. ECMAScript is great!
+console.log('');
 
 // #1
-console.log('It\'s JavaScript. The script executes on "Web" environment.');
+console.log('[#1]');
+// console.log('It\'s JavaScript. The script executes on "Web" environment.');
+const output = "It's JavaScript. The script executes on \"Web\" environment.";
+console.log(output);
+const el = document.querySelector("p");
+el.textContent = output;
+console.log('');
 // #2
+console.log('[#2]');
 const a = 98;
 const b = 25;
-console.log('a+b=',a+b);
-console.log('a-b=',a-b);
-console.log('a*b=',a*b);
-console.log('a/b=',a/b);
-console.log('aの2乗',a**2);
+console.log('a+b='+(a+b));
+console.log('a-b='+(a-b));
+console.log('a*b='+(a*b));
+console.log('a/b='+(a/b));
+console.log('aの2乗'+(a**2));
+console.log('bの平方根'+(a**0.5));
+console.log('');
 // #3
+console.log('[#3]');
 const num1 = 54;
 const num2 = 3.14;
 const str = 'Osaka';
@@ -98,34 +122,48 @@ console.log(typeof(num1));
 console.log(typeof(num2));
 console.log(typeof(str));
 console.log(typeof(bool));
+console.log('');
 // #4
+console.log('[#4]');
 const prefs = '世田谷杉並練馬品川足立西東京';
 const kanas = 'あいうえおかきくけこさしすせそ';
 const kind = 310;
 const ch = kanas[5];
 const plate = 1234;
 console.log(`${prefs.slice(7,9)} ${kind} ${ch} ${plate}`);
+console.log('');
 // #5
+console.log('[#5]');
 console.log(`ペットボトルは${Math.floor(7*1.5)}本です。`);
+console.log('');
 // #6
+console.log('[#6]');
 console.log(`半径30cmの円の面積は${30**2*3.14}平方cmです。`);
+console.log('');
 // #7
+console.log('[#7]');
 const total = 1280;
 const A = Math.floor(total/3)+total%3;
 const B = Math.floor(total/3);
 const C = Math.floor(total/3);
 console.log(`Aさんは${A}円、Bさんは${B}円、Cさんは${C}円支払いました`);
+console.log('');
 // #8
+console.log('[#8]');
 const sentence = 'This is my ballpen. This ballpen is comfortable to write on.';
 const res1 = sentence.replaceAll('ballpen','pen');
 const res2 = res1.replace(' This',' My');
 console.log(sentence);
 console.log(res2);
+console.log('');
 // #9
+console.log('[#9]');
 const signal = 'しばらくすると信号機が赤に変わった';
 const index = signal.indexOf('赤');
 console.log(signal.slice(0,index) + '青' + signal.slice(index+1));
+console.log('');
 // #10
+console.log('[#10]');
 let price = 17777;
 console.log(`10000円札は${Math.floor(price/10000)}枚`);
 price = price % 10000;
@@ -143,23 +181,31 @@ console.log(`10円玉は${Math.floor(price/10)}枚`);
 price = price % 10;
 console.log(`5円玉は${Math.floor(price/5)}枚`);
 console.log(`1円玉は${Math.floor(price%5)}枚`);
+console.log('');
 // #11
+console.log('[#11]');
 const letters = 'abcdefghijklmnopqrstuvwxyz';
 console.log(letters.slice(-5));
 console.log(letters.slice(10,-10));
 console.log(letters.slice(-7,-3));
+console.log('');
 // #12
+console.log('[#12]');
 const baseNum = '12345678';
 const leftNum = Number(baseNum.slice(0,4));
 const rightNum = Number(baseNum.slice(4));
 console.log(leftNum*2, rightNum/2);
+console.log('');
 // #13
+console.log('[#13]');
 const region = 'oSaKa';
 const lower = region.toLowerCase();
 const firstLetter = lower.slice(0,1).toUpperCase();
 const resultLetter = firstLetter + lower.slice(1);
 console.log(resultLetter);
+console.log('');
 // #14
+console.log('[#14]');
 const haneda = 'HND35.5554,139.7544;羽田空港';
 const kansai = 'KIX34.859,136.8146;関西空港';
 let code = haneda.slice(0,3);
@@ -170,6 +216,9 @@ code = kansai.slice(0,3);
 sep = kansai.indexOf(';');
 name = kansai.slice(sep+1);
 console.log(`${code}:${airport}`);
+console.log('');
 // #15
+console.log('[#15]');
 const randomNum = Math.floor(Math.random()*4) + 1;
 console.log(`乱数：${randomNum}`);
+console.log('');
