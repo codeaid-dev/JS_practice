@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>forEach例</title>
+  <title>forEach2例</title>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <ul>
@@ -11,14 +12,5 @@
     <li class="fruit">バナナ</li>
     <li class="fruit">みかん</li>
   </ul>
-
-  <script>
-    const els = document.getElementsByClassName("fruit");
-
-    // Array.from() で配列に変換
-    Array.from(els).forEach(el => {
-      el.style.color = "red";
-    });
-  </script>
 </body>
 </html>

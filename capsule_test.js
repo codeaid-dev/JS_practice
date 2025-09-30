@@ -1,15 +1,15 @@
-var counter = (function () {
+const counter = (() => {
   //プライベートにしたいプロパティ
-  var count = 0;
+  let count = 0;
 
   return {
     //加算メソッド
-    increment: function () {
+    increment: () => {
         count += 1;
         console.log(count);
     }
   };
-}());
+})();
 
 counter.increment(); //1が出力される
 counter.increment(); //2が出力される

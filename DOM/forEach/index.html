@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>forEach例</title>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <ul>
@@ -11,14 +12,5 @@
     <li class="fruit">バナナ</li>
     <li class="fruit">みかん</li>
   </ul>
-
-  <script>
-    const items = document.querySelectorAll(".fruit");
-
-    items.forEach((el, i) => {
-      el.textContent = `${i + 1}番目: ${el.textContent}`;
-      el.style.color = "blue";
-    });
-  </script>
 </body>
 </html>

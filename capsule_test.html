@@ -4,16 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>function test</title>
+  <script src="capsule_test.js" defer></script>
 </head>
 <body>
+  <!--
   <script>
-    var counter = (() => {
+    const counter = (() => {
       //プライベートにしたいプロパティ
-      var count = 0;
+      let count = 0;
 
       return {
         //加算メソッド
-        increment: function () {
+        increment: () => {
             count += 1;
             console.log(count);
         }
@@ -25,5 +27,6 @@
 
     console.log(counter.count); //※undefined
   </script>
+  -->
 </body>
 </html>
