@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScriptドリル</title>
+  <script src="script.js" defer></script>
   <style>
     #panel {
       width: 300px;
@@ -24,16 +25,5 @@
       <label><input type="radio" name="bgcolor" value="green">緑色</label>
     </form>
   </div>
-
-  <script>
-    document.querySelector('form').addEventListener('change', ()=>{
-      const colors = document.getElementsByName('bgcolor');
-      for (let i=0; i<colors.length; i++) {
-        if (colors[i].checked) {
-          document.querySelector('#panel').setAttribute('style', `background:${colors[i].value}`);
-        }
-      }
-    });
-  </script>
 </body>
 </html>

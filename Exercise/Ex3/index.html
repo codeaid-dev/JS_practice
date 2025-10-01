@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScriptドリル</title>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <h1>JavaScriptドリル</h1>
@@ -19,17 +20,5 @@
     <label for="curry">カレーパン</label>
   </div>
   <p id="result">選択をここに表示</p>
-
-  <script>
-    const bread_list = ['あんぱん', 'クリームパン', 'メロンパン', 'カレーパン'];
-    const bread = document.getElementsByName('bread');
-    for (let i=0; i<bread.length; i++) {
-      bread[i].addEventListener('click', ()=>{
-        document.querySelector('#result').innerHTML = `<span style="color:red;">
-                                        あなたが選んだのは${bread_list[bread[i].value]}です。
-                                        </span>`;
-      });
-    }
-  </script>
 </body>
 </html>
