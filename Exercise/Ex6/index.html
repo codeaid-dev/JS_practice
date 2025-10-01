@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScriptドリル</title>
+  <script src="script.js" defer></script>
   <style>
   #discription {
     max-width: 800px;
@@ -19,24 +20,5 @@
   <div id="discription">
     <p>コンピュータは、なにによって動いているのでしょうか？そう、電気です。電気の状態には、流れているか・流れていないかの2通りがあります。コンピュータの世界では、その2通りの状態を1と0で表すことにしています。2つの状態（0と1）しか表せないので、コンピュータが扱う基本の数（基数）は2となり、これを2進数と呼びます。<br>コンピュータは1と0、電気の有無しか判別することができない代わりに、1と0の膨大な量の組み合わせを演算・処理するのはとても速いです。こういった特性を活用し、コンピュータになにか仕事をしてほしいとき、コンピュータに対して命令をする必要があります。<br>ところが人間の基数は10進や60進ですし、人間の言葉が1と0でできているコンピュータに伝わるわけはありません。コンピュータに命令を理解させるため、人間とコンピュータの橋渡しをするのがプログラムなのです。</p>
   </div>
-
-  <script>
-    const btns = document.querySelectorAll('button');
-    const disc = document.querySelector('#discription');
-    for (let i=0; i<btns.length; i++) {
-      btns[i].addEventListener('click', ()=>{
-        if (btns[i].id == 'small') {
-          disc.setAttribute('style', 'font-size:14px;');
-          //disc.style.fontSize = '14px';
-        } else if (btns[i].id == 'medium') {
-          disc.setAttribute('style', 'font-size:16px;');
-          //disc.style.fontSize = '16px';
-        } else if (btns[i].id == 'large') {
-          disc.setAttribute('style', 'font-size:20px;');
-          //disc.style.fontSize = '20px';
-        }
-      });
-    }
-  </script>
 </body>
 </html>
