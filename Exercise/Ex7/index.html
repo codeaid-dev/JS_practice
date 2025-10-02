@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScriptドリル</title>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <h1>JavaScriptドリル</h1>
@@ -14,19 +15,5 @@
     <input type="text" class="serial" id="serial2" maxlength="5" size="5">
     <input type="text" class="serial" id="serial2" maxlength="5" size="5">
   </div>
-  <script>
-    const serials = document.getElementsByClassName('serial');
-    //const serials = document.querySelectorAll('.serial');
-    for (let i = 0; i < serials.length; i++) {
-      serials[i].addEventListener('keyup', () => {
-        if (serials[i].value.length >= serials[i].maxLength) {
-          if (i < serials.length-1) {
-            serials[i+1].focus();
-          }
-        }
-      });
-    }
-
-  </script>
 </body>
 </html>
