@@ -4,7 +4,7 @@ const prev = document.querySelector('#prev');
 const next = document.querySelector('#next');
 let position = 0;
 
-const changeSlide = (num)=>{
+const changeSlide = (num) => {
   if (position + num == 0) {
     prev.disabled = true;
     next.disabled = false;
@@ -15,18 +15,16 @@ const changeSlide = (num)=>{
     next.disabled = false;
     prev.disabled = false;
   }
-  //if (position + num >= 0 && position + num < colors.length) {
-    position += num;
-    color.style = "background-color:"+colors[position]+";";
-  //}
+  position += num;
+  color.style = "background-color:"+colors[position]+";";
 }
 
 color.style = "background-color:"+colors[position]+";";
 prev.disabled = true;
-next.addEventListener('click', ()=>{
+next.addEventListener('click', () => {
   changeSlide(1);
 });
 
-prev.addEventListener('click', ()=>{
+prev.addEventListener('click', () => {
   changeSlide(-1);
 });
