@@ -2,7 +2,7 @@ const checks = document.querySelectorAll('input');
 
 /*
 for (let i=0; i<checks.length; i++) {
-  checks[i].addEventListener('click', ()=>{
+  checks[i].addEventListener('click', () => {
     let price = 500;
     if (document.getElementById('c1').checked == true) {
       price += 200;
@@ -21,7 +21,7 @@ for (let i=0; i<checks.length; i++) {
 }
 */
 checks.forEach((check) => {
-  check.addEventListener('click', (event)=>{
+  check.addEventListener('click', (event) => {
     let price = 500;
     if (document.getElementById('c1').checked == true) {
       price += 200;

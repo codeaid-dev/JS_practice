@@ -1,4 +1,4 @@
-document.querySelector('form').addEventListener('change', ()=>{
+document.querySelector('form').addEventListener('change', () => {
   const colors = document.getElementsByName('bgcolor');
   for (let element of colors) {
     if (element.checked) {

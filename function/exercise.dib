@@ -1,6 +1,6 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"name":"javascript","languageName":"javascript"},{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"html","languageName":"HTML"},{"name":"http","languageName":"HTTP"},{"name":"mermaid","languageName":"Mermaid"},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"value"}]}}
 
 #!javascript
 
@@ -83,17 +83,17 @@ console.log(cube); // [0,1,8,125,1000]
 #!javascript
 
 // 関数のスコープ
-var num1 = 20;
-var num2 = 3;
-var name = "Foo";
+let num1 = 20;
+let num2 = 3;
+let name = "Foo";
 function multiply() {
   return num1 * num2;
 }
 console.log(multiply()); // 60
 // 入れ子になっている関数の例
 function getScore() {
-  var num1 = 2;
-  var num2 = 4;
+  let num1 = 2;
+  let num2 = 4;
   function add() {
     return name + " scored " + (num1 + num2);
   }
@@ -105,10 +105,9 @@ console.log(getScore()); // "Foo scored 6"
 
 // 関数の引数
 function myConcat(separator) {
-  var result = "";
-  var i;
+  let result = "";
   // 引数について繰り返し
-  for (i = 1; i < arguments.length; i++) {
+  for (let i = 1; i < arguments.length; i++) {
     result += arguments[i] + separator;
   }
   return result;
@@ -171,13 +170,13 @@ console.log(sum(...[1,2,3]));
 #!javascript
 
 // アロー関数
-var a = ["Hydrogen", "Helium", "Lithium", "Beryllium"];
-var a2 = a.map(function (s) {
+const a = ["Hydrogen", "Helium", "Lithium", "Beryllium"];
+const a2 = a.map(function (s) {
   return s.length;
 });
 console.log(a2); // [8, 6, 7, 9]
 
-var a3 = a.map((s) => s.length);
+const a3 = a.map((s) => s.length);
 console.log(a3); // [8, 6, 7, 9]
 
 #!javascript

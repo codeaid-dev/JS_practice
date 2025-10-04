@@ -72,10 +72,9 @@ function getScore() {
 console.log(getScore()); // "Foo scored 6"
 // 関数の引数
 function myConcat(separator) {
-  var result = "";
-  var i;
+  let result = "";
   // 引数について繰り返し
-  for (i = 1; i < arguments.length; i++) {
+  for (let i = 1; i < arguments.length; i++) {
     result += arguments[i] + separator;
   }
   return result;

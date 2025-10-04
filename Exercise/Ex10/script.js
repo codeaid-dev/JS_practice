@@ -4,7 +4,7 @@ const colors = document.getElementsByName('color');
 const bold = document.getElementById('bold');
 
 const btn = document.querySelector('button');
-btn.addEventListener('click', ()=>{
+btn.addEventListener('click', () => {
 
   let color = 'black';
   for (let e of colors) {

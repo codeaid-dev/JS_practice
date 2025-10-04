@@ -15,7 +15,7 @@ show_q = () => {
 }
 show_q();
 
-btn1.addEventListener('click', ()=>{
+btn1.addEventListener('click', () => {
   const a = answer.value;
   if (a == pref[ken]) {
     elem.style.color = 'red';
@@ -26,6 +26,6 @@ btn1.addEventListener('click', ()=>{
   }
 });
 
-btn2.addEventListener('click', ()=>{
+btn2.addEventListener('click', () => {
   show_q();
 });

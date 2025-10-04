@@ -1,7 +1,7 @@
 const btns = document.querySelectorAll('button');
 const disc = document.querySelector('#discription');
 for (let i=0; i<btns.length; i++) {
-  btns[i].addEventListener('click', ()=>{
+  btns[i].addEventListener('click', () => {
     if (btns[i].id == 'small') {
       // disc.setAttribute('style', 'font-size:14px;');
       disc.style.fontSize = '14px';
