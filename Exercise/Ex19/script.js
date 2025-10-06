@@ -96,16 +96,16 @@ for (let i=0; i<region.length; i++) {
   });
 }
 
-pref.addEventListener('change', (event)=>{
+pref.addEventListener('change', (event) => {
   let target;
   if (select == "kinki") {
-    target = kinki.find((value)=> value.id == event.target.value);
+    target = kinki.find((value) => value.id == event.target.value);
   } else if (select == "nishinihon") {
-    target = nishinihon.find((value)=> value.id == event.target.value);
+    target = nishinihon.find((value) => value.id == event.target.value);
   } else if (select == "shikoku") {
-    target = shikoku.find((value)=> value.id == event.target.value);
+    target = shikoku.find((value) => value.id == event.target.value);
   } else if (select == "kyushu") {
-    target = kyushu.find((value)=> value.id == event.target.value);
+    target = kyushu.find((value) => value.id == event.target.value);
   }
   document.querySelector('#result').innerHTML = `${target.name}が選択されました。`;
 });

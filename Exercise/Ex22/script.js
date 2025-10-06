@@ -6,7 +6,7 @@ const ascii = [];
 for (let i = 33; i <= 126; i++) {
   ascii.push(String.fromCharCode(i));
 }
-btn.addEventListener('click',()=>{
+btn.addEventListener('click',() => {
   const password = [];
   msg.innerText = '';
   if (digit.value < 8 || digit.value > 32) {

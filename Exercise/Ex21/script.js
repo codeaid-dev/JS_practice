@@ -6,7 +6,7 @@ const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N',
 let timer_id;
 let flag=false;
 
-q_btn.addEventListener('click', ()=>{
+q_btn.addEventListener('click', () => {
   if (!flag) {
     const q_str = [];
     hide = Math.floor(Math.random() * alpha.length);
@@ -18,7 +18,7 @@ q_btn.addEventListener('click', ()=>{
     document.querySelector('#alpha').innerHTML = q_str.join('');
 
     const start = new Date();
-    timer_id = setInterval(()=>{
+    timer_id = setInterval(() => {
       const now = new Date();
       const seconds = Math.floor((now.getTime() - start.getTime()) / 1000);
       time.innerText = '経過時間：' + seconds + '秒';
@@ -29,7 +29,7 @@ q_btn.addEventListener('click', ()=>{
 
 const answer = document.querySelector('#answer');
 const ipt = document.querySelector('input');
-answer.addEventListener('click', ()=>{
+answer.addEventListener('click', () => {
   if (flag) {
     clearInterval(timer_id);
     if (ipt.value.toUpperCase() == alpha[hide]) {
