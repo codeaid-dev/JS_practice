@@ -5,7 +5,7 @@ let flg_turn = true;  // true: 1枚目、false: 2枚目
 let first_card;     // 1枚目のカードを格納(div要素)
 let count = 0;      // 消した回数
 
-window.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   let arr = [];
   for (let i = 0; i < 10; i++) { // ペアの数字を10組
     arr.push(i);

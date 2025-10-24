@@ -1,5 +1,5 @@
 // HTMLが表示されたとき
-window.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
   // 各タイルの数字を格納するリスト
   const tiles = ['', '1', '2', '3', '4', '5', '6', '7', '8'];
