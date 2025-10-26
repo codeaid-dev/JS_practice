@@ -51,10 +51,10 @@
       for (let i=0; i<tlight.length; i++) {
         if (tlight[i].checked) {
           const select = tlight[i].value;
-          if (select == 'green') {
+          if (select === 'green') {
             green.setAttribute('style', 'background:green');
             red.setAttribute('style', 'background:black');
-          } else if (select == 'gtor') {
+          } else if (select === 'gtor') {
             green.setAttribute('style', 'background:green');
             red.setAttribute('style', 'background:black');
             const timer_id = setInterval(()=>{

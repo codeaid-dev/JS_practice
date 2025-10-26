@@ -66,7 +66,7 @@ function turn(e){
 
   if (wait_time) return; // 2枚目クリック時の待ち中はreturn
 
-  if (div.innerHTML == '') { // 裏向きのカードをクリックした時は数字を表示
+  if (div.innerHTML === '') { // 裏向きのカードをクリックした時は数字を表示
     div.className = 'card';
     div.innerHTML = div.number; 
   } else { // 数字が表示されているカードをクリックするとreturn
@@ -77,14 +77,14 @@ function turn(e){
     first_card = div; // 1枚目カードを保存
     flg_turn = false; // 次は2枚目
   } else { // 2枚目をクリック
-    if (first_card.number == div.number) { // 1枚目と2枚目が同じ
+    if (first_card.number === div.number) { // 1枚目と2枚目が同じ
       count++;
       wait_time = setTimeout(()=>{ // 500ms後、透明にして非表示にする
         div.className = 'card finish';
         first_card.className = 'card finish';
         wait_time = NaN;
         
-        if (count == 10) { // 全て消したらタイマー終了
+        if (count === 10) { // 全て消したらタイマー終了
             clearInterval(timer);
         }
       }, 500);

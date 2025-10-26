@@ -43,7 +43,7 @@ console.log(factorial(5)); // 120
 // 関数式(引数渡し)
 function map(f, a) {
   let result = [];
-  for (let i = 0; i != a.length; i++) result[i] = f(a[i]);
+  for (let i = 0; i !== a.length; i++) result[i] = f(a[i]);
   return result;
 }
 const f = function (x) {

@@ -23,7 +23,7 @@ btn.addEventListener('click', () => {
   show.textContent = null; // 前回に入力した子要素を削除する
 
   for (let i=0; i<num.value; i++) {
-    if (txt.value == "") {
+    if (txt.value === "") {
       show.innerHTML = '<p>空です</p>';
     } else {
       show.innerHTML += '<p>' + txt.value + '</p>';

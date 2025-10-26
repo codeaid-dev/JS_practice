@@ -18,22 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
   for (let i = 0; i < tiles.length; i++) {
     targets[i].innerText = tiles[i];
     targets[i].addEventListener('click', () => {
-      if (i <= 5 && targets[i+3].innerText == '' ) {
+      if (i <= 5 && targets[i+3].innerText === '' ) {
         // 下と入れ替え
         const tmp = targets[i].innerText;
         targets[i].innerText = targets[i+3].innerText;
         targets[i+3].innerText = tmp;
-      } else if ( i >= 3 && targets[i-3].innerText == '') {
+      } else if ( i >= 3 && targets[i-3].innerText === '') {
         // 上と入れ替え
         const tmp = targets[i].innerText;
         targets[i].innerText = targets[i-3].innerText;
         targets[i-3].innerText = tmp;
-      } else if (i % 3 !== 2 && targets[i+1].innerText == '') {
+      } else if (i % 3 !== 2 && targets[i+1].innerText === '') {
         // 右と入れ替え
         const tmp = targets[i].innerText;
         targets[i].innerText = targets[i+1].innerText;
         targets[i+1].innerText = tmp;
-      } else if (i % 3 !== 0 && targets[i-1].innerText == '') {
+      } else if (i % 3 !== 0 && targets[i-1].innerText === '') {
         // 左と入れ替え
         const tmp = targets[i].innerText;
         targets[i].innerText = targets[i-1].innerText;

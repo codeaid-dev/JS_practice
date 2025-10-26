@@ -9,13 +9,13 @@ const result = document.querySelector('.result');
 // タイルがクリックされたときのイベント処理
 for (let i in tiles) {
   targets[i].addEventListener('click', () => {
-    if (targets[i].innerText == '') {
-      if (status == 10) return;
+    if (targets[i].innerText === '') {
+      if (status === 10) return;
       status++;
       targets[i].innerText = (turn) ? first : second;
       tiles[i] = targets[i].innerText;
       const str = judge();
-      if (str != "") {
+      if (str !== "") {
         result.innerText = str;
       }
       turn = (turn) ? false : true;
@@ -24,14 +24,14 @@ for (let i in tiles) {
 }
 
 const judge = ()=>{
-  if (tiles[0] == tiles[1] && tiles[0] == tiles[2]
-    || tiles[3] == tiles[4] && tiles[3] == tiles[5]
-    || tiles[6] == tiles[7] && tiles[6] == tiles[8]
-    || tiles[0] == tiles[3] && tiles[0] == tiles[6]
-    || tiles[1] == tiles[4] && tiles[1] == tiles[7]
-    || tiles[2] == tiles[5] && tiles[2] == tiles[8]
-    || tiles[0] == tiles[4] && tiles[0] == tiles[8]
-    || tiles[2] == tiles[4] && tiles[2] == tiles[6]) {
+  if (tiles[0] === tiles[1] && tiles[0] === tiles[2]
+    || tiles[3] === tiles[4] && tiles[3] === tiles[5]
+    || tiles[6] === tiles[7] && tiles[6] === tiles[8]
+    || tiles[0] === tiles[3] && tiles[0] === tiles[6]
+    || tiles[1] === tiles[4] && tiles[1] === tiles[7]
+    || tiles[2] === tiles[5] && tiles[2] === tiles[8]
+    || tiles[0] === tiles[4] && tiles[0] === tiles[8]
+    || tiles[2] === tiles[4] && tiles[2] === tiles[6]) {
       if (turn) {
         status = 10;
         return "○の勝ち";
@@ -39,7 +39,7 @@ const judge = ()=>{
         status = 10;
         return "Ｘの勝ち";
       }
-    } else if (status == 9) {
+    } else if (status === 9) {
       return "引き分け";
     }
     return "";

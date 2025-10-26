@@ -1,13 +1,13 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"name":"javascript","languageName":"javascript"},{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"html","languageName":"HTML"},{"name":"http","languageName":"HTTP"},{"name":"mermaid","languageName":"Mermaid"},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"value"}]}}
 
 #!javascript
 
 // if文
 const randNum = Math.floor(Math.random()*5); // 0~4
 let data = '';
-if (randNum%2 == 0) {
+if (randNum%2 === 0) {
   data = 'even';
 } else {
   data = 'odd';
@@ -19,7 +19,7 @@ console.log(data);
 
 // 三項演算子
 const randNum = Math.floor(Math.random()*5); // 0~4
-const data = randNum%2==0 ? 'even' : 'odd';
+const data = randNum%2===0 ? 'even' : 'odd';
 console.log(randNum);
 console.log(data);
 
@@ -86,7 +86,7 @@ let n = 0;
 while (n < 3) {
   n++;
   console.log(`n:${n}`);
-  if (n == 2) {
+  if (n === 2) {
     break;
   }
 }
@@ -97,7 +97,7 @@ while (n < 3) {
 let n = 0;
 while (n < 3) {
   n++;
-  if (n == 2) {
+  if (n === 2) {
     continue;
   }
   console.log(`n:${n}`);
@@ -120,7 +120,7 @@ loop1: for (let i = 0; i < 3; i++) {
 
 // #1
 for (let i=1; i<=20; i++) {
-  if (i%2==0 && i%4!=0) {
+  if (i%2===0 && i%4!==0) {
     console.log(i);
   }
 }
@@ -131,7 +131,7 @@ for (let i=1; i<=20; i++) {
 let cnt = 0;
 for (let i=1; i<31; i++) {
   cnt += i;
-  if (i==10 || i==20 || i==30) {
+  if (i===10 || i===20 || i===30) {
     console.log(`${i-9}から${i}の合計：${cnt}`);
     cnt = 0;
   }
@@ -142,11 +142,11 @@ for (let i=1; i<31; i++) {
 // #3
 let s = '';
 for (let i=1; i<31; i++) {
-  if (i%3==0 && i%5==0) {
+  if (i%3===0 && i%5===0) {
     s += 'FizzBuzz';
-  } else if (i%3==0) {
+  } else if (i%3===0) {
     s += 'Fizz';
-  } else if (i%5==0) {
+  } else if (i%5===0) {
     s += 'Buzz';
   } else {
     s += i;
@@ -176,7 +176,7 @@ for (let i=1; i<=20; i++) {
   if (i > num/i) {
     break;
   }
-  if (num%i == 0) {
+  if (num%i === 0) {
     result += `${i}x${num/i}=${num} `;
   }
 }
@@ -186,7 +186,7 @@ console.log(result);
 
 // #6
 const num = Math.floor(Math.random()*10)+1;
-if (num == 1) {
+if (num === 1) {
   console.log('今日は最高！');
 } else if (num >= 2 && num <= 4) {
   console.log('今日はそこそこ');
@@ -218,15 +218,15 @@ let b=0;
 let w=0;
 for (let i=0; i<3; i++) {
   const num = Math.floor(Math.random()*3);
-  if (num == 0) {
+  if (num === 0) {
     r += 1;
-  } else if (num == 1) {
+  } else if (num === 1) {
     b += 1;
   } else {
     w += 1;
   }
 }
-if (r == 3 || b == 3 || w == 3 || (r == 1 && b == 1 && w == 1)) {
+if (r === 3 || b === 3 || w === 3 || (r === 1 && b === 1 && w === 1)) {
   console.log(`赤が${r}、青が${b}、白が${w}で勝ち`);
 } else {
   console.log(`赤が${r}、青が${b}、白が${w}で負け`);
@@ -239,8 +239,8 @@ for (let i=0; i<20; i++) {
   const dice1 = Math.floor(Math.random()*6)+1;
   const dice2 = Math.floor(Math.random()*6)+1;
   console.log(`${i+1}回目：${dice1},${dice2}`)
-  if (dice1 == dice2) {
-    if (dice1%2 == 0) {
+  if (dice1 === dice2) {
+    if (dice1%2 === 0) {
       console.log('大当たり');
     } else {
       console.log('当たり');
@@ -256,7 +256,7 @@ const nums = '2617398540';
 let result = '';
 let key = 0;
 for (let i=0; i<nums.length; i++) {
-  if (i == 0) {
+  if (i === 0) {
     key = Number(nums[i]);
     result += nums[i];
   } else {

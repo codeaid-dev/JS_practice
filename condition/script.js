@@ -52,7 +52,7 @@ n = 0;
 while (n < 3) {
   n++;
   console.log(`n:${n}`);
-  if (n == 2) {
+  if (n === 2) {
     break;
   }
 }
@@ -60,7 +60,7 @@ while (n < 3) {
 n = 0;
 while (n < 3) {
   n++;
-  if (n == 2) {
+  if (n === 2) {
     continue;
   }
   console.log(`n:${n}`);
@@ -77,7 +77,7 @@ loop1: for (let i = 0; i < 3; i++) {
 }
 // #1
 for (let i=1; i<=20; i++) {
-  if (i%2==0 && i%4!=0) {
+  if (i%2===0 && i%4!==0) {
     console.log(i);
   }
 }
@@ -85,7 +85,7 @@ for (let i=1; i<=20; i++) {
 let cnt = 0;
 for (let i=1; i<31; i++) {
   cnt += i;
-  if (i==10 || i==20 || i==30) {
+  if (i===10 || i===20 || i===30) {
     console.log(`${i-9}から${i}の合計：${cnt}`);
     cnt = 0;
   }
@@ -93,11 +93,11 @@ for (let i=1; i<31; i++) {
 // #3
 let s = '';
 for (let i=1; i<31; i++) {
-  if (i%3==0 && i%5==0) {
+  if (i%3===0 && i%5===0) {
     s += 'FizzBuzz';
-  } else if (i%3==0) {
+  } else if (i%3===0) {
     s += 'Fizz';
-  } else if (i%5==0) {
+  } else if (i%5===0) {
     s += 'Buzz';
   } else {
     s += i;
@@ -121,7 +121,7 @@ for (let i=1; i<=20; i++) {
   if (i > num/i) {
     break;
   }
-  if (num%i == 0) {
+  if (num%i === 0) {
     result += `${i}x${num/i}=${num} `;
   }
 }
