@@ -1,3 +1,4 @@
+// 通常関数 vs アロー関数（イベントリスナーで使う・thisの動作の違い）
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
 

@@ -1,3 +1,4 @@
+// 通常関数 vs アロー関数（thisの動作確認）
 // ----------------------
 // 通常関数 (function)
 // ----------------------
@@ -36,12 +37,12 @@ const doubled = numbers.map(n => n * 2);
 console.log(doubled); // [2, 4, 6, 8]
 
 // 2. this が外側スコープを保持する例
-function Counter() {
+function counter() {
   this.count = 0;
   setInterval(() => {
-    // アロー関数なので this は Counter のインスタンスを参照
+    // アロー関数なので this は counter のインスタンスを参照
     this.count++;
     console.log("Count:", this.count);
   }, 1000);
 }
-new Counter();  // 1秒ごとにカウントが増えて表示される
+counter();  // 1秒ごとにカウントが増えて表示される
