@@ -27,9 +27,9 @@
     let search_id = search.value;
 
     let target = user_list.find((data) => {
-      return data.id == search_id;
+      return data.id === search_id;
     });
-    if (target == null) {
+    if (target === null) {
       result.innerText = '該当者なし';
     } else {
       result.innerText = target.name;

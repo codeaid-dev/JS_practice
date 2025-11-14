@@ -17,7 +17,7 @@ show_q();
 
 btn1.addEventListener('click', () => {
   const a = answer.value;
-  if (a == pref[ken]) {
+  if (a === pref[ken]) {
     elem.style.color = 'red';
     elem.textContent = '正解！！';
   } else {

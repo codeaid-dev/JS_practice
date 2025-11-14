@@ -24,7 +24,7 @@
     let elem = document.querySelector('#result');
     btn.addEventListener('click',()=>{
       let uranai = Math.floor(Math.random() * 10);
-      if (uranai == 0) {
+      if (uranai === 0) {
         elem.setAttribute('style', 'background-color:blue');
         elem.innerText = '大吉';
       } else if (uranai >= 1 && uranai <= 3) {

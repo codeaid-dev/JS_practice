@@ -1,6 +1,6 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"name":"javascript","languageName":"javascript"},{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"html","languageName":"HTML"},{"name":"http","languageName":"HTTP"},{"name":"mermaid","languageName":"Mermaid"},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"value"}]}}
 
 #!javascript
 
@@ -196,7 +196,7 @@ class Artist extends Person {
     console.log(`Hello! I'm ${this.name} and I'm ${this.#genre} musician.`);
   }
   setGenre(genre) {
-    if (this.name == 'Prince') {
+    if (this.name === 'Prince') {
       this.#genre = genre;
       return true;
     } else {

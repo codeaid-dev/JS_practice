@@ -4,7 +4,7 @@ const contents = document.querySelector('#contents');
 const btn = document.querySelector('button');
 const result = document.querySelector('#result');
 btn.addEventListener('click', () => {
-  if (col.value == '' || row.value == '' || contents.value == '') {
+  if (col.value === '' || row.value === '' || contents.value === '') {
     result.innerHTML = '<span style="color:red;">空白の欄があります。</span>';
   } else if (isNaN(col.value) || isNaN(row.value)) {
     result.innerHTML = '<span style="color:red;">列数と行数は数値を入力してください。</span>';

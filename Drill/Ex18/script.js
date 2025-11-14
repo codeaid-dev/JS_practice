@@ -15,7 +15,7 @@ search.addEventListener('keyup', () => {
   const target = user_list.find((data) => {
     return data.id === search_id;
   });
-  if (target == null) {
+  if (target === null) {
     result.textContent = '該当者なし';
   } else {
     result.textContent = target.name;

@@ -11,7 +11,7 @@ q_btn.addEventListener('click', () => {
     const q_str = [];
     hide = Math.floor(Math.random() * alpha.length);
     for (let i in alpha) {
-      if (i != hide) {
+      if (i !== hide) {
         q_str.push(alpha[i]);
       }
     }
@@ -32,7 +32,7 @@ const ipt = document.querySelector('input');
 answer.addEventListener('click', () => {
   if (flag) {
     clearInterval(timer_id);
-    if (ipt.value.toUpperCase() == alpha[hide]) {
+    if (ipt.value.toUpperCase() === alpha[hide]) {
       document.querySelector('#result').innerHTML = '<span style="color:blue">正解！！</span>';
     } else {
       document.querySelector('#result').innerHTML = `<span style="color:red">不正解・・・(正解:${alpha[hide]})</span>`;

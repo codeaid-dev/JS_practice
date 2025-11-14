@@ -8,11 +8,11 @@ let num = '';
 for (let i=0; i<keys.length; i++) {
   keys[i].addEventListener('click', () => {
     let val = keys[i].value;
-    if (!isNaN(val) || val == '.') {
+    if (!isNaN(val) || val === '.') {
       numStat = false;
       num += val;
       disp.innerText = num;
-    } else if (val == 'C') {
+    } else if (val === 'C') {
         num = '';
         total = 0;
         calc = '+';
@@ -24,7 +24,7 @@ for (let i=0; i<keys.length; i++) {
         num = '';
         disp.innerText = total;
       }
-      if (val == '=') {
+      if (val === '=') {
         total = 0;
         calc = '+';
       } else {

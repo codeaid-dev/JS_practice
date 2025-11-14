@@ -16,9 +16,9 @@ btn.addEventListener('click', ()=>{
     const tr = document.createElement('tr');
     for (let j = 0; j < 7; j++) {
       const td = document.createElement('td');
-      if (i == 0) {
+      if (i === 0) {
         td.innerText = wdays[j];
-      } else if (i == 1) {
+      } else if (i === 1) {
         if (j >= startDate.getDay()) {
           td.innerText = cnt;
           cnt++;

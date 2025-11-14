@@ -21,11 +21,11 @@
       } else {
         let type;
         let station = ipt.value;
-        if (station == 1 || station == 3 || station == 4) {
+        if (station === 1 || station === 3 || station === 4) {
           type = "快速";
-        }else if (station == 2) {
+        }else if (station === 2) {
           type = "快速・急行";
-        } else if (station == 5) {
+        } else if (station === 5) {
           type = "快速・急行・特急";
         } else {
           elem.innerText = "その駅はありません";

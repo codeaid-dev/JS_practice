@@ -8,28 +8,28 @@ btn.addEventListener('click', () => {
   for (let i=0; i<tlight.length; i++) {
     if (tlight[i].checked) {
       const select = tlight[i].value;
-      if (select == 'green') {
+      if (select === 'green') {
         green.setAttribute('style', 'background:green');
         yellow.setAttribute('style', 'background:black');
         red.setAttribute('style', 'background:black');
-      } else if (select == 'red') {
+      } else if (select === 'red') {
         green.setAttribute('style', 'background:black');
         yellow.setAttribute('style', 'background:black');
         red.setAttribute('style', 'background:red');
-      } else if (select == 'gtor') {
-        if (stat == 'green') {
+      } else if (select === 'gtor') {
+        if (stat === 'green') {
           green.setAttribute('style', 'background:green');
           yellow.setAttribute('style', 'background:black');
           red.setAttribute('style', 'background:black');
           stat = 'yellow';
         }
         const timer_id = setInterval(() => {
-          if (stat == 'yellow') {
+          if (stat === 'yellow') {
             green.setAttribute('style', 'background:black');
             yellow.setAttribute('style', 'background:yellow');
             red.setAttribute('style', 'background:black');
             stat = 'red';
-          } else if (stat == 'red') {
+          } else if (stat === 'red') {
             green.setAttribute('style', 'background:black');
             yellow.setAttribute('style', 'background:black');
             red.setAttribute('style', 'background:red');

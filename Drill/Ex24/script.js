@@ -5,7 +5,7 @@ const cnt = document.querySelector('#cnt');
 const result = document.querySelector('#result');
 const btn = document.querySelector('button');
 btn.addEventListener('click', () => {
-  if (yoko.value == '' || tate.value == '' || iro.value == '' || cnt.value == '') {
+  if (yoko.value === '' || tate.value === '' || iro.value === '' || cnt.value === '') {
     result.innerHTML = '<span style="color:red;">空白の欄があります。</span>';
   } else if (isNaN(yoko.value) || isNaN(tate.value) || isNaN(cnt.value)) {
     result.innerHTML = '<span style="color:red;">横幅・縦幅・個数は数値を入力してください。</span>';

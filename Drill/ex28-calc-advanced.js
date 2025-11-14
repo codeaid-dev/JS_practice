@@ -11,7 +11,7 @@ let initStat = true; // 初めてボタンが押されたか？ true:押され�
 for (let i=0; i<keys.length; i++) {
   keys[i].addEventListener('click', () => {
     let val = keys[i].value;
-    if (val == '.') {
+    if (val === '.') {
       if (!initStat) {
         num = total + val;
         disp.innerText = num;
@@ -28,7 +28,7 @@ for (let i=0; i<keys.length; i++) {
       disp.innerText = num;
       initStat = true;
     } else  {
-      if (val == "C") {
+      if (val === "C") {
         numStat = false;
         calcStat = false;
         initStat = false;
@@ -36,20 +36,20 @@ for (let i=0; i<keys.length; i++) {
         num = '';
         total = 0;
         disp.innerText = total;
-      } else if (val == "+/-") {
+      } else if (val === "+/-") {
 
-      } else if (val == "%") {
+      } else if (val === "%") {
 
       } else {
         if (numStat) {
-          if (!calcStat && val != '=') {
+          if (!calcStat && val !== '=') {
             calcStat = true;
             total = num;
             calc = val;
             num = '';
             disp.innerText = total;
           } else {
-            if (val == '=') {
+            if (val === '=') {
               calcStat = false;
               total = eval(total + calc + num);
               disp.innerText = total;

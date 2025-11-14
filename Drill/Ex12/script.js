@@ -5,10 +5,10 @@ const next = document.querySelector('#next');
 let position = 0;
 
 const changeSlide = (num) => {
-  if (position + num == 0) {
+  if (position + num === 0) {
     prev.disabled = true;
     next.disabled = false;
-  } else if (position + num == colors.length-1) {
+  } else if (position + num === colors.length-1) {
     next.disabled = true;
     prev.disabled = false;
   } else {

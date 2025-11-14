@@ -68,12 +68,12 @@
         if (!s_stat[i])
           s_stat[i] = true;
 
-        if (s_stat.indexOf(false) == -1) {
+        if (s_stat.indexOf(false) === -1) {
           clearInterval(timer_id);
           start.disabled = false;
-          if (cnt[0] == cnt[1] && cnt[1] == cnt[2]) {
+          if (cnt[0] === cnt[1] && cnt[1] === cnt[2]) {
             result.innerHTML = '<span style="color:red;">3つ揃いました！！おめでとう</span>';
-          } else if (cnt[0] == cnt[1] || cnt[1] == cnt[2] || cnt[0] == cnt[2]) {
+          } else if (cnt[0] === cnt[1] || cnt[1] === cnt[2] || cnt[0] === cnt[2]) {
             result.innerHTML = '<span style="color:black;">おしい！もうちょっと</span>';
           } else {
             result.innerHTML = '<span style="color:gray;">残念でした・・・</span>';
