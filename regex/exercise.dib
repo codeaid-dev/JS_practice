@@ -1,0 +1,45 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"html","languageName":"HTML"},{"name":"http","languageName":"HTTP"},{"name":"javascript","languageName":"javascript"},{"name":"mermaid","languageName":"Mermaid"},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"value"}]}}
+
+#!javascript
+
+const str = 'abcdefg';
+const reptxt = 'xxx'; // 置き換える文字列
+const findtxt = /cde/; // 照合するパターン（正規表現リテラル）
+const result = str.replace(findtxt, reptxt); // 文字列の置き換え
+console.log(result);
+
+#!javascript
+
+const str = 'abcdddddddefg';
+const reptxt = 'xxx'; // 置き換える文字列
+const findtxt = /cd+e/; // 照合するパターン（正規表現リテラル）
+const result = str.replace(findtxt, reptxt); // 文字列の置き換え
+console.log(result);
+
+#!javascript
+
+const str = 'abcdddddddefg';
+const reptxt = 'xxx'; // 置き換える文字列
+const findtxt = /cd*e/; // 照合するパターン（正規表現リテラル）
+const result = str.replace(findtxt, reptxt); // 文字列の置き換え
+console.log(result);
+
+#!javascript
+
+// gフラグがない場合
+const str = 'abcdefcdefg';
+const reptxt = 'xxx';
+const findtxt = /cde/;
+const result = str.replace(findtxt, reptxt);
+console.log(result);
+
+#!javascript
+
+// gフラグがない場合
+const str = 'abcdefcdefg';
+const reptxt = 'xxx';
+const findtxt = /cde/g;
+const result = str.replace(findtxt, reptxt);
+console.log(result);
