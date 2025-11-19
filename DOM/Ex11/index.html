@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOMドリル</title>
+  <style>
+  #terms {
+    max-width: 400px;
+    height: 150px;        /* 部分表示する高さ */
+    overflow-y: scroll;   /* 縦スクロール表示 */
+    border: 1px solid #ccc;
+    padding: 8px;
+    white-space: pre-wrap; /* ホワイトスペースは残って改行文字で改行する */
+  }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+<body>
+<h3>利用規約</h3>
+
+<div id="terms">
+ここに長い利用規約が入ります。
+スクロールしないと最後まで読めません。
+（中略）
+
+（中略）
+
+（中略）
+
+（中略）
+
+（中略）
+
+（中略）
+
+【利用規約の最後の行】
+</div>
+<br>
+<form>
+  <label>
+  <input type="checkbox" id="agree" disabled>
+  利用規約に同意する
+  </label>
+  <br><br>
+  <button type="submit" id="sendbtn" disabled>送信</button>
+</form>
+</body>
+</html>
