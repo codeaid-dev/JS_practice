@@ -1,23 +1,41 @@
-const user_list = [
-  { id: '2025-101', name: '高橋大介' },
-  { id: '2025-102', name: '鈴木健司' },
-  { id: '2025-103', name: '後藤栞' },
-  { id: '2025-104', name: '佐藤かおり' },
-  { id: '2025-105', name: '田中二郎' }
-];
-
-const search = document.querySelector('#search');
-const result = document.querySelector('#result');
-result.style.fontSize = '20px';
-search.addEventListener('keyup', () => {
-  const search_id = search.value;
-
-  const target = user_list.find((data) => {
-    return data.id === search_id;
-  });
-  if (target === null) {
-    result.textContent = '該当者なし';
+const min = document.querySelector('#minutes');
+const sec = document.querySelector('#seconds');
+const timer = document.querySelector('#timer');
+const start = document.querySelector('#start');
+const stop = document.querySelector('#stop');
+let timer_id = null;
+start.addEventListener('click', () => {
+  if ((min.value === "" && sec.value === "")
+  || (min.value !== "") && isNaN(parseInt(min.value)) || parseInt(min.value) >= 60
+  || (sec.value !== "") && isNaN(parseInt(sec.value)) || parseInt(sec.value) >= 60) {
+    timer.innerHTML = '<spen style="color:red">有効な値を入力してください</spen>';
   } else {
-    result.textContent = target.name;
+    start.disabled = true;
+    let min_cnt = min.value === "" ? 0 : parseInt(min.value);
+    let sec_cnt = sec.value === "" ? 0 : parseInt(sec.value);
+    let count = min_cnt * 60 + sec_cnt;
+    timer.textContent = `${('0'+min_cnt.toString(10)).slice(-2)}:${('0'+sec_cnt.toString(10)).slice(-2)}`;
+    timer_id = setInterval(() => {
+      count--;
+      min_cnt = Math.floor(count / 60);
+      sec_cnt = count % 60;
+
+      if (count <= 0) {
+        clearInterval(timer_id);
+        timer.textContent = 'タイマー終了';
+        start.disabled = false;
+      } else {
+        timer.textContent = `${('0'+min_cnt.toString(10)).slice(-2)}:${('0'+sec_cnt.toString(10)).slice(-2)}`;
+      }
+
+    }, 1000);
+  }
+});
+
+stop.addEventListener('click', () => {
+  if (timer_id !== null) {
+    console.log('in stop');
+    clearInterval(timer_id);
+    start.disabled = false;
   }
 });
