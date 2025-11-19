@@ -1,22 +1,24 @@
-const digit = document.querySelector('#digit');
-const pass = document.querySelector('#pass');
-const btn = document.querySelector('button');
-const msg = document.querySelector('#msg');
-const ascii = [];
-for (let i = 33; i <= 126; i++) {
-  ascii.push(String.fromCharCode(i));
-}
-btn.addEventListener('click',() => {
-  const password = [];
-  msg.innerText = '';
-  if (digit.value < 8 || digit.value > 32) {
-    pass.value = '';
-    msg.innerHTML = '<span style="color:red">桁数は8桁以上、32桁以下で生成してください。</span>';
-  } else {
-    for (let i = 0; i < digit.value; i++) {
-      const index = Math.floor(Math.random() * ascii.length);
-      password.push(ascii[index]);
+const q_btn = document.querySelector('#q_btn');
+let hide;
+const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N',
+'O','P','Q','R','S','T','U','V','W','X','Y','Z',];
+q_btn.addEventListener('click', () => {
+  const q_str = [];
+  hide = Math.floor(Math.random() * alpha.length);
+  for (let i in alpha) {
+    if (i !== hide) {
+      q_str.push(alpha[i]);
     }
-    pass.value = password.join('');
+  }
+  document.querySelector('#alpha').innerHTML = q_str.join('');
+});
+
+const answer = document.querySelector('#answer');
+const ipt = document.querySelector('input');
+answer.addEventListener('click', () => {
+  if (ipt.value.toUpperCase() === alpha[hide]) {
+    document.querySelector('#result').innerHTML = '<span style="color:blue">正解！！</span>';
+  } else {
+    document.querySelector('#result').innerHTML = `<span style="color:red">不正解・・・(正解：${alpha[hide]})</span>`;
   }
 });

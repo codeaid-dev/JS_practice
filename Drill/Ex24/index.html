@@ -7,12 +7,17 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>JavaScriptドリル</h1>
-  <div><label>横幅：<input type="text" id="yoko"></label></div>
-  <div><label>縦幅：<input type="text" id="tate"></label></div>
-  <div><label>色：<input type="text" id="iro"></label></div>
-  <div><label>個数：<input type="text" id="cnt"></label></div>
-  <button>ボックス作成</button>
-  <div id="result">結果表示</div>
+  <h1>パスワード生成</h1>
+  <p>パスワードを生成します。<br>生成する桁数を入力し生成ボタンを押してください。</p>
+  <div>
+    <label for="digit">桁数：</label>
+    <input type="number" id="digit">
+    <button>生成</button>
+  </div>
+  <div>
+    <label for="pass">パスワード：</label>
+    <input type="text" id="pass" style="width: 320px;">
+  </div>
+  <p id="msg"></p>
 </body>
 </html>

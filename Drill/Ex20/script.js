@@ -1,24 +1,23 @@
-const q_btn = document.querySelector('#q_btn');
-let hide;
-const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N',
-'O','P','Q','R','S','T','U','V','W','X','Y','Z',];
-q_btn.addEventListener('click', () => {
-  const q_str = [];
-  hide = Math.floor(Math.random() * alpha.length);
-  for (let i in alpha) {
-    if (i !== hide) {
-      q_str.push(alpha[i]);
-    }
-  }
-  document.querySelector('#alpha').innerHTML = q_str.join('');
-});
+const user_list = [
+  { id: '2025-101', name: '高橋大介' },
+  { id: '2025-102', name: '鈴木健司' },
+  { id: '2025-103', name: '後藤栞' },
+  { id: '2025-104', name: '佐藤かおり' },
+  { id: '2025-105', name: '田中二郎' }
+];
 
-const answer = document.querySelector('#answer');
-const ipt = document.querySelector('input');
-answer.addEventListener('click', () => {
-  if (ipt.value.toUpperCase() === alpha[hide]) {
-    document.querySelector('#result').innerHTML = '<span style="color:blue">正解！！</span>';
+const search = document.querySelector('#search');
+const result = document.querySelector('#result');
+result.style.fontSize = '20px';
+search.addEventListener('keyup', () => {
+  const search_id = search.value;
+
+  const target = user_list.find((data) => {
+    return data.id === search_id;
+  });
+  if (target === null) {
+    result.textContent = '該当者なし';
   } else {
-    document.querySelector('#result').innerHTML = `<span style="color:red">不正解・・・(正解：${alpha[hide]})</span>`;
+    result.textContent = target.name;
   }
 });

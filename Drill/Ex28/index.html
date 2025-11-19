@@ -5,35 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScriptドリル</title>
   <style>
-    #menu {
-      max-width: 600px;
-    }
-    .content {
-      display: none;
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
-    .active {
-      display: block;
-    }
-    .header {
-      cursor: pointer;
-      background: #ccc;
-      padding: 10px;
-      margin: 2px 0;
-    }
+  .light {
+    display: flex;
+    margin: 30px;
+    background: #dddddd;
+    width: 280px;
+    height: 100px;
+    border-radius: 50px;
+  }
+  .green,
+  .yellow,
+  .red {
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+  .green {
+    background: green;
+  }
+  .yellow {
+    background: yellow;
+  }
+  .red {
+    background: red;
+  }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
   <h1>JavaScriptドリル</h1>
-  <div id="menu">
-    <div class="header">項目1</div>
-    <div class="content">内容1</div>
-    <div class="header">項目2</div>
-    <div class="content">内容2</div>
-    <div class="header">項目3</div>
-    <div class="content">内容3</div>
+  <div class="light">
+    <div class="green"></div>
+    <div class="yellow"></div>
+    <div class="red"></div>
   </div>
+  <div class="form-group">
+    <label><input type="radio" name="tlight" value="green" checked>青信号</label>
+    <label><input type="radio" name="tlight" value="red">赤信号</label>
+    <label><input type="radio" name="tlight" value="gtor">青信号から赤信号に変わる</label>
+  </div>
+  <button style="margin-top: 30px;">表示</button>
 </body>
 </html>

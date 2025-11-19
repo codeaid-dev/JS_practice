@@ -4,20 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScriptドリル</title>
-  <style>
-    #alpha {
-      font-size: 20px;
-      font-weight: bold;
-    }
-  </style>
   <script src="script.js" defer></script>
 </head>
 <body>
   <h1>JavaScriptドリル</h1>
-  <p>出題を押して表示されるアルファベットから<br>抜けている文字を入力して答えなさい</p>
-  <div><button id="q_btn">出題</button></div>
-  <p id="alpha">ここにアルファベットが表示されます</p>
-  <div><input type="text"><button id="answer">答え</button></div>
-  <p id="result">結果表示</p>
+  <div>
+    <label for="search">ユーザーID</label>
+    <input type="text" id="search">
+  </div>
+  <p id="result">該当なし</p>
 </body>
 </html>

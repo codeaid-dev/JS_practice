@@ -4,18 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScriptドリル</title>
+  <style>
+    table, th, td {
+      border: 1px solid;
+    }
+  </style>
   <script src="script.js" defer></script>
 </head>
 <body>
   <h1>JavaScriptドリル</h1>
-  <div><textarea cols="60" rows="5">
-コンピュータは、なにによって動いているのでしょうか？そう、電気です。電気の状態には、流れているか・流れていないかの2通りがあります。コンピュータの世界では、その2通りの状態を1と0で表すことにしています。2つの状態（0と1）しか表せないので、コンピュータが扱う基本の数（基数）は2となり、これを2進数と呼びます。
-コンピュータは1と0、電気の有無しか判別することができない代わりに、1と0の膨大な量の組み合わせを演算・処理するのはとても速いです。こういった特性を活用し、コンピュータになにか仕事をしてほしいとき、コンピュータに対して命令をする必要があります。
-ところが人間の基数は10進や60進ですし、人間の言葉が1と0でできているコンピュータに伝わるわけはありません。コンピュータに命令を理解させるため、人間とコンピュータの橋渡しをするのがプログラムなのです。
-  </textarea></div>
-  <input type="text" id="findtxt">
-  <input type="text" id="reptxt">
-  <button>置換</button>
-  <p>ここに表示</p>
+  <div><label>列数：<input type="text" id="col"></label></div>
+  <div><label>行数：<input type="text" id="row"></label></div>
+  <div><label>テキスト：<input type="text" id="contents"></label></div>
+  <button>表作成</button>
+  <p id="result">結果表示</p>
 </body>
 </html>
