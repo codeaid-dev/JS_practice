@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>複数classイベント</title>
+</head>
+<body>
+  <ul class="items">
+    <li class="item">項目1</li>
+    <li class="item">項目2</li>
+    <li class="item">項目3</li>
+    <li class="item">項目4</li>
+  </ul>
+
+  <script>
+    const items = document.getElementsByClassName('item');
+    for (let item of items) {
+      item.addEventListener('click', ()=> {
+        for (let ele of items) { ele.style.color = 'black'; }
+        item.style.color = 'red';
+      });
+    }
+  </script>
+</body>
+</html>
