@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>テキスト取得・設定</title>
+</head>
+<body>
+  <div id="sample">テキストを<span style="display: none;">全部</span>取得!</div>
+  <script>
+    const sample = document.getElementById('sample');
+    console.log(sample.textContent); // テキストを全部取得!
+    console.log(sample.textContent.length); // 10
+    console.log(sample.innerText); // テキストを取得!
+    console.log(sample.innerText.length); // 8
+    console.log(sample.innerHTML); // テキストを<span style="display: none;">全部</span>取得!
+    console.log(sample.innerHTML.length); // 46
+  </script>
+</body>
+</html>

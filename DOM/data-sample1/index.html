@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>data-*グローバル属性</title>
+</head>
+<body>
+  <h1>カスタムデータ属性</h1>
+  <ul id="productList">
+    <li data-id="1" data-type="fruit" data-price="120">りんご</li>
+    <li data-id="2" data-type="drink" data-price="250">コーヒー</li>
+    <li data-id="3" data-type="food" data-price="300">サンドイッチ</li>
+  </ul>
+  <p></p>
+  <script>
+    document.querySelectorAll('#productList li').forEach(item => {
+      item.addEventListener('click', () => {
+        const id = item.dataset.id;
+        const type = item.dataset.type;
+        const price = item.dataset.price;
+        const name = item.textContent;
+        document.querySelector('p').textContent = `${name}（ID: ${id}, 種類: ${type}）の価格は ${price} 円です`;
+      });
+    });
+  </script>
+</body>
+</html>

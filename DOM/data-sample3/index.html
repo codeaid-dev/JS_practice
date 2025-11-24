@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>data-*グローバル属性</title>
+</head>
+<body>
+  <h1>カスタムデータ属性</h1>
+  <button id="toggleBtn" data-state="off">OFF</button>
+  <script>
+    const btn = document.getElementById("toggleBtn");
+
+    btn.addEventListener("click", () => {
+      const state = btn.dataset.state === "off" ? "on" : "off";
+
+      btn.dataset.state = state;
+      btn.textContent = state.toUpperCase();
+    });
+  </script>
+</body>
+</html>

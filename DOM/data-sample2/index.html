@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>data-*グローバル属性</title>
+</head>
+<body>
+  <h1>カスタムデータ属性</h1>
+  <button id="countBtn" data-count="0">カウント: 0</button>
+  <script>
+    const btn = document.getElementById('countBtn');
+    btn.addEventListener('click', () => {
+      let count = Number(btn.dataset.count);
+      count++;
+      btn.dataset.count = count;
+      btn.textContent = `カウント: ${count}`;
+    });
+  </script>
+</body>
+</html>
