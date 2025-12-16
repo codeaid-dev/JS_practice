@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>食事メニュー</title>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <form action="/" method="POST" id="oder">
+    <label>食事：<input type="text" name="menu"></label><br>
+    <label><input type="radio" name="meals" value="breakfast" checked>朝食</label>
+    <label><input type="radio" name="meals" value="lunch">昼食</label>
+    <label><input type="radio" name="meals" value="dinner">夕食</label><br>
+    <label>食事に付けるメニュー：</label><br>
+    <label><input type="checkbox" name="add-item" value="rice">白米</label>
+    <label><input type="checkbox" name="add-item" value="misosoup">味噌汁</label>
+    <label><input type="checkbox" name="add-item" value="pickles">漬物</label>
+    <label><input type="checkbox" name="add-item" value="coffee">コーヒー</label><br>
+    <button type="submit">注文</button>
+  </form>
+  <div id="error" style="color: red;"></div>
+</body>
+</html>
