@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ファイルアップロード</title>
+  <script src="sample.js" defer></script>
+</head>
+<body>
+  <form action="/" method="POST" id="upload">
+    <label>ファイルアップロード：<input type="file" name="up" accept=".txt"></label><br>
+    <label>ファイルの種類：</label><br>
+    <label><input type="radio" name="file-type" value=".txt" checked>テキストファイル(.txt)</label>
+    <label><input type="radio" name="file-type" value=".pdf">PDFファイル(.pdf)</label>
+    <label><input type="radio" name="file-type" value="image/*">画像ファイル</label><br>
+    <button type="submit">アップロード</button>
+  </form>
+</body>
+</html>
