@@ -1,7 +1,7 @@
-const oderForm = document.forms['data'];
+const prefForm = document.forms['data'];
 const selected = [];
-oderForm.addEventListener('submit', () => {
-  const select = oderForm.elements['prefecture'];
+prefForm.addEventListener('submit', () => {
+  const select = prefForm.elements['prefecture'];
   for (let s of select) {
     if (s.selected) {
       selected.push(s.value);
