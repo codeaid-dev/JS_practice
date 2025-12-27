@@ -1,0 +1,32 @@
+const parent = document.getElementById('parent');
+const div1 = document.getElementById('div1');
+const div2 = document.createElement('div');
+const div3 = document.createElement('div');
+const div4 = document.createElement('div');
+const move = document.querySelector('#move');
+const add = document.querySelector('#add');
+div1.textContent = 'DIV1';
+div2.id = 'div2';
+div2.textContent = 'DIV2';
+div3.id = 'div3';
+div3.textContent = 'DIV3';
+div4.id = 'div4';
+div4.textContent = 'DIV4';
+parent.appendChild(div3);
+parent.append(div2);
+parent.prepend(div4);
+move.addEventListener('click', ()=> {
+  parent.prepend(div2);
+  // parent.append(div4);
+  // parent.before(div1);
+});
+add.addEventListener('click', ()=> {
+  const div5 = document.createElement('div');
+  const div6 = document.createElement('div');
+  div5.textContent = 'DIV5';
+  div6.textContent = 'DIV6';
+  parent.after(div5);
+  parent.before(div6);
+  // document.body.append('<br>body最後');
+  document.body.insertAdjacentHTML('beforeend', '<br>body最後');
+});

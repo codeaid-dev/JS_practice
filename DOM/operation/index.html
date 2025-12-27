@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>要素の追加・移動</title>
+  <style>
+    div {
+      width: 100px;
+      text-align: center;
+      border: 2px solid gray;
+      margin: 5px;
+    }
+    #parent {
+      background-color: red;
+      width: 115px;
+      height: 135px;
+    }
+    #div1 {
+      background-color: blue;
+    }
+    #div2 {
+      background-color: green;
+    }
+    #div3 {
+      background-color: yellow;
+    }
+    #div4 {
+      background-color: cyan;
+    }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="parent">
+    <div id="div1"></div>
+  </div>
+  <button id="move">移動</button>
+  <button id="add">追加</button>
+</body>
+</html>
