@@ -19,6 +19,7 @@ function showImage() {
 
 close.addEventListener('click', () => modal.style.display = 'none');
 modal.addEventListener('click', (div) => {
+  console.log(div.target);
   if (div.target === modal) modal.style.display = 'none';
 });
 
