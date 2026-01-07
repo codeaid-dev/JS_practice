@@ -7,7 +7,7 @@ let currentIndex = 0;
 
 gallery.addEventListener('click', (div) => {
   if (div.target.tagName === 'IMG') {
-    currentIndex = +div.target.dataset.index;
+    currentIndex = Number(div.target.dataset.index);
     showImage();
   }
 });
