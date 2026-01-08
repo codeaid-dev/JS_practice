@@ -7,13 +7,13 @@
 function greet(name) {
   return `Hello, ${name}!`;
 }
-console.log(greet("Taro")); // Hello, Taro!
+console.log(greet('Taro')); // Hello, Taro!
 
 // 2. メソッドとして利用する場合の this
 const person = {
-  name: "Hanako",
+  name: 'Hanako',
   sayName: function() {  // 通常関数なので this は呼び出し元を指す
-    console.log("My name is " + this.name);
+    console.log('My name is ' + this.name);
   }
 };
 person.sayName(); // My name is Hanako
@@ -42,7 +42,7 @@ function counter() {
   setInterval(() => {
     // アロー関数なので this は counter のインスタンスを参照
     this.count++;
-    console.log("Count:", this.count);
+    console.log('Count:', this.count);
   }, 1000);
 }
 counter();  // 1秒ごとにカウントが増えて表示される

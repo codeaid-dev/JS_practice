@@ -13,11 +13,11 @@ btn.addEventListener('click', () => {
     result.innerHTML = null;
     for (let i=0; i<cnt.value; i++) {
       const divElement = document.createElement('div');
-      divElement.style.width = yoko.value + "px";
-      divElement.style.height = tate.value + "px";
+      divElement.style.width = yoko.value + 'px';
+      divElement.style.height = tate.value + 'px';
       divElement.style.background = iro.value;
-      divElement.style.margin = "10px";
-      divElement.style.float = "left";
+      divElement.style.margin = '10px';
+      divElement.style.float = 'left';
       //divElement.setAttribute('style', `width:${yoko.value}px;height:${tate.value}px;background:${iro.value};margin:10px;float:left;`);
       result.append(divElement);
     }

@@ -17,7 +17,7 @@ console.log(square(4)); // 16
 function change(obj) {
   obj.make = 'Toyota';
 }
-mycar = { make: "Honda", model: "Accord", year: 1998 };
+mycar = { make: 'Honda', model: 'Accord', year: 1998 };
 console.log(mycar.make); // Honda
 change(mycar);
 console.log(mycar.make); // Toyota
@@ -26,9 +26,9 @@ function myFunc(arr) {
   arr[0] = 'Orange';
 }
 let fruits = ['Apple','Melon','Peach'];
-console.log(fruits); // ["Apple","Melon","Peach"]
+console.log(fruits); // ['Apple','Melon','Peach']
 myFunc(fruits);
-console.log(fruits); // ["Orange","Melon","Peach"]
+console.log(fruits); // ['Orange','Melon','Peach']
 // 関数式(無名)
 const square2 = function (number) {
   return number * number;
@@ -55,7 +55,7 @@ console.log(cube); // [0,1,8,125,1000]
 // 関数のスコープ
 var num1 = 20;
 var num2 = 3;
-var name = "Foo";
+var name = 'Foo';
 function multiply() {
   return num1 * num2;
 }
@@ -65,24 +65,24 @@ function getScore() {
   var num1 = 2;
   var num2 = 4;
   function add() {
-    return name + " scored " + (num1 + num2);
+    return name + ' scored ' + (num1 + num2);
   }
   return add();
 }
-console.log(getScore()); // "Foo scored 6"
+console.log(getScore()); // 'Foo scored 6'
 // 関数の引数
 function myConcat(separator) {
-  let result = "";
+  let result = '';
   // 引数について繰り返し
   for (let i = 1; i < arguments.length; i++) {
     result += arguments[i] + separator;
   }
   return result;
 }
-console.log(myConcat(", ", "red", "orange", "blue")); // "red, orange, blue, "
-console.log(myConcat(1,2,3)); // "34"
-console.log(myConcat("; ", "elephant", "giraffe", "lion", "cheetah")); // "elephant; giraffe; lion; cheetah; "
-console.log(myConcat(". ", "sage", "basil", "oregano", "pepper", "parsley")); // "sage. basil. oregano. pepper. parsley. "
+console.log(myConcat(', ', 'red', 'orange', 'blue')); // 'red, orange, blue, '
+console.log(myConcat(1,2,3)); // '34'
+console.log(myConcat('; ', 'elephant', 'giraffe', 'lion', 'cheetah')); // 'elephant; giraffe; lion; cheetah; '
+console.log(myConcat('. ', 'sage', 'basil', 'oregano', 'pepper', 'parsley')); // 'sage. basil. oregano. pepper. parsley. '
 // デフォルト引数
 function multiply(a, b = 1) {
   return a * b;
@@ -105,12 +105,12 @@ function countup(a, b, ...next) {
   console.log(b);
   console.log(next);
 }
-countup("one", "two", "three", "four", "five", "six");
-// "one"
-// "two"
-// ["three", "four", "five", "six"]
+countup('one', 'two', 'three', 'four', 'five', 'six');
+// 'one'
+// 'two'
+// ['three', 'four', 'five', 'six']
 // アロー関数
-var a = ["Hydrogen", "Helium", "Lithium", "Beryllium"];
+var a = ['Hydrogen', 'Helium', 'Lithium', 'Beryllium'];
 var a2 = a.map(function (s) {
   return s.length;
 });
