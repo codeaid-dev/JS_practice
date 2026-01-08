@@ -1,18 +1,37 @@
-const form = document.getElementById('passwordForm');
-const passwordInput = document.getElementById('password');
-const msg = document.getElementById('message');
+const gallery = document.getElementById('gallery');
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modalImg');
+const images = [...gallery.querySelectorAll('img')];
+const close = document.getElementById('close');
+let currentIndex = 0;
 
-form.addEventListener('submit', (event) => {
-  const password = passwordInput.value;
+gallery.addEventListener('click', (div) => {
+  if (div.target.tagName === 'IMG') {
+    currentIndex = Number(div.target.dataset.index);
+    showImage();
+  }
+});
 
-  const regex =
-    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[\S]{8,32}$/;
+function showImage() {
+  modal.style.display = 'flex';
+  modalImg.src = images[currentIndex].src;
+}
 
-  if (!regex.test(password)) {
-    event.preventDefault();
-    msg.textContent =
-      'パスワードは8〜32文字で、大小文字の英字・数字・記号をすべて含めてください。';
-  } else {
-    msg.textContent = '';
+close.addEventListener('click', () => modal.style.display = 'none');
+modal.addEventListener('click', (div) => {
+  console.log(div.target);
+  if (div.target === modal) modal.style.display = 'none';
+});
+
+document.addEventListener('keydown', (doc) => {
+  if (modal.style.display === 'flex') {
+    if (doc.key === 'ArrowRight') {
+      currentIndex = (currentIndex+1)%images.length;
+      showImage();
+    }
+    if (doc.key === 'ArrowLeft') {
+      currentIndex = (currentIndex-1+images.length)%images.length;
+      showImage();
+    }
   }
 });
