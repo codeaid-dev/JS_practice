@@ -10,11 +10,9 @@ form.addEventListener('submit', (event) => {
 
   if (!regex.test(password)) {
     event.preventDefault();
-    msg.style.color = 'red';
     msg.textContent =
-      'パスワードは8〜32文字で、大文字・小文字・数字・記号をすべて含めてください。';
+      'パスワードは8〜32文字で、大小文字の英字・数字・記号をすべて含めてください。';
   } else {
-    msg.style.color = 'black';
-    msg.textContent = '登録できました。';
+    msg.textContent = '';
   }
 });
