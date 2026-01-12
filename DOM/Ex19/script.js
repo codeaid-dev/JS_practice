@@ -35,3 +35,13 @@ document.addEventListener('keydown', (doc) => {
     }
   }
 });
+
+// 画像の右クリックを無効にする
+// modalImg.addEventListener('contextmenu', (event) => {
+//   event.preventDefault();
+// });
+// for (let el of images) {
+//   el.addEventListener('contextmenu', (event) => {
+//     event.preventDefault();
+//   });
+// }
