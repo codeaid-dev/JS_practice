@@ -9,6 +9,8 @@ btn.addEventListener('click', () => {
     result.innerHTML = '<span style="color:red;">空白の欄があります。</span>';
   } else if (isNaN(yoko.value) || isNaN(tate.value) || isNaN(cnt.value)) {
     result.innerHTML = '<span style="color:red;">横幅・縦幅・個数は数値を入力してください。</span>';
+  } else if (Number(yoko.value) <= 0 || Number(tate.value) <= 0 || Number(cnt.value) <= 0) {
+    result.innerHTML = '<span style="color:red;">横幅・縦幅・個数は1以上の数値を入力してください。</span>';
   } else {
     result.innerHTML = null;
     for (let i=0; i<cnt.value; i++) {

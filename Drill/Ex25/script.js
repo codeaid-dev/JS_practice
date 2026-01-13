@@ -8,6 +8,8 @@ btn.addEventListener('click', () => {
     result.innerHTML = '<span style="color:red;">空白の欄があります。</span>';
   } else if (isNaN(col.value) || isNaN(row.value)) {
     result.innerHTML = '<span style="color:red;">列数と行数は数値を入力してください。</span>';
+  } else if (Number(col.value) <= 0 || Number(row.value) <= 0) {
+    result.innerHTML = '<span style="color:red;">列数と行数は1以上の数値を入力してください。</span>';
   } else {
     let tbl = '<table>';
     for (let i=0; i<row.value; i++) {
