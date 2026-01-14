@@ -1,8 +1,9 @@
-document.querySelector('#add').addEventListener('click', ()=>{
-  let memo = document.querySelector('#todoMemo');
-  document.querySelector('#memo').innerHTML += `<li>${memo.value}</li>`;
-  memo.value = '';
-});
-document.querySelector('#delete').addEventListener('click', ()=>{
-  document.querySelector('#memo').innerHTML = '';
-});
+const headers = document.querySelectorAll('.header');
+const contents = document.querySelectorAll('.content');
+
+for (let i=0; i<headers.length; i++) {
+  headers[i].addEventListener('click', () => {
+    contents.forEach(c => c.classList.remove('active'));
+    contents[i].classList.add('active');
+  });
+}

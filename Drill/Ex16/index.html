@@ -5,35 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScriptドリル</title>
   <style>
-    #menu {
-      max-width: 600px;
+    body {
+      width: 300px;
+      margin: 0 auto;
     }
-    .content {
-      display: none;
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
-    .active {
-      display: block;
-    }
-    .header {
-      cursor: pointer;
-      background: #ccc;
-      padding: 10px;
-      margin: 2px 0;
+    #panel img {
+      width: 300px;
+      height: 300px;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
   <h1>JavaScriptドリル</h1>
-  <div id="menu">
-    <div class="header">項目1</div>
-    <div class="content">内容1</div>
-    <div class="header">項目2</div>
-    <div class="content">内容2</div>
-    <div class="header">項目3</div>
-    <div class="content">内容3</div>
-  </div>
+  <div id="panel"><img src="../img/slot1.png"></div>
+  <p>3秒間隔で自動的に切り替わります。</p>
+  <button>スライドショーを停止</button>
 </body>
 </html>

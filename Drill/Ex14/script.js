@@ -1,4 +1,12 @@
-document.querySelector('#choice').addEventListener('change', () => {
-  const pic = document.querySelector('#choice').value;
-  document.querySelector('#picture').setAttribute('src', `../img/slot${pic}.png`);
+const lang = document.querySelectorAll('[name="lang"]');
+const otherlang = document.getElementById('otherlang');
+lang.forEach((element, i) => {
+  element.addEventListener('change', (event)=> {
+    if (event.target.value === 'other') {
+      otherlang.disabled = false;
+    } else {
+      otherlang.disabled = true;
+      otherlang.value = '';
+    }
+  });
 });
