@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavaScriptドリル</title>
+  <title>簡易メモ</title>
+  <style>
+    li.selected { background: lightgray; }
+  </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>JavaScriptドリル</h1>
-  <div>
-    <label for="search">ユーザーID</label>
-    <input type="text" id="search">
-  </div>
-  <p id="result">該当なし</p>
+  <h2>簡易メモ</h2>
+  <input type="text" id="todoMemo">
+  <button id="add">追加</button><br>
+  <button id="delAll">全削除</button>
+  <ul id="memo">
+  </ul>
 </body>
 </html>

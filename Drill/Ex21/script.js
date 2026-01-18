@@ -1,31 +1,24 @@
-const all = document.getElementById("all");
-const items = document.querySelectorAll(".item");
+const user_list = [
+  { name: '鈴木二郎', age: 18 },
+  { name: '田中幸一', age: 25 },
+  { name: '佐藤さおり', age: 32 },
+  { name: '高橋健太', age: 43 },
+  { name: '山田太郎', age: 57 }
+];
 
-all.addEventListener("change", () => {
-  items.forEach(item => item.checked = all.checked);
-});
+const btn = document.querySelectorAll('.button');
+for (let i=0; i<btn.length; i++) {
+  btn[i].addEventListener('click', () => {
+    const target = btn[i].id;
 
-items.forEach(item => {
-  item.addEventListener("change", () => {
-    let count = 0;
-    for (item of items) {
-      if (item.checked) {
-        count++;
-      }
-    }
-    // const count = [...items].filter(i => i.checked).length;
+    const filter_list = user_list.filter((obj) => {
+      return obj.age >= target;
+    });
 
-    if (count === items.length) {
-      all.checked = true;
-    } else {
-      all.checked = false;
+    let list = '';
+    for (let data of filter_list) {
+      list += `<li>${data.name} : ${data.age}歳</li>`;
     }
-    if (count > 0 && count < items.length) {
-      all.indeterminate = true;
-    } else {
-      all.indeterminate = false;
-    }
-    // all.checked = count === items.length;
-    // all.indeterminate = count > 0 && count < items.length;
+    document.querySelector('.user_list').innerHTML = list;
   });
-});
+}
