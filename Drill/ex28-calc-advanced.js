@@ -3,7 +3,7 @@ const keys = document.querySelectorAll('button');
 let total = 0;
 let numStat = false; // 数値入力中か？true:数値入力中、false:数値入力中でない
 let calcStat = false; // 演算子が入力されたか？ true:演算子入力中、false:演算子入力中でない
-let calc = "+";
+let calc = '+';
 let num = '';
 let dotStat = false; // .が押されているか？ true:押されている、false:押されてない
 let initStat = true; // 初めてボタンが押されたか？ true:押された、false:押されてない
@@ -28,7 +28,7 @@ for (let i=0; i<keys.length; i++) {
       disp.innerText = num;
       initStat = true;
     } else  {
-      if (val === "C") {
+      if (val === 'C') {
         numStat = false;
         calcStat = false;
         initStat = false;
@@ -36,9 +36,9 @@ for (let i=0; i<keys.length; i++) {
         num = '';
         total = 0;
         disp.innerText = total;
-      } else if (val === "+/-") {
+      } else if (val === '+/-') {
 
-      } else if (val === "%") {
+      } else if (val === '%') {
 
       } else {
         if (numStat) {
