@@ -3,14 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ユーザー検索</title>
+  <title>data-*属性</title>
+  <style>
+    div {
+      margin: 5px 0;
+      width: 100px;
+      height: 30px;
+      background-color: gray;
+      line-height: 30px;
+      text-align: center;
+    }
+  </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div>
-    <label for="search">ユーザーID</label>
-    <input type="text" id="search">
-  </div>
-  <p id="result">該当なし</p>
+  <div data-active="true">A</div>
+  <div data-active="true">B</div>
+  <div data-active="false">C</div>
+  <div data-active="true">D</div>
+  <div data-active="false">E</div>
+  <div data-active="true">F</div>
 </body>
 </html>

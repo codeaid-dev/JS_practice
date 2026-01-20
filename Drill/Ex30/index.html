@@ -3,19 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>文字列置換</title>
+  <title>ボックス作成</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h2>文字列置換</h2>
-  <div><textarea cols="60" rows="15">
-コンピュータは、なにによって動いているのでしょうか？そう、電気です。電気の状態には、流れているか・流れていないかの2通りがあります。コンピュータの世界では、その2通りの状態を1と0で表すことにしています。2つの状態（0と1）しか表せないので、コンピュータが扱う基本の数（基数）は2となり、これを2進数と呼びます。
-コンピュータは1と0、電気の有無しか判別することができない代わりに、1と0の膨大な量の組み合わせを演算・処理するのはとても速いです。こういった特性を活用し、コンピュータになにか仕事をしてほしいとき、コンピュータに対して命令をする必要があります。
-ところが人間の基数は10進や60進ですし、人間の言葉が1と0でできているコンピュータに伝わるわけはありません。コンピュータに命令を理解させるため、人間とコンピュータの橋渡しをするのがプログラムなのです。
-  </textarea></div>
-  <input type="text" id="findtxt">
-  <input type="text" id="reptxt">
-  <button>置換</button>
-  <p>ここに表示</p>
+  <div><label>横幅：<input type="text" id="yoko"></label></div>
+  <div><label>縦幅：<input type="text" id="tate"></label></div>
+  <div><label>色：<input type="text" id="iro"></label></div>
+  <div><label>個数：<input type="text" id="cnt"></label></div>
+  <button>ボックス作成</button>
+  <div id="result">結果表示</div>
 </body>
 </html>

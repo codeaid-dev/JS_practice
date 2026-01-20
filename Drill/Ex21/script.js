@@ -1,24 +1,23 @@
 const user_list = [
-  { name: '鈴木二郎', age: 18 },
-  { name: '田中幸一', age: 25 },
-  { name: '佐藤さおり', age: 32 },
-  { name: '高橋健太', age: 43 },
-  { name: '山田太郎', age: 57 }
+  { id: '2025-101', name: '高橋大介' },
+  { id: '2025-102', name: '鈴木健司' },
+  { id: '2025-103', name: '後藤栞' },
+  { id: '2025-104', name: '佐藤かおり' },
+  { id: '2025-105', name: '田中二郎' }
 ];
 
-const btn = document.querySelectorAll('.button');
-for (let i=0; i<btn.length; i++) {
-  btn[i].addEventListener('click', () => {
-    const target = btn[i].id;
+const search = document.querySelector('#search');
+const result = document.querySelector('#result');
+result.style.fontSize = '20px';
+search.addEventListener('keyup', () => {
+  const search_id = search.value;
 
-    const filter_list = user_list.filter((obj) => {
-      return obj.age >= target;
-    });
-
-    let list = '';
-    for (let data of filter_list) {
-      list += `<li>${data.name} : ${data.age}歳</li>`;
-    }
-    document.querySelector('.user_list').innerHTML = list;
+  const target = user_list.find((data) => {
+    return data.id === search_id;
   });
-}
+  if (target === undefined) {
+    result.textContent = '該当者なし';
+  } else {
+    result.textContent = target.name;
+  }
+});
