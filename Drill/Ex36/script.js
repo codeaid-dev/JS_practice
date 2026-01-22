@@ -31,12 +31,12 @@
     `;
   }
 
-  name.addEventListener('input', (e) => {
-    state.name = e.target.value;
+  name.addEventListener('input', (event) => {
+    state.name = event.target.value;
   });
 
-  email.addEventListener('input', (e) => {
-    state.email = e.target.value;
+  email.addEventListener('input', (event) => {
+    state.email = event.target.value;
   });
 
   next.addEventListener('click', () => {
