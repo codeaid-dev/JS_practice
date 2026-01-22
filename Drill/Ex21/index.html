@@ -3,14 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ユーザー検索</title>
+  <title>並べ替え</title>
+  <style>
+    div.item {
+      margin: 5px;
+      width: 100px;
+      height: 50px;
+      background-color: green;
+      text-align: center;
+      line-height: 50px;
+    }
+  </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div>
-    <label for="search">ユーザーID</label>
-    <input type="text" id="search">
+  <h1>並べ替え</h1>
+  <div id="list">
+    <div class="item" draggable="true">A</div>
+    <div class="item" draggable="true">B</div>
+    <div class="item" draggable="true">C</div>
+    <div class="item" draggable="true">D</div>
   </div>
-  <p id="result">該当なし</p>
 </body>
 </html>

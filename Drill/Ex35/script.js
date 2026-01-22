@@ -1,24 +1,10 @@
-  const notify = document.getElementById('notify');
-  const notification = document.getElementById('notification');
-  const close = document.getElementById('close');
-
-  let timeoutId = null;
-
-  function hideNotification() {
-    notification.classList.add('hidden');
-    if (timeoutId !== null) {
-      clearTimeout(timeoutId);
-      timeoutId = null;
-    }
+const zipcode = document.getElementById('zipcode');
+const send = document.getElementById('send');
+const form = document.querySelector('form');
+const error = document.getElementById('error');
+form.addEventListener('submit', (event) => {
+  if (!/^\d{3}-?\d{4}$/.test(zipcode.value)) {
+    event.preventDefault();
+    error.textContent = '正しく郵便番号を入力してください';
   }
-
-  notify.addEventListener('click', () => {
-    notification.classList.remove('hidden');
-    if (timeoutId !== null) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => {
-      hideNotification();
-    }, 3000);
-  });
-  close.addEventListener('click', hideNotification);
+});
