@@ -1,24 +1,21 @@
-  const notify = document.getElementById('notify');
-  const notification = document.getElementById('notification');
-  const close = document.getElementById('close');
+document.getElementById('list').addEventListener('click', event => {
+  if (!event.target.classList.contains('edit')) return;
 
-  let timeoutId = null;
+  const li = event.target.closest('li');
+  const span = li.querySelector('.text');
 
-  function hideNotification() {
-    notification.classList.add('hidden');
-    if (timeoutId !== null) {
-      clearTimeout(timeoutId);
-      timeoutId = null;
-    }
-  }
+  const input = document.createElement('input');
+  input.value = span.textContent;
 
-  notify.addEventListener('click', () => {
-    notification.classList.remove('hidden');
-    if (timeoutId !== null) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => {
-      hideNotification();
-    }, 3000);
+  const saveBtn = document.createElement('button');
+  saveBtn.textContent = '保存';
+
+  li.replaceChild(input, span);
+  li.replaceChild(saveBtn, event.target);
+
+  saveBtn.addEventListener('click', () => {
+    span.textContent = input.value;
+    li.replaceChild(span, input);
+    li.replaceChild(event.target, saveBtn);
   });
-  close.addEventListener('click', hideNotification);
+});

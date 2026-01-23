@@ -16,10 +16,11 @@ for (let i=0; i<keys.length; i++) {
         num = '';
         total = 0;
         calc = '+';
-        disp.innerText = total;
+        disp.innerText = '';
     } else {
       if (!numStat) {
         numStat = true;
+        console.log(total + calc + num);
         total = eval(total + calc + num);
         num = '';
         disp.innerText = total;
