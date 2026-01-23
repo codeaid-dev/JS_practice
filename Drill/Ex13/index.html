@@ -3,30 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>カラーパレット</title>
+  <title>カラースライド</title>
   <style>
-    #panel,
-    #color-code {
+    .slide {
       width: 300px;
-      margin: 20px;
-      text-align: center;
     }
-    #panel {
+    .color-box {
+      border: 1px solid gray;
       height: 300px;
-      background: black;
+    }
+    .nav {
+      margin-top: 10px;
+    }
+    #prev {
+      float: left;
+    }
+    #next {
+      float: right;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>JavaScriptドリル</h1>
-  <h2>カラーパレット</h2>
-  <form>
-    <label>R<input id="colorR" type="range" value="0" step="1" min="0" max="255"></label><br>
-    <label>G<input id="colorG" type="range" value="0" step="1" min="0" max="255"></label><br>
-    <label>B<input id="colorB" type="range" value="0" step="1" min="0" max="255"></label>
-  </form>
-  <p id="color-code">#000000</p>
-  <div id="panel"></div>
+  <h1>カラースライド</h1>
+  <div class="slide">
+    <div class="color-box"></div>
+    <div class="nav">
+      <button id="prev">＜前へ</button>
+      <button id="next">次へ＞</button>
+    </div>
+  </div>
 </body>
 </html>

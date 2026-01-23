@@ -1,30 +1,31 @@
-const colors = ['black', 'red', 'green', 'blue', 'yellow'];
-const color = document.querySelector('.color-box');
-const prev = document.querySelector('#prev');
-const next = document.querySelector('#next');
-let position = 0;
+const question = document.querySelector('#question');
+const answer = document.querySelector('#answer');
+const btn1 = document.querySelector('#send');
+const elem = document.querySelector('#result');
+const btn2 = document.querySelector('#next');
 
-const changeSlide = (num) => {
-  if (position + num === 0) {
-    prev.disabled = true;
-    next.disabled = false;
-  } else if (position + num === colors.length-1) {
-    next.disabled = true;
-    prev.disabled = false;
-  } else {
-    next.disabled = false;
-    prev.disabled = false;
-  }
-  position += num;
-  color.style = "background-color:"+colors[position]+";";
+const pref = {'北海道':'札幌', '青森県':'青森', '岩手県':'盛岡', '宮城県':'仙台', '栃木県':'宇都宮', '群馬県':'前橋', '神奈川県':'横浜'};
+const pref_list = ['北海道', '青森県', '岩手県', '宮城県', '栃木県', '群馬県', '神奈川県'];
+let ken = '';
+
+show_q = () => {
+  ken = pref_list[Math.floor(Math.random() * pref_list.length)];
+  const q = ken + 'の県庁所在地は？';
+  question.textContent = q;
 }
+show_q();
 
-color.style = "background-color:"+colors[position]+";";
-prev.disabled = true;
-next.addEventListener('click', () => {
-  changeSlide(1);
+btn1.addEventListener('click', () => {
+  const a = answer.value;
+  if (a === pref[ken]) {
+    elem.style.color = 'red';
+    elem.textContent = '正解！！';
+  } else {
+    elem.style.color = 'black';
+    elem.textContent = `不正解・・・(正解：${pref[ken]})`;
+  }
 });
 
-prev.addEventListener('click', () => {
-  changeSlide(-1);
+btn2.addEventListener('click', () => {
+  show_q();
 });

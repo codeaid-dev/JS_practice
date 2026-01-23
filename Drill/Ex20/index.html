@@ -3,25 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>data-*属性</title>
+  <title>簡易メモ</title>
   <style>
-    div {
-      margin: 5px 0;
-      width: 100px;
-      height: 30px;
-      background-color: gray;
-      line-height: 30px;
-      text-align: center;
-    }
+    li { cursor: pointer; }
+    li.selected { background: lightgray; }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div data-active="true">A</div>
-  <div data-active="true">B</div>
-  <div data-active="false">C</div>
-  <div data-active="true">D</div>
-  <div data-active="false">E</div>
-  <div data-active="true">F</div>
+  <h2>簡易メモ</h2>
+  <input type="text" id="todoMemo">
+  <button id="add">追加</button><br>
+  <button id="delAll">全削除</button>
+  <ul id="memo">
+  </ul>
 </body>
 </html>

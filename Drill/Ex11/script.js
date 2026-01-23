@@ -1,31 +1,33 @@
-const question = document.querySelector('#question');
-const answer = document.querySelector('#answer');
-const btn1 = document.querySelector('#send');
-const elem = document.querySelector('#result');
-const btn2 = document.querySelector('#next');
+const txt = document.getElementById('txt');
+const size = document.getElementById('size');
+const colors = document.getElementsByName('color');
+const bold = document.getElementById('bold');
 
-const pref = {'北海道':'札幌', '青森県':'青森', '岩手県':'盛岡', '宮城県':'仙台', '栃木県':'宇都宮', '群馬県':'前橋', '神奈川県':'横浜'};
-const pref_list = ['北海道', '青森県', '岩手県', '宮城県', '栃木県', '群馬県', '神奈川県'];
-let ken = '';
+const btn = document.querySelector('button');
+btn.addEventListener('click', () => {
 
-show_q = () => {
-  ken = pref_list[Math.floor(Math.random() * pref_list.length)];
-  const q = ken + 'の県庁所在地は？';
-  question.textContent = q;
-}
-show_q();
-
-btn1.addEventListener('click', () => {
-  const a = answer.value;
-  if (a === pref[ken]) {
-    elem.style.color = 'red';
-    elem.textContent = '正解！！';
-  } else {
-    elem.style.color = 'black';
-    elem.textContent = `不正解・・・(正解：${pref[ken]})`;
+  let color = 'black';
+  for (let e of colors) {
+    if (e.checked) {
+      color = e.value;
+      break;
+    }
   }
-});
 
-btn2.addEventListener('click', () => {
-  show_q();
-});
+  const style = `font-size:${size.value}px; color:${color};font-weight:${(bold.checked) ? 'bold' : 'normal'}`;
+
+  const num = document.getElementById('loop');
+  const show = document.getElementById('show');
+  show.setAttribute('style', style);
+
+  show.textContent = null; // 前回に入力した子要素を削除する
+
+  for (let i=0; i<num.value; i++) {
+    if (txt.value === "") {
+      show.innerHTML = '<p>空です</p>';
+    } else {
+      show.innerHTML += '<p>' + txt.value + '</p>';
+    }
+  }
+
+}); //addEventListener

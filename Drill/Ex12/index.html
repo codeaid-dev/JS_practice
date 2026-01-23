@@ -3,35 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>カラースライド</title>
-  <style>
-    .slide {
-      width: 300px;
-    }
-    .color-box {
-      border: 1px solid gray;
-      height: 300px;
-    }
-    .nav {
-      margin-top: 10px;
-    }
-    #prev {
-      float: left;
-    }
-    #next {
-      float: right;
-    }
-  </style>
+  <title>県庁所在地クイズ</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>カラースライド</h1>
-  <div class="slide">
-    <div class="color-box"></div>
-    <div class="nav">
-      <button id="prev">＜前へ</button>
-      <button id="next">次へ＞</button>
-    </div>
-  </div>
+  <h1>県庁所在地クイズ</h1>
+  <p id="question"></p>
+  <input type="text" id="answer">
+  <button id="send">解答</button>
+  <p id="result">結果表示</p>
+  <button id="next">別の問題</button>
 </body>
 </html>

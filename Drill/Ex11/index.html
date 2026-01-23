@@ -3,15 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>県庁所在地クイズ</title>
+  <title>テキスト表示</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>県庁所在地クイズ</h1>
-  <p id="question"></p>
-  <input type="text" id="answer">
-  <button id="send">解答</button>
-  <p id="result">結果表示</p>
-  <button id="next">別の問題</button>
+  <div>
+    <label for="txt"><p>表示するテキストを入力してください</p></label>
+    <input type="text" id="txt">
+  </div>
+  <div>
+    <label for="size"><p>サイズを入力してください</p></label>
+    <input type="text" id="size" value="14">
+  </div>
+  <div>
+    <label><p>色を選択してください</p></label>
+    <p>
+      <input type="radio" name="color" id="black" value="black" checked>
+      <label for="black">黒色</label>
+      <input type="radio" name="color" id="red" value="red">
+      <label for="red">赤色</label>
+      <input type="radio" name="color" id="blue" value="blue">
+      <label for="blue">青色</label>
+      <input type="radio" name="color" id="yellow" value="yellow">
+      <label for="yellow">黄色</label>
+    </p>
+  </div>
+  <div>
+    <label for="bold"><p>オプション</p></label>
+    <p>
+      <input type="checkbox" id="bold" value="bold">
+      <label for="bold">太くする</label>
+    </p>
+  </div>
+  <div>
+    <label for="loop"><p>表示回数を選択してください</p></label>
+    <p>
+      <select id="loop">
+        <option value="1" selected>1回</option>
+        <option value="3">3回</option>
+        <option value="5">5回</option>
+      </select>
+    </p>
+  </div>
+  <div>
+    <button>表示</button>
+    <div id="show"></div>
+  </div>
 </body>
 </html>

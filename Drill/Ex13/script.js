@@ -1,13 +1,30 @@
-document.querySelector('form').addEventListener('input', () => {
-  const r = document.querySelector('#colorR').value;
-  const g = document.querySelector('#colorG').value;
-  const b = document.querySelector('#colorB').value;
-  const panel = document.querySelector('#panel');
-  //panel.setAttribute('style', `background-color:rgb(${r} ${g} ${b})`);
-  const hexR = ('0' + parseInt(r).toString(16)).slice(-2);
-  const hexG = ('0' + parseInt(g).toString(16)).slice(-2);
-  const hexB = ('0' + parseInt(b).toString(16)).slice(-2);
-  const rgb = `#${hexR}${hexG}${hexB}`;
-  document.querySelector('#color-code').innerHTML = rgb;
-  panel.setAttribute('style', `background-color:${rgb}`);
+const colors = ['black', 'red', 'green', 'blue', 'yellow'];
+const color = document.querySelector('.color-box');
+const prev = document.querySelector('#prev');
+const next = document.querySelector('#next');
+let position = 0;
+
+const changeSlide = (num) => {
+  if (position + num === 0) {
+    prev.disabled = true;
+    next.disabled = false;
+  } else if (position + num === colors.length-1) {
+    next.disabled = true;
+    prev.disabled = false;
+  } else {
+    next.disabled = false;
+    prev.disabled = false;
+  }
+  position += num;
+  color.style = "background-color:"+colors[position]+";";
+}
+
+color.style = "background-color:"+colors[position]+";";
+prev.disabled = true;
+next.addEventListener('click', () => {
+  changeSlide(1);
+});
+
+prev.addEventListener('click', () => {
+  changeSlide(-1);
 });

@@ -1,9 +1,9 @@
-document.querySelector('#add').addEventListener('click', ()=>{
-  let todo = document.querySelector('#todoMemo');
-  if (todo.value.trim() === '') return;
-  document.querySelector('#memo').innerHTML += `<li>${todo.value}</li>`;
-  todo.value = '';
-});
-document.querySelector('#delete').addEventListener('click', ()=>{
-  document.querySelector('#memo').innerHTML = '';
-});
+const headers = document.querySelectorAll('.header');
+const contents = document.querySelectorAll('.content');
+
+for (let i=0; i<headers.length; i++) {
+  headers[i].addEventListener('click', () => {
+    contents.forEach(c => c.classList.remove('active'));
+    contents[i].classList.add('active');
+  });
+}

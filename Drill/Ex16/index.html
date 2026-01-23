@@ -3,13 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>スライドショー</title>
+  <title>画像表示</title>
   <style>
-    body {
-      width: 300px;
-      margin: 0 auto;
-    }
-    #panel img {
+    img {
       width: 300px;
       height: 300px;
     }
@@ -17,8 +13,16 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div id="panel"><img src="../img/slot1.png"></div>
-  <p>3秒間隔で自動的に切り替わります。</p>
-  <button>スライドショーを停止</button>
+  <p>画像を選択してください。</p>
+  <select id="choice">
+    <option value="1">鐘</option>
+    <option value="2">りんご</option>
+    <option value="3">バナナ</option>
+    <option value="4">さくらんぼ</option>
+    <option value="5">オレンジ</option>
+    <option value="6">ニコニコ</option>
+    <option value="7">セブン</option>
+  </select><br>
+  <img id="picture" src="../img/slot1.png">
 </body>
 </html>

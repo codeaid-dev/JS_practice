@@ -1,9 +1,12 @@
-const headers = document.querySelectorAll('.header');
-const contents = document.querySelectorAll('.content');
+let cnt=1;
+const timer_id = setInterval(() => {
+  cnt++;
+  if (cnt > 7) {
+    cnt = 1;
+  }
+  document.querySelector('#panel').innerHTML = '<img src="../img/slot' + cnt + '.png">';
+}, 3000);
 
-for (let i=0; i<headers.length; i++) {
-  headers[i].addEventListener('click', () => {
-    contents.forEach(c => c.classList.remove('active'));
-    contents[i].classList.add('active');
-  });
-}
+document.querySelector('button').addEventListener('click', () => {
+  clearInterval(timer_id);
+});
