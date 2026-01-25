@@ -14,14 +14,14 @@ btn.addEventListener('click', () => {
   } else {
     result.innerHTML = null;
     for (let i=0; i<cnt.value; i++) {
-      const divElement = document.createElement('div');
-      divElement.style.width = yoko.value + 'px';
-      divElement.style.height = tate.value + 'px';
-      divElement.style.background = iro.value;
-      divElement.style.margin = '10px';
-      divElement.style.float = 'left';
-      //divElement.setAttribute('style', `width:${yoko.value}px;height:${tate.value}px;background:${iro.value};margin:10px;float:left;`);
-      result.append(divElement);
+      const div = document.createElement('div');
+      div.style.width = yoko.value + 'px';
+      div.style.height = tate.value + 'px';
+      div.style.background = iro.value;
+      div.style.margin = '10px';
+      div.style.float = 'left';
+      //div.setAttribute('style', `width:${yoko.value}px;height:${tate.value}px;background:${iro.value};margin:10px;float:left;`);
+      result.append(div);
     }
   }
 });
