@@ -3,30 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>簡易ウィザード</title>
-  <style>
-    .step { display: none; }
-    .step.active { display: block; }
-  </style>
+  <title>フィルタ</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div id='app'>
-    <div class='step' data-step='1'>
-      <label>名前：<input type="text" id='name' placeholder='名前'></label>
-    </div>
+  <label><input type="checkbox" value="fruit" checked> 果物</label>
+  <label><input type="checkbox" value="vegetable"> 野菜</label>
 
-    <div class='step' data-step='2'>
-      <label>メール：<input type="text" id='email' placeholder='メール'></label>
-    </div>
-
-    <div class='step' data-step='3'>
-      <p id='confirm'></p>
-    </div>
-
-    <p id="error" style="color: red;"></p>
-    <button id='prev'>戻る</button>
-    <button id='next'>次へ</button>
-  </div>
+  <ul id="items">
+    <li data-type="fruit">林檎</li>
+    <li data-type="vegetable">人参</li>
+    <li data-type="fruit">バナナ</li>
+    <li data-type="fruit">オレンジ</li>
+    <li data-type="vegetable">キャベツ</li>
+    <li data-type="vegetable">胡瓜</li>
+  </ul>
 </body>
 </html>
