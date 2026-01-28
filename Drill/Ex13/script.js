@@ -16,10 +16,10 @@ const changeSlide = (num) => {
     prev.disabled = false;
   }
   position += num;
-  color.style = "background-color:"+colors[position]+";";
+  color.style = 'background-color:'+colors[position]+';';
 }
 
-color.style = "background-color:"+colors[position]+";";
+color.style = 'background-color:'+colors[position]+';';
 prev.disabled = true;
 next.addEventListener('click', () => {
   changeSlide(1);

@@ -6,7 +6,7 @@ document.getElementById('add').addEventListener('click', ()=> {
     const arr = memo.value.split('\n');
     console.log(arr);
     arr.forEach(item => {
-      const li = document.createElement("li");
+      const li = document.createElement('li');
       li.textContent = item;
       list.appendChild(li);
     });

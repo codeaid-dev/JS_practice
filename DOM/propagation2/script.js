@@ -12,6 +12,6 @@ div.addEventListener('click', func);
 p.addEventListener('click', func);
 btn.addEventListener('click', (event) => {
   // event.stopPropagation();
-  p.textContent = "ボタンが押された";
+  p.textContent = 'ボタンが押された';
   console.log(event.currentTarget);
 });
