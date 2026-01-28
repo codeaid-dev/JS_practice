@@ -5,13 +5,13 @@ let color = 'black';
 let num = 1;
 for (let i in showtxts) {
   let ans = prompt(showtxts[i]);
-  if (i === 0 && ans !== "") {
+  if (i === 0 && ans !== '') {
     txt = ans;
-  } else if (i === 1 && ans !== "") {
+  } else if (i === 1 && ans !== '') {
     size = ans;
-  } else if (i === 2 && ans !== "") {
+  } else if (i === 2 && ans !== '') {
     color = ans;
-  } else if (i === 3 && ans !== "") {
+  } else if (i === 3 && ans !== '') {
     num = ans;
   }
 }

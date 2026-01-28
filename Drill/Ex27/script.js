@@ -75,19 +75,19 @@ for (let i=0; i<region.length; i++) {
     pref.innerHTML = '<option value="">選択してください</option>';
     if (region[i].checked) {
       select = region[i].value;
-      if (select === "kinki") {
+      if (select === 'kinki') {
         for (let elem of kinki) {
           pref.innerHTML += `<option value="${elem.id}">${elem.name}</option>`;
         }
-      } else if (select === "nishinihon") {
+      } else if (select === 'nishinihon') {
         for (let elem of nishinihon) {
           pref.innerHTML += `<option value="${elem.id}">${elem.name}</option>`;
         }
-      } else if (select === "shikoku") {
+      } else if (select === 'shikoku') {
         for (let elem of shikoku) {
           pref.innerHTML += `<option value="${elem.id}">${elem.name}</option>`;
         }
-      } else if (select === "kyushu") {
+      } else if (select === 'kyushu') {
         for (let elem of kyushu) {
           pref.innerHTML += `<option value="${elem.id}">${elem.name}</option>`;
         }
@@ -98,13 +98,13 @@ for (let i=0; i<region.length; i++) {
 
 pref.addEventListener('change', (event) => {
   let target;
-  if (select === "kinki") {
+  if (select === 'kinki') {
     target = kinki.find((value) => value.id === event.target.value);
-  } else if (select === "nishinihon") {
+  } else if (select === 'nishinihon') {
     target = nishinihon.find((value) => value.id === event.target.value);
-  } else if (select === "shikoku") {
+  } else if (select === 'shikoku') {
     target = shikoku.find((value) => value.id === event.target.value);
-  } else if (select === "kyushu") {
+  } else if (select === 'kyushu') {
     target = kyushu.find((value) => value.id === event.target.value);
   }
   document.querySelector('#result').innerHTML = `${target.name}が選択されました。`;

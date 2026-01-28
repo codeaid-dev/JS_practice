@@ -16,11 +16,11 @@ const tiles = document.querySelectorAll('.tile');
 // });
 
 for (let tile of tiles) {
-  tile.addEventListener('click', (event) => {
+  tile.addEventListener('click', () => {
     if (tile.style.background === 'red') {
       tile.style.background = null;
       tile.innerText = '';
-    } else if (tiles[i].style.background === 'blue') {
+    } else if (tile.style.background === 'blue') {
       tile.style.background = 'red';
       tile.innerText = Array.from(tiles).indexOf(tile)+1;
     } else {

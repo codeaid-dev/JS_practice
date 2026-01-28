@@ -1,12 +1,12 @@
-const all = document.getElementById("all");
-const items = document.querySelectorAll(".item");
+const all = document.getElementById('all');
+const items = document.querySelectorAll('.item');
 
-all.addEventListener("change", () => {
+all.addEventListener('change', () => {
   items.forEach(item => item.checked = all.checked);
 });
 
 items.forEach(item => {
-  item.addEventListener("change", () => {
+  item.addEventListener('change', () => {
     let count = 0;
     for (item of items) {
       if (item.checked) {
