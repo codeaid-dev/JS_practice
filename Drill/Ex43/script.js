@@ -1,63 +1,37 @@
-  const state = {
-    step: 1,
-    name: '',
-    email: ''
-  };
+const data = [
+  { eto: '卯', year: 2023 },
+  { eto: '辰', year: 2024 },
+  { eto: '巳', year: 2025 },
+  { eto: '午', year: 2026 },
+  { eto: '羊', year: 2027 }
+];
 
-  const steps = document.querySelectorAll('.step');
-  const name = document.getElementById('name');
-  const email = document.getElementById('email');
-  const confirm = document.getElementById('confirm');
-  const next = document.getElementById('next');
-  const prev = document.getElementById('prev');
-  const error = document.getElementById('error');
+function render() {
+  const sort = document.getElementById('sort').value;
+  const filter = document.getElementById('filter').checked;
+  const list = document.getElementById('list');
 
-  function render() {
-    steps.forEach(step => {
-      step.classList.toggle(
-        'active',
-        Number(step.dataset.step) === state.step
-      );
-      next.textContent = state.step === 3 ? '確認' : '次へ';
-      if (state.step === 1) prev.style.display = 'none';
-      else prev.style.display = 'inline';
-    });
+  let result = [...data]; // 配列をコピー
 
-    name.value = state.name;
-    email.value = state.email;
-    confirm.textContent = `
-      名前: ${state.name}
-      メール: ${state.email}
-    `;
+  if (filter) {
+    result = result.filter(d => d.year >= 2025);
   }
 
-  name.addEventListener('input', (event) => {
-    state.name = event.target.value;
-  });
+  result.sort((a, b) =>
+    sort === 'asc' ? a.year - b.year : b.year - a.year
+  );
 
-  email.addEventListener('input', (event) => {
-    state.email = event.target.value;
+  list.innerHTML = ''; // リスト項目を全て削除
+  result.forEach(d => {
+    const li = document.createElement('li');
+    li.textContent = `${d.eto}: ${d.year}`;
+    list.appendChild(li);
   });
+}
 
-  next.addEventListener('click', () => {
-    if (state.step < 3) {
-      if (state.step === 1 && name.value.length === 0) {
-        error.textContent = '入力してください';
-      } else if (state.step === 2 && email.value.length === 0) {
-        error.textContent = '入力してください';
-      } else {
-        state.step++;
-        error.textContent = '';
-      }
-    }
-    render();
-  });
+document.getElementById('sort').addEventListener('change', render);
+document.getElementById('filter').addEventListener('change', render);
+// document.querySelectorAll('#sort, #filter')
+//   .forEach(element => element.addEventListener('change', render));
 
-  prev.addEventListener('click', () => {
-    if (state.step > 1) {
-      state.step--;
-    }
-    render();
-  });
-
-  render();
+render();
