@@ -3,30 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>簡易ウィザード</title>
+  <title>表示切り替え</title>
   <style>
-    .step { display: none; }
-    .step.active { display: block; }
+    #view {
+      display:flex
+    }
+    #view div {
+      margin: 5px;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      background-color: green;
+    }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div id='app'>
-    <div class='step' data-step='1'>
-      <label>名前：<input type="text" id='name' placeholder='名前'></label>
-    </div>
-
-    <div class='step' data-step='2'>
-      <label>メール：<input type="text" id='email' placeholder='メール'></label>
-    </div>
-
-    <div class='step' data-step='3'>
-      <p id='confirm'></p>
-    </div>
-
-    <p id="error" style="color: red;"></p>
-    <button id='prev'>戻る</button>
-    <button id='next'>次へ</button>
-  </div>
+  <button id="toggle">切替</button>
+  <div id="view"></div>
 </body>
 </html>
