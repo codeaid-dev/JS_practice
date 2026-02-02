@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Tree</title>
+</head>
+<body>
+  <div id="parent">Hello <span>World</span></div>
+  <script>
+    const parent = document.getElementById('parent');
+    console.log(parent.childNodes.length); // 2
+    parent.appendChild(document.createElement('div'));
+    console.log(parent.childNodes.length); // 3
+    parent.childNodes.forEach(element => {
+      console.log(`${element.nodeName} : ${element.textContent}`);
+    }); // #text : "Hello ", SPAN : "World", DIV :
+  </script>
+</body>
+</html>
