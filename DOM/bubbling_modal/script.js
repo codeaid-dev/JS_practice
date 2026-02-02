@@ -11,9 +11,13 @@ document.querySelector('button').addEventListener('click', () => {
   modal.appendChild(inner);
   document.body.appendChild(modal);
 
+  // もしウィンドウの中身をクリックしたときだけモーダルを削除したい場合、
+  // innterのclickイベントだけを取得してモーダルを削除する
+  // inner.addEventListener('click', () => {
   modal.addEventListener('click', () => {
     document.body.removeChild(modal); // モーダルウィンドウを削除
   });
+  // ウィンドウの中身をクリックしてもイベントを伝播しなくする
   inner.addEventListener('click', (event) => {
     event.stopPropagation();
   });
