@@ -1,6 +1,6 @@
 const question = document.querySelector('#question');
 const answer = document.querySelector('#answer');
-const btn1 = document.querySelector('#send');
+const btn1 = document.querySelector('#judge');
 const elem = document.querySelector('#result');
 const btn2 = document.querySelector('#next');
 
@@ -8,12 +8,12 @@ const pref = {'北海道':'札幌', '青森県':'青森', '岩手県':'盛岡', 
 const pref_list = ['北海道', '青森県', '岩手県', '宮城県', '栃木県', '群馬県', '神奈川県'];
 let ken = '';
 
-show_q = () => {
+const createQ = () => {
   ken = pref_list[Math.floor(Math.random() * pref_list.length)];
   const q = ken + 'の県庁所在地は？';
   question.textContent = q;
 }
-show_q();
+createQ();
 
 btn1.addEventListener('click', () => {
   const a = answer.value;
@@ -27,5 +27,5 @@ btn1.addEventListener('click', () => {
 });
 
 btn2.addEventListener('click', () => {
-  show_q();
+  createQ();
 });
