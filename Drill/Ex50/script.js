@@ -1,6 +1,6 @@
 const wdays = ['日','月','火','水','木','金','土'];
 const btn = document.querySelector('button');
-btn.addEventListener('click', ()=>{
+btn.addEventListener('click', () => {
   const year = document.querySelector('#year');
   const month = document.querySelector('#month');
   const cal = document.querySelector('#calendar');
