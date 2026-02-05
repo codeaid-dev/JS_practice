@@ -1,22 +1,25 @@
-const colors = document.querySelectorAll('.color');
-const txt = document.querySelector('#txt');
-const result = document.querySelector('#result');
+const text = document.querySelector('[type="text"]');
+const result = document.getElementById('result');
 const btn = document.querySelector('button');
 btn.addEventListener('click', () => {
-  let color = 'black';
-  for (let ele of colors) {
-    if (ele.checked) {
-      color = ele.value;
-      break;
-    }
-  }
-  // for (let i in colors) {
-  //   if (colors[i].checked) {
-  //     color = colors[i].value;
+  // const colors = document.getElementsByName('color');
+  // let color = 'black';
+  // for (let e of colors) {
+  //   if (e.checked) {
+  //     color = e.value;
   //     break;
   //   }
   // }
-  // result.style.color = color;
+
+  // const colors = document.querySelectorAll('[name="color"]');
+  // let color = 'black';
+  // colors.forEach((e) => {
+  //   if (e.checked) {
+  //     color = e.value;
+  //   }
+  // });
+
+  const color = document.querySelector('[name="color"]:checked').value;
   result.setAttribute('style', `color: ${color}`);
-  result.textContent = txt.value;
+  result.textContent = text.value;
 });
