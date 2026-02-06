@@ -1,9 +1,9 @@
 const data = [
-  { eto: '卯', year: 2023 },
-  { eto: '辰', year: 2024 },
   { eto: '巳', year: 2025 },
   { eto: '午', year: 2026 },
-  { eto: '羊', year: 2027 }
+  { eto: '未', year: 2027 },
+  { eto: '申', year: 2028 },
+  { eto: '酉', year: 2029 }
 ];
 
 function render() {
@@ -14,7 +14,7 @@ function render() {
   let result = [...data]; // 配列をコピー
 
   if (filter) {
-    result = result.filter(d => d.year >= 2025);
+    result = result.filter(d => d.year >= 2027);
   }
 
   result.sort((a, b) =>
