@@ -3,21 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>アルファベットクイズ</title>
+  <title>タイル移動</title>
   <style>
-    #alpha {
-      font-size: 20px;
-      font-weight: bold;
+    #panel {
+      width: 320px;
+      height: 320px;
+    }
+    .tile {
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        border: 1px solid gray;
+        float: left;
+    }
+    .active {
+      background-color: aqua;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h2>アルファベットクイズ</h2>
-  <p>出題を押して表示されるアルファベットから<br>抜けている文字を入力して答えなさい</p>
-  <div><button id="q_btn">出題</button></div>
-  <p id="alpha">ここにアルファベットが表示されます</p>
-  <div><input type="text"><button id="answer">答え</button></div>
-  <p id="result">結果表示</p>
+  <div id="panel">
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+  </div>
 </body>
 </html>

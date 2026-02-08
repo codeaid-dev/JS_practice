@@ -1,6 +1,7 @@
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const mojisuu = document.querySelectorAll('[name="mojisuu"]');
 const correct = [];
+let start;
 let hides = 0;
 
 const question = document.getElementById('question');
@@ -21,6 +22,7 @@ document.getElementById('create-q').addEventListener('click', () => {
   const result = document.getElementById('result');
   result.style.color = 'black';
   result.textContent = '';
+  start = performance.now();
   console.log(q);
   console.log(correct);
 });
@@ -39,8 +41,9 @@ document.getElementById('judge').addEventListener('click', () => {
       }
     });
     if (correct.length === check) {
+      const end = performance.now();
       result.style.color = 'blue';
-      result.textContent = '正解！';
+      result.textContent = `正解！(経過時間:${Math.floor((end - start)/1000)}秒)`;
     } else {
       result.style.color = 'red';
       result.textContent = `不正解（正解：${correct}）`;

@@ -1,24 +1,34 @@
-const q_btn = document.querySelector('#q_btn');
-let hide;
-const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N',
-'O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-q_btn.addEventListener('click', () => {
-  const q_str = [];
-  hide = Math.floor(Math.random() * alpha.length);
-  for (let i in alpha) {
-    if (Number(i) !== hide) {
-      q_str.push(alpha[i]);
-    }
+const tiles = document.querySelectorAll('.tile');
+let index = 4;
+
+function update() {
+  tiles.forEach((li, i) => {
+    li.classList.toggle('active', i === index);
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') {
+    console.log('Right');
+    if ((index + 1) % 3 !== 0) index += 1;
+    console.log(index);
   }
-  document.querySelector('#alpha').innerHTML = q_str.join('');
+  if (e.key === 'ArrowLeft') {
+    console.log('Left');
+    if (index !== 0 && (index - 1) % 3 !== 2) index -= 1;
+    console.log(index);
+  }
+  if (e.key === 'ArrowDown') {
+    console.log('Down');
+    if (index + 3 < tiles.length) index += 3;
+    console.log(index);
+  }
+  if (e.key === 'ArrowUp') {
+    console.log('Up');
+    if (index - 3 >= 0) index -= 3;
+    console.log(index);
+  }
+  update();
 });
 
-const answer = document.querySelector('#answer');
-const ipt = document.querySelector('input');
-answer.addEventListener('click', () => {
-  if (ipt.value.toUpperCase() === alpha[hide]) {
-    document.querySelector('#result').innerHTML = '<span style="color:blue">正解！！</span>';
-  } else {
-    document.querySelector('#result').innerHTML = `<span style="color:red">不正解・・・(正解：${alpha[hide]})</span>`;
-  }
-});
+update();

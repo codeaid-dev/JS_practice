@@ -1,42 +1,24 @@
-const q_btn = document.querySelector('#q_btn');
-const time = document.querySelector('#time');
-let hide;
-const alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N',
-'O','P','Q','R','S','T','U','V','W','X','Y','Z',];
-let timer_id;
-let flag=false;
+let data = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const panel = document.getElementById('panel');
+let dragItem = null;
 
-q_btn.addEventListener('click', () => {
-  if (!flag) {
-    const q_str = [];
-    hide = Math.floor(Math.random() * alpha.length);
-    for (let i in alpha) {
-      if (Number(i) !== hide) {
-        q_str.push(alpha[i]);
-      }
-    }
-    document.querySelector('#alpha').innerHTML = q_str.join('');
-
-    const start = new Date();
-    timer_id = setInterval(() => {
-      const now = new Date();
-      const seconds = Math.floor((now.getTime() - start.getTime()) / 1000);
-      time.innerText = '経過時間：' + seconds + '秒';
-    }, 10);
-    flag = true;
+for (let i=0; i<36; i++) {
+  const tile = document.createElement('div');
+  tile.classList.add('tile');
+  if (data.length !== 0) {
+    const index = Math.floor(Math.random()*data.length);
+    tile.textContent = data[index];
+    tile.draggable = true;
+    data = data.replace(data[index], '');
   }
-});
+  panel.appendChild(tile);
+}
 
-const answer = document.querySelector('#answer');
-const ipt = document.querySelector('input');
-answer.addEventListener('click', () => {
-  if (flag) {
-    clearInterval(timer_id);
-    if (ipt.value.toUpperCase() === alpha[hide]) {
-      document.querySelector('#result').innerHTML = '<span style="color:blue">正解！！</span>';
-    } else {
-      document.querySelector('#result').innerHTML = `<span style="color:red">不正解・・・(正解:${alpha[hide]})</span>`;
-    }
-    flag = false;
-  }
+panel.addEventListener('dragstart', event => { dragItem = event.target; });
+panel.addEventListener('dragover', event => event.preventDefault());
+panel.addEventListener('drop', event => {
+if (event.target.classList.contains('tile') && event.target !== dragItem) {
+  panel.insertBefore(dragItem, event.target.nextSibling);
+  console.log([...panel.children].map(i => i.textContent));
+}
 });
