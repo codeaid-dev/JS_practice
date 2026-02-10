@@ -1,9 +1,9 @@
 document.querySelector('#add').addEventListener('click', ()=>{
-  let todo = document.querySelector('#todoMemo');
+  let todo = document.querySelector('#memo');
   if (todo.value.trim() === '') return;
-  document.querySelector('#memo').innerHTML += `<li>${todo.value}</li>`;
+  document.querySelector('#list').innerHTML += `<li>${todo.value}</li>`;
   todo.value = '';
 });
 document.querySelector('#delete').addEventListener('click', ()=>{
-  document.querySelector('#memo').innerHTML = '';
+  document.querySelector('#list').innerHTML = '';
 });
