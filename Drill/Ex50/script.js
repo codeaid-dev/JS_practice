@@ -1,37 +1,40 @@
-const wdays = ['日','月','火','水','木','金','土'];
-const btn = document.querySelector('button');
-btn.addEventListener('click', () => {
-  const year = document.querySelector('#year');
-  const month = document.querySelector('#month');
-  const cal = document.querySelector('#calendar');
-  cal.innerHTML = '';
-  //if(cal.hasChildNodes()) {
-    //cal.removeChild(cal.firstChild);
-  //}
-  const startDate = new Date(year.value,(month.value-1), 1); // 月の最初
-  const endDate = new Date(year.value,month.value, 0); // 月の最後
-  const table = document.createElement('table');
-  let cnt = 1;
-  for (let i = 0; i < 7; i++) {
-    const tr = document.createElement('tr');
-    for (let j = 0; j < 7; j++) {
-      const td = document.createElement('td');
-      if (i === 0) {
-        td.innerText = wdays[j];
-      } else if (i === 1) {
-        if (j >= startDate.getDay()) {
-          td.innerText = cnt;
-          cnt++;
-        }
-      } else {
-        if (cnt <= endDate.getDate()) {
-          td.innerText = cnt;
-          cnt++;
-        }
+const slots = document.querySelectorAll('.slot');
+const stops = document.querySelectorAll('.btn');
+const start = document.querySelector('#start');
+const result = document.querySelector('#result');
+const s_stat = [false, false, false];
+const cnt = [1,3,5];
+let timer_id;
+start.addEventListener('click', () => {
+  result.innerHTML = '';
+  s_stat.fill(false);
+  timer_id = setInterval(()=>{
+    for (let i in s_stat) {
+      if (!s_stat[i]) {
+        if (++cnt[i] > 7)
+          cnt[i] = 1;
+        slots[i].innerHTML = '<img src="../img/slot' + cnt[i] + '.png">';
       }
-      tr.appendChild(td);
     }
-    table.appendChild(tr);
-  }
-  cal.appendChild(table);
+  }, 300);
+  start.disabled = true;
 });
+
+for (const [i, stop] of stops.entries()) {
+  stop.addEventListener('click', () => {
+    if (!s_stat[i])
+      s_stat[i] = true;
+
+    if (s_stat.indexOf(false) === -1) {
+      clearInterval(timer_id);
+      start.disabled = false;
+      if (cnt[0] === cnt[1] && cnt[1] === cnt[2]) {
+        result.innerHTML = '<span style="color:red;">3つ揃いました！！おめでとう</span>';
+      } else if (cnt[0] === cnt[1] || cnt[1] === cnt[2] || cnt[0] === cnt[2]) {
+        result.innerHTML = '<span style="color:black;">おしい！もうちょっと</span>';
+      } else {
+        result.innerHTML = '<span style="color:gray;">残念でした・・・</span>';
+      }
+    }
+  });
+}

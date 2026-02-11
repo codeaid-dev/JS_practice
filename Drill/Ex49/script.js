@@ -1,40 +1,55 @@
-const slots = document.querySelectorAll('.slot');
-const stops = document.querySelectorAll('.btn');
-const start = document.querySelector('#start');
-const result = document.querySelector('#result');
-const s_stat = [false, false, false];
-const cnt = [1,3,5];
-let timer_id;
-start.addEventListener('click', () => {
-  result.innerHTML = '';
-  s_stat.fill(false);
-  timer_id = setInterval(()=>{
-    for (let i in s_stat) {
-      if (!s_stat[i]) {
-        if (++cnt[i] > 7)
-          cnt[i] = 1;
-        slots[i].innerHTML = '<img src="../img/slot' + cnt[i] + '.png">';
-      }
-    }
-  }, 300);
-  start.disabled = true;
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const mojisuu = document.querySelectorAll('[name="mojisuu"]');
+const correct = [];
+let start;
+let hides = 0;
+
+const question = document.getElementById('question');
+document.getElementById('create-q').addEventListener('click', () => {
+  correct.splice(0);
+  let q = alphabet;
+
+  mojisuu.forEach((element) => {
+    if (element.checked) hides = Number(element.value);
+  });
+
+  for (let i=0; i<hides; i++) {
+    const index = Math.floor(Math.random()*q.length);
+    correct.push(q[index]);
+    q = q.replace(q[index], '');
+  }
+  question.textContent = q;
+  const result = document.getElementById('result');
+  result.style.color = 'black';
+  result.textContent = '';
+  start = performance.now();
+  console.log(q);
+  console.log(correct);
 });
 
-for (const [i, stop] of stops.entries()) {
-  stop.addEventListener('click', () => {
-    if (!s_stat[i])
-      s_stat[i] = true;
-
-    if (s_stat.indexOf(false) === -1) {
-      clearInterval(timer_id);
-      start.disabled = false;
-      if (cnt[0] === cnt[1] && cnt[1] === cnt[2]) {
-        result.innerHTML = '<span style="color:red;">3つ揃いました！！おめでとう</span>';
-      } else if (cnt[0] === cnt[1] || cnt[1] === cnt[2] || cnt[0] === cnt[2]) {
-        result.innerHTML = '<span style="color:black;">おしい！もうちょっと</span>';
-      } else {
-        result.innerHTML = '<span style="color:gray;">残念でした・・・</span>';
+document.getElementById('judge').addEventListener('click', () => {
+  const result = document.getElementById('result');
+  let answers = document.getElementById('answer').value.split(',');
+  answers = answers.map((item) => item.toUpperCase());
+  console.log(answers);
+  if (correct.length === answers.length) {
+    let check = 0;
+    correct.forEach((d, i) => {
+      if (answers.includes(d)) {
+        check += 1;
+        answers = answers.filter((item) => item !== d);
       }
+    });
+    if (correct.length === check) {
+      const end = performance.now();
+      result.style.color = 'blue';
+      result.textContent = `正解！(経過時間:${Math.floor((end - start)/1000)}秒)`;
+    } else {
+      result.style.color = 'red';
+      result.textContent = `不正解（正解：${correct}）`;
     }
-  });
-}
+  } else {
+    result.style.color = 'red';
+    result.textContent = `不正解（正解：${correct}）`;
+  }
+});

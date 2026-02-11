@@ -1,35 +1,44 @@
-const btn = document.querySelector('button');
-const computer = document.querySelector('#computer-img');
-const player = document.querySelector('#player-img');
-const result = document.querySelector('#result');
-btn.addEventListener('click',() => {
-  const janken = document.querySelector('[name="janken"]:checked');
-  const com = Math.floor(Math.random() * 3) + 1;
-  const you = Number(janken.value);
-  if (you === 1) {
-    player.innerHTML = '<img width="150px" height="150px" src="../img/janken_gu.png">';
-  } else if (you === 2) {
-    player.innerHTML = '<img width="150px" height="150px" src="../img/janken_choki.png">';
-  } else if (you === 3) {
-    player.innerHTML = '<img width="150px" height="150px" src="../img/janken_pa.png">';
+const questions = [];
+function createQ() {
+  if (questions.length > 0) questions.splice(0);
+  for (let i=0; i<3; i++) {
+    questions.push(Math.floor(Math.random()*10));
   }
+  console.log(questions);
+}
+createQ();
 
-  if (com === 1) {
-    computer.innerHTML = '<img width="150px" height="150px" src="../img/janken_gu.png">';
-  } else if (com === 2) {
-    computer.innerHTML = '<img width="150px" height="150px" src="../img/janken_choki.png">';
-  } else if (com === 3) {
-    computer.innerHTML = '<img width="150px" height="150px" src="../img/janken_pa.png">';
+const other = document.getElementById('other');
+
+document.getElementById('judge').addEventListener('click', () => {
+  const strings = document.getElementById('question').children;
+  const answers = document.getElementById('answer').children;
+  questions.forEach((q, i) => {
+    if (answers[i].firstChild.value == q) {
+      strings[i].style.color = 'red';
+      strings[i].textContent = answers[i].firstChild.value;
+      answers[i].firstChild.disabled = true;
+    } else if (answers[i].firstChild.value > q) {
+      strings[i].style.color = 'black';
+      strings[i].textContent = 'LOW';
+    } else {
+      strings[i].style.color = 'black';
+      strings[i].textContent = 'HIGH';
+    }
+  });
+});
+
+document.getElementById('other').addEventListener('click', () => {
+  createQ();
+
+  const strings = document.getElementById('question').children;
+  const answers = document.getElementById('answer').children;
+  for (const element of strings) {
+    element.style.color = 'black';
+    element.textContent = '?';
   }
-
-  if (com === 1 && you === 3 || com === 2 && you === 1 || com === 3 && you === 2) {
-    // プレイヤーの勝ち
-    result.innerHTML = '<span style="color:red">プレイヤーの勝ち</span>';
-  } else if (com === 1 && you === 2 || com === 2 && you === 3 || com === 3 && you === 1) {
-    // コンピューターの勝ち
-    result.innerHTML = 'コンピューターの勝ち';
-  } else {
-    // あいこ
-    result.innerHTML = 'あいこ';
+  for (const element of answers) {
+    element.firstChild.value = '';
+    element.firstChild.disabled = false;
   }
 });
