@@ -6,7 +6,7 @@ let first_card;     // 1枚目のカードを格納(div要素)
 let count = 0;      // 消した回数
 
 document.addEventListener('DOMContentLoaded', () => {
-  let arr = [];
+  const arr = [];
   for (let i = 0; i < 10; i++) { // ペアの数字を10組
     arr.push(i);
     arr.push(i);
@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   shuffle(arr);
 
-  let panel = document.getElementById('panel');
+  const panel = document.getElementById('panel');
 
   for (i = 0; i < 20; i++) { // カードを並べる
-    let div = document.createElement('div');
+    const div = document.createElement('div');
     div.className = 'card back';
     div.index = i;
     div.number = arr[i];
@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
   start_time = Date.now(); // 開始時刻を取得
 
   timer = setInterval(()=>{ // タイマー開始
-    let elapsed_time = Math.floor((Date.now() - start_time) / 1000);
-    let str = '経過時間: ' + elapsed_time + '秒';
+    const elapsed_time = Math.floor((Date.now() - start_time) / 1000);
+    const str = '経過時間: ' + elapsed_time + '秒';
   
-    let re = document.getElementById('result');
+    const re = document.getElementById('result');
     re.innerHTML = str;
    }, 1000);
 
@@ -62,7 +62,7 @@ function shuffle(array) {
  * クリックしたときにカードをめくる
  */
 function turn(e){
-  let div = e.target; // クリックされたカードのdiv要素
+  const div = e.target; // クリックされたカードのdiv要素
 
   if (wait_time) return; // 2枚目クリック時の待ち中はreturn
 
