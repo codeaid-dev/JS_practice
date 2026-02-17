@@ -1,6 +1,9 @@
 const stars = document.querySelectorAll('.star');
 const result = document.getElementById('result');
 let rating = 0;
+const highlight = (index) => {
+  stars.forEach((s, j) => s.classList.toggle('active', j <= index));
+}
 
 stars.forEach((star, i) => {
   star.addEventListener('mouseover', () => highlight(i));
@@ -10,7 +13,3 @@ stars.forEach((star, i) => {
     result.textContent = `評価: ${rating} / 5`;
   });
 });
-
-function highlight(index) {
-  stars.forEach((s, j) => s.classList.toggle('active', j <= index));
-}

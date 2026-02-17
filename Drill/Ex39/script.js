@@ -1,12 +1,6 @@
 const checks = document.querySelectorAll('input[type="checkbox"]');
 const items = document.querySelectorAll('#items li');
-
-checks.forEach((cb) => {
-  cb.addEventListener('change', updateFilter);
-});
-updateFilter();
-
-function updateFilter() {
+const updateFilter = () => {
   const checkTypes = [...checks].filter((cb) => cb.checked);
   const activeTypes = [];
   checkTypes.forEach((cb) => {
@@ -23,3 +17,9 @@ function updateFilter() {
     // item.style.display = activeTypes.includes(type) ? 'list-item' : 'none';
   });
 }
+
+checks.forEach((cb) => {
+  cb.addEventListener('change', updateFilter);
+});
+updateFilter();
+

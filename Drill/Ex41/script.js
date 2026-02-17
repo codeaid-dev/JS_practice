@@ -1,7 +1,7 @@
 const cards = document.querySelectorAll('.card');
 const count = document.getElementById('count');
 
-function updateCount() {
+const updateCount = () => {
   const selected = [...cards].filter(c => c.classList.contains('selected'));
   count.textContent = selected.length;
 }

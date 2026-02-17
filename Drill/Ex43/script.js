@@ -6,7 +6,7 @@ const data = [
   { eto: '酉', year: 2029 }
 ];
 
-function render() {
+const render = () => {
   const sort = document.getElementById('sort').value;
   const filter = document.getElementById('filter').checked;
   const list = document.getElementById('list');

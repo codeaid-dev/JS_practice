@@ -7,7 +7,7 @@ for (let i=0; i<9; i++) {
   panel.appendChild(tile);
 }
 
-function change(element) {
+const change = (element) => {
   if (element.style.backgroundColor === 'white') {
     element.style.backgroundColor = 'black';
   } else {

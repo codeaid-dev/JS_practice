@@ -4,7 +4,20 @@ const maze = [...Array(HEIGHT)].map(() => Array(WIDTH).fill(0));
 
 const panel = document.getElementById('panel');
 
-function init() {
+const make_maze = () => {
+  const dx = [-1,1,0,0];
+  const dy = [0,0,1,-1];
+  for (let y=1; y<HEIGHT-1; y+=2) {
+    for (let x=1; x<WIDTH-1; x+=2) {
+      maze[y][x] = 1;
+      let num = Math.floor(Math.random()*3);
+      if (y === 1) num = Math.floor(Math.random()*4);
+      maze[y+dy[num]][x+dx[num]] = 1;
+    }
+  }
+}
+
+const init = () => {
   panel.innerHTML = ''; // 子要素を全て削除
   for (let cell of maze) {
     cell.fill(0); // 0で初期化
@@ -18,19 +31,6 @@ function init() {
         tile.style.backgroundColor = 'grey';
       }
       panel.appendChild(tile);
-    }
-  }
-}
-
-function make_maze() {
-  const dx = [-1,1,0,0];
-  const dy = [0,0,1,-1];
-  for (let y=1; y<HEIGHT-1; y+=2) {
-    for (let x=1; x<WIDTH-1; x+=2) {
-      maze[y][x] = 1;
-      let num = Math.floor(Math.random()*3);
-      if (y === 1) num = Math.floor(Math.random()*4);
-      maze[y+dy[num]][x+dx[num]] = 1;
     }
   }
 }

@@ -22,9 +22,8 @@ for (let i=0; i<9; i++) {
   }
   panel.appendChild(tile);
 }
-init();
 
-function init() {
+const init = ()  => {
   for (let [index, element] of [...panel.children].entries()) {
     if (index === 4) {
       element.style.fontSize = '80px';
@@ -38,8 +37,9 @@ function init() {
     }
   }
 }
+init();
 
-function judge(event) {
+const judge = (event) => {
   if (numQ === 0) {
     if (event.target.style.backgroundColor === iro[numIro]) {
       score += 1;

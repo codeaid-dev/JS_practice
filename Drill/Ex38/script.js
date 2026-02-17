@@ -4,7 +4,7 @@
 
   let timeoutId = null;
 
-  function hideNotification() {
+  const hideNotification = () => {
     notification.classList.add('hidden');
     if (timeoutId !== null) {
       clearTimeout(timeoutId);

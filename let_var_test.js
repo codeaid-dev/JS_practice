@@ -1,4 +1,4 @@
-function test(){
+const test = () => {
   var x = 0;
   console.log(x); //0
   var x = 1;
@@ -15,7 +15,7 @@ function test(){
 }
 test();
 
-function test2(){
+const test2 = () => {
   let x = 0;
   console.log(x); //0
   let x = 1;

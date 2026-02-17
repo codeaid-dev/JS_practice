@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
   carousel.style.transform = `translateX(${-slideWidth * index}px)`;
   carousel.style.transition = 'transform .3s';
 
-  function moveTo(i) {
+  const moveTo = (i) => {
     carousel.style.transition = 'transform .3s';
     carousel.style.transform = `translateX(${-slideWidth * i}px)`;
   }

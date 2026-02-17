@@ -1,4 +1,4 @@
-function draw() {
+const draw = () => {
   const canvas = document.getElementById('sketch');
   const ctx = canvas.getContext('2d');
 

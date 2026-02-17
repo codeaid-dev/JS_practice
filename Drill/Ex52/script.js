@@ -1,5 +1,5 @@
 const questions = [];
-function createQ() {
+const createQ = () => {
   if (questions.length > 0) questions.splice(0);
   for (let i=0; i<3; i++) {
     questions.push(Math.floor(Math.random()*10));

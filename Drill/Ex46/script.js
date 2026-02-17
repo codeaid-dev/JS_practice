@@ -12,7 +12,7 @@
   const prev = document.getElementById('prev');
   const error = document.getElementById('error');
 
-  function render() {
+  const render = () => {
     steps.forEach(step => {
       step.classList.toggle(
         'active',
@@ -57,6 +57,7 @@
     if (state.step > 1) {
       state.step--;
     }
+    error.textContent = '';
     render();
   });
 

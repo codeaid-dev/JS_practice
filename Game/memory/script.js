@@ -4,45 +4,10 @@ let wait_time;      // カードをめくった時の待ち時間(setTimeoutの�
 let flg_turn = true;  // true: 1枚目、false: 2枚目
 let first_card;     // 1枚目のカードを格納(div要素)
 let count = 0;      // 消した回数
-
-document.addEventListener('DOMContentLoaded', () => {
-  const arr = [];
-  for (let i = 0; i < 10; i++) { // ペアの数字を10組
-    arr.push(i);
-    arr.push(i);
-  }
-
-  shuffle(arr);
-
-  const panel = document.getElementById('panel');
-
-  for (i = 0; i < 20; i++) { // カードを並べる
-    const div = document.createElement('div');
-    div.className = 'card back';
-    div.index = i;
-    div.number = arr[i];
-    div.innerHTML = '';
-    panel.appendChild(div);
-
-    div.addEventListener('click', turn);
-  }
-
-  start_time = Date.now(); // 開始時刻を取得
-
-  timer = setInterval(()=>{ // タイマー開始
-    const elapsed_time = Math.floor((Date.now() - start_time) / 1000);
-    const str = '経過時間: ' + elapsed_time + '秒';
-  
-    const re = document.getElementById('result');
-    re.innerHTML = str;
-   }, 1000);
-
-});
-
 /*
  * Fisher–Yates Shuffle https://bost.ocks.org/mike/shuffle/
  */
-function shuffle(array) {
+const shuffle = (array) => {
   let m = array.length;
   let temp, i;
 
@@ -61,7 +26,7 @@ function shuffle(array) {
 /*
  * クリックしたときにカードをめくる
  */
-function turn(e){
+const turn = (e) => {
   const div = e.target; // クリックされたカードのdiv要素
 
   if (wait_time) return; // 2枚目クリック時の待ち中はreturn
@@ -102,3 +67,37 @@ function turn(e){
     flg_turn = true; // 次は1枚目
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const arr = [];
+  for (let i = 0; i < 10; i++) { // ペアの数字を10組
+    arr.push(i);
+    arr.push(i);
+  }
+
+  shuffle(arr);
+
+  const panel = document.getElementById('panel');
+
+  for (i = 0; i < 20; i++) { // カードを並べる
+    const div = document.createElement('div');
+    div.className = 'card back';
+    div.index = i;
+    div.number = arr[i];
+    div.innerHTML = '';
+    panel.appendChild(div);
+
+    div.addEventListener('click', turn);
+  }
+
+  start_time = Date.now(); // 開始時刻を取得
+
+  timer = setInterval(()=>{ // タイマー開始
+    const elapsed_time = Math.floor((Date.now() - start_time) / 1000);
+    const str = '経過時間: ' + elapsed_time + '秒';
+  
+    const re = document.getElementById('result');
+    re.innerHTML = str;
+   }, 1000);
+
+});

@@ -5,17 +5,17 @@ const images = [...gallery.querySelectorAll('img')];
 const close = document.getElementById('close');
 let currentIndex = 0;
 
+const showImage = () => {
+  modal.style.display = 'flex';
+  modalImg.src = images[currentIndex].src;
+}
+
 gallery.addEventListener('click', (div) => {
   if (div.target.tagName === 'IMG') {
     currentIndex = Number(div.target.dataset.index);
     showImage();
   }
 });
-
-function showImage() {
-  modal.style.display = 'flex';
-  modalImg.src = images[currentIndex].src;
-}
 
 close.addEventListener('click', () => modal.style.display = 'none');
 modal.addEventListener('click', (div) => {

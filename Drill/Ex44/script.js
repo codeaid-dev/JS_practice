@@ -1,7 +1,7 @@
 const data = ['A', 'B', 'C', 'D', 'E'];
 let mode = 'list';
 
-function render() {
+const render = () => {
   const view = document.getElementById('view');
   const list = document.createElement('ul');
   view.innerHTML = '';

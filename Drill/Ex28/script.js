@@ -1,7 +1,7 @@
 const tiles = document.querySelectorAll('.tile');
 let index = 4;
 
-function update() {
+const update = () => {
   tiles.forEach((li, i) => {
     li.classList.toggle('active', i === index);
   });
