@@ -12,7 +12,8 @@ console.log(greet('Taro')); // Hello, Taro!
 // 2. メソッドとして利用する場合の this
 const person = {
   name: 'Hanako',
-  sayName: function() {  // 通常関数なので this は呼び出し元を指す
+  // sayName: function() {  // thisは呼び出し元のwindow
+  sayName: () => {  // thisは外側のcounter
     console.log('My name is ' + this.name);
   }
 };

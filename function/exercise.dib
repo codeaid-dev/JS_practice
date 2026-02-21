@@ -176,7 +176,7 @@ const a2 = a.map(function (s) {
 });
 console.log(a2); // [8, 6, 7, 9]
 
-const a3 = a.map((s) => s.length);
+const a3 = a.map(s => s.length);
 console.log(a3); // [8, 6, 7, 9]
 
 #!javascript
