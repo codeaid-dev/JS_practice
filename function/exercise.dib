@@ -67,8 +67,16 @@ console.log(factorial(5)); // 120
 
 #!javascript
 
-// 関数式(引数渡し)
-function map(f, a) {
+// アロー関数式
+const plus = (number) => {
+  return number + 100;
+};
+console.log(plus(1)); // 101
+
+#!javascript
+
+// 関数(引数渡し)
+function map(f, a) { // const map = (f, a) => {
   let result = [];
   for (let i = 0; i !== a.length; i++) result[i] = f(a[i]);
   return result;
@@ -82,19 +90,34 @@ console.log(cube); // [0,1,8,125,1000]
 
 #!javascript
 
+// 関数(戻り値として返す)
+function makeAdder(x) {
+  return function (y) {
+    return x + y;
+  };
+}
+
+const add5 = makeAdder(5);
+const add10 = makeAdder(10);
+
+console.log(add5(2)); // 7
+console.log(add10(2)); // 12
+
+#!javascript
+
 // 関数のスコープ
 let num1 = 20;
 let num2 = 3;
 let name = "Foo";
-function multiply() {
+function multiply() { // const multiply = () => {
   return num1 * num2;
 }
 console.log(multiply()); // 60
 // 入れ子になっている関数の例
-function getScore() {
+function getScore() { // const getScore = () => {
   let num1 = 2;
   let num2 = 4;
-  function add() {
+  function add() { // const add = () => {
     return name + " scored " + (num1 + num2);
   }
   return add();
@@ -104,7 +127,7 @@ console.log(getScore()); // "Foo scored 6"
 #!javascript
 
 // 関数の引数
-function myConcat(separator) {
+function myConcat(separator) { // アロー関数はargumentsオブジェクトを持たないため記述できない
   let result = "";
   // 引数について繰り返し
   for (let i = 1; i < arguments.length; i++) {
@@ -114,13 +137,15 @@ function myConcat(separator) {
 }
 console.log(myConcat(", ", "red", "orange", "blue")); // "red, orange, blue, "
 console.log(myConcat(1,2,3)); // "34"
-console.log(myConcat("; ", "elephant", "giraffe", "lion", "cheetah")); // "elephant; giraffe; lion; cheetah; "
-console.log(myConcat(". ", "sage", "basil", "oregano", "pepper", "parsley")); // "sage. basil. oregano. pepper. parsley. "
+// "elephant; giraffe; lion; cheetah; "
+console.log(myConcat("; ", "elephant", "giraffe", "lion", "cheetah"));
+// "sage. basil. oregano. pepper. parsley. "
+console.log(myConcat(". ", "sage", "basil", "oregano", "pepper", "parsley"));
 
 #!javascript
 
 // デフォルト引数
-function multiply(a, b = 1) {
+function multiply(a, b = 1) { // const multiply = (a, b = 1) => {
   return a * b;
 }
 console.log(multiply(5,2)); // 10
@@ -129,7 +154,7 @@ console.log(multiply(5)); // 5
 #!javascript
 
 // 残余引数1
-function sum(...theArgs) {
+function sum(...theArgs) { // const sum = (...theArgs) {
   let total = 0;
   for (const arg of theArgs) {
     total += arg;
@@ -142,7 +167,7 @@ console.log(sum(1, 2, 3, 4)); // 10
 #!javascript
 
 // 残余引数2
-function countup(a, b, ...next) {
+function countup(a, b, ...next) { // const countup = (a, b, ...next) => {
   console.log(a);
   console.log(b);
   console.log(next);
@@ -155,8 +180,8 @@ countup("one", "two", "three", "four", "five", "six");
 #!javascript
 
 // 残余引数に配列の項目を渡す
-function sum(...theArgs) {
-  console.log(theArgs);
+function sum(...theArgs) { // const sum = (...theArgs) => {
+  console.log(theArgs); // [[1,2,3]]
   let total = 0;
   for (const arg of theArgs) {
     total += arg;
@@ -165,7 +190,7 @@ function sum(...theArgs) {
 }
 //console.log(sum(1,2,3));
 sum([1,2,3]);
-console.log(sum(...[1,2,3]));
+console.log(sum(...[1,2,3])); // 6 ＊呼出時に...を記述する(スプレッド構文)
 
 #!javascript
 
@@ -194,8 +219,8 @@ params(2); // 2 undefined
 //   }
 //   console.log(a, b);
 // }
-// paramsEx(2, 4);
-// paramsEx(2, 4, 6);
+// paramsEx(2, 4); // 2 4
+// paramsEx(2, 4, 6); // エラー
 
 const paramsEx = (a, b, ...rest) => {
   if (a === undefined || b === undefined || rest.length > 0) {
@@ -203,8 +228,25 @@ const paramsEx = (a, b, ...rest) => {
   }
   console.log(a, b);
 }
-paramsEx(2, 4);
-paramsEx(2, 4, 6);
+paramsEx(2, 4); // 2 4
+paramsEx(2, 4, 6); // エラー
+
+#!javascript
+
+// 複数定義
+function sample() {
+  console.log('Hello');
+}
+
+function sample() {
+  console.log('Good bye');
+}
+
+sample(); // Good bye
+
+#!markdown
+
+## ドリル
 
 #!javascript
 

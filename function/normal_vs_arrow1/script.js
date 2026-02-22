@@ -12,8 +12,8 @@ console.log(greet('Taro')); // Hello, Taro!
 // 2. メソッドとして利用する場合の this
 const person = {
   name: 'Hanako',
-  // sayName: function() {  // thisは呼び出し元のwindow
-  sayName: () => {  // thisは外側のcounter
+  // sayName: function() {  // thisはperson
+  sayName: () => {  // thisは外側のwindow
     console.log('My name is ' + this.name);
   }
 };
@@ -40,10 +40,10 @@ console.log(doubled); // [2, 4, 6, 8]
 // 2. this が外側スコープを保持する例
 function counter() {
   this.count = 0;
-  setInterval(() => {
-    // アロー関数なので this は counter のインスタンスを参照
+  // setInterval(function () { // thisはwindow
+  setInterval(() => { // thisは外側のcounter
     this.count++;
     console.log('Count:', this.count);
   }, 1000);
 }
-counter();  // 1秒ごとにカウントが増えて表示される
+new counter();  // 1秒ごとにカウントが増えて表示される
