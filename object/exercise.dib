@@ -1,6 +1,6 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"javascript","items":[{"name":"javascript","languageName":"javascript"},{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"html","languageName":"HTML"},{"name":"http","languageName":"HTTP"},{"name":"mermaid","languageName":"Mermaid"},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"value"}]}}
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"name":"csharp","languageName":"C#","aliases":["c#","cs"]},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"html","languageName":"HTML"},{"name":"http","languageName":"HTTP"},{"name":"javascript","languageName":"javascript"},{"name":"mermaid","languageName":"Mermaid"},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"value"}]}}
 
 #!javascript
 
@@ -247,6 +247,44 @@ class Artist extends Person {
 const person2 = new Artist('Prince', 'Soul');
 person2.greet(); // Hello! I'm Prince and I'm Soul musician.
 console.log(person2.getGenre()); // Soul
+
+#!javascript
+
+// カプセル化 セッター/ゲッター
+class Person {
+  name;
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hello! I'm ${this.name}.`);
+  }
+}
+class Artist extends Person {
+  #genre;
+  constructor(name, genre) {
+    super(name);
+    this.#genre = genre;
+  }
+  greet() {
+    console.log(`Hello! I'm ${this.name} and I'm ${this.#genre} musician.`);
+  }
+  set genre(genre) {
+    this.#genre = genre;
+  }
+  get genre() {
+    return this.#genre;
+  }
+}
+const person2 = new Artist('Prince', 'Soul');
+person2.greet(); // Hello! I'm Prince and I'm Soul musician.
+console.log(person2.genre); // Soul
+person2.genre = 'Pop';
+console.log(person2.genre); // Pop
+
+#!markdown
+
+## ドリル
 
 #!javascript
 
