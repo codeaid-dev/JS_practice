@@ -11,3 +11,13 @@ document.querySelector('form').addEventListener('input', () => {
   document.querySelector('#color-code').innerHTML = rgb;
   panel.setAttribute('style', `background-color:${rgb}`);
 });
+/*
+文字列から数値(整数)に変換するには、Number()やpaseInt()を使うが
+その違いは以下
+・Number()は文字列がすべて数字でなくてはならない
+・Number()は文字列が小数点数のときは数値に変換後、小数点以下の処理が必要
+＞切り捨て、切り上げ、丸め
+・parseInt()は文字列に数字以外が含まれていても数値にできるが、文字列は数字で始まらなくてなならない
+・parseInt()は文字列が小数点数のときは小数点以下を切り捨てる
+※paseInt()は数値の小数点数(実数)でも使えるが処理が遅いので他の利用を推奨
+*/

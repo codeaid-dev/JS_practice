@@ -48,9 +48,9 @@ const loop = () => {
     for (let other of circles) {
       if (circle !== other) {
         if (circle.collision(other)) {
-          const r = Math.random()*256;
-          const g = Math.random()*256;
-          const b = Math.random()*256;
+          const r = Math.trunc(Math.random()*256);
+          const g = Math.trunc(Math.random()*256);
+          const b = Math.trunc(Math.random()*256);
           circle.color = `rgb(${r} ${g} ${b})`;
           break;
         }
