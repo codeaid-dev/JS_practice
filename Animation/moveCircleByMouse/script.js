@@ -5,8 +5,6 @@ canvas.height = 500;
 
 let x = 250;
 let y = 250;
-let dx = 3;
-let dy = 4;
 const radius = 20;
 
 canvas.addEventListener('mousemove', (event) => {
