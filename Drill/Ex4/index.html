@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>該当者検出</title>
+  <title>四角を動かす</title>
+  <style>
+    #box {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div>
-    <label for="search">ユーザーID</label>
-    <input type="text" id="search">
-  </div>
-  <p id="result" style="font-size: 20px;">該当なし</p>
+  <div id="box"></div>
 </body>
 </html>

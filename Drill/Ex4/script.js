@@ -1,23 +1,13 @@
-const user_list = [
-  { id: 101, name: '高橋' },
-  { id: 102, name: '鈴木' },
-  { id: 103, name: '後藤' },
-  { id: 104, name: '佐藤' },
-  { id: 105, name: '田中' }
-];
+const box = document.getElementById("box");
+let x = 50, y = 50;
 
-const search = document.querySelector('#search');
-const result = document.querySelector('#result');
-search.addEventListener('keyup', ()=>{
-  const search_id = Number(search.value);
-
-  const target = user_list.find((data) => {
-    return data.id === search_id;
-  });
-  console.log(target);
-  if (target === undefined) {
-    result.innerText = '該当者なし';
-  } else {
-    result.innerText = target.name;
-  }
+document.addEventListener('keydown', (e) => {
+  if (e.key === "ArrowUp") y -= 10;
+  if (e.key === "ArrowDown") y += 10;
+  if (e.key === "ArrowLeft") x -= 10;
+  if (e.key === "ArrowRight") x += 10;
+  x = Math.max(0, Math.min(window.innerWidth - 100, x));
+  y = Math.max(0, Math.min(window.innerHeight - 100, y));
+  box.style.left = x + "px";
+  box.style.top = y + "px";
 });
