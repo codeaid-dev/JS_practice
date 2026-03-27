@@ -3,24 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>テキスト表示</title>
+  <title>漢字反転</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <label><p>色を選択してください</p></label>
-  <p>
-    <input type="radio" name="color" id="black" value="black" checked>
-    <label for="black">黒色</label>
-    <input type="radio" name="color" id="red" value="red">
-    <label for="red">赤色</label>
-    <input type="radio" name="color" id="blue" value="blue">
-    <label for="blue">青色</label>
-    <input type="radio" name="color" id="yellow" value="yellow">
-    <label for="yellow">黄色</label>
-  </p>
-  <p>表示するテキストを入力してください</p>
-  <input type="text">
-  <button>表示</button>
-  <p id="result">ここに表示</p>
+  <p>反転しても意味の通る漢字です。<br>反転ボタンを押すと漢字が反転します。</p>
+  <p style="font-size:40px;"><span id="one">社</span><span id="two">会</span></p>
+  <button>反転</button>
 </body>
 </html>

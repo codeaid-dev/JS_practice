@@ -1,5 +1,4 @@
-document.querySelectorAll('div').forEach(div => {
-  div.addEventListener('click', (event)=> {
-    event.target.style.display = event.target.dataset.active === 'true' ? 'block' : 'none';
-  });
+document.querySelector('#choice').addEventListener('change', () => {
+  const pic = document.querySelector('#choice').value;
+  document.querySelector('#picture').setAttribute('src', `../img/slot${pic}.png`);
 });

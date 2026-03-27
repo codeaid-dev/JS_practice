@@ -1,41 +1,37 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数当て</title>
+  <title>ブロック追加・移動</title>
   <style>
-    table {
-      width: 200px;
-      table-layout: fixed;
+    #blocks {
+      width: 500px;
     }
-    td {
-      font-size: 20px;
+    .item {
+      margin: 5px;
       padding: 5px;
-      text-align: center;
+      width: 100px;
+      border: 1px solid grey;
+      border-radius: 5px;
+      float: left;
+      overflow-wrap: break-word;
+    }
+    .item button {
+      display: block;
+      margin: 0 auto;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h2>数当て</h2>
-  <table>
-    <tr id="question">
-      <td>?</td>
-      <td>?</td>
-      <td>?</td>
-    </tr>
-    <tr id="answer">
-      <td><input type="number" min="0" max="9" size="10"></td>
-      <td><input type="number" min="0" max="9" size="10"></td>
-      <td><input type="number" min="0" max="9" size="10"></td>
-    </tr>
-    <tr>
-      <td colspan="3"><button id="judge">解答</button></td>
-    </tr>
-    <tr>
-      <td colspan="3"><button id="other">別の問題</button></td>
-    </tr>
-  </table>
+  <input type="text" name="item">
+  <button id="add">要素追加</button>
+  <div id="template" class="item" hidden>
+    <p class="contents"></p>
+    <button class="remove">削除</button>
+  </div>
+
+  <div id="blocks"></div>
 </body>
 </html>

@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>data-*属性</title>
+  <title>画像表示</title>
   <style>
-    div {
-      margin: 5px 0;
-      width: 100px;
-      height: 30px;
-      background-color: gray;
-      line-height: 30px;
-      text-align: center;
+    img {
+      width: 300px;
+      height: 300px;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div data-active="true">A</div>
-  <div data-active="true">B</div>
-  <div data-active="false">C</div>
-  <div data-active="true">D</div>
-  <div data-active="false">E</div>
-  <div data-active="true">F</div>
+  <p>画像を選択してください。</p>
+  <select id="choice">
+    <option value="1">鐘</option>
+    <option value="2">りんご</option>
+    <option value="3">バナナ</option>
+    <option value="4">さくらんぼ</option>
+    <option value="5">オレンジ</option>
+    <option value="6">ニコニコ</option>
+    <option value="7">セブン</option>
+  </select><br>
+  <img id="picture" src="../img/slot1.png">
 </body>
 </html>

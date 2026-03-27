@@ -3,24 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>表示切り替え</title>
-  <style>
-    #view {
-      display:flex
-    }
-    #view div {
-      margin: 5px;
-      width: 50px;
-      height: 50px;
-      text-align: center;
-      line-height: 50px;
-      background-color: green;
-    }
-  </style>
+  <title>フィルタ</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <button id="toggle">切替</button>
-  <div id="view"></div>
+  <label><input type="checkbox" value="fruit" checked> 果物</label>
+  <label><input type="checkbox" value="vegetable"> 野菜</label>
+
+  <ul id="items">
+    <li data-type="fruit">林檎</li>
+    <li data-type="vegetable">人参</li>
+    <li data-type="fruit">バナナ</li>
+    <li data-type="fruit">オレンジ</li>
+    <li data-type="vegetable">キャベツ</li>
+    <li data-type="vegetable">胡瓜</li>
+  </ul>
 </body>
 </html>

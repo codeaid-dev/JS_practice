@@ -1,19 +1,31 @@
-const words = ['apple', 'banana', 'grape', 'りんご', 'みかん', 'いちご'];
-const input = document.getElementById('input');
-const suggest = document.getElementById('suggest');
+const tiles = document.querySelectorAll('.tile');
 
-input.addEventListener('input', () => {
-  suggest.innerHTML = '';
-  if (!input.value) return;
-
-  words.filter(w => w.includes(input.value))
-    .forEach(w => {
-      const li = document.createElement('li');
-      li.textContent = w;
-      li.addEventListener('click', () => {
-        input.value = w;
-        suggest.innerHTML = '';
-      });
-      suggest.appendChild(li);
-    });
+tiles.forEach((tile, i) => {
+  tile.addEventListener('click', () => {
+    if (tile.style.background === 'red') {
+      tile.style.background = null;
+      tile.innerText = '';
+    } else if (tiles[i].style.background === 'blue') {
+      tile.style.background = 'red';
+      tile.innerText = Number(i)+1;
+    } else {
+      tile.style = 'background:blue';
+      tile.innerText = Number(i)+1;
+    }
+  });
 });
+
+// for (let tile of tiles) {
+//   tile.addEventListener('click', () => {
+//     if (tile.style.background === 'red') {
+//       tile.style.background = null;
+//       tile.innerText = '';
+//     } else if (tile.style.background === 'blue') {
+//       tile.style.background = 'red';
+//       tile.innerText = Array.from(tiles).indexOf(tile)+1;
+//     } else {
+//       tile.style = 'background:blue';
+//       tile.innerText = Array.from(tiles).indexOf(tile)+1;
+//     }
+//   });
+// }

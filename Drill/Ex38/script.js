@@ -1,24 +1,13 @@
-  const notify = document.getElementById('notify');
-  const notification = document.getElementById('notification');
-  const close = document.getElementById('close');
-
-  let timeoutId = null;
-
-  const hideNotification = () => {
-    notification.classList.add('hidden');
-    if (timeoutId !== null) {
-      clearTimeout(timeoutId);
-      timeoutId = null;
-    }
-  }
-
-  notify.addEventListener('click', () => {
-    notification.classList.remove('hidden');
-    if (timeoutId !== null) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => {
-      hideNotification();
-    }, 3000);
-  });
-  close.addEventListener('click', hideNotification);
+const tarea = document.querySelector('textarea');
+const findipt = document.querySelector('#findtxt');
+const repipt = document.querySelector('#reptxt');
+const btn = document.querySelector('button');
+const elem = document.querySelector('p');
+btn.addEventListener('click', () => {
+  let findtxt = findipt.value;
+  let reptxt = repipt.value;
+  let tagtxt = tarea.value;
+  findtxt = new RegExp(findtxt, 'g');
+  tagtxt = tagtxt.replace(findtxt, reptxt);
+  elem.innerText = tagtxt;
+});

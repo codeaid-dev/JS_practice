@@ -1,43 +1,24 @@
-let stat = 'green';
-const green = document.querySelector('.green');
-const yellow = document.querySelector('.yellow');
-const red = document.querySelector('.red');
-const tlight = document.getElementsByName('tlight');
-const btn = document.querySelector('button');
-btn.addEventListener('click', () => {
-  for (let i=0; i<tlight.length; i++) {
-    if (tlight[i].checked) {
-      const select = tlight[i].value;
-      if (select === 'green') {
-        green.setAttribute('style', 'background:green');
-        yellow.setAttribute('style', 'background:black');
-        red.setAttribute('style', 'background:black');
-      } else if (select === 'red') {
-        green.setAttribute('style', 'background:black');
-        yellow.setAttribute('style', 'background:black');
-        red.setAttribute('style', 'background:red');
-      } else if (select === 'gtor') {
-        if (stat === 'green') {
-          green.setAttribute('style', 'background:green');
-          yellow.setAttribute('style', 'background:black');
-          red.setAttribute('style', 'background:black');
-          stat = 'yellow';
-        }
-        const timer_id = setInterval(() => {
-          if (stat === 'yellow') {
-            green.setAttribute('style', 'background:black');
-            yellow.setAttribute('style', 'background:yellow');
-            red.setAttribute('style', 'background:black');
-            stat = 'red';
-          } else if (stat === 'red') {
-            green.setAttribute('style', 'background:black');
-            yellow.setAttribute('style', 'background:black');
-            red.setAttribute('style', 'background:red');
-            stat = 'green';
-            clearInterval(timer_id);
-          }
-        }, 2000);
-      }
-    }
+let data = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const panel = document.getElementById('panel');
+let dragItem = null;
+
+for (let i=0; i<36; i++) {
+  const tile = document.createElement('div');
+  tile.classList.add('tile');
+  if (data.length !== 0) {
+    const index = Math.floor(Math.random()*data.length);
+    tile.textContent = data[index];
+    tile.draggable = true;
+    data = data.replace(data[index], '');
   }
+  panel.appendChild(tile);
+}
+
+panel.addEventListener('dragstart', event => { dragItem = event.target; });
+panel.addEventListener('dragover', event => event.preventDefault());
+panel.addEventListener('drop', event => {
+if (event.target.classList.contains('tile') && event.target !== dragItem) {
+  panel.insertBefore(dragItem, event.target.nextSibling);
+  console.log([...panel.children].map(i => i.textContent));
+}
 });

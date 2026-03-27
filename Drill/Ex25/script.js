@@ -1,31 +1,33 @@
-const all = document.getElementById('all');
-const items = document.querySelectorAll('.item');
-
-all.addEventListener('change', () => {
-  items.forEach(item => item.checked = all.checked);
+const memo = document.getElementById('memo');
+const add = document.getElementById('add');
+const delAll = document.getElementById('delAll');
+add.addEventListener('click', ()=>{
+  const todo = document.getElementById('todoMemo');
+  if (todo.value.trim() === '') return;
+  const li = document.createElement('li');
+  li.innerHTML = `
+    ${todo.value}
+    <button class="delete">削除</button>
+  `;
+  memo.appendChild(li);
+  todo.value = '';
 });
+delAll.addEventListener('click', ()=>{
+  memo.innerHTML = '';
+});
+memo.addEventListener('click', (event) => {
+    const li = event.target.closest('li');
+    if (!li) return;
 
-items.forEach(item => {
-  item.addEventListener('change', () => {
-    let count = 0;
-    for (item of items) {
-      if (item.checked) {
-        count++;
-      }
+    // 削除ボタン
+    if (event.target.classList.contains('delete')) {
+      // event.stopPropagation();
+      li.remove();
+      return;
     }
-    // const count = [...items].filter(i => i.checked).length;
 
-    if (count === items.length) {
-      all.checked = true;
-    } else {
-      all.checked = false;
-    }
-    if (count > 0 && count < items.length) {
-      all.indeterminate = true;
-    } else {
-      all.indeterminate = false;
-    }
-    // all.checked = count === items.length;
-    // all.indeterminate = count > 0 && count < items.length;
-  });
+    // 選択処理
+    memo.querySelectorAll('li')
+      .forEach(item => item.classList.remove('selected'));
+    li.classList.add('selected');
 });

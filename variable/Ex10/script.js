@@ -1,0 +1,17 @@
+let price = 17777;
+console.log(`10000円札は${Math.floor(price/10000)}枚`);
+price = price % 10000;
+console.log(`5000円札は${Math.floor(price/5000)}枚`);
+price = price % 5000;
+console.log(`1000円札は${Math.floor(price/1000)}枚`);
+price = price % 1000;
+console.log(`500円玉は${Math.floor(price/500)}枚`);
+price = price % 500;
+console.log(`100円玉は${Math.floor(price/100)}枚`);
+price = price % 100;
+console.log(`50円玉は${Math.floor(price/50)}枚`);
+price = price % 50;
+console.log(`10円玉は${Math.floor(price/10)}枚`);
+price = price % 10;
+console.log(`5円玉は${Math.floor(price/5)}枚`);
+console.log(`1円玉は${Math.floor(price%5)}枚`);

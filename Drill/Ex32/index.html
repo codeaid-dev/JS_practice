@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ボックス作成</title>
+  <title>地方選択</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div><label>横幅：<input type="text" id="yoko"></label></div>
-  <div><label>縦幅：<input type="text" id="tate"></label></div>
-  <div><label>色：<input type="text" id="iro"></label></div>
-  <div><label>個数：<input type="text" id="cnt"></label></div>
-  <button>ボックス作成</button>
-  <div id="result">結果表示</div>
+  <p>地方を選択してください</p>
+  <p>
+    <label><input type="radio" name="region" value="kinki" checked>近畿地方</label>
+    <label><input type="radio" name="region" value="nishinihon">西日本地方</label>
+    <label><input type="radio" name="region" value="shikoku">四国地方</label>
+    <label><input type="radio" name="region" value="kyushu">九州地方</label>
+  </p>
+  <div><select id="pref"></select></div>
+  <p id="result"></p>
 </body>
 </html>

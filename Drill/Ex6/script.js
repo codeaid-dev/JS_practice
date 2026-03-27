@@ -1,31 +1,25 @@
-const btns = document.querySelectorAll('button');
-const disc = document.querySelector('#description');
-// for (let i=0; i<btns.length; i++) {
-//   btns[i].addEventListener('click', () => {
-//     if (btns[i].id === 'small') {
-//       // disc.setAttribute('style', 'font-size:14px;');
-//       disc.style.fontSize = '14px';
-//     } else if (btns[i].id === 'medium') {
-//       // disc.setAttribute('style', 'font-size:16px;');
-//       disc.style.fontSize = '16px';
-//     } else if (btns[i].id === 'large') {
-//       // disc.setAttribute('style', 'font-size:20px;');
-//       disc.style.fontSize = '20px';
-//     }
-//   });
-// }
-
-btns.forEach((btn) => {
-  btn.addEventListener('click', (b) => {
-    if (b.currentTarget.id === 'small') {
-      // disc.setAttribute('style', 'font-size:14px;');
-      disc.style.fontSize = '14px';
-    } else if (b.currentTarget.id === 'medium') {
-      // disc.setAttribute('style', 'font-size:16px;');
-      disc.style.fontSize = '16px';
-    } else if (b.currentTarget.id === 'large') {
-      // disc.setAttribute('style', 'font-size:20px;');
-      disc.style.fontSize = '20px';
+const yoko = document.getElementById('yoko');
+const tate = document.getElementById('tate');
+const btn = document.querySelector('button');
+const elem = document.getElementById('answer');
+btn.addEventListener('click',()=>{
+  if (isNaN(yoko.value) || isNaN(tate.value)) {
+    elem.innerHTML = '<span style="color:red;">数値に変換できません！</span>';
+  } else {
+    let tile = ['○', '✕'];
+    let index = 1;
+    let ans = "";
+    for (let i = 0; i < tate.value; i++) {
+      index = 1 - index;
+      for (let j = 0; j < yoko.value; j++) {
+        if (j % 2 === 0) {
+          ans += tile[index];
+        } else {
+          ans += tile[1 - index];
+        }
+      }
+      ans += '<br>';
     }
-  });
+    elem.innerHTML = ans;
+  }
 });

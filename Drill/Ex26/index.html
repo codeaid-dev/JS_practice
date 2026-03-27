@@ -3,37 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>カウントダウンタイマー</title>
+  <title>data-*属性</title>
   <style>
-    .container {
-      width: 700px;
-      margin: 0 auto;
+    div {
+      margin: 5px 0;
+      width: 100px;
+      height: 30px;
+      background-color: gray;
+      line-height: 30px;
       text-align: center;
-    }
-    #timer {
-      font-size: 30px;
-      font-weight: bold;
-    }
-    #textMinSec,
-    #btns {
-      margin: 10px auto;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <h2>カウントダウンタイマー</h2>
-    <p>計測する時間を入力してスタートしてください。</p>
-    <p id="timer">00:00</p>
-    <div id="textMinSec">
-      <label><input type="text" id="minutes" maxlength="2" size="2">分</label>
-      <label><input type="text" id="seconds" maxlength="2" size="2">秒</label><br>
-    </div>
-    <div id="btns">
-      <button id="start">スタート</button>
-      <button id="stop">ストップ</button>
-    </div>
-  </div>
+  <div data-active="true">A</div>
+  <div data-active="true">B</div>
+  <div data-active="false">C</div>
+  <div data-active="true">D</div>
+  <div data-active="false">E</div>
+  <div data-active="true">F</div>
 </body>
 </html>

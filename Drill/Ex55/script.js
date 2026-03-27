@@ -1,46 +1,40 @@
-const tiles = [0,1,2,3,4,5,6,7,8]; // マス情報を格納するリスト
-const first = '○';
-const second = 'Ｘ';
-let turn = true; // true:first, false:second
-let stat = 0; // ゲームの手数と終了フラグ 1 ~ 10, 9:全ターン終了、10:ゲーム終了
-const targets = document.querySelectorAll('.tile');
-const result = document.querySelector('.result');
-
-// タイルがクリックされたときのイベント処理
-for (let i in tiles) {
-  targets[i].addEventListener('click', () => {
-    if (targets[i].innerText === '') {
-      if (stat === 10) return;
-      stat++;
-      targets[i].innerText = (turn) ? first : second;
-      tiles[i] = targets[i].innerText;
-      const str = judge();
-      if (str !== '') {
-        result.innerText = str;
+const slots = document.querySelectorAll('.slot');
+const stops = document.querySelectorAll('.btn');
+const start = document.querySelector('#start');
+const result = document.querySelector('#result');
+const s_stat = [false, false, false];
+const cnt = [1,3,5];
+let timer_id;
+start.addEventListener('click', () => {
+  result.innerHTML = '';
+  s_stat.fill(false);
+  timer_id = setInterval(()=>{
+    for (let i in s_stat) {
+      if (!s_stat[i]) {
+        if (++cnt[i] > 7)
+          cnt[i] = 1;
+        slots[i].innerHTML = '<img src="../img/slot' + cnt[i] + '.png">';
       }
-      turn = (turn) ? false : true;
+    }
+  }, 300);
+  start.disabled = true;
+});
+
+for (const [i, stop] of stops.entries()) {
+  stop.addEventListener('click', () => {
+    if (!s_stat[i])
+      s_stat[i] = true;
+
+    if (s_stat.indexOf(false) === -1) {
+      clearInterval(timer_id);
+      start.disabled = false;
+      if (cnt[0] === cnt[1] && cnt[1] === cnt[2]) {
+        result.innerHTML = '<span style="color:red;">3つ揃いました！！おめでとう</span>';
+      } else if (cnt[0] === cnt[1] || cnt[1] === cnt[2] || cnt[0] === cnt[2]) {
+        result.innerHTML = '<span style="color:black;">おしい！もうちょっと</span>';
+      } else {
+        result.innerHTML = '<span style="color:gray;">残念でした・・・</span>';
+      }
     }
   });
-}
-
-const judge = ()=>{
-  if (tiles[0] === tiles[1] && tiles[0] === tiles[2]
-    || tiles[3] === tiles[4] && tiles[3] === tiles[5]
-    || tiles[6] === tiles[7] && tiles[6] === tiles[8]
-    || tiles[0] === tiles[3] && tiles[0] === tiles[6]
-    || tiles[1] === tiles[4] && tiles[1] === tiles[7]
-    || tiles[2] === tiles[5] && tiles[2] === tiles[8]
-    || tiles[0] === tiles[4] && tiles[0] === tiles[8]
-    || tiles[2] === tiles[4] && tiles[2] === tiles[6]) {
-      if (turn) {
-        stat = 10;
-        return '○の勝ち';
-      } else {
-        stat = 10;
-        return 'Ｘの勝ち';
-      }
-    } else if (stat === 9) {
-      return '引き分け';
-    }
-    return '';
 }

@@ -3,29 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ブロック選択</title>
-  <style>
-    .card {
-      margin: 5px;
-      width: 100px;
-      height: 50px;
-      text-align: center;
-      line-height: 50px;
-      background-color: blue;
-    }
-    .selected {
-      background-color: aqua;
-    }
-  </style>
+  <title>郵便番号チェック</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <p>選択数: <span id="count">0</span></p>
-
-  <div class="cards">
-    <div class="card">A</div>
-    <div class="card">B</div>
-    <div class="card">C</div>
-  </div>
+  <form>
+    <label>郵便番号：<input type="text" name="zipcode" id="zipcode"></label><br>
+    <button type="submit" id="send">送信</button>
+    <p id="error" style="color:red"></p>
+  </form>
 </body>
 </html>

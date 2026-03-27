@@ -1,25 +1,41 @@
-const col = document.querySelector('#col');
-const row = document.querySelector('#row');
-const contents = document.querySelector('#contents');
-const btn = document.querySelector('button');
-const result = document.querySelector('#result');
-btn.addEventListener('click', () => {
-  if (col.value === '' || row.value === '' || contents.value === '') {
-    result.innerHTML = '<span style="color:red;">空白の欄があります。</span>';
-  } else if (isNaN(col.value) || isNaN(row.value)) {
-    result.innerHTML = '<span style="color:red;">列数と行数は数値を入力してください。</span>';
-  } else if (Number(col.value) <= 0 || Number(row.value) <= 0) {
-    result.innerHTML = '<span style="color:red;">列数と行数は1以上の数値を入力してください。</span>';
+const min = document.querySelector('#minutes');
+const sec = document.querySelector('#seconds');
+const timer = document.querySelector('#timer');
+const start = document.querySelector('#start');
+const stop = document.querySelector('#stop');
+let timer_id = null;
+start.addEventListener('click', () => {
+  if ((min.value === '' && sec.value === '')
+  || (min.value !== '') && isNaN(parseInt(min.value)) || parseInt(min.value) >= 60
+  || (sec.value !== '') && isNaN(parseInt(sec.value)) || parseInt(sec.value) >= 60) {
+    timer.innerHTML = '<spen style="color:red">有効な値を入力してください</spen>';
   } else {
-    let tbl = '<table>';
-    for (let i=0; i<row.value; i++) {
-      tbl += '<tr>';
-      for (let j=0; j<col.value; j++) {
-        tbl += `<td>${contents.value}</td>`;
+    start.disabled = true;
+    let min_cnt = min.value === '' ? 0 : parseInt(min.value);
+    let sec_cnt = sec.value === '' ? 0 : parseInt(sec.value);
+    let count = min_cnt * 60 + sec_cnt;
+    timer.textContent = `${('0'+min_cnt.toString(10)).slice(-2)}:${('0'+sec_cnt.toString(10)).slice(-2)}`;
+    timer_id = setInterval(() => {
+      count--;
+      min_cnt = Math.floor(count / 60);
+      sec_cnt = count % 60;
+
+      if (count <= 0) {
+        clearInterval(timer_id);
+        timer.textContent = 'タイマー終了';
+        start.disabled = false;
+      } else {
+        timer.textContent = `${('0'+min_cnt.toString(10)).slice(-2)}:${('0'+sec_cnt.toString(10)).slice(-2)}`;
       }
-      tbl += '</tr>';
-    }
-    tbl += '</table>';
-    result.innerHTML = tbl;
+
+    }, 1000);
+  }
+});
+
+stop.addEventListener('click', () => {
+  if (timer_id !== null) {
+    console.log('in stop');
+    clearInterval(timer_id);
+    start.disabled = false;
   }
 });

@@ -1,0 +1,10 @@
+const haneda = 'HND35.5554,139.7544;羽田空港';
+const kansai = 'KIX34.859,136.8146;関西空港';
+let code = haneda.slice(0,3);
+let sep = haneda.indexOf(';');
+let airport = haneda.slice(sep+1);
+console.log(`${code}:${airport}`);
+code = kansai.slice(0,3);
+sep = kansai.indexOf(';');
+name = kansai.slice(sep+1);
+console.log(`${code}:${airport}`);

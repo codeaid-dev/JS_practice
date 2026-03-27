@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>パスワード生成</title>
+  <title>全選択</title>
+  <style>
+    li {
+      list-style: none;
+    }
+  </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>パスワード生成</h1>
-  <p>パスワードを生成します。<br>生成する桁数を入力し生成ボタンを押してください。</p>
-  <div>
-    <label for="digit">桁数：</label>
-    <input type="number" id="digit">
-    <button>生成</button>
-  </div>
-  <div>
-    <label for="pass">パスワード：</label>
-    <input type="text" id="pass" style="width: 320px;">
-  </div>
-  <p id="msg"></p>
+  <label><input type="checkbox" id="all"> 全選択</label>
+  <ul>
+    <li><label><input type="checkbox" class="item"> A</label></li>
+    <li><label><input type="checkbox" class="item"> B</label></li>
+    <li><label><input type="checkbox" class="item"> C</label></li>
+  </ul>
 </body>
 </html>

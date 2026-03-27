@@ -3,30 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>簡易ウィザード</title>
+  <title>ブロック選択</title>
   <style>
-    .step { display: none; }
-    .step.active { display: block; }
+    .card {
+      margin: 5px;
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      background-color: blue;
+    }
+    .selected {
+      background-color: aqua;
+    }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div id='app'>
-    <div class='step' data-step='1'>
-      <label>名前：<input type="text" id='name' placeholder='名前'></label>
-    </div>
+  <p>選択数: <span id="count">0</span></p>
 
-    <div class='step' data-step='2'>
-      <label>メール：<input type="text" id='email' placeholder='メール'></label>
-    </div>
-
-    <div class='step' data-step='3'>
-      <p id='confirm'></p>
-    </div>
-
-    <p id="error" style="color: red;"></p>
-    <button id='prev'>戻る</button>
-    <button id='next'>次へ</button>
+  <div class="cards">
+    <div class="card">A</div>
+    <div class="card">B</div>
+    <div class="card">C</div>
   </div>
 </body>
 </html>

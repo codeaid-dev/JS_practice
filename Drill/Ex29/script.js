@@ -1,24 +1,24 @@
-let data = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-const panel = document.getElementById('panel');
-let dragItem = null;
+const user_list = [
+  { name: '鈴木二郎', age: 18 },
+  { name: '田中幸一', age: 25 },
+  { name: '佐藤さおり', age: 32 },
+  { name: '高橋健太', age: 43 },
+  { name: '山田太郎', age: 57 }
+];
 
-for (let i=0; i<36; i++) {
-  const tile = document.createElement('div');
-  tile.classList.add('tile');
-  if (data.length !== 0) {
-    const index = Math.floor(Math.random()*data.length);
-    tile.textContent = data[index];
-    tile.draggable = true;
-    data = data.replace(data[index], '');
-  }
-  panel.appendChild(tile);
-}
+const btn = document.querySelectorAll('.button');
+for (let i=0; i<btn.length; i++) {
+  btn[i].addEventListener('click', () => {
+    const target = btn[i].id;
 
-panel.addEventListener('dragstart', event => { dragItem = event.target; });
-panel.addEventListener('dragover', event => event.preventDefault());
-panel.addEventListener('drop', event => {
-if (event.target.classList.contains('tile') && event.target !== dragItem) {
-  panel.insertBefore(dragItem, event.target.nextSibling);
-  console.log([...panel.children].map(i => i.textContent));
+    const filter_list = user_list.filter((obj) => {
+      return obj.age >= target;
+    });
+
+    let list = '';
+    for (let data of filter_list) {
+      list += `<li>${data.name} : ${data.age}歳</li>`;
+    }
+    document.querySelector('.user_list').innerHTML = list;
+  });
 }
-});

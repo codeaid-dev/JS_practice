@@ -1,0 +1,10 @@
+const cam1 = {};
+const cam2 = {};
+cam1.maker = 'SONY';
+cam1.model = 'α7R IV';
+cam1.price = 438900;
+cam2.maker = 'CANON';
+cam2.model = 'EOS R5';
+cam2.price = 506000;
+console.log(`メーカー：${cam1.maker}、モデル：${cam1.model}、価格：${cam1.price}円`);
+console.log(`メーカー：${cam2.maker}、モデル：${cam2.model}、価格：${cam2.price}円`);

@@ -3,35 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>カラースライド</title>
+  <title>リスト項目の移動</title>
   <style>
-    .slide {
-      width: 300px;
-    }
-    .color-box {
-      border: 1px solid gray;
-      height: 300px;
-    }
-    .nav {
-      margin-top: 10px;
-    }
-    #prev {
-      float: left;
-    }
-    #next {
-      float: right;
+    li {
+      cursor: pointer;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>カラースライド</h1>
-  <div class="slide">
-    <div class="color-box"></div>
-    <div class="nav">
-      <button id="prev">＜前へ</button>
-      <button id="next">次へ＞</button>
-    </div>
-  </div>
+  <ul id="list">
+    <li>1つ目</li>
+    <li>2つ目</li>
+    <li>3つ目</li>
+    <li>4つ目</li>
+    <li>5つ目</li>
+  </ul>
 </body>
 </html>

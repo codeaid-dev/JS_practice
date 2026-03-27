@@ -3,20 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>フィルタ</title>
+  <title>信号機</title>
+  <style>
+  .light {
+    display: flex;
+    margin: 30px;
+    background: #dddddd;
+    width: 280px;
+    height: 100px;
+    border-radius: 50px;
+  }
+  .green,
+  .yellow,
+  .red {
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+  .green {
+    background: green;
+  }
+  .yellow {
+    background: yellow;
+  }
+  .red {
+    background: red;
+  }
+  </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <label><input type="checkbox" value="fruit" checked> 果物</label>
-  <label><input type="checkbox" value="vegetable"> 野菜</label>
-
-  <ul id="items">
-    <li data-type="fruit">林檎</li>
-    <li data-type="vegetable">人参</li>
-    <li data-type="fruit">バナナ</li>
-    <li data-type="fruit">オレンジ</li>
-    <li data-type="vegetable">キャベツ</li>
-    <li data-type="vegetable">胡瓜</li>
-  </ul>
+  <div class="light">
+    <div class="green"></div>
+    <div class="yellow"></div>
+    <div class="red"></div>
+  </div>
+  <div class="form-group">
+    <label><input type="radio" name="tlight" value="green" checked>青信号</label>
+    <label><input type="radio" name="tlight" value="red">赤信号</label>
+    <label><input type="radio" name="tlight" value="gtor">青信号から赤信号に変わる</label>
+  </div>
+  <button style="margin-top: 30px;">表示</button>
 </body>
 </html>

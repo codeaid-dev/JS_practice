@@ -3,19 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>簡易メモ</title>
+  <title>アンケート</title>
   <style>
-    li { cursor: pointer; }
-    li.selected { background: lightgray; }
+    *:disabled {
+      background-color: lightgrey;
+    }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h2>簡易メモ</h2>
-  <input type="text" id="todoMemo">
-  <button id="add">追加</button><br>
-  <button id="delAll">全削除</button>
-  <ul id="memo">
-  </ul>
+  <h2>アンケート</h2>
+  好きなプログラム言語：<br>
+  <label><input type="radio" name="lang" value="python" checked>Python</label>
+  <label><input type="radio" name="lang" value="c#">C#</label>
+  <label><input type="radio" name="lang" value="javascript">JavaScript</label>
+  <label><input type="radio" name="lang" value="java">Java</label>
+  <label><input type="radio" name="lang" value="other">その他</label><br>
+  <input type="text" name="otherlang" id="otherlang" placeholder="その他の言語" disabled>
 </body>
 </html>

@@ -3,26 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>色選択</title>
+  <title>該当者検出</title>
   <script src="script.js" defer></script>
-  <style>
-    #panel {
-      width: 300px;
-      border: solid 1px lightgray;
-      padding: 20px;
-    }
-  </style>
 </head>
 <body>
-  <p>色を選択すると背景色が変わります。</p>
-  <div id="panel">
-    <form>
-      <label><input type="radio" name="bgcolor" value="white" checked>白色</label>
-      <label><input type="radio" name="bgcolor" value="red">赤色</label>
-      <label><input type="radio" name="bgcolor" value="blue">青色</label>
-      <label><input type="radio" name="bgcolor" value="yellow">黄色</label>
-      <label><input type="radio" name="bgcolor" value="green">緑色</label>
-    </form>
+  <div>
+    <label for="search">ユーザーID</label>
+    <input type="text" id="search">
   </div>
+  <p id="result" style="font-size: 20px;">該当なし</p>
 </body>
 </html>

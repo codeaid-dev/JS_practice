@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>全選択</title>
+  <title>簡易メモ</title>
   <style>
-    li {
-      list-style: none;
-    }
+    li { cursor: pointer; }
+    li.selected { background: lightgray; }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <label><input type="checkbox" id="all"> 全選択</label>
-  <ul>
-    <li><label><input type="checkbox" class="item"> A</label></li>
-    <li><label><input type="checkbox" class="item"> B</label></li>
-    <li><label><input type="checkbox" class="item"> C</label></li>
+  <h2>簡易メモ</h2>
+  <input type="text" id="todoMemo">
+  <button id="add">追加</button><br>
+  <button id="delAll">全削除</button>
+  <ul id="memo">
   </ul>
 </body>
 </html>

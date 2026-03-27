@@ -1,33 +1,31 @@
-const txt = document.getElementById('txt');
-const size = document.getElementById('size');
-const colors = document.getElementsByName('color');
-const bold = document.getElementById('bold');
+const btns = document.querySelectorAll('button');
+const disc = document.querySelector('#description');
+// for (let i=0; i<btns.length; i++) {
+//   btns[i].addEventListener('click', () => {
+//     if (btns[i].id === 'small') {
+//       // disc.setAttribute('style', 'font-size:14px;');
+//       disc.style.fontSize = '14px';
+//     } else if (btns[i].id === 'medium') {
+//       // disc.setAttribute('style', 'font-size:16px;');
+//       disc.style.fontSize = '16px';
+//     } else if (btns[i].id === 'large') {
+//       // disc.setAttribute('style', 'font-size:20px;');
+//       disc.style.fontSize = '20px';
+//     }
+//   });
+// }
 
-const btn = document.querySelector('button');
-btn.addEventListener('click', () => {
-
-  let color = 'black';
-  for (let e of colors) {
-    if (e.checked) {
-      color = e.value;
-      break;
+btns.forEach((btn) => {
+  btn.addEventListener('click', (b) => {
+    if (b.currentTarget.id === 'small') {
+      // disc.setAttribute('style', 'font-size:14px;');
+      disc.style.fontSize = '14px';
+    } else if (b.currentTarget.id === 'medium') {
+      // disc.setAttribute('style', 'font-size:16px;');
+      disc.style.fontSize = '16px';
+    } else if (b.currentTarget.id === 'large') {
+      // disc.setAttribute('style', 'font-size:20px;');
+      disc.style.fontSize = '20px';
     }
-  }
-
-  const style = `font-size:${size.value}px; color:${color};font-weight:${(bold.checked) ? 'bold' : 'normal'}`;
-
-  const num = document.getElementById('loop');
-  const show = document.getElementById('show');
-  show.setAttribute('style', style);
-
-  show.textContent = null; // 前回に入力した子要素を削除する
-
-  for (let i=0; i<num.value; i++) {
-    if (txt.value === '') {
-      show.innerHTML = '<p>空です</p>';
-    } else {
-      show.innerHTML += '<p>' + txt.value + '</p>';
-    }
-  }
-
-}); //addEventListener
+  });
+});

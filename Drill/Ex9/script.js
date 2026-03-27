@@ -1,22 +1,17 @@
-const memo = document.getElementById('memo');
-const list = document.getElementById('list');
+document.querySelector('form').addEventListener('change', () => {
+  // const colors = document.getElementsByName('bgcolor');
+  // for (let element of colors) {
+  //   if (element.checked) {
+  //     document.querySelector('#panel').style.background  = element.value;
+  //   }
+  // }
 
-document.getElementById('add').addEventListener('click', ()=> {
-  if (memo.value !== '') {
-    const arr = memo.value.split('\n');
-    console.log(arr);
-    arr.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      list.appendChild(li);
-    });
-    memo.value = '';
-  } else {
-    console.log('blank');
-  }
-});
-document.getElementById('delete').addEventListener('click', ()=> {
-  while (list.firstChild) {
-    list.removeChild(list.firstChild);
-  }
+  // for (let i=0; i<colors.length; i++) {
+  //   if (colors[i].checked) {
+  //     document.querySelector('#panel').setAttribute('style', `background:${colors[i].value}`);
+  //   }
+  // }
+
+  const color = document.querySelector('[name="bgcolor"]:checked');
+  document.getElementById('panel').style.background = color.value;
 });

@@ -1,31 +1,24 @@
-const question = document.querySelector('#question');
-const answer = document.querySelector('#answer');
-const btn1 = document.querySelector('#judge');
-const elem = document.querySelector('#result');
-const btn2 = document.querySelector('#next');
+// const serials = document.getElementsByClassName('serial');
+// for (let i = 0; i < serials.length; i++) {
+//   serials[i].addEventListener('keyup', () => {
+//     if (serials[i].value.length >= serials[i].maxLength) {
+//       if (i < serials.length-1) {
+//         serials[i+1].focus();
+//       }
+//     }
+//   });
+// }
 
-const pref = {'北海道':'札幌', '青森県':'青森', '岩手県':'盛岡', '宮城県':'仙台', '栃木県':'宇都宮', '群馬県':'前橋', '神奈川県':'横浜'};
-const pref_list = ['北海道', '青森県', '岩手県', '宮城県', '栃木県', '群馬県', '神奈川県'];
-let ken = '';
-
-const createQ = () => {
-  ken = pref_list[Math.floor(Math.random() * pref_list.length)];
-  const q = ken + 'の県庁所在地は？';
-  question.textContent = q;
-}
-createQ();
-
-btn1.addEventListener('click', () => {
-  const a = answer.value;
-  if (a === pref[ken]) {
-    elem.style.color = 'red';
-    elem.textContent = '正解！！';
-  } else {
-    elem.style.color = 'black';
-    elem.textContent = `不正解・・・(正解：${pref[ken]})`;
-  }
+// const serials = document.getElementsByClassName('serial');
+// for (let input of serials) {
+const serials = document.querySelectorAll('input.serial');
+serials.forEach((input) => {
+  input.addEventListener('keyup', (data) => {
+    if (data.currentTarget.value.length >= input.maxLength) {
+      if (data.currentTarget.nextElementSibling != null) {
+        data.currentTarget.nextElementSibling.focus();
+      }
+    }
+  });
 });
-
-btn2.addEventListener('click', () => {
-  createQ();
-});
+// }

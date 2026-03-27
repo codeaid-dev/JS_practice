@@ -3,22 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>スライドショー</title>
-  <style>
-    body {
-      width: 300px;
-      margin: 0 auto;
-    }
-    #panel img {
-      width: 300px;
-      height: 300px;
-    }
-  </style>
+  <title>県庁所在地クイズ</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div id="panel"><img src="../img/slot1.png"></div>
-  <p>3秒間隔で自動的に切り替わります。</p>
-  <button>スライドショーを停止</button>
+  <h1>県庁所在地クイズ</h1>
+  <p id="question"></p>
+  <input type="text" id="answer">
+  <button id="judge">解答</button>
+  <p id="result">結果表示</p>
+  <button id="next">別の問題</button>
 </body>
 </html>

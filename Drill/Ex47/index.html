@@ -1,37 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ブロック追加・移動</title>
-  <style>
-    #blocks {
-      width: 500px;
-    }
-    .item {
-      margin: 5px;
-      padding: 5px;
-      width: 100px;
-      border: 1px solid grey;
-      border-radius: 5px;
-      float: left;
-      overflow-wrap: break-word;
-    }
-    .item button {
-      display: block;
-      margin: 0 auto;
-    }
-  </style>
+  <title>商品選択</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <input type="text" name="item">
-  <button id="add">要素追加</button>
-  <div id="template" class="item" hidden>
-    <p class="contents"></p>
-    <button class="remove">削除</button>
-  </div>
+  <div id="listView"></div>
 
-  <div id="blocks"></div>
+  <div id="detailView" style="display:none">
+    <p id="detail"></p>
+    <button id="back">戻る</button>
+  </div>
 </body>
 </html>

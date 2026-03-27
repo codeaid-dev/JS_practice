@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>リスト項目の移動</title>
-  <style>
-    li {
-      cursor: pointer;
-    }
-  </style>
+  <title>パン選択</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <ul id="list">
-    <li>1つ目</li>
-    <li>2つ目</li>
-    <li>3つ目</li>
-    <li>4つ目</li>
-    <li>5つ目</li>
-  </ul>
+  <p>いずれかを選択してください</p>
+  <div>
+    <input type="radio" name="bread" id="ann" value="0" checked>
+    <label for="ann">あんぱん</label>
+    <input type="radio" name="bread" id="cream" value="1">
+    <label for="cream">クリームパン</label>
+    <input type="radio" name="bread" id="melon" value="2">
+    <label for="melon">メロンパン</label>
+    <input type="radio" name="bread" id="curry" value="3">
+    <label for="curry">カレーパン</label>
+  </div>
+  <p id="result">選択をここに表示</p>
 </body>
 </html>

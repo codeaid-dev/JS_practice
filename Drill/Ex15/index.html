@@ -3,22 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>アンケート</title>
-  <style>
-    *:disabled {
-      background-color: lightgrey;
-    }
-  </style>
+  <title>テキスト表示</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h2>アンケート</h2>
-  好きなプログラム言語：<br>
-  <label><input type="radio" name="lang" value="python" checked>Python</label>
-  <label><input type="radio" name="lang" value="c#">C#</label>
-  <label><input type="radio" name="lang" value="javascript">JavaScript</label>
-  <label><input type="radio" name="lang" value="java">Java</label>
-  <label><input type="radio" name="lang" value="other">その他</label><br>
-  <input type="text" name="otherlang" id="otherlang" placeholder="その他の言語" disabled>
+  <div id="inner"></div>
 </body>
 </html>

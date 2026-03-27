@@ -1,35 +1,21 @@
-const products = {
-  'ST001': '商品A',
-  'ST002': '商品B',
-  'ST003': '商品C'
-}
-const details = {
-  'ST001': '最近では20代に人気となっている',
-  'ST002': '比較的に安価で入手可能',
-  'ST003': '毎日のように利用されている'
-}
-const listView = document.getElementById('listView');
-for (let item in products) {
-  const btn = document.createElement('button');
-  btn.dataset.id = item;
-  btn.textContent = products[item];
-  btn.style.marginLeft = '5px';
-  listView.appendChild(btn);
-}
-const detailView = document.getElementById('detailView');
-const detail = document.getElementById('detail');
-const back = document.getElementById('back');
+document.getElementById('list').addEventListener('click', event => {
+  if (!event.target.classList.contains('edit')) return;
 
-listView.addEventListener('click', (event) => {
-  if (!event.target.dataset.id) return;
-  const id = event.target.dataset.id;
-  detail.innerHTML = `選択ID: ${id}<br>`;
-  detail.innerHTML += details[id];
-  listView.style.display = 'none';
-  detailView.style.display = 'block';
-});
+  const li = event.target.closest('li');
+  const span = li.querySelector('.text');
 
-back.addEventListener('click', () => {
-  detailView.style.display = 'none';
-  listView.style.display = 'block';
+  const input = document.createElement('input');
+  input.value = span.textContent;
+
+  const saveBtn = document.createElement('button');
+  saveBtn.textContent = '保存';
+
+  li.replaceChild(input, span);
+  li.replaceChild(saveBtn, event.target);
+
+  saveBtn.addEventListener('click', () => {
+    span.textContent = input.value;
+    li.replaceChild(span, input);
+    li.replaceChild(event.target, saveBtn);
+  });
 });

@@ -1,24 +1,25 @@
-// const serials = document.getElementsByClassName('serial');
-// for (let i = 0; i < serials.length; i++) {
-//   serials[i].addEventListener('keyup', () => {
-//     if (serials[i].value.length >= serials[i].maxLength) {
-//       if (i < serials.length-1) {
-//         serials[i+1].focus();
-//       }
-//     }
-//   });
-// }
+const text = document.querySelector('[type="text"]');
+const result = document.getElementById('result');
+const btn = document.querySelector('button');
+btn.addEventListener('click', () => {
+  // const colors = document.getElementsByName('color');
+  // let color = 'black';
+  // for (let e of colors) {
+  //   if (e.checked) {
+  //     color = e.value;
+  //     break;
+  //   }
+  // }
 
-// const serials = document.getElementsByClassName('serial');
-// for (let input of serials) {
-const serials = document.querySelectorAll('input.serial');
-serials.forEach((input) => {
-  input.addEventListener('keyup', (data) => {
-    if (data.currentTarget.value.length >= input.maxLength) {
-      if (data.currentTarget.nextElementSibling != null) {
-        data.currentTarget.nextElementSibling.focus();
-      }
-    }
-  });
+  // const colors = document.querySelectorAll('[name="color"]');
+  // let color = 'black';
+  // colors.forEach((e) => {
+  //   if (e.checked) {
+  //     color = e.value;
+  //   }
+  // });
+
+  const color = document.querySelector('[name="color"]:checked').value;
+  result.setAttribute('style', `color: ${color}`);
+  result.textContent = text.value;
 });
-// }

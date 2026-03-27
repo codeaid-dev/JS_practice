@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数当て</title>
+  <style>
+    table {
+      width: 200px;
+      table-layout: fixed;
+    }
+    td {
+      font-size: 20px;
+      padding: 5px;
+      text-align: center;
+    }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <h2>数当て</h2>
+  <table>
+    <tr id="question">
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+    </tr>
+    <tr id="answer">
+      <td><input type="number" min="0" max="9" size="10"></td>
+      <td><input type="number" min="0" max="9" size="10"></td>
+      <td><input type="number" min="0" max="9" size="10"></td>
+    </tr>
+    <tr>
+      <td colspan="3"><button id="judge">解答</button></td>
+    </tr>
+    <tr>
+      <td colspan="3"><button id="other">別の問題</button></td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,25 +1,9 @@
-const text = document.querySelector('[type="text"]');
-const result = document.getElementById('result');
+const one = document.getElementById('one');
+const two = document.getElementById('two');
 const btn = document.querySelector('button');
-btn.addEventListener('click', () => {
-  // const colors = document.getElementsByName('color');
-  // let color = 'black';
-  // for (let e of colors) {
-  //   if (e.checked) {
-  //     color = e.value;
-  //     break;
-  //   }
-  // }
-
-  // const colors = document.querySelectorAll('[name="color"]');
-  // let color = 'black';
-  // colors.forEach((e) => {
-  //   if (e.checked) {
-  //     color = e.value;
-  //   }
-  // });
-
-  const color = document.querySelector('[name="color"]:checked').value;
-  result.setAttribute('style', `color: ${color}`);
-  result.textContent = text.value;
+btn.addEventListener('click',()=>{
+  const w1 = one.innerText;
+  const w2 = two.innerText;
+  one.innerText = w2;
+  two.innerText = w1;
 });

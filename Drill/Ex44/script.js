@@ -1,28 +1,25 @@
-const data = ['A', 'B', 'C', 'D', 'E'];
-let mode = 'list';
+const checks = document.querySelectorAll('input[type="checkbox"]');
+const items = document.querySelectorAll('#items li');
+const updateFilter = () => {
+  const checkTypes = [...checks].filter((cb) => cb.checked);
+  const activeTypes = [];
+  checkTypes.forEach((cb) => {
+    activeTypes.push(cb.value);
+  });
+  // const activeTypes = [...checks].filter(cb => cb.checked).map(cb => cb.value);
 
-const render = () => {
-  const view = document.getElementById('view');
-  const list = document.createElement('ul');
-  view.innerHTML = '';
-  if (mode === 'list') {
-    view.appendChild(list);
-  }
-
-  data.forEach(d => {
-    const el = document.createElement(mode === 'list' ? 'li' : 'div');
-    el.textContent = d + ' ';
-    if (mode === 'list') {
-      list.appendChild(el);
-    } else {
-      view.appendChild(el);
-    }
+  items.forEach(item => {
+    const type = item.dataset.type;
+    if (activeTypes.includes(type))
+      item.style.display = 'list-item';
+    else
+      item.style.display = 'none';
+    // item.style.display = activeTypes.includes(type) ? 'list-item' : 'none';
   });
 }
 
-document.getElementById('toggle').addEventListener('click', () => {
-  mode = mode === 'list' ? 'card' : 'list';
-  render();
+checks.forEach((cb) => {
+  cb.addEventListener('change', updateFilter);
 });
+updateFilter();
 
-render();

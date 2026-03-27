@@ -3,16 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>シリアル番号</title>
+  <title>テキスト表示</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div>
-    シリアル番号：
-    <input type="text" class="serial" maxlength="5" size="5">
-    <input type="text" class="serial" maxlength="5" size="5">
-    <input type="text" class="serial" maxlength="5" size="5">
-    <input type="text" class="serial" maxlength="5" size="5">
-  </div>
+  <label><p>色を選択してください</p></label>
+  <p>
+    <input type="radio" name="color" id="black" value="black" checked>
+    <label for="black">黒色</label>
+    <input type="radio" name="color" id="red" value="red">
+    <label for="red">赤色</label>
+    <input type="radio" name="color" id="blue" value="blue">
+    <label for="blue">青色</label>
+    <input type="radio" name="color" id="yellow" value="yellow">
+    <label for="yellow">黄色</label>
+  </p>
+  <p>表示するテキストを入力してください</p>
+  <input type="text">
+  <button>表示</button>
+  <p id="result">ここに表示</p>
 </body>
 </html>

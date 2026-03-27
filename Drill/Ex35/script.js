@@ -1,38 +1,22 @@
-let flag = true;
-let count = 0;
-const green = document.querySelector('.green');
-const red = document.querySelector('.red');
-const tlight = document.getElementsByName('tlight');
+const digit = document.querySelector('#digit');
+const pass = document.querySelector('#pass');
 const btn = document.querySelector('button');
-btn.addEventListener('click', ()=>{
-  for (let i=0; i<tlight.length; i++) {
-    if (tlight[i].checked) {
-      const select = tlight[i].value;
-      if (select === 'green') {
-        green.setAttribute('style', 'background:green');
-        red.setAttribute('style', 'background:black');
-      } else if (select === 'gtor') {
-        green.setAttribute('style', 'background:green');
-        red.setAttribute('style', 'background:black');
-        const timer_id = setInterval(()=>{
-          if (count <= 10) {
-            if (flag) {
-              green.setAttribute('style', 'background:green');
-              flag = false;
-            } else {
-              green.setAttribute('style', 'background:black');
-              flag = true;
-            }
-            count++;
-          } else {
-            green.setAttribute('style', 'background:black');
-            red.setAttribute('style', 'background:red');
-            flag = true;
-            count = 0;
-            clearInterval(timer_id);
-          }
-        }, 500);
-      }
+const msg = document.querySelector('#msg');
+const ascii = [];
+for (let i = 33; i <= 126; i++) {
+  ascii.push(String.fromCharCode(i));
+}
+btn.addEventListener('click',() => {
+  const password = [];
+  msg.innerText = '';
+  if (digit.value < 8 || digit.value > 32) {
+    pass.value = '';
+    msg.innerHTML = '<span style="color:red">桁数は8桁以上、32桁以下で生成してください。</span>';
+  } else {
+    for (let i = 0; i < digit.value; i++) {
+      const index = Math.floor(Math.random() * ascii.length);
+      password.push(ascii[index]);
     }
+    pass.value = password.join('');
   }
 });

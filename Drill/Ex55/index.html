@@ -3,41 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>三目並べ</title>
+  <title>スロットマシン</title>
   <style>
     #panel {
-      width: 320px;
-      height: 320px;
+      width: 480px;
+      height: 200px;
     }
-    .tile {
-        width: 100px;
-        height: 100px;
-        line-height: 100px;
-        border: 1px solid gray;
-        text-align: center;
-        font-size: 40px;
-        font-weight: bold;
-        float: left;
-        cursor: pointer;
+    .slot img, button {
+      width: 150px;
+      height: 150px;
+      margin: 5px;
+      float: left;
     }
-    .result {
-      font-size: 40px;
+    button {
+      height: auto;
     }
+    #start {
+      width: 480px;
+    }
+    #result {
+      font-size: 30px;
+    }
+
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
+  <h1>スロットマシン</h1>
   <div id="panel">
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
+    <div class="slot" id="slot1"><img src="../img/slot3.png"></div>
+    <div class="slot" id="slot2"><img src="../img/slot4.png"></div>
+    <div class="slot" id="slot3"><img src="../img/slot1.png"></div>
+    <button class="btn">STOP</button>
+    <button class="btn">STOP</button>
+    <button class="btn">STOP</button>
+    <button id="start">START</button>
   </div>
-  <div class="result"></div>
+  <p id="result"></p>  
 </body>
 </html>

@@ -3,21 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>パン選択</title>
+  <title>電車の種類</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <p>いずれかを選択してください</p>
-  <div>
-    <input type="radio" name="bread" id="ann" value="0" checked>
-    <label for="ann">あんぱん</label>
-    <input type="radio" name="bread" id="cream" value="1">
-    <label for="cream">クリームパン</label>
-    <input type="radio" name="bread" id="melon" value="2">
-    <label for="melon">メロンパン</label>
-    <input type="radio" name="bread" id="curry" value="3">
-    <label for="curry">カレーパン</label>
-  </div>
-  <p id="result">選択をここに表示</p>
+  <p>1.A駅 2.B駅 3.C駅 4.D駅 5.E駅<br>行き先の駅を1, 2, 3, 4, 5から選んでください</p>
+  <input type="text">
+  <button>実行</button>
+  <p id="answer">結果表示</p>
 </body>
 </html>

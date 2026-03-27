@@ -1,43 +1,18 @@
-const checks = document.querySelectorAll('input');
-
-/*
-for (let i=0; i<checks.length; i++) {
-  checks[i].addEventListener('click', () => {
-    let price = 500;
-    if (document.getElementById('c1').checked === true) {
-      price += 200;
-    }
-    if (document.getElementById('c2').checked === true) {
-      price += 100;
-    }
-    if (document.getElementById('c3').checked === true) {
-      price += 300;
-    }
-    if (document.getElementById('c4').checked === true) {
-      price += 400;
-    }
-    document.getElementById('total').innerText = price + '円';
-  });
-}
-*/
-checks.forEach((check) => {
-  check.addEventListener('click', (event) => {
-    let price = 500;
-    // if (document.getElementById('c1').checked === true) {
-    //   price += 200;
-    // }
-    // if (document.getElementById('c2').checked === true) {
-    //   price += 100;
-    // }
-    // if (document.getElementById('c3').checked === true) {
-    //   price += 300;
-    // }
-    // if (document.getElementById('c4').checked === true) {
-    //   price += 400;
-    // }
-    document.querySelectorAll('[name="price"]:checked').forEach((e) => {
-      price += Number(e.value);
-    });
-    document.getElementById('total').innerText = price + '円';
-  });
+const btn = document.querySelector('button');
+const elem = document.getElementById('result');
+btn.addEventListener('click',()=>{
+  let uranai = Math.floor(Math.random() * 10);
+  if (uranai === 0) {
+    elem.setAttribute('style', 'background-color:blue');
+    elem.innerText = '大吉';
+  } else if (uranai >= 1 && uranai <= 3) {
+    elem.setAttribute('style', 'background-color:green');
+    elem.innerText = '吉';
+  } else if (uranai >= 4 && uranai <= 7) {
+    elem.setAttribute('style', 'background-color:yellow');
+    elem.innerText = '凶';
+  } else if (uranai >= 8 && uranai <= 9) {
+    elem.setAttribute('style', 'background-color:red');
+    elem.innerText = '大凶';
+  }
 });

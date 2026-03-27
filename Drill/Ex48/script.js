@@ -1,38 +1,37 @@
-const disp = document.querySelector('#display');
-const keys = document.querySelectorAll('button');
-let total = '0';
-let start = true; // true:演算開始、false:演算中
+const data = [
+  { eto: '巳', year: 2025 },
+  { eto: '午', year: 2026 },
+  { eto: '未', year: 2027 },
+  { eto: '申', year: 2028 },
+  { eto: '酉', year: 2029 }
+];
 
-disp.innerText = total;
-for (let i=0; i<keys.length; i++) {
-  keys[i].addEventListener('click', () => {
-    let val = keys[i].value;
-    if (val !== 'C' && val !== '=') {
-      if (start && !isNaN(val)) {
-        total = val;
-        start = false;
-      } else if (!isNaN(val) && total === '0') {
-        total = val;
-      } else {
-        if (isNaN(total[total.length-1])) {
-          if (!isNaN(val)) {
-            total += val;
-            start = false;
-          }
-        } else {
-          total += val;
-          start = false;
-        }
-      }
-      disp.innerText = total;
-    } else if (val === '=') {
-      total = String(eval(total));
-      disp.innerText = total;
-      start = true;
-    } else if (val === 'C') {
-      total = '0';
-      start = true;
-      disp.innerText = total;
-    }
+const render = () => {
+  const sort = document.getElementById('sort').value;
+  const filter = document.getElementById('filter').checked;
+  const list = document.getElementById('list');
+
+  let result = [...data]; // 配列をコピー
+
+  if (filter) {
+    result = result.filter(d => d.year >= 2027);
+  }
+
+  result.sort((a, b) =>
+    sort === 'asc' ? a.year - b.year : b.year - a.year
+  );
+
+  list.innerHTML = ''; // リスト項目を全て削除
+  result.forEach(d => {
+    const li = document.createElement('li');
+    li.textContent = `${d.eto}: ${d.year}`;
+    list.appendChild(li);
   });
 }
+
+document.getElementById('sort').addEventListener('change', render);
+document.getElementById('filter').addEventListener('change', render);
+// document.querySelectorAll('#sort, #filter')
+//   .forEach(element => element.addEventListener('change', render));
+
+render();

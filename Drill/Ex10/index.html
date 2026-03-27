@@ -3,10 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>テキスト表示</title>
+  <title>プール利用料金</title>
   <script src="script.js" defer></script>
+  <style>
+    p {
+      font-size: 20px;
+    }
+  </style>
 </head>
 <body>
-  <div id="inner"></div>
+  <h1>プール利用料金</h1>
+  <p>基本使用料（2時間）500円</p>
+  <label><input type="checkbox" name="price" id="c1" value="200">ゴーグル（200円）</label><br>
+  <label><input type="checkbox" name="price" id="c2" value="100">スイムキャップ（100円）</label><br>
+  <label><input type="checkbox" name="price" id="c3" value="300">タオル（300円）</label><br>
+  <label><input type="checkbox" name="price" id="c4" value="400">水着（400円）</label>
+  <p>合計金額<span id="total">500円</span></p>
 </body>
 </html>
