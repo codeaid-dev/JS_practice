@@ -1,10 +1,10 @@
 const yoko = document.getElementById('yoko');
 const tate = document.getElementById('tate');
 const btn = document.querySelector('button');
-const elem = document.getElementById('answer');
+const result = document.getElementById('answer');
 btn.addEventListener('click',()=>{
   if (isNaN(yoko.value) || isNaN(tate.value)) {
-    elem.innerHTML = '<span style="color:red;">数値に変換できません！</span>';
+    result.innerHTML = '<span style="color:red;">数値に変換できません！</span>';
   } else {
     let tile = ['○', '✕'];
     let index = 1;
@@ -20,6 +20,6 @@ btn.addEventListener('click',()=>{
       }
       ans += '<br>';
     }
-    elem.innerHTML = ans;
+    result.innerHTML = ans;
   }
 });

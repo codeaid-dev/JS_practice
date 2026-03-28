@@ -1,9 +1,9 @@
 let ipt = document.querySelector('input');
 let btn = document.querySelector('button');
-let elem = document.querySelector('#answer');
+let result = document.getElementById('answer');
 btn.addEventListener('click',()=>{
   if (isNaN(ipt.value)) {
-    elem.innerHTML = '<span style="color:red;">数値に変換できません！</span>';
+    result.innerHTML = '<span style="color:red;">数値に変換できません！</span>';
   } else {
     let type;
     let station = Number(ipt.value);
@@ -14,10 +14,10 @@ btn.addEventListener('click',()=>{
     } else if (station === 5) {
       type = "快速・急行・特急";
     } else {
-      elem.innerText = "その駅はありません";
+      result.innerText = "その駅はありません";
     }
     if (station >= 1 && station <= 5) {
-      elem.innerText = "その駅には" + type + "の電車が停まります";
+      result.innerText = "その駅には" + type + "の電車が停まります";
     }
   }
 });
