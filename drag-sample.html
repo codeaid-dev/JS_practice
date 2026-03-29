@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #draggable {
+      text-align: center;
+      background: white;
+    }
+
+    .dropzone {
+      width: 200px;
+      height: 20px;
+      background: lightblue;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    .dropzone.dragover {
+      background-color: blue;
+    }
+
+    .dragging {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="dropzone">
+    <div id="draggable" draggable="true">この div はドラッグ可</div>
+  </div>
+  <div class="dropzone" id="droptarget"></div>
+
+  <script>
+    let dragged;
+    const source = document.getElementById("draggable");
+    source.addEventListener('dragstart', (event) => {
+      console.log('dragstart');
+      // ドラッグ中の要素の参照を保存
+      dragged = event.target;
+      // 半透明にする
+      event.target.classList.add('dragging');
+    });
+
+    source.addEventListener('dragend', (event) => {
+      console.log('dragend');
+      // 透明度を解除
+      event.target.classList.remove('dragging');
+    });
+
+    /* ドロップ対象に発生するイベント */
+    const target = document.getElementById('droptarget');
+    target.addEventListener('dragover', (event) => {
+        console.log('dragover');
+        // ドロップできるように既定の動作を停止
+        event.preventDefault();
+      },
+      false,
+    );
+
+    target.addEventListener('dragenter', (event) => {
+      console.log('dragenter');
+      // ドラッグ可能な要素がドロップ先に入ったときに、ドロップ先の候補を強調表示する
+      if (event.target.classList.contains('dropzone')) {
+        event.target.classList.add('dragover');
+      }
+    });
+
+    target.addEventListener('dragleave', (event) => {
+      console.log('dragleave');
+      // ドラッグ可能な要素がドロップ先から離れたときに、ドロップ先の候補の背景をリセットする
+      if (event.target.classList.contains('dropzone')) {
+        event.target.classList.remove('dragover');
+      }
+    });
+
+    target.addEventListener('drop', (event) => {
+      console.log('drop');
+      // 既定の動作（一部の要素でリンクとして開く）を行わないようにする。
+      event.preventDefault();
+      // ドラッグした要素を選択されたドロップターゲットに移動する
+      if (event.target.classList.contains('dropzone')) {
+        event.target.classList.remove('dragover');
+        event.target.appendChild(dragged);
+      }
+    });
+  </script>
+</body>
+</html>
