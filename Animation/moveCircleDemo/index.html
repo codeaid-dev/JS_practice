@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>円がウロウロ動くデモ</title>
+  <style>
+    html,body { height:100%; margin:0; }
+    canvas { display:block; background:#111; }
+    .ui {
+      position:fixed; left:10px; top:10px; z-index:10; color:#fff; font-family:system-ui;
+      background: rgba(0,0,0,0.4); padding:8px; border-radius:6px;
+    }
+    .ui label { display:block; font-size:13px; margin-bottom:6px; }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ui">
+    <label>速度: <input id="speed" type="range" min="20" max="600" value="180"></label>
+    <label>ふらつき（方向変化の強さ）: <input id="jitter" type="range" min="0" max="80" value="18"></label>
+    <label>モード:
+      <select id="mode">
+        <option value="bounce">端で跳ね返る (bounce)</option>
+        <option value="wrap">端でワープ (wrap)</option>
+      </select>
+    </label>
+  </div>
+
+  <canvas id="c"></canvas>
+</body>
+</html>

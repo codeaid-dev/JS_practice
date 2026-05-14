@@ -81,6 +81,16 @@ const loop = () => {
     // ボールをバーの上の高さにする
     ball.y = player.y - ball.radius;
   }
+  if (ball.isBottom()) {
+    ctx.font = '50px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillStyle = '#F00';
+    ctx.fillText('GAME OVER',
+      canvas.width/2,canvas.height/2
+    );
+    return;
+  }
   ball.draw();
   player.draw();
 

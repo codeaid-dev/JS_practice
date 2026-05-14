@@ -13,7 +13,9 @@ const make_maze = () => {
     for (let x=1; x<WIDTH-1; x+=2) {
       maze[y][x] = 1;
       let num = Math.floor(Math.random()*3);
-      if (y === 1) num = Math.floor(Math.random()*4);
+      if (y === 1) {
+        num = Math.floor(Math.random()*4);
+      }
       maze[y+dy[num]][x+dx[num]] = 1;
     }
   }
@@ -22,7 +24,7 @@ const make_maze = () => {
   maze[py][px] = 3;
 }
 
-const set_treacure = () => {
+const set_treasure = () => {
   while (true) {
     const x = Math.floor(Math.random()*WIDTH);
     const y = Math.floor(Math.random()*HEIGHT);
@@ -37,7 +39,7 @@ const init = () => {
     cell.fill(0); // 0で初期化
   }
   make_maze();
-  set_treacure();
+  set_treasure();
 }
 init();
 

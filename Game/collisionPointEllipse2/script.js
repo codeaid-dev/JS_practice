@@ -12,17 +12,26 @@ daen.cy = 250;
 daen.rw = 100;
 daen.rh = 200;
 daen.hit = false;
+daen.angle = 45*Math.PI/180;
 daen.draw = function() {
   ctx.beginPath();
-  ctx.ellipse(this.cx, this.cy, this.rw, this.rh, 0, 0, Math.PI*2);
+  ctx.ellipse(this.cx, this.cy, this.rw, this.rh, this.angle, 0, Math.PI*2);
   if (this.hit) ctx.fillStyle = 'rgb(255 0 0)';
   else ctx.fillStyle = 'rgb(0 0 0)';
   ctx.fill();
 }
 daen.collision = function(x,y) {
+  // 楕円中心基準の点座標
   const dx = x - this.cx;
   const dy = y - this.cy;
-  return (dx*dx)/(this.rw*this.rw) + (dy*dy)/(this.rh*this.rh) <= 1;
+  // 逆回転
+  const ca = Math.cos(-this.angle);
+  const sa = Math.sin(-this.angle);
+  // 逆回転後の楕円中心基準の点座標
+  const nx = dx * ca - dy * sa;
+  const ny = dx * sa + dy * ca;
+
+  return (nx*nx)/(this.rw*this.rw) + (ny*ny)/(this.rh*this.rh) <= 1;
 }
 
 canvas.addEventListener('mousemove', (event) => {
