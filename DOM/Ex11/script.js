@@ -4,7 +4,7 @@ const sendbtn = document.getElementById('sendbtn');
 
 // ▼ 利用規約が最下部までスクロールされたか判定
 terms.addEventListener('scroll', () => {
-  const bottom = terms.scrollHeight - terms.scrollTop === terms.clientHeight;
+  const bottom = terms.scrollHeight - terms.scrollTop >= terms.clientHeight;
   if (bottom) {
     agree.disabled = false; // チェックボックスを有効化
   }
