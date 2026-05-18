@@ -7,11 +7,15 @@ class Ball {
   constructor() {
     this.x = 300;
     this.y = 400;
+    this.prevX = this.x;
+    this.prevY = this.y;
     this.radius = 5;
     this.speed = 5;
     this.angle = Math.random() * 90 + 45;
   }
   update() {
+    this.prevX = this.x;
+    this.prevY = this.y;
     const radian = this.angle * (Math.PI / 180);
     this.x += this.speed*Math.cos(radian);
     this.y += this.speed*Math.sin(radian);
@@ -54,6 +58,7 @@ class Brick {
     this.w = w;
     this.h = h;
     this.c = '#FFF';
+    this.alive = true;
   }
   draw() {
     ctx.fillStyle = this.c;
@@ -64,6 +69,13 @@ class Brick {
 const ball = new Ball();
 const player = new Brick(275, 770, 50, 20);
 const sound = new Audio('../audio/button52.mp3');
+const bricks = [];
+for (let i=0; i<30; i++) {
+  const b = new Brick(60+(i%5)*100,40+(~~(i/5))*50,
+                  80,30)
+  b.c = `hsl(${~~(i/5)*60} 100 50)`;
+  bricks.push(b);
+}
 
 canvas.addEventListener('mousemove', (event) => {
   player.x = event.offsetX-25;
@@ -96,6 +108,40 @@ const loop = () => {
     ctx.textBaseline = 'bottom';
     ctx.fillStyle = '#F00';
     ctx.fillText('GAME OVER',
+      canvas.width/2,canvas.height/2
+    );
+    return;
+  }
+  let count = 0;
+  for (let b of bricks) {
+    if (b.alive && ball.collision(b)) {
+      b.alive = false;
+      const hitPos = (ball.x-b.x)/b.w;
+      if (ball.prevY + ball.radius <= b.y) {
+        ball.angle *= -1;
+        ball.y = b.y - ball.radius;
+      } else if (ball.prevY - ball.radius >= b.y + b.h) {
+        ball.angle *= -1;
+        ball.y = b.y + b.h + ball.radius;
+      } else if (ball.prevX + ball.radius <= b.x) {
+        ball.angle = 180 - ball.angle;
+        ball.x = b.x - ball.radius;
+      } else if (ball.prevX - ball.radius >= b.x + b.w) {
+        ball.angle = 180 - ball.angle;
+        ball.x = b.x + b.w + ball.radius;
+      }
+    }
+    if (b.alive) {
+      count += 1;
+      b.draw();
+    }
+  }
+  if (count == 0) {
+    ctx.font = '50px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillStyle = '#0F0';
+    ctx.fillText('GAME CLEAR',
       canvas.width/2,canvas.height/2
     );
     return;

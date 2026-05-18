@@ -54,6 +54,7 @@ class Brick {
     this.w = w;
     this.h = h;
     this.c = '#FFF';
+    this.alive = true;
   }
   draw() {
     ctx.fillStyle = this.c;
@@ -64,6 +65,13 @@ class Brick {
 const ball = new Ball();
 const player = new Brick(275, 770, 50, 20);
 const sound = new Audio('../audio/button52.mp3');
+const bricks = [];
+for (let i=0; i<30; i++) {
+  const b = new Brick(60+(i%5)*100,40+(~~(i/5))*50,
+                  80,30)
+  b.c = `hsl(${~~(i/5)*60} 100 50)`;
+  bricks.push(b);
+}
 
 canvas.addEventListener('mousemove', (event) => {
   player.x = event.offsetX-25;
@@ -99,6 +107,11 @@ const loop = () => {
       canvas.width/2,canvas.height/2
     );
     return;
+  }
+  for (let b of bricks) {
+    if (b.alive) {
+      b.draw();
+    }
   }
   ball.draw();
   player.draw();
