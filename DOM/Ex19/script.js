@@ -10,26 +10,26 @@ const showImage = () => {
   modalImg.src = images[currentIndex].src;
 }
 
-gallery.addEventListener('click', (div) => {
-  if (div.target.tagName === 'IMG') {
-    currentIndex = Number(div.target.dataset.index);
+gallery.addEventListener('click', (e) => {
+  if (e.target.tagName === 'IMG') {
+    currentIndex = Number(e.target.dataset.index);
     showImage();
   }
 });
 
 close.addEventListener('click', () => modal.style.display = 'none');
-modal.addEventListener('click', (div) => {
-  console.log(div.target);
-  if (div.target === modal) modal.style.display = 'none';
+modal.addEventListener('click', (e) => {
+  console.log(e.target);
+  if (e.target === modal) modal.style.display = 'none';
 });
 
-document.addEventListener('keydown', (doc) => {
+document.addEventListener('keydown', (e) => {
   if (modal.style.display === 'flex') {
-    if (doc.key === 'ArrowRight') {
+    if (e.key === 'ArrowRight') {
       currentIndex = (currentIndex+1)%images.length;
       showImage();
     }
-    if (doc.key === 'ArrowLeft') {
+    if (e.key === 'ArrowLeft') {
       currentIndex = (currentIndex-1+images.length)%images.length;
       showImage();
     }
@@ -37,11 +37,11 @@ document.addEventListener('keydown', (doc) => {
 });
 
 // 画像の右クリックを無効にする
-// modalImg.addEventListener('contextmenu', (event) => {
-//   event.preventDefault();
-// });
-// for (let el of images) {
-//   el.addEventListener('contextmenu', (event) => {
-//     event.preventDefault();
-//   });
-// }
+modalImg.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+});
+for (let el of images) {
+  el.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+  });
+}
