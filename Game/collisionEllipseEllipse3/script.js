@@ -33,7 +33,7 @@ const getPoint = (e, rad) => {
   const yr = x * Math.sin(e.angle) + y * Math.cos(e.angle)
   // 平行移動
   return [e.cx + xr, e.cy + yr];
-}
+};
 
 const isInEllipse = (e,x,y) => {
   // 楕円中心基準の点座標
@@ -48,7 +48,7 @@ const isInEllipse = (e,x,y) => {
 
   const val = (nx*nx)/(e.rw*e.rw) + (ny*ny)/(e.rh*e.rh);
   return val <= 1;
-}
+};
 
 const collision = (e1, e2) => {
   // e1 -> e2をチェック
@@ -69,7 +69,7 @@ const collision = (e1, e2) => {
     }
   }
   return false;
-}
+};
 
 const draw = () => {
   ctx.beginPath();
@@ -81,7 +81,7 @@ const draw = () => {
   if (collision(e1, e2)) ctx.fillStyle = 'rgb(255 0 0 / 60%)';
   else ctx.fillStyle = 'rgb(0 0 0)';
   ctx.fill();
-}
+};
 
 const loop = () => {
   ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -89,6 +89,6 @@ const loop = () => {
   draw();
 
   requestAnimationFrame(loop);
-}
+};
 
 requestAnimationFrame(loop);

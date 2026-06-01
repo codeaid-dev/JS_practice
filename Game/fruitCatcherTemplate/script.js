@@ -45,7 +45,7 @@ const update = (delta) => {
   if (appleY > canvas.height - apple.height) {
     gameover = true;
   }
-}
+};
 
 const draw = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -60,7 +60,7 @@ const draw = () => {
   if (gameover) {
     ctx.fillText('GAME OVER', canvas.width/2, canvas.height/2);
   }
-}
+};
 
 const loop = (time) => {
   const delta = (time - last)/1000;
@@ -69,7 +69,7 @@ const loop = (time) => {
   draw();
   if (!gameover)
     requestAnimationFrame(loop);
-}
+};
 
 Promise.all([
   new Promise(r => apple.onload = r),

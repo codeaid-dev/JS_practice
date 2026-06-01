@@ -25,7 +25,7 @@ const update = (delta) => {
   if (y < radius || y > canvas.height-radius) {
     radian *= -1;
   }
-}
+};
 
 const draw = () => {
   ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -34,7 +34,7 @@ const draw = () => {
   ctx.arc(centerX, centerY, radius, 0, Math.PI*2);
   ctx.fillStyle = '#000';
   ctx.fill();
-}
+};
 
 const loop = (time) => {
   const delta = (time - last)/1000;
@@ -43,6 +43,6 @@ const loop = (time) => {
   update(delta);
   draw();
   requestAnimationFrame(loop);
-}
+};
 
 requestAnimationFrame(loop);

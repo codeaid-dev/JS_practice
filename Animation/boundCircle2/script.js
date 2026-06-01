@@ -39,7 +39,7 @@ const update = () => {
       ball.speedx = 0;
     }
   }
-}
+};
 
 const draw  = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -54,13 +54,13 @@ const draw  = () => {
   g.addColorStop(1, 'black');
   ctx.fillStyle = g;
   ctx.fill();
-}
+};
 
 const loop = () => {
   update();
   draw();
   requestAnimationFrame(loop);
-}
+};
 loop();
 
 canvas.addEventListener('click', () => {

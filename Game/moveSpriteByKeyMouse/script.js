@@ -52,6 +52,6 @@ const loop = () => {
   ctx.fillRect(rectX, rectY, 100, 50);
 
   requestAnimationFrame(loop);
-}
+};
 
 loop();

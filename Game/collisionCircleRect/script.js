@@ -12,7 +12,7 @@ circle.draw = function() {
   ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
   ctx.fillStyle = 'rgb(100 150 250)';
   ctx.fill();
-}
+};
 
 const rect = {};
 rect.x = 200;
@@ -41,7 +41,7 @@ rect.collision = function(cx, cy, cr, rx, ry, rw, rh) {
   dist = Math.sqrt((dx*dx) + (dy*dy));
   if (dist < cr) this.hit = true;
   else this.hit = false;
-}
+};
 
 canvas.addEventListener('mousemove', (event) => {
   circle.x = event.offsetX;
@@ -63,6 +63,6 @@ const loop = () => {
   rect.draw();
 
   requestAnimationFrame(loop);
-}
+};
 
 requestAnimationFrame(loop);

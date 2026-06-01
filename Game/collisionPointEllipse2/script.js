@@ -19,7 +19,7 @@ daen.draw = function() {
   if (this.hit) ctx.fillStyle = 'rgb(255 0 0)';
   else ctx.fillStyle = 'rgb(0 0 0)';
   ctx.fill();
-}
+};
 daen.collision = function(x,y) {
   // 楕円中心基準の点座標
   const dx = x - this.cx;
@@ -32,7 +32,7 @@ daen.collision = function(x,y) {
   const ny = dx * sa + dy * ca;
 
   return (nx*nx)/(this.rw*this.rw) + (ny*ny)/(this.rh*this.rh) <= 1;
-}
+};
 
 canvas.addEventListener('mousemove', (event) => {
   x = event.offsetX;
@@ -47,6 +47,6 @@ const loop = () => {
   daen.draw();
 
   requestAnimationFrame(loop);
-}
+};
 
 requestAnimationFrame(loop);

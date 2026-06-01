@@ -30,6 +30,6 @@ const loop = () => {
   ctx.restore();
 
   requestAnimationFrame(loop);
-}
+};
 
 loop();

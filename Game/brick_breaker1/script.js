@@ -117,7 +117,7 @@ const loop = () => {
   player.draw();
 
   requestAnimationFrame(loop);
-}
+};
 
 ctx.font = '50px sans-serif';
 ctx.textAlign = 'center';

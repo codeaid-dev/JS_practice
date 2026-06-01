@@ -18,12 +18,12 @@ daen.draw = function() {
   if (this.hit) ctx.fillStyle = 'rgb(255 0 0)';
   else ctx.fillStyle = 'rgb(0 0 0)';
   ctx.fill();
-}
+};
 daen.collision = function(x,y) {
   const dx = x - this.cx;
   const dy = y - this.cy;
   return (dx*dx)/(this.rw*this.rw) + (dy*dy)/(this.rh*this.rh) <= 1;
-}
+};
 
 canvas.addEventListener('mousemove', (event) => {
   x = event.offsetX;
@@ -38,6 +38,6 @@ const loop = () => {
   daen.draw();
 
   requestAnimationFrame(loop);
-}
+};
 
 requestAnimationFrame(loop);

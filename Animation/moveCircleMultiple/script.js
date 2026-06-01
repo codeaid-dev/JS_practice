@@ -17,7 +17,7 @@ const createCircle = () => {
   circle.dy = Math.random() * 4 + 1;
   circle.radius = radius;
   circles.push(circle);
-}
+};
 
 const loop = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -37,7 +37,7 @@ const loop = () => {
     }
   }
   requestAnimationFrame(loop);
-}
+};
 
 for (let i=0; i<5; i++) {
   createCircle();

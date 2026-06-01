@@ -11,7 +11,7 @@ rectA.h = 100;
 rectA.draw = function() {
   ctx.fillStyle = 'rgb(0 255 0)';
   ctx.fillRect(this.x, this.y, this.w, this.h);
-}
+};
 
 const rectB = {};
 rectB.x = 200;
@@ -23,7 +23,7 @@ rectB.draw = function() {
   if (!this.hit) ctx.fillStyle = 'rgb(0 0 0)';
   else ctx.fillStyle = 'rgb(255 0 0 / 40%)';
   ctx.fillRect(this.x, this.y, this.w, this.h);
-}
+};
 rectB.collision = function(rect) {
   if (this.x <= rect.x+rect.w &&
     this.x+this.w >= rect.x &&
@@ -33,7 +33,7 @@ rectB.collision = function(rect) {
   } else {
     this.hit = false;
   }
-}
+};
 
 canvas.addEventListener('mousemove', (event) => {
   rectA.x = event.offsetX-50;
@@ -48,6 +48,6 @@ const loop = () => {
   rectB.draw();
 
   requestAnimationFrame(loop);
-}
+};
 
 requestAnimationFrame(loop);

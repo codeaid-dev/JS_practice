@@ -22,7 +22,7 @@ const update = (delta) => {
   if (y < radius || y > canvas.height-radius) {
     dy *= -1;
   }
-}
+};
 
 const draw = () => {
   ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -33,7 +33,7 @@ const draw = () => {
   ctx.fill();
   ctx.font = "20px sans-serif";
   ctx.fillText("FPS: " + fps.toFixed(1),20,30);
-}
+};
 
 const loop = (time) => {
   const delta = (time - last)/1000;
@@ -42,6 +42,6 @@ const loop = (time) => {
   update(delta);
   draw();
   requestAnimationFrame(loop);
-}
+};
 
 requestAnimationFrame(loop);

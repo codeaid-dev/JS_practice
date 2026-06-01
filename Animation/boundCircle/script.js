@@ -19,7 +19,7 @@ const update = () => {
     ball.speed *= -0.98;
     ball.y = canvas.height-ball.radius;
   }
-}
+};
 
 const draw  = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -35,11 +35,11 @@ const draw  = () => {
   ctx.fillStyle = g;
   // ctx.fillStyle = '#000';
   ctx.fill();
-}
+};
 
 const loop = () => {
   update();
   draw();
   requestAnimationFrame(loop);
-}
+};
 loop();

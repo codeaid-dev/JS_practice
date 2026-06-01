@@ -25,6 +25,6 @@ const loop = () => {
   }
 
   requestAnimationFrame(loop);
-}
+};
 
 loop();

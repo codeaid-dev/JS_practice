@@ -35,7 +35,7 @@ const update = (step) => {
     count = 0;
     timer = 0;
   }
-}
+};
 
 const draw = () => {
   ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -47,7 +47,7 @@ const draw = () => {
 
   ctx.font = "20px sans-serif";
   ctx.fillText("FPS: " + ufps.toFixed(1),20,30);
-}
+};
 
 const loop = (time) => {
   const delta = (time - last)/1000;
@@ -59,6 +59,6 @@ const loop = (time) => {
   }
   draw();
   requestAnimationFrame(loop);
-}
+};
 
 requestAnimationFrame(loop);

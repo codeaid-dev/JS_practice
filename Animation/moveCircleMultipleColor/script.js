@@ -26,7 +26,7 @@ const createCircle = () => {
   circle.radius = radius;
   circle.color = '#000';
   circles.push(circle);
-}
+};
 
 const loop = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -58,7 +58,7 @@ const loop = () => {
     }
   }
   requestAnimationFrame(loop);
-}
+};
 
 for (let i=0; i<5; i++) {
   createCircle();

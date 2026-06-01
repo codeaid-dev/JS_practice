@@ -14,7 +14,7 @@ target.draw = function() {
   ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
   ctx.fillStyle = '#000';
   ctx.fill();
-}
+};
 
 const circles = [];
 const createCircle = () => {
@@ -50,17 +50,17 @@ const createCircle = () => {
     if (this.stop) ctx.fillStyle = '#808080';
     else ctx.fillStyle = '#0f0';
     ctx.fill();
-  }
+  };
 
   circle.collision = function(target) {
     const dist = Math.sqrt((this.centerX - target.x)**2 + (this.centerY - target.y)**2);
     if (dist < (this.radius + target.radius)) {
       this.stop = true;
     }
-  }
+  };
 
   circles.push(circle);
-}
+};
 
 const loop = (time) => {
   const delta = (time - last)/1000;
@@ -75,7 +75,7 @@ const loop = (time) => {
   }
   target.draw();
   requestAnimationFrame(loop);
-}
+};
 
 for (let i=0; i<10; i++) {
   createCircle();

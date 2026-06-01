@@ -32,7 +32,7 @@ const getPoint = (e, rad) => {
   const yr = x * Math.sin(e.angle) + y * Math.cos(e.angle)
   // 平行移動
   return [e.cx + xr, e.cy + yr];
-}
+};
 
 const collision = (e1, e2) => {
   let hit = false;
@@ -50,7 +50,7 @@ const collision = (e1, e2) => {
     }
   }
   return hit;
-}
+};
 
 const draw = () => {
   ctx.beginPath();
@@ -62,7 +62,7 @@ const draw = () => {
   if (collision(e1, e2)) ctx.fillStyle = 'rgb(255 0 0 / 60%)';
   else ctx.fillStyle = 'rgb(0 0 0)';
   ctx.fill();
-}
+};
 
 const loop = () => {
   ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -70,6 +70,6 @@ const loop = () => {
   draw();
 
   requestAnimationFrame(loop);
-}
+};
 
 requestAnimationFrame(loop);

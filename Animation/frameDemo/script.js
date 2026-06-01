@@ -50,6 +50,6 @@ function loop(now) {
   ctx.fillText("Δt使用 (青)", 20, 240);
 
   requestAnimationFrame(loop);
-}
+};
 
 requestAnimationFrame(loop);

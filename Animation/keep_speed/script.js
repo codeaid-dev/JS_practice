@@ -27,7 +27,7 @@ const setAngle = (ball) => {
   const rad = Math.random() * Math.PI * 2;
   ball.dx = speed * Math.cos(rad);
   ball.dy = speed * Math.sin(rad);
-}
+};
 
 const update = () => {
   xpos[xpos.length-1] += ball.dx;
@@ -44,7 +44,7 @@ const update = () => {
      || ypos[ypos.length-1] < ball.radius) {
     ball.dy *= -1;
   }
-}
+};
 
 const draw  = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -54,13 +54,13 @@ const draw  = () => {
     ctx.fillStyle = `hsl(${ball.hue} ${ball.saturation}% ${100-i}%)`;
     ctx.fill();
   }
-}
+};
 
 const loop = () => {
   update();
   draw();
   requestAnimationFrame(loop);
-}
+};
 loop();
 
 canvas.addEventListener('click', (e) => {

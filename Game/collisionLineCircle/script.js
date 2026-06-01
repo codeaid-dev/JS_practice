@@ -47,7 +47,7 @@ circle.draw = function() {
     ctx.fillStyle = 'rgb(0 255 0)';
     ctx.fill();
   }
-}
+};
 circle.collision = function(Ax,Ay,Bx,By) {
   const Px = this.x;
   const Py = this.y;
@@ -77,7 +77,7 @@ circle.collision = function(Ax,Ay,Bx,By) {
   }
   this.hit = false;
   return false;
-}
+};
 
 canvas.addEventListener('mousemove', (event) => {
   circle.x = event.offsetX;
@@ -95,6 +95,6 @@ const loop = () => {
   circle.draw();
 
   requestAnimationFrame(loop);
-}
+};
 
 requestAnimationFrame(loop);
