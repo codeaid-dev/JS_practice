@@ -64,18 +64,18 @@ const update = () => {
       }
       if (en.collide(other) && en.move && other.move) {
         if (en.size <= other.size) {
-            //ens.remove(en);
-            en.move = false;
-            en.iro = 'rgb(255 255 255 / 0)';
-            other.size = Math.sqrt(en.size**2 + other.size**2);
-            if (other.x < other.size/2)
-              other.x = other.size/2;
-            if (other.x > canvas.width-other.size/2)
-              other.x = canvas.width-other.size/2;
-            if (other.y < other.size/2)
-              other.y = other.size/2;
-            if (other.y > canvas.height-en.size/2)
-              other.y = canvas.height-en.size/2;
+          //ens.remove(en);
+          en.move = false;
+          en.iro = 'rgb(255 255 255 / 0)';
+          other.size = Math.sqrt(en.size**2 + other.size**2);
+          if (other.x < other.size/2)
+            other.x = other.size/2;
+          if (other.x > canvas.width-other.size/2)
+            other.x = canvas.width-other.size/2;
+          if (other.y < other.size/2)
+            other.y = other.size/2;
+          if (other.y > canvas.height-en.size/2)
+            other.y = canvas.height-en.size/2;
         }
         break;
       }
