@@ -65,13 +65,18 @@ loop();
 
 canvas.addEventListener('click', (e) => {
   // クリックした位置にワープ
-  const rect = canvas.getBoundingClientRect();
-  const cx = e.clientX - rect.left;
-  const cy = e.clientY - rect.top;
+  // const rect = canvas.getBoundingClientRect();
+  // const cx = e.clientX - rect.left;
+  // const cy = e.clientY - rect.top;
+  // for (let i=0; i<xpos.length; i++) {
+  //   xpos[i] = cx;
+  //   ypos[i] = cy;
+  // }
   for (let i=0; i<xpos.length; i++) {
-    xpos[i] = cx;
-    ypos[i] = cy;
+    xpos[i] = e.offsetX;
+    ypos[i] = e.offsetY;
   }
+  
   // ランダムな色と向き
   setAngle(ball);
   ball.hue = Math.floor(Math.random()*360);
