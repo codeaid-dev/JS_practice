@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カウントアップ</title>
+  <style>
+    #barframe {
+      width:500px;
+      background:lightgray;
+    }
+    #bar {
+      width:0;
+      height:30px;
+      background:orange;
+    }
+    #panel {
+      width: 500px;
+      height: 500px;
+    }
+    #result {
+      margin: 5px 0;
+      width: 500px;
+      height: 40px;
+      text-align: center;
+    }
+    .tile {
+      margin: 4px;
+      width: 90px;
+      height: 90px;
+      line-height: 90px;
+      border: 1px solid gray;
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      float: left;
+      cursor: pointer;
+    }
+    #start, #result {
+      font-size: 40px;
+    }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="barframe">
+    <div id="bar"></div>
+  </div>
+  <div id="result"></div>
+  <div id="panel"></div>
+  <br>
+  <button id="start">スタート</button>
+</body>
+</html>
