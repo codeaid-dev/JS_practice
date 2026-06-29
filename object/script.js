@@ -247,3 +247,47 @@ person2.greet(); // Hello! I'm Prince and I'm Soul musician.
 console.log(person2.genre); // Soul
 person2.genre = 'Pop';
 console.log(person2.genre); // Pop
+
+// 静的メソッド
+class Sprite {
+  static createName(firstName, familyName) {
+    return `${firstName} ${familyName}`;
+  }
+}
+
+const name = Sprite.createName('Michael', 'Jackson');
+console.log(name);
+
+// thisの参照先(function関数)
+class Counter {
+  constructor() {
+    this.count = 0;
+
+    const button = document.querySelector('button');
+    const result = document.querySelector('#result');
+    button.addEventListener('click', function() {
+      this.count += 1;
+      console.log(this);
+      result.textContent = this.count;
+    });
+  }
+}
+
+new Counter();
+
+// thisの参照先(アロー関数)
+class Counter {
+  constructor() {
+    this.count = 0;
+
+    const button = document.querySelector('button');
+    const result = document.querySelector('#result');
+    button.addEventListener('click', () => {
+      this.count += 1;
+      console.log(this);
+      result.textContent = this.count;
+    });
+  }
+}
+
+new Counter();
