@@ -1,31 +1,25 @@
-const tiles = document.querySelectorAll('.tile');
-
-tiles.forEach((tile, i) => {
-  tile.addEventListener('click', () => {
-    if (tile.style.background === 'red') {
-      tile.style.background = null;
-      tile.innerText = '';
-    } else if (tiles[i].style.background === 'blue') {
-      tile.style.background = 'red';
-      tile.innerText = Number(i)+1;
-    } else {
-      tile.style = 'background:blue';
-      tile.innerText = Number(i)+1;
-    }
+const checks = document.querySelectorAll('input[type="checkbox"]');
+const items = document.querySelectorAll('#items li');
+const updateFilter = () => {
+  const checkTypes = [...checks].filter((cb) => cb.checked);
+  const activeTypes = [];
+  checkTypes.forEach((cb) => {
+    activeTypes.push(cb.value);
   });
-});
+  // const activeTypes = [...checks].filter(cb => cb.checked).map(cb => cb.value);
 
-// for (let tile of tiles) {
-//   tile.addEventListener('click', () => {
-//     if (tile.style.background === 'red') {
-//       tile.style.background = null;
-//       tile.innerText = '';
-//     } else if (tile.style.background === 'blue') {
-//       tile.style.background = 'red';
-//       tile.innerText = Array.from(tiles).indexOf(tile)+1;
-//     } else {
-//       tile.style = 'background:blue';
-//       tile.innerText = Array.from(tiles).indexOf(tile)+1;
-//     }
-//   });
-// }
+  items.forEach(item => {
+    const type = item.dataset.type;
+    if (activeTypes.includes(type))
+      item.style.display = 'list-item';
+    else
+      item.style.display = 'none';
+    // item.style.display = activeTypes.includes(type) ? 'list-item' : 'none';
+  });
+}
+
+checks.forEach((cb) => {
+  cb.addEventListener('change', updateFilter);
+});
+updateFilter();
+

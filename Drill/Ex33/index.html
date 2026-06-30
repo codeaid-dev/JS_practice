@@ -3,36 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>タイル移動</title>
-  <style>
-    #panel {
-      width: 320px;
-      height: 320px;
-    }
-    .tile {
-        width: 100px;
-        height: 100px;
-        line-height: 100px;
-        border: 1px solid gray;
-        float: left;
-    }
-    .active {
-      background-color: aqua;
-    }
-  </style>
+  <title>地方選択</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div id="panel">
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-    <div class="tile"></div>
-  </div>
+  <p>地方を選択してください</p>
+  <p>
+    <label><input type="radio" name="region" value="kinki" checked>近畿地方</label>
+    <label><input type="radio" name="region" value="nishinihon">西日本地方</label>
+    <label><input type="radio" name="region" value="shikoku">四国地方</label>
+    <label><input type="radio" name="region" value="kyushu">九州地方</label>
+  </p>
+  <div><select id="pref"></select></div>
+  <p id="result"></p>
 </body>
 </html>

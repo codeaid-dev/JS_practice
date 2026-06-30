@@ -1,25 +1,24 @@
-const checks = document.querySelectorAll('input[type="checkbox"]');
-const items = document.querySelectorAll('#items li');
-const updateFilter = () => {
-  const checkTypes = [...checks].filter((cb) => cb.checked);
-  const activeTypes = [];
-  checkTypes.forEach((cb) => {
-    activeTypes.push(cb.value);
+  const notify = document.getElementById('notify');
+  const notification = document.getElementById('notification');
+  const close = document.getElementById('close');
+
+  let timeoutId = null;
+
+  const hideNotification = () => {
+    notification.classList.add('hidden');
+    if (timeoutId !== null) {
+      clearTimeout(timeoutId);
+      timeoutId = null;
+    }
+  }
+
+  notify.addEventListener('click', () => {
+    notification.classList.remove('hidden');
+    if (timeoutId !== null) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(() => {
+      hideNotification();
+    }, 3000);
   });
-  // const activeTypes = [...checks].filter(cb => cb.checked).map(cb => cb.value);
-
-  items.forEach(item => {
-    const type = item.dataset.type;
-    if (activeTypes.includes(type))
-      item.style.display = 'list-item';
-    else
-      item.style.display = 'none';
-    // item.style.display = activeTypes.includes(type) ? 'list-item' : 'none';
-  });
-}
-
-checks.forEach((cb) => {
-  cb.addEventListener('change', updateFilter);
-});
-updateFilter();
-
+  close.addEventListener('click', hideNotification);

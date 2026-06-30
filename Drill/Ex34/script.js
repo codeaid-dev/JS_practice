@@ -1,24 +1,34 @@
-let data = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-const panel = document.getElementById('panel');
-let dragItem = null;
+const tiles = document.querySelectorAll('.tile');
+let index = 4;
 
-for (let i=0; i<36; i++) {
-  const tile = document.createElement('div');
-  tile.classList.add('tile');
-  if (data.length !== 0) {
-    const index = Math.floor(Math.random()*data.length);
-    tile.textContent = data[index];
-    tile.draggable = true;
-    data = data.replace(data[index], '');
+const update = () => {
+  tiles.forEach((li, i) => {
+    li.classList.toggle('active', i === index);
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') {
+    console.log('Right');
+    if ((index + 1) % 3 !== 0) index += 1;
+    console.log(index);
   }
-  panel.appendChild(tile);
-}
-
-panel.addEventListener('dragstart', event => { dragItem = event.target; });
-panel.addEventListener('dragover', event => event.preventDefault());
-panel.addEventListener('drop', event => {
-if (event.target.classList.contains('tile') && event.target !== dragItem) {
-  panel.insertBefore(dragItem, event.target.nextSibling);
-  console.log([...panel.children].map(i => i.textContent));
-}
+  if (e.key === 'ArrowLeft') {
+    console.log('Left');
+    if (index !== 0 && (index - 1) % 3 !== 2) index -= 1;
+    console.log(index);
+  }
+  if (e.key === 'ArrowDown') {
+    console.log('Down');
+    if (index + 3 < tiles.length) index += 3;
+    console.log(index);
+  }
+  if (e.key === 'ArrowUp') {
+    console.log('Up');
+    if (index - 3 >= 0) index -= 3;
+    console.log(index);
+  }
+  update();
 });
+
+update();

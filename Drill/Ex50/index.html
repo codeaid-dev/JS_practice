@@ -3,29 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ブロック選択</title>
+  <title>表示切り替え</title>
   <style>
-    .card {
+    #view {
+      display:flex
+    }
+    #view div {
       margin: 5px;
-      width: 100px;
+      width: 50px;
       height: 50px;
       text-align: center;
       line-height: 50px;
-      background-color: blue;
-    }
-    .selected {
-      background-color: aqua;
+      background-color: green;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <p>選択数: <span id="count">0</span></p>
-
-  <div class="cards">
-    <div class="card">A</div>
-    <div class="card">B</div>
-    <div class="card">C</div>
-  </div>
+  <button id="toggle">切替</button>
+  <div id="view"></div>
 </body>
 </html>

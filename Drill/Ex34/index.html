@@ -3,26 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>タイル移動2</title>
+  <title>タイル移動</title>
   <style>
     #panel {
       width: 320px;
       height: 320px;
     }
     .tile {
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
         border: 1px solid gray;
-        text-align: center;
-        font-size: 40px;
-        font-weight: bold;
         float: left;
+    }
+    .active {
+      background-color: aqua;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div id="panel"></div>
+  <div id="panel">
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+  </div>
 </body>
 </html>

@@ -3,33 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>リスト編集</title>
-  <style>
-    span {
-      display: inline-block;
-      width: 9rem;
-    }
-  </style>
+  <title>郵便番号チェック</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <ul id="list">
-    <li>
-      <span class="text">Apple</span>
-      <button class="edit">編集</button>
-    </li>
-    <li>
-      <span class="text">Orange</span>
-      <button class="edit">編集</button>
-    </li>
-    <li>
-      <span class="text">Peach</span>
-      <button class="edit">編集</button>
-    </li>
-    <li>
-      <span class="text">Lemon</span>
-      <button class="edit">編集</button>
-    </li>
-  </ul>
+  <form>
+    <label>郵便番号：<input type="text" name="zipcode" id="zipcode"></label><br>
+    <button type="submit" id="send">送信</button>
+    <p id="error" style="color:red"></p>
+  </form>
 </body>
 </html>
