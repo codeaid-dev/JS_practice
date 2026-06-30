@@ -14,7 +14,8 @@ start.addEventListener('click', () => {
     let min_cnt = min.value === '' ? 0 : parseInt(min.value);
     let sec_cnt = sec.value === '' ? 0 : parseInt(sec.value);
     let count = min_cnt * 60 + sec_cnt;
-    timer.textContent = `${('0'+min_cnt.toString(10)).slice(-2)}:${('0'+sec_cnt.toString(10)).slice(-2)}`;
+    timer.textContent = `${String(min_cnt).padStart(2, '0')}:${String(sec_cnt).padStart(2, '0')}`;
+    // timer.textContent = `${('0'+min_cnt.toString(10)).slice(-2)}:${('0'+sec_cnt.toString(10)).slice(-2)}`;
     timer_id = setInterval(() => {
       count--;
       min_cnt = Math.floor(count / 60);
@@ -25,7 +26,8 @@ start.addEventListener('click', () => {
         timer.textContent = 'タイマー終了';
         start.disabled = false;
       } else {
-        timer.textContent = `${('0'+min_cnt.toString(10)).slice(-2)}:${('0'+sec_cnt.toString(10)).slice(-2)}`;
+        timer.textContent = `${String(min_cnt).padStart(2, '0')}:${String(sec_cnt).padStart(2, '0')}`;
+        // timer.textContent = `${('0'+min_cnt.toString(10)).slice(-2)}:${('0'+sec_cnt.toString(10)).slice(-2)}`;
       }
 
     }, 1000);
