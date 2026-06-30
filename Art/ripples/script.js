@@ -4,9 +4,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = 500;
 canvas.height = 500;
 
-class Ripple {
-  x;y;r1=0;r2=0;
-}
+class Ripple {}
 let rips = [];
 
 const draw = () => {
@@ -40,5 +38,6 @@ canvas.addEventListener('mousedown', (e) =>{
   rip.x = e.offsetX;
   rip.y = e.offsetY;
   rip.r1 = 1;
+  rip.r2 = 0;
   rips.push(rip);
 });

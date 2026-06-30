@@ -9,9 +9,6 @@ const centerY = canvas.height/2;
 let mouseX=0,mouseY=0;
 
 class Eye {
-  x;y;radius;
-  inRadius;
-  color;inColor;
   constructor(x,y,radius) {
     this.x = x;
     this.y = y;

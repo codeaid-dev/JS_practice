@@ -4,9 +4,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = 500;
 canvas.height = 500;
 
-class Circle {
-  angle;distance;diameter;speed;
-}
+class Circle {}
 
 const ens = [];
 for (let i=0; i<30; i++) {

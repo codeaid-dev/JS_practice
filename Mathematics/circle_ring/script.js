@@ -6,9 +6,7 @@ canvas.height = 500;
 const centerX = canvas.width/2;
 const centerY = canvas.height/2;
 
-class Circle {
-  x;y;d;
-}
+class Circle {}
 let index = 0;
 const ens = [];
 for (let i=0; i<360; i++) {

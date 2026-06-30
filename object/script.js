@@ -80,7 +80,6 @@ michael.greet(); // Hello! I'm Michael.
 
 // constructor
 class Person {
-  name;
   constructor(name) {
     this.name = name;
   }
@@ -95,7 +94,6 @@ person2.greet(); // Hello! I'm Prince.
 
 // 継承
 class Person {
-  name;
   constructor(name) {
     this.name = name;
   }
@@ -122,7 +120,6 @@ person1.greet(); // Hello! I'm Michael and I'm Country musician.
 
 // カプセル化
 class Person {
-  name;
   constructor(name) {
     this.name = name;
   }
@@ -148,7 +145,6 @@ person1.#genre = 'Country'; // error
 
 // カプセル化 セッター
 class Person {
-  name;
   constructor(name) {
     this.name = name;
   }
@@ -191,7 +187,6 @@ if (person2.setGenre('Funk')) {
 
 // カプセル化 ゲッター
 class Person {
-  name;
   constructor(name) {
     this.name = name;
   }
@@ -218,7 +213,6 @@ console.log(person2.getGenre()); // Soul
 
 // カプセル化 セッター/ゲッター
 class Person {
-  name;
   constructor(name) {
     this.name = name;
   }

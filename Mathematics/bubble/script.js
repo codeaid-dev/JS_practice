@@ -4,7 +4,6 @@ const ctx = canvas.getContext('2d');
 canvas.width = 600;
 canvas.height = 600;
 class Circle {
-  size;x;y;angle;speed;move;iro;
   collide(en) {
     const dst = Math.sqrt((this.x-en.x)**2 + (this.y-en.y)**2);
     return dst < this.size/2+en.size/2;
