@@ -3,52 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>カウントアップ</title>
+  <title>三目並べ</title>
   <style>
-    #barframe {
-      width:500px;
-      background:lightgray;
-    }
-    #bar {
-      width:0;
-      height:30px;
-      background:orange;
-    }
     #panel {
-      width: 500px;
-      height: 500px;
-    }
-    #result {
-      margin: 5px 0;
-      width: 500px;
-      height: 40px;
-      text-align: center;
+      width: 320px;
+      height: 320px;
     }
     .tile {
-      margin: 4px;
-      width: 90px;
-      height: 90px;
-      line-height: 90px;
-      border: 1px solid gray;
-      text-align: center;
-      font-size: 40px;
-      font-weight: bold;
-      float: left;
-      cursor: pointer;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        border: 1px solid gray;
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        float: left;
+        cursor: pointer;
     }
-    #start, #result {
+    .result {
       font-size: 40px;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div id="barframe">
-    <div id="bar"></div>
+  <div id="panel">
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
+    <div class="tile"></div>
   </div>
-  <div id="result"></div>
-  <div id="panel"></div>
-  <br>
-  <button id="start">スタート</button>
+  <div class="result"></div>
 </body>
 </html>

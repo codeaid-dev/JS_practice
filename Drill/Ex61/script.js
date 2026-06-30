@@ -1,70 +1,46 @@
-let step = 0;
-let timerId;
-let count = 1;
-let clear = false;
-const TILES = 25;
-const bar = document.getElementById('bar');
-const start = document.getElementById('start');
-const panel = document.getElementById('panel');
-const result = document.getElementById('result');
+const tiles = [0,1,2,3,4,5,6,7,8]; // マス情報を格納するリスト
+const first = '○';
+const second = 'Ｘ';
+let turn = true; // true:first, false:second
+let stat = 0; // ゲームの手数と終了フラグ 1 ~ 10, 9:全ターン終了、10:ゲーム終了
+const targets = document.querySelectorAll('.tile');
+const result = document.querySelector('.result');
 
-for (let i=0; i<TILES; i++) {
-  const tile = document.createElement('div');
-  tile.classList.add('tile');
-  tile.style.background = 'gray';
-  panel.appendChild(tile);
-  tile.addEventListener('click', (e) => {
-    if (step < 100) {
-      if (count === Number(e.currentTarget.textContent)) {
-        if (count === TILES) {
-          clearInterval(timerId);
-          timerId = null;
-          result.textContent = 'CLEAR';
-          result.style.color = 'green';
-          clear = true;
-        }
-        count += 1;
-        e.currentTarget.style.background = 'skyblue';
+// タイルがクリックされたときのイベント処理
+for (let i in tiles) {
+  targets[i].addEventListener('click', () => {
+    if (targets[i].innerText === '') {
+      if (stat === 10) return;
+      stat++;
+      targets[i].innerText = (turn) ? first : second;
+      tiles[i] = targets[i].innerText;
+      const str = judge();
+      if (str !== '') {
+        result.innerText = str;
       }
+      turn = (turn) ? false : true;
     }
   });
 }
 
-let nums;
-const createNums = () => {
-  nums = [];
-  while (true) {
-    if (nums.length == TILES) break;
-    const n = Math.floor(Math.random()*TILES)+1;
-    if (nums.includes(n)) continue;
-    nums.push(n);
-  }
-};
-createNums();
-
-start.addEventListener('click', () => {
-  if (timerId) return;
-  createNums();
-  const tile = document.querySelectorAll('.tile');
-  tile.forEach((e, i) => {
-    e.textContent = nums[i];
-    e.style.background = 'white';
-  });
-  count = 1;
-  step = 0;
-  bar.style.width = 0;
-  result.textContent = '';
-  timerId = setInterval(() => {
-    step += 4;
-    bar.style.width = step + '%';
-    if (step >= 100) {
-      clearInterval(timerId);
-      timerId = null;
-      console.log(clear);
-      if (!clear) {
-        result.textContent = 'TIME UP';
-        result.style.color = 'red';
+const judge = ()=>{
+  if (tiles[0] === tiles[1] && tiles[0] === tiles[2]
+    || tiles[3] === tiles[4] && tiles[3] === tiles[5]
+    || tiles[6] === tiles[7] && tiles[6] === tiles[8]
+    || tiles[0] === tiles[3] && tiles[0] === tiles[6]
+    || tiles[1] === tiles[4] && tiles[1] === tiles[7]
+    || tiles[2] === tiles[5] && tiles[2] === tiles[8]
+    || tiles[0] === tiles[4] && tiles[0] === tiles[8]
+    || tiles[2] === tiles[4] && tiles[2] === tiles[6]) {
+      if (turn) {
+        stat = 10;
+        return '○の勝ち';
+      } else {
+        stat = 10;
+        return 'Ｘの勝ち';
       }
+    } else if (stat === 9) {
+      return '引き分け';
     }
-  }, 1000);
-});
+    return '';
+}
