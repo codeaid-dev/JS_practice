@@ -1,71 +1,37 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>計算機</title>
+  <title>ブロック追加・移動</title>
   <style>
-    #calc {
+    #blocks {
+      width: 500px;
+    }
+    .item {
+      margin: 5px;
       padding: 5px;
-      max-width: 240px;
-      height: 360px;
-      background-color: black;
-    }
-    #display {
-      height: 60px;
-      font-size: 30px;
-      line-height: 60px;
-      color: white;
-      text-align: right;
-      padding: 0px;
-    }
-    #zero {
-      width: 120px;
-    }
-    .key {
-      width: 60px;
-      height: 60px;
+      width: 100px;
+      border: 1px solid grey;
+      border-radius: 5px;
       float: left;
-      background-color: grey;
-      font-size: 30px;
+      overflow-wrap: break-word;
     }
-    .num {
-      background-color: grey;
-    }
-    .mk1 {
-      background-color: lightgray;
-      width: 180px;
-    }
-    .mk2 {
-      background-color: orange;
-    }
-    #zero {
-      width: 120px;
+    .item button {
+      display: block;
+      margin: 0 auto;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>計算機</h1>
-  <div id="calc">
-    <div id="display"></div>
-    <button class="key mk1" value="C">C</button>
-    <button class="key mk2" value="/">÷</button>
-    <button class="key num" value="7">7</button>
-    <button class="key num" value="8">8</button>
-    <button class="key num" value="9">9</button>
-    <button class="key mk2" value="*">x</button>
-    <button class="key num" value="4">4</button>
-    <button class="key num" value="5">5</button>
-    <button class="key num" value="6">6</button>
-    <button class="key mk2" value="-">-</button>
-    <button class="key num" value="1">1</button>
-    <button class="key num" value="2">2</button>
-    <button class="key num" value="3">3</button>
-    <button class="key mk2" value="+">+</button>
-    <button class="key num" id="zero" value="0">0</button>
-    <button class="key num" value=".">.</button>
-    <button class="key mk2" value="=">=</button>
+  <input type="text" name="item">
+  <button id="add">要素追加</button>
+  <div id="template" class="item" hidden>
+    <p class="contents"></p>
+    <button class="remove">削除</button>
   </div>
+
+  <div id="blocks"></div>
 </body>
 </html>
