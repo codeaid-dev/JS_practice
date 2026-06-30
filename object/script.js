@@ -249,7 +249,7 @@ person2.genre = 'Pop';
 console.log(person2.genre); // Pop
 
 // 静的メソッド
-class Sprite {
+class Person {
   static createName(firstName, familyName) {
     return `${firstName} ${familyName}`;
   }
@@ -291,3 +291,18 @@ class Counter {
 }
 
 new Counter();
+
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  sayName() {
+    console.log(this.name);
+  }
+}
+
+const p = new Person('Michael');
+p.sayName(); // Michael
+
+const func = p.sayName;
+func(); // undefined
