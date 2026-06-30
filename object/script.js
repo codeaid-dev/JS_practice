@@ -286,6 +286,7 @@ class Counter {
 
 new Counter();
 
+// 通常のメソッド定義
 class Person {
   constructor(name) {
     this.name = name;
@@ -300,3 +301,19 @@ p.sayName(); // Michael
 
 const func = p.sayName;
 func(); // undefined
+
+// アロー関数
+class Person {
+  constructor(name) {
+    this.name = name;
+    this.sayName = () => {
+      console.log(this.name);
+    }
+  }
+}
+
+const p = new Person('Michael');
+p.sayName(); // Michael
+
+const func = p.sayName;
+func(); // Michael
