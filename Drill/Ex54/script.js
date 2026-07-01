@@ -1,38 +1,34 @@
-const disp = document.querySelector('#display');
-const keys = document.querySelectorAll('button');
-let total = '0';
-let start = true; // true:演算開始、false:演算中
+let data = ['項目1', '項目2', '項目3', '項目4'];
 
-disp.innerText = total;
-for (let i=0; i<keys.length; i++) {
-  keys[i].addEventListener('click', () => {
-    let val = keys[i].value;
-    if (val !== 'C' && val !== '=') {
-      if (start && !isNaN(val)) {
-        total = val;
-        start = false;
-      } else if (!isNaN(val) && total === '0') {
-        total = val;
-      } else {
-        if (isNaN(total[total.length-1])) {
-          if (!isNaN(val)) {
-            total += val;
-            start = false;
-          }
-        } else {
-          total += val;
-          start = false;
-        }
-      }
-      disp.innerText = total;
-    } else if (val === '=') {
-      total = String(eval(total));
-      disp.innerText = total;
-      start = true;
-    } else if (val === 'C') {
-      total = '0';
-      start = true;
-      disp.innerText = total;
-    }
+const history = [];
+
+const list = document.getElementById('list');
+const undo = document.getElementById('undo');
+
+function render() {
+  list.innerHTML = '';
+  data.forEach((item,index)=>{
+    const li = document.createElement('li');
+    li.textContent = item;
+    const del = document.createElement('button');
+    del.textContent = '削除';
+    del.style.marginLeft = '10px';
+
+    del.addEventListener('click', () => {
+      // 現在状態を保存
+      history.push([...data]);
+      data.splice(index,1);
+      render();
+    });
+    li.appendChild(del);
+    list.appendChild(li);
   });
 }
+
+undo.addEventListener('click', ()=>{
+  if(history.length===0) return;
+  data = history.pop();
+  render();
+});
+
+render();

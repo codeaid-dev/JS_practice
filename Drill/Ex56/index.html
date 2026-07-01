@@ -3,42 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>スロットマシン</title>
+  <title>アルファベットクイズ</title>
   <style>
-    #panel {
-      width: 480px;
-      height: 200px;
-    }
-    .slot img, button {
-      width: 150px;
-      height: 150px;
-      margin: 5px;
-      float: left;
-    }
-    button {
-      height: auto;
-    }
-    #start {
-      width: 480px;
-    }
-    #result {
-      font-size: 30px;
-    }
-
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>スロットマシン</h1>
-  <div id="panel">
-    <div class="slot" id="slot1"><img src="../img/slot3.png"></div>
-    <div class="slot" id="slot2"><img src="../img/slot4.png"></div>
-    <div class="slot" id="slot3"><img src="../img/slot1.png"></div>
-    <button class="btn">STOP</button>
-    <button class="btn">STOP</button>
-    <button class="btn">STOP</button>
-    <button id="start">START</button>
-  </div>
-  <p id="result"></p>  
+  <h2>アルファベットクイズ</h2>
+  <p>抜けているアルファベットはどれか？</p>
+  <p id="question" style="font-size: 20px;">--ここに問題を表示--</p>
+  <p>抜くアルファベットの数：<br>
+  <label><input type="radio" name="mojisuu" value="1" checked>1文字</label>
+  <label><input type="radio" name="mojisuu" value="2">2文字</label>
+  <label><input type="radio" name="mojisuu" value="3">3文字</label><br>
+  </p>
+  <p><button id="create-q">出題</button></p>
+  <input type="text" id="answer"><button id="judge">解答</button>
+  <p id="result" style="font-size: 20px;">--ここに結果を表示--</p>
 </body>
 </html>
