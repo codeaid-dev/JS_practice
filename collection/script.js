@@ -88,6 +88,24 @@ console.log(fruits6); // ["Apple",["Orange","Melon"]]
 fruits6[1][0] = "Peach";
 console.log(fruits5); // ["Apple",["Peach","Melon"]]
 console.log(fruits6); // ["Apple",["Peach","Melon"]]
+const arr = [1,2,3,4,5];
+const copy = Array.from(arr);
+console.log(copy); // [1,2,3,4,5]
+const hello = Array.from('Hello World!');
+console.log(hello); // ['H', 'e', 'l', 'l', 'o']
+const nums = Array.from({length:5},(_,i) => i);
+console.log(nums); // [0, 1, 2, 3, 4]
+// Array.from()を使ったrange()関数
+const range = (start, stop, step) =>
+  Array.from(
+    { length: Math.ceil((stop - start) / step) },
+    (_, i) => start + i * step,
+  );
+
+let nums = range(0,5,1);
+console.log(nums); // [0, 1, 2, 3, 4]
+nums = range(2,10,2);
+console.log(nums); // [2, 4, 6, 8]
 // 配列を複製(ディープコピー)
 const ingredientsList = ["Apple", ["Orange", "Melon"]];
 const ingredientsListDeepCopy1 = JSON.parse(JSON.stringify(ingredientsList));
