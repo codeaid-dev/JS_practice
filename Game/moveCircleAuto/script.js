@@ -14,7 +14,7 @@ const update = () => {
     dx *= -1;
   if (y<radius || y>canvas.height-radius)
     dy *= -1;
-}
+};
 
 const draw = () => {
   ctx.clearRect(0,0,canvas.width,canvas.height);
