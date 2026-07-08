@@ -10,19 +10,19 @@ const radius = 50;
 let dx = 0;
 let dy = 0;
 
-document.addEventListener("keydown", (event) =>{
+document.addEventListener('keydown', (event) =>{
   keys[event.key] = true;
 });
 
-document.addEventListener("keyup", (event) =>{
+document.addEventListener('keyup', (event) =>{
   keys[event.key] = false;
 });
 
 const update = () => {
-  if(keys["ArrowRight"]) dx += 1;
-  if(keys["ArrowLeft"]) dx -= 1;
-  if(keys["ArrowUp"]) dy -= 1;
-  if(keys["ArrowDown"]) dy += 1;
+  if(keys['ArrowRight']) dx += 1;
+  if(keys['ArrowLeft']) dx -= 1;
+  if(keys['ArrowUp']) dy -= 1;
+  if(keys['ArrowDown']) dy += 1;
   dx *= 0.98;
   dy *= 0.98;
   circleX += dx;
@@ -36,7 +36,7 @@ const update = () => {
     circleY=radius;
   if (circleY>canvas.height-radius)
     circleY=canvas.height-radius;
-}
+};
 
 const draw = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -45,7 +45,7 @@ const draw = () => {
   ctx.arc(circleX, circleY, radius, 0, Math.PI*2);
   ctx.fillStyle = 'black';
   ctx.fill();
-}
+};
 
 const loop = () => {
   update();

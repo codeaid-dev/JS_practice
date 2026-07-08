@@ -29,11 +29,11 @@ canvas.addEventListener('mousedown', (event) => {
   }
 });
 
-document.addEventListener("keydown", (event) =>{
+document.addEventListener('keydown', (event) =>{
     keys[event.key] = true;
 });
 
-document.addEventListener("keyup", (event) =>{
+document.addEventListener('keyup', (event) =>{
     keys[event.key] = false;
 });
 
@@ -44,10 +44,10 @@ const loop = () => {
   ctx.fillStyle = 'green';
   ctx.fill();
 
-  if(keys["ArrowRight"]) rectX += rectSpeed;
-  if(keys["ArrowLeft"]) rectX -= rectSpeed;
-  if(keys["ArrowUp"]) rectY -= rectSpeed;
-  if(keys["ArrowDown"]) rectY += rectSpeed;
+  if(keys['ArrowRight']) rectX += rectSpeed;
+  if(keys['ArrowLeft']) rectX -= rectSpeed;
+  if(keys['ArrowUp']) rectY -= rectSpeed;
+  if(keys['ArrowDown']) rectY += rectSpeed;
   ctx.fillStyle = 'blue';
   ctx.fillRect(rectX, rectY, 100, 50);
 
