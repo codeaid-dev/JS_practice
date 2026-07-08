@@ -14,17 +14,25 @@ let radian = angle * (Math.PI / 180);
 let last = performance.now();
 
 const update = (delta) => {
-  const x = centerX + speed * Math.cos(radian) * delta;
-  const y = centerY + speed * Math.sin(radian) * delta;
-  centerX = x;
-  centerY = y;
+  let x = centerX + speed * Math.cos(radian) * delta;
+  let y = centerY + speed * Math.sin(radian) * delta;
   if (x < radius || x > canvas.width-radius) {
     radian = Math.PI - radian;
+    if (x < radius)
+      x = radius;
+    if (x > canvas.width-radius)
+      x = canvas.width-radius;
   }
 
   if (y < radius || y > canvas.height-radius) {
     radian *= -1;
+    if (y < radius)
+      y = radius;
+    if (y > canvas.height-radius)
+      y = canvas.height-radius;
   }
+  centerX = x;
+  centerY = y;
 };
 
 const draw = () => {
@@ -32,7 +40,7 @@ const draw = () => {
 
   ctx.beginPath();
   ctx.arc(centerX, centerY, radius, 0, Math.PI*2);
-  ctx.fillStyle = '#000';
+  ctx.fillStyle = 'green';
   ctx.fill();
 };
 
