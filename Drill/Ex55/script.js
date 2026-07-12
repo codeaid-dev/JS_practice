@@ -1,38 +1,30 @@
-const disp = document.querySelector('#display');
-const keys = document.querySelectorAll('button');
-let total = '0';
-let start = true; // true:演算開始、false:演算中
+const headings = document.querySelectorAll('#content h1, h2, h3');
+const toc = document.getElementById('toc');
+const topul = document.createElement('ul');
+toc.appendChild(topul);
+let currentH1, currentH2;
 
-disp.innerText = total;
-for (let i=0; i<keys.length; i++) {
-  keys[i].addEventListener('click', () => {
-    let val = keys[i].value;
-    if (val !== 'C' && val !== '=') {
-      if (start && !isNaN(val)) {
-        total = val;
-        start = false;
-      } else if (!isNaN(val) && total === '0') {
-        total = val;
-      } else {
-        if (isNaN(total[total.length-1])) {
-          if (!isNaN(val)) {
-            total += val;
-            start = false;
-          }
-        } else {
-          total += val;
-          start = false;
-        }
-      }
-      disp.innerText = total;
-    } else if (val === '=') {
-      total = String(eval(total));
-      disp.innerText = total;
-      start = true;
-    } else if (val === 'C') {
-      total = '0';
-      start = true;
-      disp.innerText = total;
-    }
-  });
-}
+headings.forEach(h => {
+  const level = Number(h.tagName[1]);
+  const item = document.createElement('li');
+  item.textContent = h.textContent;
+
+  if (level === 1) {
+    topul.appendChild(item);
+    currentH1 = item;
+    currentH2 = null;
+  }
+
+  if (level === 2 && currentH1) {
+    const secondul = document.createElement('ul');
+    secondul.appendChild(item);
+    currentH1.appendChild(secondul);
+    currentH2 = item;
+  }
+
+  if (level === 3 && currentH2) {
+    const thirdul = document.createElement('ul');
+    thirdul.appendChild(item);
+    currentH2.appendChild(thirdul);
+  }
+});

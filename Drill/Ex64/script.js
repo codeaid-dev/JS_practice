@@ -1,70 +1,47 @@
-let step = 0;
-let timerId;
-let count = 1;
-let clear = false;
-const TILES = 25;
-const bar = document.getElementById('bar');
-const start = document.getElementById('start');
-const panel = document.getElementById('panel');
-const result = document.getElementById('result');
+const color = ['red','green','blue','magenta','cyan'];
+const data = Array.from({ length: 45 }, (_, i) => `Item ${i + 1}`);
+const page = document.getElementById('page');
+const pageText = document.getElementById('pageText');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
 
-for (let i=0; i<TILES; i++) {
-  const tile = document.createElement('div');
-  tile.classList.add('tile');
-  tile.style.background = 'gray';
-  panel.appendChild(tile);
-  tile.addEventListener('click', (e) => {
-    if (step < 100) {
-      if (count === Number(e.currentTarget.textContent)) {
-        if (count === TILES) {
-          clearInterval(timerId);
-          timerId = null;
-          result.textContent = 'CLEAR';
-          result.style.color = 'green';
-          clear = true;
-        }
-        count += 1;
-        e.currentTarget.style.background = 'skyblue';
-      }
-    }
+let currentPage = 1;
+const perPage = 9;
+
+function render() {
+  page.innerHTML = '';
+
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+
+  data.slice(start, end).forEach(item => {
+    const div = document.createElement('div');
+    div.classList.add('tile');
+    div.style.background = color[Math.ceil(start/perPage)];
+    div.textContent = item;
+    page.appendChild(div);
   });
+
+  pageText.textContent = `${currentPage} / ${Math.ceil(data.length / perPage)}`;
+
+  if (currentPage <= 1) prev.disabled = true;
+  else prev.disabled = false;
+  if (currentPage >= Math.ceil(data.length / perPage)) next.disabled = true;
+  else next.disabled = false;
 }
 
-let nums;
-const createNums = () => {
-  nums = [];
-  while (true) {
-    if (nums.length == TILES) break;
-    const n = Math.floor(Math.random()*TILES)+1;
-    if (nums.includes(n)) continue;
-    nums.push(n);
+prev.addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--;
+    render();
   }
-};
-createNums();
-
-start.addEventListener('click', () => {
-  if (timerId) return;
-  createNums();
-  const tile = document.querySelectorAll('.tile');
-  tile.forEach((e, i) => {
-    e.textContent = nums[i];
-    e.style.background = 'white';
-  });
-  count = 1;
-  step = 0;
-  bar.style.width = 0;
-  result.textContent = '';
-  timerId = setInterval(() => {
-    step += 4;
-    bar.style.width = step + '%';
-    if (step >= 100) {
-      clearInterval(timerId);
-      timerId = null;
-      console.log(clear);
-      if (!clear) {
-        result.textContent = 'TIME UP';
-        result.style.color = 'red';
-      }
-    }
-  }, 1000);
 });
+
+next.addEventListener('click', () => {
+  if (currentPage * perPage < data.length) {
+    currentPage++;
+    render();
+  }
+});
+
+render();

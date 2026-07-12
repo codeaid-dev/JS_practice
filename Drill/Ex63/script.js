@@ -1,47 +1,46 @@
-const color = ['red','green','blue','magenta','cyan'];
-const data = Array.from({ length: 45 }, (_, i) => `Item ${i + 1}`);
-const page = document.getElementById('page');
-const pageText = document.getElementById('pageText');
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
+const tiles = [0,1,2,3,4,5,6,7,8]; // マス情報を格納するリスト
+const first = '○';
+const second = 'Ｘ';
+let turn = true; // true:first, false:second
+let stat = 0; // ゲームの手数と終了フラグ 1 ~ 10, 9:全ターン終了、10:ゲーム終了
+const targets = document.querySelectorAll('.tile');
+const result = document.querySelector('.result');
 
-let currentPage = 1;
-const perPage = 9;
-
-function render() {
-  page.innerHTML = '';
-
-  const start = (currentPage - 1) * perPage;
-  const end = start + perPage;
-
-  data.slice(start, end).forEach(item => {
-    const div = document.createElement('div');
-    div.classList.add('tile');
-    div.style.background = color[Math.ceil(start/perPage)];
-    div.textContent = item;
-    page.appendChild(div);
+// タイルがクリックされたときのイベント処理
+for (let i in tiles) {
+  targets[i].addEventListener('click', () => {
+    if (targets[i].innerText === '') {
+      if (stat === 10) return;
+      stat++;
+      targets[i].innerText = (turn) ? first : second;
+      tiles[i] = targets[i].innerText;
+      const str = judge();
+      if (str !== '') {
+        result.innerText = str;
+      }
+      turn = (turn) ? false : true;
+    }
   });
-
-  pageText.textContent = `${currentPage} / ${Math.ceil(data.length / perPage)}`;
-
-  if (currentPage <= 1) prev.disabled = true;
-  else prev.disabled = false;
-  if (currentPage >= Math.ceil(data.length / perPage)) next.disabled = true;
-  else next.disabled = false;
 }
 
-prev.addEventListener('click', () => {
-  if (currentPage > 1) {
-    currentPage--;
-    render();
-  }
-});
-
-next.addEventListener('click', () => {
-  if (currentPage * perPage < data.length) {
-    currentPage++;
-    render();
-  }
-});
-
-render();
+const judge = ()=>{
+  if (tiles[0] === tiles[1] && tiles[0] === tiles[2]
+    || tiles[3] === tiles[4] && tiles[3] === tiles[5]
+    || tiles[6] === tiles[7] && tiles[6] === tiles[8]
+    || tiles[0] === tiles[3] && tiles[0] === tiles[6]
+    || tiles[1] === tiles[4] && tiles[1] === tiles[7]
+    || tiles[2] === tiles[5] && tiles[2] === tiles[8]
+    || tiles[0] === tiles[4] && tiles[0] === tiles[8]
+    || tiles[2] === tiles[4] && tiles[2] === tiles[6]) {
+      if (turn) {
+        stat = 10;
+        return '○の勝ち';
+      } else {
+        stat = 10;
+        return 'Ｘの勝ち';
+      }
+    } else if (stat === 9) {
+      return '引き分け';
+    }
+    return '';
+}

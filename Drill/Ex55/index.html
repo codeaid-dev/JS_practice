@@ -3,69 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>計算機</title>
+  <title>目次自動生成</title>
   <style>
-    #calc {
-      padding: 5px;
-      max-width: 240px;
-      height: 360px;
-      background-color: black;
-    }
-    #display {
-      height: 60px;
-      font-size: 30px;
-      line-height: 60px;
-      color: white;
-      text-align: right;
-      padding: 0px;
-    }
-    #zero {
-      width: 120px;
-    }
-    .key {
-      width: 60px;
-      height: 60px;
-      float: left;
-      background-color: grey;
-      font-size: 30px;
-    }
-    .num {
-      background-color: grey;
-    }
-    .mk1 {
-      background-color: lightgray;
-      width: 180px;
-    }
-    .mk2 {
-      background-color: orange;
-    }
-    #zero {
-      width: 120px;
-    }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>計算機</h1>
-  <div id="calc">
-    <div id="display"></div>
-    <button class="key mk1" value="C">C</button>
-    <button class="key mk2" value="/">÷</button>
-    <button class="key num" value="7">7</button>
-    <button class="key num" value="8">8</button>
-    <button class="key num" value="9">9</button>
-    <button class="key mk2" value="*">x</button>
-    <button class="key num" value="4">4</button>
-    <button class="key num" value="5">5</button>
-    <button class="key num" value="6">6</button>
-    <button class="key mk2" value="-">-</button>
-    <button class="key num" value="1">1</button>
-    <button class="key num" value="2">2</button>
-    <button class="key num" value="3">3</button>
-    <button class="key mk2" value="+">+</button>
-    <button class="key num" id="zero" value="0">0</button>
-    <button class="key num" value=".">.</button>
-    <button class="key mk2" value="=">=</button>
-  </div>
+  <nav id="toc">【目次】</nav>
+  <main id="content">
+    <h1>第1章</h1>
+    <p>1章の説明</p>
+    <h2>A節</h2>
+    <p>A節の内容</p>
+    <h3>A-1項</h3>
+    <p>A-1項の内容</p>
+    <h2>B節</h2>
+    <p>B節の内容</p>
+    <h3>B-1項</h3>
+    <p>B-1項の内容</p>
+    <h3>B-2項</h3>
+    <p>B-2項の内容</p>
+    <h2>C節</h2>
+    <p>C節の内容</p>
+  </main>
 </body>
 </html>
