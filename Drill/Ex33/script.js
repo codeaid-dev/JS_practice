@@ -62,6 +62,17 @@ const kyushu = [
 {id:8, name:'沖縄県'}
 ];
 
+const regions = {
+  tohoku,
+  kanto,
+  hokuriku,
+  tokai,
+  kinki,
+  nishinihon,
+  shikoku,
+  kyushu
+};
+
 const region = document.getElementsByName('region');
 const pref = document.querySelector('#pref');
 pref.innerHTML = '<option value="">選択してください</option>';
@@ -97,15 +108,8 @@ for (let i=0; i<region.length; i++) {
 }
 
 pref.addEventListener('change', (event) => {
-  let target;
-  if (select === 'kinki') {
-    target = kinki.find((value) => value.id === event.target.value);
-  } else if (select === 'nishinihon') {
-    target = nishinihon.find((value) => value.id === event.target.value);
-  } else if (select === 'shikoku') {
-    target = shikoku.find((value) => value.id === event.target.value);
-  } else if (select === 'kyushu') {
-    target = kyushu.find((value) => value.id === event.target.value);
-  }
-  document.querySelector('#result').innerHTML = `${target.name}が選択されました。`;
+  const id = Number(event.target.value);
+  const target = regions[select].find(value => value.id === id);
+  document.querySelector('#result').textContent =
+    `${target.name}が選択されました。`;
 });
