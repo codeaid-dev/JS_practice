@@ -32,6 +32,7 @@ const render = ()=>{
 undo.addEventListener('click', ()=>{
   if(history.length===0)return;
 
+  // 配列を元の場所へ戻す
   // data = history.pop();
   // 差分だけ保存したものを元の場所へ戻す
   const last = history.pop();
