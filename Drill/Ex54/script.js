@@ -13,13 +13,13 @@ const render = ()=>{
     const btn = document.createElement('button');
     btn.textContent = '削除';
     btn.addEventListener('click', ()=>{
+      // 配列をコピーし現在状態を保存
+      // history.push([...data]);
       // 差分だけ保存
       history.push({
         index:index,
         item:item
       })
-      // 配列をコピーし現在状態を保存
-      // history.push([...data]);
 
       data.splice(index,1);
       render();
