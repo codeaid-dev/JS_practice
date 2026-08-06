@@ -1,40 +1,35 @@
-// 各タイルの数字を格納するリスト
-const tiles = ['', '1', '2', '3', '4', '5', '6', '7', '8'];
+const btn = document.querySelector('button');
+const computer = document.querySelector('#computer-img');
+const player = document.querySelector('#player-img');
+const result = document.querySelector('#result');
+btn.addEventListener('click',() => {
+  const janken = document.querySelector('[name="janken"]:checked');
+  const com = Math.floor(Math.random() * 3) + 1;
+  const you = Number(janken.value);
+  if (you === 1) {
+    player.innerHTML = '<img width="150px" height="150px" src="../img/janken_gu.png">';
+  } else if (you === 2) {
+    player.innerHTML = '<img width="150px" height="150px" src="../img/janken_choki.png">';
+  } else if (you === 3) {
+    player.innerHTML = '<img width="150px" height="150px" src="../img/janken_pa.png">';
+  }
 
-// タイルの場所をランダムに配置する
-for (let i = 1; i < tiles.length; i++) {
-  const w = Math.floor(Math.random() * i);
-  const tmp = tiles[i];
-  tiles[i] = tiles[w];
-  tiles[w] = tmp;
-}
+  if (com === 1) {
+    computer.innerHTML = '<img width="150px" height="150px" src="../img/janken_gu.png">';
+  } else if (com === 2) {
+    computer.innerHTML = '<img width="150px" height="150px" src="../img/janken_choki.png">';
+  } else if (com === 3) {
+    computer.innerHTML = '<img width="150px" height="150px" src="../img/janken_pa.png">';
+  }
 
-const targets = document.querySelectorAll('.tile');
-
-// タイルがクリックされたときのイベント処理
-for (let i = 0; i < tiles.length; i++) {
-  targets[i].innerText = tiles[i];
-  targets[i].addEventListener('click', () => {
-    if (i <= 5 && targets[i+3].innerText === '' ) {
-      // 下と入れ替え
-      const tmp = targets[i].innerText;
-      targets[i].innerText = targets[i+3].innerText;
-      targets[i+3].innerText = tmp;
-    } else if ( i >= 3 && targets[i-3].innerText === '') {
-      // 上と入れ替え
-      const tmp = targets[i].innerText;
-      targets[i].innerText = targets[i-3].innerText;
-      targets[i-3].innerText = tmp;
-    } else if (i % 3 !== 2 && targets[i+1].innerText === '') {
-      // 右と入れ替え
-      const tmp = targets[i].innerText;
-      targets[i].innerText = targets[i+1].innerText;
-      targets[i+1].innerText = tmp;
-    } else if (i % 3 !== 0 && targets[i-1].innerText === '') {
-      // 左と入れ替え
-      const tmp = targets[i].innerText;
-      targets[i].innerText = targets[i-1].innerText;
-      targets[i-1].innerText = tmp;
-    }
-  });
-}
+  if (com === 1 && you === 3 || com === 2 && you === 1 || com === 3 && you === 2) {
+    // プレイヤーの勝ち
+    result.innerHTML = '<span style="color:red">プレイヤーの勝ち</span>';
+  } else if (com === 1 && you === 2 || com === 2 && you === 3 || com === 3 && you === 1) {
+    // コンピューターの勝ち
+    result.innerHTML = 'コンピューターの勝ち';
+  } else {
+    // あいこ
+    result.innerHTML = 'あいこ';
+  }
+});
