@@ -1,7 +1,7 @@
 let data = ['項目1', '項目2', '項目3', '項目4'];
 
-const history = [];
-const future=[];
+const undoHistory = [];
+const redoHistory = [];
 const list = document.getElementById('list');
 const undo = document.getElementById('undo');
 const redo = document.getElementById('redo');
@@ -15,15 +15,15 @@ const render = ()=>{
     btn.textContent = '削除';
     btn.addEventListener('click', ()=>{
       // 配列をコピーしUndo用に現在状態を保存
-      // history.push([...data]);
+      // undoHistory.push([...data]);
       // Undo用に差分だけ保存
-      history.push({
+      undoHistory.push({
         index:index,
-        item:item
+        value:item
       })
 
       // 新しい操作をしたらRedo履歴は破棄
-      future.length = 0;
+      redoHistory.length = 0;
       data.splice(index,1);
       render();
     });
@@ -33,29 +33,29 @@ const render = ()=>{
 };
 
 undo.addEventListener('click', ()=>{
-  if(history.length===0)return;
+  if(undoHistory.length===0)return;
 
   // Redo用に現在を保存
-  // future.push([...data]);
+  // redoHistory.push([...data]);
   // 配列を元の場所へ戻す
-  // data = history.pop(); // Undo
+  // data = undoHistory.pop(); // Undo
   // 差分だけ保存したものを元の場所へ戻す
-  const last = history.pop();
-  data.splice(last.index,0,last.item);
-  future.push(last);
+  const last = undoHistory.pop();
+  data.splice(last.index,0,last.value);
+  redoHistory.push(last);
 
   render();
 });
 
 redo.addEventListener('click', ()=>{
-  if(future.length===0)return;
+  if(redoHistory.length===0)return;
   // Undoできるように現在を保存
-  // history.push([...data]);
-  // data = future.pop(); // Redo
+  // undoHistory.push([...data]);
+  // data = redoHistory.pop(); // Redo
 
   // 差分だけ保存したものをやり直し
-  const last=future.pop();
-  history.push(last);
+  const last=redoHistory.pop();
+  undoHistory.push(last);
   data.splice(last.index,1);
 
   render();

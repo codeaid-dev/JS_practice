@@ -3,19 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>カレンダー</title>
+  <title>スロットマシン</title>
   <style>
-    td { text-align: right; padding: 0 5px; }
+    #panel {
+      width: 480px;
+      height: 200px;
+    }
+    .slot img, button {
+      width: 150px;
+      height: 150px;
+      margin: 5px;
+      float: left;
+    }
+    button {
+      height: auto;
+    }
+    #start {
+      width: 480px;
+    }
+    #result {
+      font-size: 30px;
+    }
+
   </style>
-  <script src="script.js" defer></script>  
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <h1 id="monthYear"></h1>
-  <button id="prev">前の月</button>
-  <button id="next">次の月</button>
-  <button id="todayBtn">今日</button>
-  <div id="calendar"></div>
-  <input type="month" id="inputMonth">
-  <button id="jump">表示</button>
+  <h1>スロットマシン</h1>
+  <div id="panel">
+    <div class="slot" id="slot1"><img src="../img/slot3.png"></div>
+    <div class="slot" id="slot2"><img src="../img/slot4.png"></div>
+    <div class="slot" id="slot3"><img src="../img/slot1.png"></div>
+    <button class="btn">STOP</button>
+    <button class="btn">STOP</button>
+    <button class="btn">STOP</button>
+    <button id="start">START</button>
+  </div>
+  <p id="result"></p>  
 </body>
 </html>

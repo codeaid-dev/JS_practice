@@ -1,7 +1,7 @@
 let data = ['項目1', '項目2', '項目3', '項目4'];
 
 // 履歴
-const history = [];
+const undoHistory = [];
 const list = document.getElementById('list');
 const undo = document.getElementById('undo');
 
@@ -14,11 +14,11 @@ const render = ()=>{
     btn.textContent = '削除';
     btn.addEventListener('click', ()=>{
       // 配列をコピーし現在状態を保存
-      // history.push([...data]);
+      // undoHistory.push([...data]);
       // 差分だけ保存
-      history.push({
+      undoHistory.push({
         index:index,
-        item:item
+        value:item
       })
 
       data.splice(index,1);
@@ -30,13 +30,13 @@ const render = ()=>{
 };
 
 undo.addEventListener('click', ()=>{
-  if(history.length===0)return;
+  if(undoHistory.length===0)return;
 
   // 配列を元の場所へ戻す
-  // data = history.pop();
+  // data = undoHistory.pop();
   // 差分だけ保存したものを元の場所へ戻す
-  const last = history.pop();
-  data.splice(last.index,0,last.item);
+  const last = undoHistory.pop();
+  data.splice(last.index,0,last.value);
 
   render();
 });
