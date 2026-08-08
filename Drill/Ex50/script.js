@@ -1,28 +1,37 @@
-const data = ['A', 'B', 'C', 'D', 'E'];
-let mode = 'list';
+const data = [
+  { eto: '巳', year: 2025 },
+  { eto: '午', year: 2026 },
+  { eto: '未', year: 2027 },
+  { eto: '申', year: 2028 },
+  { eto: '酉', year: 2029 }
+];
 
 const render = () => {
-  const view = document.getElementById('view');
-  const list = document.createElement('ul');
-  view.innerHTML = '';
-  if (mode === 'list') {
-    view.appendChild(list);
+  const sort = document.getElementById('sort').value;
+  const filter = document.getElementById('filter').checked;
+  const list = document.getElementById('list');
+
+  let result = [...data]; // 配列をコピー
+
+  if (filter) {
+    result = result.filter(d => d.year >= 2027);
   }
 
-  data.forEach(d => {
-    const el = document.createElement(mode === 'list' ? 'li' : 'div');
-    el.textContent = d + ' ';
-    if (mode === 'list') {
-      list.appendChild(el);
-    } else {
-      view.appendChild(el);
-    }
+  result.sort((a, b) =>
+    sort === 'asc' ? a.year - b.year : b.year - a.year
+  );
+
+  list.innerHTML = ''; // リスト項目を全て削除
+  result.forEach(d => {
+    const li = document.createElement('li');
+    li.textContent = `${d.eto}: ${d.year}`;
+    list.appendChild(li);
   });
 }
 
-document.getElementById('toggle').addEventListener('click', () => {
-  mode = mode === 'list' ? 'card' : 'list';
-  render();
-});
+document.getElementById('sort').addEventListener('change', render);
+document.getElementById('filter').addEventListener('change', render);
+// document.querySelectorAll('#sort, #filter')
+//   .forEach(element => element.addEventListener('change', render));
 
 render();

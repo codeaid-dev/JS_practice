@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ソート</title>
+  <title>商品選択</title>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <select id="sort">
-    <option value="asc">昇順</option>
-    <option value="desc">降順</option>
-  </select>
-  <label><input type="checkbox" id="filter"> 2027年以上</label>
-  <ul id="list"></ul>
+  <div id="listView"></div>
+
+  <div id="detailView" style="display:none">
+    <p id="detail"></p>
+    <button id="back">戻る</button>
+  </div>
 </body>
 </html>

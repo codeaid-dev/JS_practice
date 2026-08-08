@@ -3,11 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>リアルタイム検索</title>
+  <title>表示切り替え</title>
+  <style>
+    #view {
+      display:flex
+    }
+    #view div {
+      margin: 5px;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      background-color: green;
+    }
+  </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <input type="text" id="search" placeholder="検索...">
-  <ul id="suggest"></ul>
+  <button id="toggle">切替</button>
+  <div id="view"></div>
 </body>
 </html>

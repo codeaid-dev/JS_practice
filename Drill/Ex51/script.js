@@ -1,19 +1,28 @@
-const words = ['apple', 'banana', 'grape', 'りんご', 'みかん', 'いちご'];
-const search = document.getElementById('search');
-const suggest = document.getElementById('suggest');
+const data = ['A', 'B', 'C', 'D', 'E'];
+let mode = 'list';
 
-search.addEventListener('input', () => {
-  suggest.innerHTML = '';
-  if (!search.value) return;
+const render = () => {
+  const view = document.getElementById('view');
+  const list = document.createElement('ul');
+  view.innerHTML = '';
+  if (mode === 'list') {
+    view.appendChild(list);
+  }
 
-  words.filter(w => w.includes(search.value))
-    .forEach(w => {
-      const li = document.createElement('li');
-      li.textContent = w;
-      li.addEventListener('click', () => {
-        search.value = w;
-        suggest.innerHTML = '';
-      });
-      suggest.appendChild(li);
-    });
+  data.forEach(d => {
+    const el = document.createElement(mode === 'list' ? 'li' : 'div');
+    el.textContent = d + ' ';
+    if (mode === 'list') {
+      list.appendChild(el);
+    } else {
+      view.appendChild(el);
+    }
+  });
+}
+
+document.getElementById('toggle').addEventListener('click', () => {
+  mode = mode === 'list' ? 'card' : 'list';
+  render();
 });
+
+render();

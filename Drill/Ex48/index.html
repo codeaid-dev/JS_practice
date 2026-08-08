@@ -3,15 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>商品選択</title>
+  <title>ブロック選択</title>
+  <style>
+    .card {
+      margin: 5px;
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      background-color: blue;
+    }
+    .selected {
+      background-color: aqua;
+    }
+  </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div id="listView"></div>
+  <p>選択数: <span id="count">0</span></p>
 
-  <div id="detailView" style="display:none">
-    <p id="detail"></p>
-    <button id="back">戻る</button>
+  <div class="cards">
+    <div class="card">A</div>
+    <div class="card">B</div>
+    <div class="card">C</div>
   </div>
 </body>
 </html>
