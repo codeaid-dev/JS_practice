@@ -1,38 +1,46 @@
-const disp = document.querySelector('#display');
-const keys = document.querySelectorAll('button');
-let total = '0';
-let start = true; // true:演算開始、false:演算中
+const search = document.querySelector('#search');
+const productList = document.querySelector('#productList');
 
-disp.innerText = total;
-for (let i=0; i<keys.length; i++) {
-  keys[i].addEventListener('click', () => {
-    let val = keys[i].value;
-    if (val !== 'C' && val !== '=') {
-      if (start && !isNaN(val)) {
-        total = val;
-        start = false;
-      } else if (!isNaN(val) && total === '0') {
-        total = val;
-      } else {
-        if (isNaN(total[total.length-1])) {
-          if (!isNaN(val)) {
-            total += val;
-            start = false;
-          }
-        } else {
-          total += val;
-          start = false;
-        }
-      }
-      disp.innerText = total;
-    } else if (val === '=') {
-      total = String(eval(total));
-      disp.innerText = total;
-      start = true;
-    } else if (val === 'C') {
-      total = '0';
-      start = true;
-      disp.innerText = total;
-    }
+// 商品データ
+let products = [];
+
+// 現在の検索キーワード
+let keyword = '';
+
+// 商品を表示
+const render = () => {
+  productList.innerHTML = '<tr><th>商品名</th><th>価格</th></tr>';
+  const result = products.filter(product => {
+    return product.name
+      .toLowerCase()
+      .includes(
+        keyword.toLowerCase()
+      );
   });
+  result.forEach(product => {
+    const tr = document.createElement('tr');
+    const name = document.createElement('td');
+    const price = document.createElement('td');
+    name.textContent = `${product.name}`;
+    price.textContent = `${product.price}円`;
+    tr.append(name);
+    tr.append(price);
+    productList.append(tr);
+  });
+};
+
+// JSONを取得
+async function loadProducts() {
+  const response = await fetch('products.json');
+  products = await response.json();
+  render();
 }
+
+// 検索
+search.addEventListener('input', () => {
+  keyword = search.value;
+  render();
+});
+
+// JSON読み込み開始
+loadProducts();

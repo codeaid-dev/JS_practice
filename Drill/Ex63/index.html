@@ -3,39 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数当て</title>
+  <title>カレンダー</title>
   <style>
-    table {
-      width: 200px;
-      table-layout: fixed;
-    }
-    td {
-      font-size: 20px;
-      padding: 5px;
-      text-align: center;
-    }
+    td { text-align: right; padding: 0 5px; }
   </style>
-  <script src="script.js" defer></script>
+  <script src="script.js" defer></script>  
 </head>
 <body>
-  <h2>数当て</h2>
-  <table>
-    <tr id="question">
-      <td>?</td>
-      <td>?</td>
-      <td>?</td>
-    </tr>
-    <tr id="answer">
-      <td><input type="number" min="0" max="9" size="10"></td>
-      <td><input type="number" min="0" max="9" size="10"></td>
-      <td><input type="number" min="0" max="9" size="10"></td>
-    </tr>
-    <tr>
-      <td colspan="3"><button id="judge">解答</button></td>
-    </tr>
-    <tr>
-      <td colspan="3"><button id="other">別の問題</button></td>
-    </tr>
-  </table>
+  <h1 id="monthYear"></h1>
+  <button id="prev">前の月</button>
+  <button id="next">次の月</button>
+  <button id="todayBtn">今日</button>
+  <div id="calendar"></div>
+  <input type="month" id="inputMonth">
+  <button id="jump">表示</button>
 </body>
 </html>
