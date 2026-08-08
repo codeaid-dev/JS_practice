@@ -3,49 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>じゃんけん</title>
+  <title>数当て</title>
   <style>
-    #panel {
-      max-width: 350px;
-      height: 200px;
-      margin: 10px 0;
+    table {
+      width: 200px;
+      table-layout: fixed;
     }
-    #computer, #player {
-      width: 150px;
-      height: 200px;
-      background-color: gray;
-    }
-    #computer {
-      float: left;
-    }
-    #player {
-      float: right;
-    }
-    #vs {
-      width: 50px;
-      height: 200px;
-      line-height: 200px;
+    td {
+      font-size: 20px;
+      padding: 5px;
       text-align: center;
-      float: left;
-    }
-    #result {
-      float: none;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h2>じゃんけん</h2>
-  <p>どれかを選択して「ぽん」を押してください。</p>
-  <div><label><input type="radio" name="janken" value="1" checked>✊️</label>
-  <label><input type="radio" name="janken" value="2">✌️</label>
-  <label><input type="radio" name="janken" value="3">🖐️</label></div>
-  <button>ぽん</button>
-  <p id="result">結果表示</p>
-  <div id="panel">
-    <div id="computer">コンピュータ<div id="computer-img"></div></div>
-    <div id="vs">vs</div>
-    <div id="player">プレイヤー<div id="player-img"></div></div>
-  </div>
+  <h2>数当て</h2>
+  <table>
+    <tr id="question">
+      <td>?</td>
+      <td>?</td>
+      <td>?</td>
+    </tr>
+    <tr id="answer">
+      <td><input type="number" min="0" max="9" size="10"></td>
+      <td><input type="number" min="0" max="9" size="10"></td>
+      <td><input type="number" min="0" max="9" size="10"></td>
+    </tr>
+    <tr>
+      <td colspan="3"><button id="judge">解答</button></td>
+    </tr>
+    <tr>
+      <td colspan="3"><button id="other">別の問題</button></td>
+    </tr>
+  </table>
 </body>
 </html>

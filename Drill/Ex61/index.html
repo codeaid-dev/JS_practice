@@ -3,22 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>アルファベットクイズ</title>
+  <title>計算機</title>
   <style>
+    #calc {
+      padding: 5px;
+      max-width: 240px;
+      height: 360px;
+      background-color: black;
+    }
+    #display {
+      height: 60px;
+      font-size: 30px;
+      line-height: 60px;
+      color: white;
+      text-align: right;
+      padding: 0px;
+    }
+    #zero {
+      width: 120px;
+    }
+    .key {
+      width: 60px;
+      height: 60px;
+      float: left;
+      background-color: grey;
+      font-size: 30px;
+    }
+    .num {
+      background-color: grey;
+    }
+    .mk1 {
+      background-color: lightgray;
+      width: 180px;
+    }
+    .mk2 {
+      background-color: orange;
+    }
+    #zero {
+      width: 120px;
+    }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h2>アルファベットクイズ</h2>
-  <p>抜けているアルファベットはどれか？</p>
-  <p id="question" style="font-size: 20px;">--ここに問題を表示--</p>
-  <p>抜くアルファベットの数：<br>
-  <label><input type="radio" name="mojisuu" value="1" checked>1文字</label>
-  <label><input type="radio" name="mojisuu" value="2">2文字</label>
-  <label><input type="radio" name="mojisuu" value="3">3文字</label><br>
-  </p>
-  <p><button id="create-q">出題</button></p>
-  <input type="text" id="answer"><button id="judge">解答</button>
-  <p id="result" style="font-size: 20px;">--ここに結果を表示--</p>
+  <h1>計算機</h1>
+  <div id="calc">
+    <div id="display"></div>
+    <button class="key mk1" value="C">C</button>
+    <button class="key mk2" value="/">÷</button>
+    <button class="key num" value="7">7</button>
+    <button class="key num" value="8">8</button>
+    <button class="key num" value="9">9</button>
+    <button class="key mk2" value="*">x</button>
+    <button class="key num" value="4">4</button>
+    <button class="key num" value="5">5</button>
+    <button class="key num" value="6">6</button>
+    <button class="key mk2" value="-">-</button>
+    <button class="key num" value="1">1</button>
+    <button class="key num" value="2">2</button>
+    <button class="key num" value="3">3</button>
+    <button class="key mk2" value="+">+</button>
+    <button class="key num" id="zero" value="0">0</button>
+    <button class="key num" value=".">.</button>
+    <button class="key mk2" value="=">=</button>
+  </div>
 </body>
 </html>

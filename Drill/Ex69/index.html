@@ -3,52 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>カウントアップ</title>
+  <title>ページャー</title>
   <style>
-    #barframe {
-      width:500px;
-      background:lightgray;
-    }
-    #bar {
-      width:0;
-      height:30px;
-      background:orange;
-    }
-    #panel {
+    #page {
       width: 500px;
       height: 500px;
     }
-    #result {
-      margin: 5px 0;
-      width: 500px;
-      height: 40px;
-      text-align: center;
-    }
     .tile {
-      margin: 4px;
-      width: 90px;
-      height: 90px;
-      line-height: 90px;
-      border: 1px solid gray;
-      text-align: center;
-      font-size: 40px;
-      font-weight: bold;
+      width: 150px;
+      height: 150px;
+      margin: 5px;
       float: left;
-      cursor: pointer;
-    }
-    #start, #result {
-      font-size: 40px;
+      text-align: center;
+      line-height: 150px;
+      font-size: 30px;
     }
   </style>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div id="barframe">
-    <div id="bar"></div>
-  </div>
-  <div id="result"></div>
-  <div id="panel"></div>
-  <br>
-  <button id="start">スタート</button>
+  <div id="page"></div>
+  <button id="prev">前へ</button>
+  <span id="pageText"></span>
+  <button id="next">次へ</button>
 </body>
 </html>
