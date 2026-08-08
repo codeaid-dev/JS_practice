@@ -29,18 +29,18 @@ const render = () => {
   });
 };
 
+// 検索
+search.addEventListener('input', () => {
+  keyword = search.value;
+  render();
+});
+
 // JSONを取得
 async function loadProducts() {
   const response = await fetch('products.json');
   products = await response.json();
   render();
 }
-
-// 検索
-search.addEventListener('input', () => {
-  keyword = search.value;
-  render();
-});
 
 // JSON読み込み開始
 loadProducts();
