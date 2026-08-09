@@ -54,6 +54,23 @@
     }
 
     load();
+
+    async function send() {
+      try {
+        const response = await fetch('https://example.com/post', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ item: 'example' })
+        });
+        const result = await response.json();
+        console.log('Success:', result);
+      } catch (error) {
+        console.error('Error:', error.message);
+      }
+    }
+
   </script>
 </body>
 </html>
