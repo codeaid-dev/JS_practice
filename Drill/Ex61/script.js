@@ -1,38 +1,55 @@
-const disp = document.querySelector('#display');
-const keys = document.querySelectorAll('button');
-let total = '0';
-let start = true; // true:演算開始、false:演算中
+const category = document.querySelector('#category');
+const productList = document.querySelector('#productList');
 
-disp.innerText = total;
-for (let i=0; i<keys.length; i++) {
-  keys[i].addEventListener('click', () => {
-    let val = keys[i].value;
-    if (val !== 'C' && val !== '=') {
-      if (start && !isNaN(val)) {
-        total = val;
-        start = false;
-      } else if (!isNaN(val) && total === '0') {
-        total = val;
-      } else {
-        if (isNaN(total[total.length-1])) {
-          if (!isNaN(val)) {
-            total += val;
-            start = false;
-          }
-        } else {
-          total += val;
-          start = false;
-        }
-      }
-      disp.innerText = total;
-    } else if (val === '=') {
-      total = String(eval(total));
-      disp.innerText = total;
-      start = true;
-    } else if (val === 'C') {
-      total = '0';
-      start = true;
-      disp.innerText = total;
+// 商品データ
+let products = [];
+
+// 選択したカテゴリ
+const state = {
+  category: 'all'
+};
+
+// 商品を表示
+const render = () => {
+  productList.innerHTML = '<tr><th>商品名</th><th>価格</th></tr>';
+  // 対象のカテゴリを抽出
+  const result = products.filter(product => {
+    if (state.category === 'all') {
+      return true;
     }
+    return product.category
+        === state.category;
   });
+  result.forEach(product => {
+    const tr = document.createElement('tr');
+    const name = document.createElement('td');
+    const price = document.createElement('td');
+    name.textContent = `${product.name}`;
+    price.textContent = `${product.price}円`;
+    tr.append(name);
+    tr.append(price);
+    productList.append(tr);
+  });
+};
+
+// カテゴリを選択
+category.addEventListener('click', (event) => {
+  const button =
+    event.target.closest('[data-category]');
+  if (!button) {
+    return;
+  }
+  state.category =
+    button.dataset.category;
+  render();
+});
+
+// JSONを取得
+async function loadProducts() {
+  const response = await fetch('products.json');
+  products = await response.json();
+  render();
 }
+
+// JSON読み込み開始
+loadProducts();

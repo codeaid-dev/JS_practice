@@ -1,46 +1,40 @@
-const tiles = [0,1,2,3,4,5,6,7,8]; // マス情報を格納するリスト
-const first = '○';
-const second = 'Ｘ';
-let turn = true; // true:first, false:second
-let stat = 0; // ゲームの手数と終了フラグ 1 ~ 10, 9:全ターン終了、10:ゲーム終了
-const targets = document.querySelectorAll('.tile');
-const result = document.querySelector('.result');
+// 各タイルの数字を格納するリスト
+const tiles = ['', '1', '2', '3', '4', '5', '6', '7', '8'];
 
-// タイルがクリックされたときのイベント処理
-for (let i in tiles) {
-  targets[i].addEventListener('click', () => {
-    if (targets[i].innerText === '') {
-      if (stat === 10) return;
-      stat++;
-      targets[i].innerText = (turn) ? first : second;
-      tiles[i] = targets[i].innerText;
-      const str = judge();
-      if (str !== '') {
-        result.innerText = str;
-      }
-      turn = (turn) ? false : true;
-    }
-  });
+// タイルの場所をランダムに配置する
+for (let i = 1; i < tiles.length; i++) {
+  const w = Math.floor(Math.random() * i);
+  const tmp = tiles[i];
+  tiles[i] = tiles[w];
+  tiles[w] = tmp;
 }
 
-const judge = ()=>{
-  if (tiles[0] === tiles[1] && tiles[0] === tiles[2]
-    || tiles[3] === tiles[4] && tiles[3] === tiles[5]
-    || tiles[6] === tiles[7] && tiles[6] === tiles[8]
-    || tiles[0] === tiles[3] && tiles[0] === tiles[6]
-    || tiles[1] === tiles[4] && tiles[1] === tiles[7]
-    || tiles[2] === tiles[5] && tiles[2] === tiles[8]
-    || tiles[0] === tiles[4] && tiles[0] === tiles[8]
-    || tiles[2] === tiles[4] && tiles[2] === tiles[6]) {
-      if (turn) {
-        stat = 10;
-        return '○の勝ち';
-      } else {
-        stat = 10;
-        return 'Ｘの勝ち';
-      }
-    } else if (stat === 9) {
-      return '引き分け';
+const targets = document.querySelectorAll('.tile');
+
+// タイルがクリックされたときのイベント処理
+for (let i = 0; i < tiles.length; i++) {
+  targets[i].innerText = tiles[i];
+  targets[i].addEventListener('click', () => {
+    if (i <= 5 && targets[i+3].innerText === '' ) {
+      // 下と入れ替え
+      const tmp = targets[i].innerText;
+      targets[i].innerText = targets[i+3].innerText;
+      targets[i+3].innerText = tmp;
+    } else if ( i >= 3 && targets[i-3].innerText === '') {
+      // 上と入れ替え
+      const tmp = targets[i].innerText;
+      targets[i].innerText = targets[i-3].innerText;
+      targets[i-3].innerText = tmp;
+    } else if (i % 3 !== 2 && targets[i+1].innerText === '') {
+      // 右と入れ替え
+      const tmp = targets[i].innerText;
+      targets[i].innerText = targets[i+1].innerText;
+      targets[i+1].innerText = tmp;
+    } else if (i % 3 !== 0 && targets[i-1].innerText === '') {
+      // 左と入れ替え
+      const tmp = targets[i].innerText;
+      targets[i].innerText = targets[i-1].innerText;
+      targets[i-1].innerText = tmp;
     }
-    return '';
+  });
 }

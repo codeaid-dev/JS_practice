@@ -1,0 +1,60 @@
+[{
+  "id": 1,
+  "name": "ノート",
+  "price": 300,
+  "category": "book"
+},
+{
+  "id": 2,
+  "name": "鉛筆",
+  "price": 150,
+  "category": "stationery"
+},
+{
+  "id": 3,
+  "name": "JavaScript入門",
+  "price": 2800,
+  "category": "book"
+},
+{
+  "id": 4,
+  "name": "CSS入門",
+  "price": 2500,
+  "category": "book"
+},
+{
+  "id": 5,
+  "name": "マウス",
+  "price": 3000,
+  "category": "pc"
+},
+{
+  "id": 6,
+  "name": "キーボード",
+  "price": 5000,
+  "category": "pc"
+},
+{
+  "id": 7,
+  "name": "モニター",
+  "price": 25000,
+  "category": "pc"
+},
+{
+  "id": 8,
+  "name": "消しゴム",
+  "price": 100,
+  "category": "stationery"
+},
+{
+  "id": 9,
+  "name": "HTML入門",
+  "price": 2200,
+  "category": "book"
+},
+{
+  "id": 10,
+  "name": "ボールペン",
+  "price": 200,
+  "category": "stationery"
+}]
