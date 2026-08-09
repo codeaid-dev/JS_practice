@@ -30,7 +30,7 @@ document.getElementById('create-q').addEventListener('click', () => {
 document.getElementById('judge').addEventListener('click', () => {
   const result = document.getElementById('result');
   let answers = document.getElementById('answer').value.split(',');
-  answers = answers.map((item) => item.toUpperCase());
+  answers = answers.map((item) => item.trim().toUpperCase());
   console.log(answers);
   if (correct.length === answers.length) {
     let check = 0;
