@@ -34,13 +34,10 @@ const render = () => {
 
 // カテゴリを選択
 category.addEventListener('click', (event) => {
-  const button =
+  const btn =
     event.target.closest('[data-category]');
-  if (!button) {
-    return;
-  }
-  state.category =
-    button.dataset.category;
+  if (!btn) return;
+  state.category = btn.dataset.category;
   render();
 });
 

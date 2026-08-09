@@ -1,55 +1,38 @@
-const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const mojisuu = document.querySelectorAll('[name="mojisuu"]');
-const correct = [];
-let start;
-let hides = 0;
+const disp = document.querySelector('#display');
+const keys = document.querySelectorAll('button');
+let total = '0';
+let start = true; // true:演算開始、false:演算中
 
-const question = document.getElementById('question');
-document.getElementById('create-q').addEventListener('click', () => {
-  correct.splice(0);
-  let q = alphabet;
-
-  mojisuu.forEach((element) => {
-    if (element.checked) hides = Number(element.value);
-  });
-
-  for (let i=0; i<hides; i++) {
-    const index = Math.floor(Math.random()*q.length);
-    correct.push(q[index]);
-    q = q.replace(q[index], '');
-  }
-  question.textContent = q;
-  const result = document.getElementById('result');
-  result.style.color = 'black';
-  result.textContent = '';
-  start = performance.now();
-  console.log(q);
-  console.log(correct);
-});
-
-document.getElementById('judge').addEventListener('click', () => {
-  const result = document.getElementById('result');
-  let answers = document.getElementById('answer').value.split(',');
-  answers = answers.map((item) => item.toUpperCase());
-  console.log(answers);
-  if (correct.length === answers.length) {
-    let check = 0;
-    correct.forEach((d, i) => {
-      if (answers.includes(d)) {
-        check += 1;
-        answers = answers.filter((item) => item !== d);
+disp.innerText = total;
+for (let i=0; i<keys.length; i++) {
+  keys[i].addEventListener('click', () => {
+    let val = keys[i].value;
+    if (val !== 'C' && val !== '=') {
+      if (start && !isNaN(val)) {
+        total = val;
+        start = false;
+      } else if (!isNaN(val) && total === '0') {
+        total = val;
+      } else {
+        if (isNaN(total[total.length-1])) {
+          if (!isNaN(val)) {
+            total += val;
+            start = false;
+          }
+        } else {
+          total += val;
+          start = false;
+        }
       }
-    });
-    if (correct.length === check) {
-      const end = performance.now();
-      result.style.color = 'blue';
-      result.textContent = `正解！(経過時間:${Math.floor((end - start)/1000)}秒)`;
-    } else {
-      result.style.color = 'red';
-      result.textContent = `不正解（正解：${correct}）`;
+      disp.innerText = total;
+    } else if (val === '=') {
+      total = String(eval(total));
+      disp.innerText = total;
+      start = true;
+    } else if (val === 'C') {
+      total = '0';
+      start = true;
+      disp.innerText = total;
     }
-  } else {
-    result.style.color = 'red';
-    result.textContent = `不正解（正解：${correct}）`;
-  }
-});
+  });
+}
