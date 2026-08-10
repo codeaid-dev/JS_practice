@@ -47,11 +47,23 @@ desc.addEventListener('click', () => {
   render();
 });
 
-// JSONを取得
+// JSON取得
 async function loadProducts() {
-  const response = await fetch('products.json');
-  products = await response.json();
-  render();
+  try {
+    const response = await fetch('products.json');
+    if (!response.ok) {
+      throw new Error(
+        `商品情報を取得できませんでした ${response.status}`
+      );
+    }
+    products = await response.json();
+    render();
+  }
+  catch (error) {
+    console.error(error.message);
+    document.getElementById('error').textContent =
+      '読み込みに失敗しました';
+  }
 }
 
 // JSON読み込み開始
