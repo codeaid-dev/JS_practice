@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ユーザー管理</title>
+  <style>
+    table, td, th {
+      border-collapse: collapse;
+      border: 1px solid black; margin: 10px;}
+  </style>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <h1>ユーザー管理</h1>
+  <input type="text" id="search" size="30" placeholder="名前・メールアドレスで検索">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>メール</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="userList"></tbody>
+  </table>
+</body>
+</html>
