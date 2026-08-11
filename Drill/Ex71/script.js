@@ -8,7 +8,7 @@ const next = document.getElementById('next');
 let currentPage = 1;
 const perPage = 9;
 
-function render() {
+const render = () => {
   page.innerHTML = '';
 
   const start = (currentPage - 1) * perPage;
@@ -28,7 +28,7 @@ function render() {
   else prev.disabled = false;
   if (currentPage >= Math.ceil(data.length / perPage)) next.disabled = true;
   else next.disabled = false;
-}
+};
 
 prev.addEventListener('click', () => {
   if (currentPage > 1) {

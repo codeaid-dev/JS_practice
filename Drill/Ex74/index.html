@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>神経衰弱</title>
+  <style>
+    #panel {
+      display: grid;
+      grid-template-columns: repeat(4, 150px);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .card {
+      width: 150px;
+      height: 150px;
+      background-color: #444;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .card.open,
+    .card.matched {
+      cursor: default;
+    }
+    #timer {
+        margin-top: 20px;
+        font-size: 24px;
+    }
+    button {
+        font-size: 18px;
+        padding: 8px 20px;
+        margin-right: 10px;
+    }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <h1>神経衰弱</h1>
+  <button id="start">スタート</button>
+  <button id="reset">リセット</button>
+  <div>
+      時間：<span id="timer">0.0</span>秒
+  </div> 
+  <div id="panel"></div>
+  <p id="result" style="font-size: 50px;"></p>
+</body>
+</html>
