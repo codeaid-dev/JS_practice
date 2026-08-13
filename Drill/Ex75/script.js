@@ -40,7 +40,7 @@ while (mineCount < MINE_COUNT) {
   mineCount++;
 }
 
-// 周囲の爆弾数を調べる(隣接すつ爆弾数を数える)
+// 周囲の爆弾数を調べる(隣接する爆弾数を数える)
 for (const cell of cells) {
   // 爆弾以外のcellを調べる
   if (cell.mine) continue;
