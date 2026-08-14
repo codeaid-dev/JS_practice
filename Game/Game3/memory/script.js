@@ -9,16 +9,13 @@ let count = 0;      // 消した回数
  */
 const shuffle = (array) => {
   let m = array.length;
-  let temp, i;
 
   // While there remain elements to shuffle...
   while (m) {
     //Pick a remaining element...
-    i = Math.floor(Math.random() * m--);
+    const i = Math.floor(Math.random() * m--);
     // And swap it with the current element.
-    temp = array[m];
-    array[m] = array[i];
-    array[i] = temp;
+    [array[m],array[i]] = [array[i],array[m]];
   }
   return array;
 }
@@ -90,10 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
     div.addEventListener('click', turn);
   }
 
-  start_time = Date.now(); // 開始時刻を取得
+  start_time = performance.now(); // 開始時刻を取得
 
   timer = setInterval(()=>{ // タイマー開始
-    const elapsed_time = Math.floor((Date.now() - start_time) / 1000);
+    const elapsed_time = Math.floor((performance.now() - start_time) / 1000);
     const str = '経過時間: ' + elapsed_time + '秒';
   
     const re = document.getElementById('result');
