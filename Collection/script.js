@@ -6,6 +6,22 @@ const sequence = [1, 1, 2, 3, 5, 8, 13];
 const random = ["tree", 795, [0, 1, 2]];
 console.log(sequence);
 console.log(random);
+// 配列のlengthプロパティ
+const fruits = [];
+fruits.push('バナナ', 'りんご', 'もも');
+console.log(fruits.length); // 3
+fruits[5] = 'マンゴー';
+console.log(fruits[5]); // 'マンゴー'
+console.log(Object.keys(fruits)); // (4) ['0', '1', '2', '5']
+console.log(fruits.length); // 6
+fruits.length = 10;
+console.log(fruits); // (10) ['バナナ', 'りんご', 'もも', …, 'マンゴー', …]
+console.log(Object.keys(fruits)); // (4) ['0', '1', '2', '5']
+console.log(fruits.length); // 10
+console.log(fruits[8]); // undefined
+fruits.length = 2;
+console.log(Object.keys(fruits)); // (2) ['0', '1']
+console.log(fruits.length); // 2
 // 配列の項目を取得し変更する
 console.log(shopping[0]);
 shopping[0] = "タヒーニ";
