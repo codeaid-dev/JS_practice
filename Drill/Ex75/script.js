@@ -1,179 +1,164 @@
+// 8種類の色
+const colors = ['red','blue','green','yellow','orange','purple','pink','cyan'];
+
 const panel = document.getElementById('panel');
-const message = document.getElementById('message');
-const SIZE = 10;
-const MINE_COUNT = 15;
-const cells = [];
-let gameOver = false;
-let openCount = 0;
+const start = document.getElementById('start');
+const reset = document.getElementById('reset');
+const timer = document.getElementById('timer');
+const result = document.getElementById('result');
 
-// 盤面を作る
-for (let y = 0; y < SIZE; y++) {
-  for (let x = 0; x < SIZE; x++) {
-    const cell = {
-      x: x,
-      y: y,
-      mine: false,
-      open: false,
-      flag: false,
-      count: 0,
-      element: null
-    };
-    const div = document.createElement('div');
-    div.classList.add('cell');
-    // 座標を保存
-    div.dataset.x = x;
-    div.dataset.y = y;
-    cell.element = div;
-    cells.push(cell);
-    panel.appendChild(div);
+let firstCard = null; // 1枚目
+let secondCard = null; // 2枚目
+let canClick = true; // クリック可/不可
+// 次の2枚を選べる状態にする
+const resetSelection = () => {
+  firstCard = null;
+  secondCard = null;
+  canClick = true;
+};
+let matchedCount = 0; // 揃ったペアの数
+let playing = false; // ゲーム中か否か
+let startTime = 0; // ゲーム開始時間
+let timerId = null; // タイマー
+const startTimer = () => {
+  // 開始時刻を保存
+  startTime = performance.now();
+  // タイマーを開始
+  timerId = setInterval(() => {
+    const elapsed =
+        (performance.now() - startTime) / 1000;
+    timer.textContent = elapsed.toFixed(1);
+  }, 100);
+};
+const stopTimer = () => {
+  clearInterval(timerId);
+  timerId = null;
+};
+
+// ゲーム終了
+const finish = () => {
+    playing = false;
+    canClick = false;
+    // タイマー停止
+    stopTimer();
+    // 最終時間を計算
+    const elapsed =
+        (performance.now() - startTime) / 1000;
+    // 最終時間を表示
+    timer.textContent = elapsed.toFixed(1);
+    // クリア表示
+    result.textContent =
+      `クリア！ タイム：${elapsed.toFixed(1)}秒`;
+    // スタートボタンを再び有効にする
+    start.disabled = false;
+};
+
+// カード作成(プレイ)
+const createCards = () => {
+  // 結果をクリアする
+  result.textContent = '';
+  panel.innerHTML = ''; // 全削除
+  // 色のインデックスを2個ずつ作る
+  const cards = [...colors.keys(), ...colors.keys()];
+  // カードをシャッフル
+  for (let i=cards.length-1; i>0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [cards[i], cards[j]] = [cards[j], cards[i]];
   }
-}
+  // cards.sort(() => Math.random() - 0.5);
 
-// 爆弾を配置(重複しない)
-let mineCount = 0;
-while (mineCount < MINE_COUNT) {
-  const index = Math.floor(Math.random() * cells.length);
-  const cell = cells[index];
-  // すでに爆弾があればやり直す
-  if (cell.mine) continue;
-  cell.mine = true;
-  mineCount++;
-}
-
-// 周囲の爆弾数を調べる(隣接する爆弾数を数える)
-for (const cell of cells) {
-  // 爆弾以外のcellを調べる
-  if (cell.mine) continue;
-  let count = 0;
-  for (let dy = -1; dy <= 1; dy++) {
-    for (let dx = -1; dx <= 1; dx++) {
-      // 自分自身は除外
-      if (dx === 0 && dy === 0) {
-        continue;
+  cards.forEach((colorIndex) => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.dataset.color = colorIndex; // data-color=色のインデックス
+    card.addEventListener('click', () => {
+      // クリックできない状態なら何もしない
+      if (!canClick) {
+        return;
       }
-      const x = cell.x + dx;
-      const y = cell.y + dy;
-      // 盤面の外
-      if (x < 0 || x >= SIZE ||
-          y < 0 || y >= SIZE) {
-        continue;
+      // すでに開いているカードなら何もしない
+      if (card.classList.contains('open')) {
+        return;
       }
-      const neighbor = cells[y*SIZE+x];
-      if (neighbor.mine) {
-        count++;
+      // 揃ったカードなら何もしない
+      if (card.classList.contains('matched')) {
+        return;
       }
-    }
-  }
-  cell.count = count;
-}
-
-// マウスクリックイベント処理
-for (const cell of cells) {
-  // 左クリック
-  cell.element.addEventListener('click', () => {
-    openCell(cell);
+      // カードを開く
+      const index = Number(card.dataset.color);
+      card.style.backgroundColor = colors[index];
+      card.classList.add('open');
+      // 1枚目
+      if (firstCard === null) {
+        firstCard = card;
+        return;
+      }
+      // 2枚目
+      secondCard = card;
+      canClick = false;
+      // 色が同じか判定
+      if (firstCard.dataset.color === secondCard.dataset.color) {
+        // ペア成立
+        firstCard.classList.add('matched');
+        secondCard.classList.add('matched');
+        matchedCount++;
+        // 次のペアを選べるようにする
+        resetSelection();
+        // 8ペア揃った
+        if (matchedCount === colors.length) {
+          finish();
+        }
+      } else {
+        // 違う色なら1秒後に裏返す
+        setTimeout(() => {
+          firstCard.style.backgroundColor = '#444';
+          secondCard.style.backgroundColor = '#444';
+          firstCard.classList.remove('open');
+          secondCard.classList.remove('open');
+          resetSelection();
+        }, 1000);
+      }
+    });
+    // panelにカードを追加
+    panel.appendChild(card);
   });
-  // 右クリック
-  cell.element.addEventListener('contextmenu', (event) => {
-    event.preventDefault();
-    toggleFlag(cell);
-  });
-}
+};
 
-// マスを開く
-function openCell(cell) {
-  // ゲーム終了後は操作できない
-  if (gameOver) {
-    return;
-  }
-  // すでに開いている
-  if (cell.open) {
-    return;
-  }
-  // 旗が立っている
-  if (cell.flag) {
-    return;
-  }
-  cell.open = true;
-  openCount++;
-  cell.element.classList.add('open');
-  // 爆弾だった
-  if (cell.mine) {
-    cell.element.textContent = '💣';
-    cell.element.classList.add('mine');
-    gameOver = true;
-    showAllMines();
-    message.textContent = 'ゲームオーバー！';
-    return;
-  }
-  // 周囲の爆弾数を表示
-  if (cell.count > 0) {
-    cell.element.textContent = cell.count;
-  } else {
-    // 周囲に爆弾がなければ自動的に開く
-    openNeighbors(cell);
-  }
-  // クリア判定
-  checkClear();
-}
+// ゲーム開始
+start.addEventListener('click', () => {
+    // すでにプレイ中なら何もしない
+    if (playing) return;
+    // ゲーム状態を初期化
+    firstCard = null;
+    secondCard = null;
+    matchedCount = 0;
+    canClick = true;
+    playing = true;
+    // 時間を0にする
+    timer.textContent = '0.0';
+    // カードを作り直してシャッフル
+    createCards();
+    // タイマー開始
+    startTimer();
+    // スタートボタンを無効化
+    start.disabled = true;
+});
 
-// 周囲のマスを開く
-function openNeighbors(cell) {
-  for (let dy = -1; dy <= 1; dy++) {
-    for (let dx = -1; dx <= 1; dx++) {
-      if (dx === 0 && dy === 0) {
-        continue;
-      }
-      const x = cell.x + dx;
-      const y = cell.y + dy;
-      if (x < 0 || x >= SIZE ||
-          y < 0 || y >= SIZE) {
-        continue;
-      }
-      const neighbor = cells[y*SIZE+x];
-      if (!neighbor.mine &&
-          !neighbor.open &&
-          !neighbor.flag) {
-        openCell(neighbor);
-      }
-    }
-  }
-}
-
-// 旗を立てる
-function toggleFlag(cell) {
-  if (gameOver) {
-    return;
-  }
-  if (cell.open) {
-    return;
-  }
-  cell.flag = !cell.flag;
-  if (cell.flag) {
-    cell.element.textContent = '🚩';
-    cell.element.classList.add('flag');
-  } else {
-    cell.element.textContent = '';
-    cell.element.classList.remove('flag');
-  }
-}
-
-// 爆弾をすべて表示
-function showAllMines() {
-  for (const cell of cells) {
-    if (cell.mine) {
-      cell.element.textContent = '💣';
-      cell.element.classList.add('mine');
-    }
-  }
-}
-
-// クリア判定
-function checkClear() {
-  const safeCellCount =
-    SIZE * SIZE - MINE_COUNT;
-  if (openCount === safeCellCount) {
-    gameOver = true;
-    message.textContent = '🎉 クリア！';
-  }
-}
+// ゲームリセット
+reset.addEventListener('click', () => {
+    // ゲーム停止
+    playing = false;
+    canClick = false;
+    // タイマー停止
+    stopTimer();
+    // カード選択状態をリセット
+    firstCard = null;
+    secondCard = null;
+    matchedCount = 0;
+    // 時間を0に戻す
+    timer.textContent = '0.0';
+    // カードを作り直す
+    createCards();
+    // スタートボタンを有効にする
+    start.disabled = false;
+});

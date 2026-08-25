@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マインスイーパー</title>
+  <style>
+    #panel {
+      display: grid;
+      grid-template-columns: repeat(10, 30px);
+    }
+    .cell {
+      width: 30px;
+      height: 30px;
+      border: 1px solid darkslategray;
+      background-color: #ccc;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+    }
+    .cell.open {
+      background-color: black;
+      cursor: default;
+    }
+    .cell.mine {
+      background-color: #f88;
+    }
+    .cell.flag {
+      background-color: #ffcc66;
+    }
+    #message {
+      font-size: 40px;
+    }
+  </style>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <h1>マインスイーパー</h1>
+  <div id="panel"></div>
+  <p id="message"></p>
+</body>
+</html>
