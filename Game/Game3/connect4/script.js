@@ -1,34 +1,57 @@
 const panel = document.getElementById('panel');
 const result = document.getElementById('result');
 
-const judge = () => {
-  for (let i=0; i<cards.length; i++) {
-    if (0<=i%7 && i%7<=3) {
-      if (cards[i].stat===1 && cards[i+1].stat===1 && cards[i+2].stat===1 && cards[i+3].stat===1)
-        return 1;
-      if (cards[i].stat===2 && cards[i+1].stat===2 && cards[i+2].stat===2 && cards[i+3].stat===2)
-        return 2;
+const judge = (i) => {
+    const player = cards[i].stat;
+    if (player === 0)
+      return 0;
+    const row = Math.floor(i / 7);
+    const col = i % 7;
+    const directions = [
+        [1, 0],    // 右
+        [0, 1],    // 下
+        [1, 1],    // 右下
+        [1, -1]    // 右上
+    ];
+    for (const [dx, dy] of directions) {
+      let count = 1
+      // 正方向を調べる
+      for (let n=1; n<4; n++) {
+        const x = col + dx * n;
+        const y = row + dy * n;
+        if (0 <= x && x < 7 &&
+          0 <= y && y < 6) {
+          const index = y * 7 + x;
+          if (cards[index].stat === player) {
+            count += 1
+          } else {
+            break;
+          }
+        } else {
+          break;
+        }
+      }
+      // 逆方向を調べる
+      for (let n=1; n<4; n++) {
+        const x = col - dx * n;
+        const y = row - dy * n;
+        if (0 <= x && x < 7 &&
+          0 <= y && y < 6) {
+          const index = y * 7 + x;
+          if (cards[index].stat === player) {
+            count += 1
+          } else {
+            break;
+          }
+        } else {
+          break;
+        }
+      }
+      if (count >= 4) {
+        return player;
+      }
     }
-    if (0<=i/7 && i/7<=2) {
-      if (cards[i].stat===1 && cards[i+7].stat===1 && cards[i+14].stat===1 && cards[i+21].stat===1)
-        return 1;
-      if (cards[i].stat===2 && cards[i+7].stat===2 && cards[i+14].stat===2 && cards[i+21].stat===2)
-        return 2;
-    }
-    if ((3<=i && i<=6) || (10<=i && i<=13) || (17<=i && i<=20)) {
-      if (cards[i].stat===1 && cards[i+6].stat===1 && cards[i+12].stat===1 && cards[i+18].stat===1)
-        return 1;
-      if (cards[i].stat===2 && cards[i+6].stat===2 && cards[i+12].stat===2 && cards[i+18].stat===2)
-        return 2;
-    }
-    if ((0<=i && i<=3) || (7<=i && i<=10) || (14<=i && i<=17)) {
-      if (cards[i].stat===1 && cards[i+8].stat===1 && cards[i+16].stat===1 && cards[i+24].stat===1)
-        return 1;
-      if (cards[i].stat===2 && cards[i+8].stat===2 && cards[i+16].stat===2 && cards[i+24].stat===2)
-        return 2;
-    }
-  }
-  return 0;
+    return 0;
 };
 let over = false;
 let turn = false // true:red, false:yellow
@@ -38,30 +61,33 @@ for (let i=0; i<42; i++) {
   card.classList.add('card');
   card.addEventListener('click', (event) => {
     if (over) return;
-    cards.forEach((data, index) => {
+    for (const [index,data] of cards.entries()) {
       if (data.element === event.target) {
         if ((index>=35 && data.stat==0)
            || (index<35 && cards[index+7].stat!=0 && data.stat==0)) {
-            if (turn) {
-              event.target.style.backgroundColor = 'red';
-              turn = false;
-              data.stat = 1;
-            } else {
-              event.target.style.backgroundColor = 'yellow';
-              turn = true;
-              data.stat = 2;
-            }
+          if (turn) {
+            event.target.style.backgroundColor = 'red';
+            turn = false;
+            data.stat = 1;
+          } else {
+            event.target.style.backgroundColor = 'yellow';
+            turn = true;
+            data.stat = 2;
+          }
+          // 今置いたコマを起点に判定
+          const winner = judge(index);
+          if (winner===1) {
+            result.textContent = '赤の勝ち';
+            over = true;
+          }
+          if (winner===2) {
+            result.textContent = '黄の勝ち';
+            over = true;
+          }
+          break;
         }
       }
-      if (judge()===1) {
-        result.textContent = '赤の勝ち';
-        over = true;
-      }
-      if (judge()===2) {
-        result.textContent = '黄の勝ち';
-        over = true;
-      }
-    });
+    }
   });
   panel.appendChild(card);
   const data = {
