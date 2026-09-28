@@ -138,3 +138,48 @@ let nums = [5,7,2,4,9,1,3];
 nums.sort();
 nums.reverse();
 console.log(nums);
+
+// スプレッド構文
+const s = 'あいうえ😀';
+const arr = ['a','b','c','d'];
+console.log(s.length); // 6
+console.log([...s].length); // 5
+console.log(...arr); // console.log('a','b','c','d');と同じ
+
+// filter()
+const words = ["apple", "grape", "orange", "cherry", "pear"];
+const result = words.filter((word) => word.length >= 6);
+console.log(result); // ['orange', 'cherry']
+
+const arr = [
+  {id:1},{id:2},{id:-1},{id:10},{id:3.14},{id:null},{id:NaN}
+]
+
+function filterByID(item) {
+  if (Number.isInteger(item.id) && item.id >= 0) {
+    return true;
+  }
+  return false;
+}
+
+const result = arr.filter(filterByID);
+console.log(result); // [{id:1},{id:2},{id:10}]
+
+// find()
+const array = [8,16,32,64,128,256];
+const found = array.find((num) => num > 32);
+console.log(found); // 64
+
+const arr = [
+  {id:1},{id:2},{id:-1},{id:10},{id:3.14},{id:null},{id:NaN}
+]
+
+function findByID(item) {
+  if (Number.isInteger(item.id) && item.id == 10) {
+    return true;
+  }
+  return false;
+}
+
+const result = arr.find(findByID);
+console.log(result); // {id:10}
