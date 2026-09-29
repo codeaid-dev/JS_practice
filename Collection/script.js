@@ -153,7 +153,7 @@ console.log(result); // ['orange', 'cherry']
 
 const arr = [
   {id:1},{id:2},{id:-1},{id:10},{id:3.14},{id:null},{id:NaN}
-]
+];
 
 function filterByID(item) {
   if (Number.isInteger(item.id) && item.id >= 0) {
@@ -172,7 +172,7 @@ console.log(found); // 64
 
 const arr = [
   {id:1},{id:2},{id:-1},{id:10},{id:3.14},{id:null},{id:NaN}
-]
+];
 
 function findByID(item) {
   if (Number.isInteger(item.id) && item.id == 10) {
@@ -183,3 +183,21 @@ function findByID(item) {
 
 const result = arr.find(findByID);
 console.log(result); // {id:10}
+
+// fill()
+const arr1 = [1,2,3];
+console.log([...arr1].fill(0));      // [0,0,0]
+console.log([...arr1].fill(0,1));    // [1,0,0]
+console.log([...arr1].fill(0,2,3));  // [1,2,0]
+const arr2 = [1,2,3,4,5];
+console.log([...arr2].fill(0,1,3));  // [1,0,0,4,5]
+console.log([...arr2].fill(0,5,7));  // [1,2,3,4,5]
+
+const arr3 = ['1','2','3'];
+console.log(arr3);  // ['1','2','3']
+const arr4 = Array(3);
+console.log(arr4);  // [undefined,undefined,undefined]
+const arr5 = Array('2','3');
+console.log(arr5);  // ['2','3']
+const arr6 = Array(10).fill(0);
+console.log(arr6);  // [0,0,0,0,0,0,0,0,0,0]
