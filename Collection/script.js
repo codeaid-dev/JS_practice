@@ -201,3 +201,8 @@ const arr5 = Array('2','3');
 console.log(arr5);  // ['2','3']
 const arr6 = Array(10).fill(0);
 console.log(arr6);  // [0,0,0,0,0,0,0,0,0,0]
+
+// forEach()
+const array = ["a", "b", "c"];
+array.forEach((element) => console.log(element));
+array.forEach((e,i) => console.log(`${i}番目：${e}`));
