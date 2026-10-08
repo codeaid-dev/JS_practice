@@ -4,12 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScript-fetch</title>
-  <style>
-    /*#userlist td {
-      width: 120px;
-      text-align: center;
-    }*/
-  </style>
 </head>
 <body>
   <h1>JavaScript-fetch</h1>
@@ -20,6 +14,12 @@
     </tr>
   </table>
   <table id="awaitlist">
+    <tr>
+      <th>ID</th>
+      <th>名前</th>
+    </tr>
+  </table>
+  <table id="awaitlist2">
     <tr>
       <th>ID</th>
       <th>名前</th>
@@ -41,19 +41,43 @@
       });
 
     async function load() {
-      const res = await fetch('data.json');
-      const obj = await res.json();
+      const response = await fetch('data.json');
+      const data = await response.json();
       const table = document.getElementById("awaitlist");
-      for (let i=0; i<obj.length; i++) {
+      for (let i=0; i<data.length; i++) {
         const tr = table.insertRow(-1);
         const td1 = tr.insertCell(-1);
         const td2 = tr.insertCell(-1);
-        td1.innerHTML = obj[i].id;
-        td2.innerHTML = obj[i].name;
+        td1.innerHTML = data[i].id;
+        td2.innerHTML = data[i].name;
+      }
+    }
+
+    async function load2() {
+      try {
+        const response = await fetch('data2.json');
+        if (!response.ok) {
+          throw new Error(
+          `情報を取得できませんでした ${response.status}`
+          );
+        }
+        const data = await response.json();
+        const table = document.getElementById("awaitlist2");
+        for (let i=0; i<data.length; i++) {
+          const tr = table.insertRow(-1);
+          const td1 = tr.insertCell(-1);
+          const td2 = tr.insertCell(-1);
+          td1.innerHTML = data[i].id;
+          td2.innerHTML = data[i].name;
+        }
+      }
+      catch (error) {
+        console.error(error.message);
       }
     }
 
     load();
+    load2();
 
     async function send() {
       try {
