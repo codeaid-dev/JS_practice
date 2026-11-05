@@ -1,38 +1,13 @@
-class BankAccount {
-  constructor(accountNumber, owner, balance = 0) {
-    this.accountNumber = accountNumber;
-    this.owner = owner;
-    this.balance = balance;
-  }
+const items = [
+  {id: 1, name: "ノート", price: 150},
+  {id: 2, name: "シャーペン", price: 120},
+  {id: 3, name: "消しゴム", price: 80},
+  {id: 4, name: "ボールペン", price: 120}
+];
 
-  deposit(amount) {
-    if (amount <= 0) {
-      return false;
-    }
-
-    this.balance += amount;
-    return true;
-  }
-
-  withdraw(amount) {
-    if (amount <= 0 || amount > this.balance) {
-      return false;
-    }
-
-    this.balance -= amount;
-    return true;
-  }
-
-  getBalance() {
-    return this.balance;
-  }
-}
-
-const account1 = new BankAccount("A001", "山田", 10000);
-const account2 = new BankAccount("A002", "佐藤", 5000);
-
-account1.deposit(3000);
-account2.withdraw(2000);
-
-console.log(`${account1.owner}の残高：${account1.getBalance()}`); // 13000
-console.log(`${account2.owner}の残高：${account2.getBalance()}`); // 3000
+items.forEach((item,index) => {
+  console.log(`ID:${item.id}, 商品名:${item.name}, 価格:${item.price}`);
+});
+const item = items.find(item => {return item.id === 4});
+item.price = 200;
+console.log(`ID:${item.id}, 商品名:${item.name}, 価格:${item.price}`);
